@@ -12,4 +12,6 @@ public interface ApiService {
     @POST("login.aspx")
     Single<List<String>> users();
 
+    @GET("somthing")
+    Single<List<String>> getStrings();
 }
