@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Kala Bean</string>
     <string name="KalaBean">کالا بین</string>
+    <string name="edt_fragmentLogin_username">شماره همراه</string>
+    <string name="edt_fragmentLogin_password">کلمه عبور</string>
+    <string name="btn_fragmentLogin_login">ورود</string>
 </resources>
