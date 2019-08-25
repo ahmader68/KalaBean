@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">Kala Bean</string>
     <string name="KalaBean">کالا بین</string>
+<<<<<<<<< Temporary merge branch 1
+    <string name="edt_fragmentLogin_username">شماره همراه</string>
+    <string name="edt_fragmentLogin_password">کلمه عبور</string>
+    <string name="btn_fragmentLogin_login">ورود</string>
+=========
+    <string name="txt_fragmentRegister_register">عضویت :</string>
+    <string name="radio_fragmentRegister_spacial">کاربر ویژه - امکان افزودن فروشگاه</string>
+    <string name="radio_fragmentRegister_regular">کاربر عادی - عضویت صرفا جهت بازدید</string>
+    <string name="txt_fragmentRegister_gender">جنسیت :</string>
+    <string name="txt_fragmentRegister_gender_man">مرد</string>
+    <string name="txt_fragmentRegister_gender_woman">زن</string>
+    <string name="edt_fragmentRegister_name">نام</string>
+    <string name="edt_fragmentRegister_family">نام خانوادگی</string>
+    <string name="edt_fragmentRegister_email">ایمیل</string>
+    <string name="edt_fragmentRegister_mobile">شماره مبایل</string>
+    <string name="txt_fragmentRegister_noteMobile">توجه : شماره موبایل شما به عنوان نام کاربری برای ورود به سایت تعریف می شود</string>
+    <string name="edt_fragmentRegister_phone">تلفن ثابت</string>
+    <string name="txt_fragmentRegister_notePhone">نمونه: 05130123456</string>
+    <string name="edt_fragmentRegister_address">آدرس</string>
+    <string name="edt_fragmentRegister_password">کلمه عبور</string>
+    <string name="edt_fragmentRegister_confirmPassword">تایید کلمه عبور</string>
+    <string name="btn_fragmentRegister_save">ذخیره</string>
+>>>>>>>>> Temporary merge branch 2
 </resources>
