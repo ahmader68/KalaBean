@@ -1,6 +1,7 @@
 package com.intek.kalabean.Edit_User;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
@@ -34,6 +35,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     Button btnFragmentEditUserUpload;
     Button btnFragmentEditUserSave;
     ImageView imgFragmentEditUserProfile;
+    ConstraintLayout conEditUser;
     @Override
     public int getLayout() {
         return R.layout.fragment_edit_user;
@@ -41,6 +43,10 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
 
     @Override
     public void setupViews() {
+
+        conEditUser = rootView.findViewById(R.id.con_fragmentEditUser_mainLayout);
+        conEditUser.setRotationY(180);
+
         rgFragmentEditUserGender = rootView.findViewById(R.id.rg_fragmentEditUser_gender);
         rbFragmetEditUserMan = rootView.findViewById(R.id.rb_fragmentEditUser_man);
         rbFragmetEditUserWoman = rootView.findViewById(R.id.rb_fragmentEditUser_woman);

@@ -1,6 +1,7 @@
 package com.intek.kalabean.Login;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
@@ -16,6 +17,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     TextInputEditText edtFragmentLoginUsername;
     TextInputEditText edtFragmentLoginPassword;
     Button btnFragmentLoginLogin;
+    ConstraintLayout conLogin;
     @Override
     public int getLayout() {
         return R.layout.fragment_login;
@@ -23,6 +25,10 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
     @Override
     public void setupViews() {
+
+        conLogin = rootView.findViewById(R.id.con_fragmentLogin_mainLayout);
+        conLogin.setRotationY(180);
+
         tilFragmentLoginUsername = rootView.findViewById(R.id.til_fragmentLogin_username);
         tilFragmentLoginPassword = rootView.findViewById(R.id.til_fragmentLogin_password);
         edtFragmentLoginUsername = rootView.findViewById(R.id.edt_fragmentLogin_username);
