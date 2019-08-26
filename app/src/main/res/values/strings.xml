@@ -43,5 +43,9 @@
     <string name="sp_fragmentEditUser_state">استان</string>
 
     <string name="sp_fragmentEditUser_city">شهر</string>
+    <string name="txt_rvCircle_countStoreTitle">تعداد فروشگاه:</string>
+    <string name="txt_rvCircle_storeName">نام فروشگاه:</string>
+    <string name="txt_rvCircle_floorCountTitle">تعدادطبقات:</string>
+    <string name="txt_rvCircle_addressTitle">آدرس:</string>
 
 </resources>
