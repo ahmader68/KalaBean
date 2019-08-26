@@ -36,5 +36,6 @@
     <string name="btn_fragmentEditUser_save">ذخیره</string>
     <string name="img_fragmentEditUser_contentDesc">عکس پروفایل</string>
     <string name="sp_fragmentEditUser_state">استان</string>
+
     <string name="sp_fragmentEditUser_city">شهر</string>
 </resources>
