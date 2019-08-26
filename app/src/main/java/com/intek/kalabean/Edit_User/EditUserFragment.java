@@ -5,6 +5,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -13,6 +14,10 @@ import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.R;
+import com.tiper.MaterialSpinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditUserFragment extends BaseFragment implements EditUserContract.View {
     RadioGroup rgFragmentEditUserGender;
@@ -35,7 +40,15 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     Button btnFragmentEditUserUpload;
     Button btnFragmentEditUserSave;
     ImageView imgFragmentEditUserProfile;
+
     ConstraintLayout conEditUser;
+
+    MaterialSpinner spFragmentEditUserState;
+    MaterialSpinner spFragmentEditUserCity;
+    //Test
+
+    ArrayList<String> items;
+
     @Override
     public int getLayout() {
         return R.layout.fragment_edit_user;
@@ -65,6 +78,8 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         edtFragmentEditUserPassword = rootView.findViewById(R.id.edt_fragmentEditUser_password);
         edtFragmentEditUserConfPass = rootView.findViewById(R.id.edt_fragmentEditUser_confPass);
         imgFragmentEditUserProfile = rootView.findViewById(R.id.img_fragmentEditUser_profile);
+        spFragmentEditUserCity = rootView.findViewById(R.id.sp_fragmentEditUser_city);
+        spFragmentEditUserState = rootView.findViewById(R.id.sp_fragmentEditUser_state);
         btnFragmentEditUserUpload = rootView.findViewById(R.id.btn_fragmentEditUser_upload);
         btnFragmentEditUserSave = rootView.findViewById(R.id.btn_fragmentEditUser_save);
         btnFragmentEditUserSave.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +101,20 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
                 imgFragmentEditUserProfile.setVisibility(View.VISIBLE);
             }
         });
+
+        /////Test
+
+        items = new ArrayList<>();
+        items.add("دلار آمریکا");
+        items.add("یورو");
+        items.add("پوند انگلیس");
+        items.add("مارک آلمان");
+        items.add("ریال عربستان");
+        items.add("تومان ایران ");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,items);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spFragmentEditUserState.setAdapter(arrayAdapter);
+        spFragmentEditUserCity.setAdapter(arrayAdapter);
     }
 
     @Override

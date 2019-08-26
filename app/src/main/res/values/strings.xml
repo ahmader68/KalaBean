@@ -22,7 +22,10 @@
     <string name="edt_fragmentLogin_username">شماره همراه</string>
     <string name="edt_fragmentLogin_password">کلمه عبور</string>
     <string name="btn_fragmentLogin_login">ورود</string>
+
     <string name="sp_fragmentRegister_locationCity">انتخاب شهر</string>
+
+
 
     <string name="rb_fragmentEditUser_man">مرد</string>
     <string name="rb_fragmentEditUser_woman">زن</string>
@@ -38,4 +41,7 @@
     <string name="btn_fragmentEditUser_save">ذخیره</string>
     <string name="img_fragmentEditUser_contentDesc">عکس پروفایل</string>
     <string name="sp_fragmentEditUser_state">استان</string>
+
+    <string name="sp_fragmentEditUser_city">شهر</string>
+
 </resources>
