@@ -41,9 +41,6 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     ImageView imgFragmentEditUserProfile;
     MaterialSpinner spFragmentEditUserState;
     MaterialSpinner spFragmentEditUserCity;
-    //Test
-
-    ArrayList<String> items;
     @Override
     public int getLayout() {
         return R.layout.fragment_edit_user;
@@ -93,19 +90,6 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
             }
         });
 
-        /////Test
-
-        items = new ArrayList<>();
-        items.add("دلار آمریکا");
-        items.add("یورو");
-        items.add("پوند انگلیس");
-        items.add("مارک آلمان");
-        items.add("ریال عربستان");
-        items.add("تومان ایران ");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,items);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spFragmentEditUserState.setAdapter(arrayAdapter);
-        spFragmentEditUserCity.setAdapter(arrayAdapter);
     }
 
     @Override
