@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Login.LoginFragment;
+import com.intek.kalabean.Register.RegisterFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new LoginFragment(),"ورود");
         viewPagerAdapter.addFragment(new EditUserFragment(),"ویرایش کاربر");
+        viewPagerAdapter.addFragment(new RegisterFragment(),"ثبت نام");
+
+        viewPager.setRotationY(180);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
