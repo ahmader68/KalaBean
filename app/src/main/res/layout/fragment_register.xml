@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/con_fragmentRegister_mainLayout"
     android:layoutDirection="rtl">
 
     <ScrollView
@@ -299,7 +300,12 @@
                         android:id="@+id/sp_fragmentRegister_locationState"
                         app:layout_constraintTop_toBottomOf="@+id/til_fragmentRegister_phone"
                         app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:hint="@string/sp_fragmentEditUser_state"/>
+
                         app:layout_constraintEnd_toEndOf="parent" />
+
 
                     <com.tiper.MaterialSpinner
                         android:layout_width="match_parent"
@@ -307,7 +313,12 @@
                         android:id="@+id/sp_fragmentRegister_locationCity"
                         app:layout_constraintTop_toBottomOf="@+id/sp_fragmentRegister_locationState"
                         app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:hint="@string/sp_fragmentRegister_locationCity"/>
+
                         app:layout_constraintEnd_toEndOf="parent" />
+
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/til_fragmentRegister_address"
