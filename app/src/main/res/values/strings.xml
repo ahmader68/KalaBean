@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">Kala Bean</string>
     <string name="KalaBean">کالا بین</string>
-    <string name="edt_fragmentLogin_username">شماره همراه</string>
-    <string name="edt_fragmentLogin_password">کلمه عبور</string>
-    <string name="btn_fragmentLogin_login">ورود</string>
     <string name="txt_fragmentRegister_register">عضویت :</string>
     <string name="radio_fragmentRegister_spacial">کاربر ویژه - امکان افزودن فروشگاه</string>
     <string name="radio_fragmentRegister_regular">کاربر عادی - عضویت صرفا جهت بازدید</string>
@@ -21,4 +18,8 @@
     <string name="edt_fragmentRegister_password">کلمه عبور</string>
     <string name="edt_fragmentRegister_confirmPassword">تایید کلمه عبور</string>
     <string name="btn_fragmentRegister_save">ذخیره</string>
+
+    <string name="edt_fragmentLogin_username">شماره همراه</string>
+    <string name="edt_fragmentLogin_password">کلمه عبور</string>
+    <string name="btn_fragmentLogin_login">ورود</string>
 </resources>
