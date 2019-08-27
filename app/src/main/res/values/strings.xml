@@ -22,10 +22,7 @@
     <string name="edt_fragmentLogin_username">شماره همراه</string>
     <string name="edt_fragmentLogin_password">کلمه عبور</string>
     <string name="btn_fragmentLogin_login">ورود</string>
-
     <string name="sp_fragmentRegister_locationCity">انتخاب شهر</string>
-
-
 
     <string name="rb_fragmentEditUser_man">مرد</string>
     <string name="rb_fragmentEditUser_woman">زن</string>
@@ -42,6 +39,17 @@
     <string name="img_fragmentEditUser_contentDesc">عکس پروفایل</string>
     <string name="sp_fragmentEditUser_state">استان</string>
 
-    <string name="sp_fragmentEditUser_city">شهر</string>
 
+    <string name="txt_fragmentSearch_searchTitle">جستجو پیشرفته</string>
+    <string name="rb_fragmentSearch_searchProduct">جستجو در محصولات</string>
+    <string name="rb_fragmentSearch_searchShop">جستجو در فروشگاه</string>
+    <string name="sp_fragmentSearch_cityName">نام شهر</string>
+    <string name="sp_fragmentSearch_shopKind">نوع مرکز خرید</string>
+    <string name="sp_fragmentSearch_shopName">نام مرکز خرید</string>
+    <string name="sp_fragmentSearch_floor">طبقه</string>
+    <string name="sp_fragmentSearch_activity">زمینه فعالیت</string>
+    <string name="edt_fragmentSearch_productName">نام محصول</string>
+    <string name="btn_fragmentSearch_search">جستجو</string>
+    <string name="txt_fragmentSearch_number">0</string>
+    <string name="txt_fragmentSearch_resultText">نتیجه برای جستجو شما...</string>
 </resources>
