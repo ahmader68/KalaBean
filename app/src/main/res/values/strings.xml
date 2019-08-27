@@ -40,6 +40,12 @@
     <string name="sp_fragmentEditUser_state">استان</string>
 
 
+    <string name="sp_fragmentEditUser_city">شهر</string>
+    <string name="txt_rvCircle_countStoreTitle">تعداد فروشگاه:</string>
+    <string name="txt_rvCircle_storeName">نام فروشگاه:</string>
+    <string name="txt_rvCircle_floorCountTitle">تعدادطبقات:</string>
+    <string name="txt_rvCircle_addressTitle">آدرس:</string>
+
     <string name="txt_fragmentSearch_searchTitle">جستجو پیشرفته</string>
     <string name="rb_fragmentSearch_searchProduct">جستجو در محصولات</string>
     <string name="rb_fragmentSearch_searchShop">جستجو در فروشگاه</string>
