@@ -18,9 +18,6 @@ import java.util.ArrayList;
 
 public class RegisterFragment extends BaseFragment implements RegisterContract.View {
 
-
-    MaterialSpinner spinnerState;
-    MaterialSpinner spinnerCity;
     ConstraintLayout conRegister;
     RadioGroup rg_fragmentRegistry_regKind;
     RadioGroup rg_fragmentRegistry_gender;
@@ -47,6 +44,10 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     MaterialSpinner sp_fragmentRegister_locationState;
     MaterialSpinner sp_fragmentRegister_locationCity;
     Button btn_fragmentRegister_save;
+
+    ArrayList<String> items;
+    ArrayAdapter<String> arrayAdapter;
+
     @Override
     public int getLayout() {
         return R.layout.fragment_register;
@@ -57,8 +58,6 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
         conRegister = rootView.findViewById(R.id.con_fragmentRegister_mainLayout);
         conRegister.setRotationY(180);
-
-        ArrayList<String> items;
 
         rg_fragmentRegistry_regKind = rootView.findViewById(R.id.rg_fragmentRegistry_regKind);
         rg_fragmentRegistry_gender = rootView.findViewById(R.id.rg_fragmentRegistry_gender);
@@ -97,10 +96,10 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         items.add("تومان ایران ");
         //android.R.layout.simple_spinner_item
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, items);
+        arrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, items);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerState.setAdapter(arrayAdapter);
-        spinnerCity.setAdapter(arrayAdapter);
+        sp_fragmentRegister_locationState.setAdapter(arrayAdapter);
+        sp_fragmentRegister_locationCity.setAdapter(arrayAdapter);
     }
 
     @Override

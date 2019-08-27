@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#202020</color>
     <color name="colorAccent">#FFE200</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorYellow">#E0E000</color>
+    <color name="colorBlue">#0000FF</color>
+    <color name="colorGreen">#046304</color>
+    <color name="colorBrown">#441A02</color>
 </resources>
