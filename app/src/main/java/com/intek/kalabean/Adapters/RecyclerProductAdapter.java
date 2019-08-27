@@ -10,12 +10,13 @@ import android.widget.ImageView;
 
 import com.intek.kalabean.Model.Product;
 import com.intek.kalabean.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProductAdapter.ProductHolder> {
-    Context context;
-    List<Product> products;
+    private Context context;
+    private List<Product> products;
     public RecyclerProductAdapter(Context context,List<Product> products) {
         this.context = context;
         this.products = products;
@@ -29,8 +30,9 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductHolder holder, int i) {
-
+    public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
+        final Product product = products.get(position);
+        Picasso.get().load(product.getImgProduct()).into(holder.imgProduct);
     }
 
     @Override
