@@ -1,7 +1,7 @@
 package com.intek.kalabean.Model;
 
 public class Store {
-    private String img;
+    private String cimgProfile;
     private String storeName;
     private int storeCount;
     private int floorCount;
@@ -16,12 +16,12 @@ public class Store {
     private boolean wifi;
     private boolean elevator;
 
-    public String getImg() {
-        return img;
+    public String getCimgProfile() {
+        return cimgProfile;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setCimgProfile(String cimgProfile) {
+        this.cimgProfile = cimgProfile;
     }
 
     public String getStoreName() {
