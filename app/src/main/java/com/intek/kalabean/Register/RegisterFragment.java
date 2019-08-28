@@ -4,10 +4,12 @@ import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.MainActivity;
@@ -85,6 +87,30 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         sp_fragmentRegister_locationCity = rootView.findViewById(R.id.sp_fragmentRegister_locationCity);
         btn_fragmentRegister_save = rootView.findViewById(R.id.btn_fragmentRegister_save);
 
+        btn_fragmentRegister_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (rg_fragmentRegistry_regKind.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getViewContext(), "لطفا نوع عضویت خود را مشخص کنید", Toast.LENGTH_SHORT).show();
+
+                } else if (rg_fragmentRegistry_gender.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getViewContext(), "لطفا جنسیت خود را مشخص کنید", Toast.LENGTH_SHORT).show();
+                } else if (!validateName() || !validateFamily() || !validateEmail() || !validateMobile() || !validatePhone()
+                        || !validatePassword() || !validateConpass() || !validateAddress()) {
+                    return;
+                } else if (!edt_fragmentRegister_password.getText().toString().equals(edt_fragmentRegister_confirmPassword.getText().toString())) {
+                    til_fragmentRegister_confirmPassword.setError("کلمه عبور و تایید کلمه عبور با هم برابر نیستند");
+                    edt_fragmentRegister_confirmPassword.requestFocus();
+                } else if (sp_fragmentRegister_locationState.getSelectedItemId() == -1) {
+                    Toast.makeText(getViewContext(), "لطفا استان خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
+                }else if(sp_fragmentRegister_locationCity.getSelectedItemId() == -1){
+                    Toast.makeText(getViewContext(), "لطفا شهر خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getViewContext(), "Continue", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         items = new ArrayList<>();
 
 
@@ -105,5 +131,101 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     @Override
     public Context getViewContext() {
         return getContext();
+    }
+
+    private boolean validateName() {
+        String name = edt_fragmentRegister_name.getText().toString().trim();
+        if (name.isEmpty()) {
+            til_fragmentRegister_name.setError("فیلد نام خالی است");
+            edt_fragmentRegister_name.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_name.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateFamily() {
+        String family = edt_fragmentRegister_family.getText().toString().trim();
+        if (family.isEmpty()) {
+            til_fragmentRegister_family.setError("فیلد نام خانوادگی خالی است");
+            edt_fragmentRegister_family.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_family.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateMobile() {
+        String mobile = edt_fragmentRegister_mobile.getText().toString().trim();
+        if (mobile.isEmpty()) {
+            til_fragmentRegister_mobile.setError("فیلد شماره همراه خالی است");
+            edt_fragmentRegister_mobile.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_mobile.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validatePhone() {
+        String phone = edt_fragmentRegister_phone.getText().toString().trim();
+        if (phone.isEmpty()) {
+            til_fragmentRegister_phone.setError("فیلد تلفن خالی است");
+            edt_fragmentRegister_phone.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_phone.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateEmail() {
+        String email = edt_fragmentRegister_email.getText().toString().trim();
+        if (email.isEmpty()) {
+            til_fragmentRegister_email.setError("فیلد ایمیل خالی است");
+            edt_fragmentRegister_email.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_email.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validatePassword() {
+        String password = edt_fragmentRegister_password.getText().toString().trim();
+        if (password.isEmpty()) {
+            til_fragmentRegister_password.setError("فیلد کلمه عبور خالی است");
+            edt_fragmentRegister_password.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_password.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateConpass() {
+        String conPass = edt_fragmentRegister_confirmPassword.getText().toString().trim();
+        if (conPass.isEmpty()) {
+            til_fragmentRegister_confirmPassword.setError("فیلد تایید کلمه عبور خالی است");
+            edt_fragmentRegister_confirmPassword.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_confirmPassword.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateAddress() {
+        String address = edt_fragmentRegister_address.getText().toString().trim();
+        if (address.isEmpty()) {
+            til_fragmentRegister_address.setError("فیلد آدرس خالی است");
+            edt_fragmentRegister_address.requestFocus();
+            return false;
+        } else {
+            til_fragmentRegister_address.setError(null);
+            return true;
+        }
     }
 }
