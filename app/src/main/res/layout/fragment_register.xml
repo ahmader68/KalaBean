@@ -178,7 +178,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_name"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -202,7 +202,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_family"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -226,7 +226,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_email"
-                            android:inputType="number"
+                            android:inputType="textEmailAddress"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -250,7 +250,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_mobile"
-                            android:inputType="number"
+                            android:inputType="phone"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -281,7 +281,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_phone"
-                            android:inputType="number"
+                            android:inputType="phone"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -333,7 +333,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_address"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -357,7 +357,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_password"
-                            android:inputType="number"
+                            android:inputType="textPassword"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 
@@ -381,7 +381,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/edt_fragmentRegister_confirmPassword"
-                            android:inputType="number"
+                            android:inputType="textPassword"
                             android:textColor="@color/colorPrimaryDark"
                             app:backgroundTint="@color/colorAccent" />
 

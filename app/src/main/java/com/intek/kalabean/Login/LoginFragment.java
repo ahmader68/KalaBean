@@ -54,6 +54,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         String usernameInput = edtFragmentLoginUsername.getText().toString().trim();
         if(usernameInput.isEmpty()){
             tilFragmentLoginUsername.setError("فیلد نام کاربری خالی است");
+            edtFragmentLoginUsername.requestFocus();
             return false;
         }else{
             tilFragmentLoginUsername.setError(null);
@@ -64,6 +65,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         String passwordInput = edtFragmentLoginPassword.getText().toString().trim();
         if(passwordInput.isEmpty()){
             tilFragmentLoginPassword.setError("فیلد کلمه عبور خالی است");
+            edtFragmentLoginPassword.requestFocus();
             return false;
         }else {
             tilFragmentLoginPassword.setError(null);

@@ -85,11 +85,16 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         btnFragmentEditUserSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!validateName() || !validateFamily() || !validateEmail() || !validateMobile() || !validatePhone() || !validatePassword() || !validateConPass()){
+                if (!validateName() || !validateFamily() || !validateEmail() || !validateMobile() || !validatePhone() || !validatePassword() || !validateConPass()) {
                     return;
-                }else if(!edtFragmentEditUserPassword.getText().toString().equals(edtFragmentEditUserConfPass.getText().toString())){
-                    Toast.makeText(getViewContext(), "کلمه عبور و تایید آن باید باهم برابر باشند", Toast.LENGTH_SHORT).show();
-                }else{
+                } else if (!edtFragmentEditUserPassword.getText().toString().equals(edtFragmentEditUserConfPass.getText().toString())) {
+                    tilFragmentEditUserConfPass.setError("کلمه عبور و تایید کلمه عبور با هم برابر نیستند");
+                    edtFragmentEditUserConfPass.requestFocus();
+                } else if (spFragmentEditUserState.getSelectedItemId() == -1) {
+                    Toast.makeText(getViewContext(), "لطفا استان خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
+                } else if (spFragmentEditUserCity.getSelectedItemId() == -1) {
+                    Toast.makeText(getViewContext(), "لطفا شهر خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
+                } else {
                     Toast.makeText(getViewContext(), "continue", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -111,7 +116,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         items.add("مارک آلمان");
         items.add("ریال عربستان");
         items.add("تومان ایران ");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,items);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, items);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentEditUserState.setAdapter(arrayAdapter);
         spFragmentEditUserCity.setAdapter(arrayAdapter);
@@ -121,66 +126,86 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     public Context getViewContext() {
         return getContext();
     }
-    private boolean validateName(){
+
+    private boolean validateName() {
         String nameInput = edtFragmentEditUserName.getText().toString().trim();
-        if(nameInput.isEmpty()){
+        if (nameInput.isEmpty()) {
             tilFragmentEditUserName.setError("فیلد نام خالی است");
+            edtFragmentEditUserName.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserName.setError(null);
             return true;
         }
-    }    private boolean validateFamily(){
+    }
+
+    private boolean validateFamily() {
         String familyInput = edtFragmentEditUserFamily.getText().toString().trim();
-        if(familyInput.isEmpty()){
+        if (familyInput.isEmpty()) {
             tilFragmentEditUserFamily.setError("فیلد نام خانوادگی خالی است");
+            edtFragmentEditUserFamily.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserFamily.setError(null);
             return true;
         }
-    }    private boolean validateEmail(){
+    }
+
+    private boolean validateEmail() {
         String emailInput = edtFragmentEditUserEmail.getText().toString().trim();
-        if(emailInput.isEmpty()){
+        if (emailInput.isEmpty()) {
             tilFragmentEditUserEmail.setError("فیلد ایمیل خالی است");
+            edtFragmentEditUserEmail.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserEmail.setError(null);
             return true;
         }
-    }    private boolean validateMobile(){
+    }
+
+    private boolean validateMobile() {
         String mobileInput = edtFragmentEditUserMobile.getText().toString().trim();
-        if(mobileInput.isEmpty()){
+        if (mobileInput.isEmpty()) {
             tilFragmentEditUserMobile.setError("فیلد موبایل خالی است");
+            edtFragmentEditUserMobile.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserMobile.setError(null);
             return true;
         }
-    }    private boolean validatePhone(){
+    }
+
+    private boolean validatePhone() {
         String phoneInput = edtFragmentEditUserPhone.getText().toString().trim();
-        if(phoneInput.isEmpty()){
+        if (phoneInput.isEmpty()) {
             tilFragmentEditUserPhone.setError("فیلد تلفن خالی است");
+            edtFragmentEditUserPhone.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserPhone.setError(null);
             return true;
         }
-    }    private boolean validatePassword(){
+    }
+
+    private boolean validatePassword() {
         String passwordInput = edtFragmentEditUserPassword.getText().toString().trim();
-        if(passwordInput.isEmpty()){
+        if (passwordInput.isEmpty()) {
             tilFragmentEditUserPassword.setError("فیلد کلمه عبور خالی است");
+            edtFragmentEditUserPassword.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserPassword.setError(null);
             return true;
         }
-    }    private boolean validateConPass(){
+    }
+
+    private boolean validateConPass() {
         String conPassInput = edtFragmentEditUserConfPass.getText().toString().trim();
-        if(conPassInput.isEmpty()){
+        if (conPassInput.isEmpty()) {
             tilFragmentEditUserConfPass.setError("فیلد تکرار کلمه عبور خالی است");
+            edtFragmentEditUserConfPass.requestFocus();
             return false;
-        }else{
+        } else {
             tilFragmentEditUserConfPass.setError(null);
             return true;
         }

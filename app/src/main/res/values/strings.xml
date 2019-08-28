@@ -10,7 +10,7 @@
     <string name="edt_fragmentRegister_name">نام</string>
     <string name="edt_fragmentRegister_family">نام خانوادگی</string>
     <string name="edt_fragmentRegister_email">ایمیل</string>
-    <string name="edt_fragmentRegister_mobile">شماره مبایل</string>
+    <string name="edt_fragmentRegister_mobile">شماره موبایل</string>
     <string name="txt_fragmentRegister_noteMobile">توجه : شماره موبایل شما به عنوان نام کاربری برای ورود به سایت تعریف می شود</string>
     <string name="edt_fragmentRegister_phone">تلفن ثابت</string>
     <string name="txt_fragmentRegister_notePhone">نمونه: 05130123456</string>
@@ -39,7 +39,7 @@
     <string name="img_fragmentEditUser_contentDesc">عکس پروفایل</string>
     <string name="sp_fragmentEditUser_state">استان</string>
 
-
+    <string name="sp_fragmentEditUser_city">شهر</string>
     <string name="txt_rvCircle_countStoreTitle">تعداد فروشگاه:</string>
     <string name="txt_rvCircle_storeName">نام فروشگاه:</string>
     <string name="txt_rvCircle_floorCountTitle">تعدادطبقات:</string>
