@@ -20,6 +20,7 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Data.ApiService;
+import com.intek.kalabean.Data.ServerDataSource;
 import com.intek.kalabean.Model.Product;
 import com.squareup.picasso.Picasso;
 
@@ -42,6 +43,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class Upload {
 
+    ServerDataSource serverDataSource;
     private Handler handler;
     private CompositeDisposable compositeDisposable;
     private ProgressDialog dialog;
@@ -84,14 +86,8 @@ public class Upload {
     private String  uploadFile(MultipartBody.Part file,RequestBody name){
         dialog = new ProgressDialog(context);
         dialog.setTitle("آپلود عکس...");
-        Gson gson = new GsonBuilder().setLenient().create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-        ApiService apiService = retrofit.create(ApiService.class);
-        apiService.uploadFile(file,name).subscribeOn(Schedulers.newThread())
+
+        serverDataSource.upload(file , name).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<String>() {
                     @Override
