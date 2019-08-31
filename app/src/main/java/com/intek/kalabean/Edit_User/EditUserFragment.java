@@ -102,8 +102,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         btnFragmentEditUserUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                imgFragmentEditUserProfile.setImageResource(R.drawable.ic_launcher_background);
-                imgFragmentEditUserProfile.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -210,4 +209,5 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
             return true;
         }
     }
+
 }
