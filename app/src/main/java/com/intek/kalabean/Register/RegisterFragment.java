@@ -1,6 +1,8 @@
 package com.intek.kalabean.Register;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -12,7 +14,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.MainActivity;
+import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
 
@@ -49,6 +53,13 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
     ArrayList<String> items;
     ArrayAdapter<String> arrayAdapter;
+    private RegisterContract.Presenter presenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter = new RegisterPresentr(new KalaBeanRepository());
+    }
 
     @Override
     public int getLayout() {
@@ -226,6 +237,18 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         } else {
             til_fragmentRegister_address.setError(null);
             return true;
+        }
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showSuccess(User user) {
+        if (user.getName().isEmpty()){
+            showMessage("ثبت نام با موفقیت انجام شد");
         }
     }
 }
