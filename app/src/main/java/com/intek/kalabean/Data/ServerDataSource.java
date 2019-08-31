@@ -11,7 +11,7 @@ public class ServerDataSource implements KalaBeanDataSource {
     private ApiService apiService;
     public ServerDataSource(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("192.168.1.1/")
+                .baseUrl("http://192.168.2.107/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
