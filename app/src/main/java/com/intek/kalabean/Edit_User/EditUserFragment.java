@@ -1,9 +1,17 @@
 package com.intek.kalabean.Edit_User;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,11 +21,15 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Upload;
 import com.intek.kalabean.R;
+import com.squareup.picasso.Picasso;
 import com.tiper.MaterialSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 public class EditUserFragment extends BaseFragment implements EditUserContract.View {
     RadioGroup rgFragmentEditUserGender;
@@ -48,6 +60,11 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     //Test
 
     ArrayList<String> items;
+
+    int PERMISSION_REQUEST_CODE = 10;
+    int OPEN_GALLERY_REQUEST_CODE = 100;
+
+    String img;
 
     @Override
     public int getLayout() {
@@ -102,7 +119,19 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         btnFragmentEditUserUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                imgFragmentEditUserProfile.setImageResource(R.drawable.ic_launcher_background);
+
+                if (ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            PERMISSION_REQUEST_CODE);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent,OPEN_GALLERY_REQUEST_CODE);
+                }
+
+                //imgFragmentEditUserProfile.setImageResource(R.drawable.ic_launcher_background);
+                Picasso.get().load(img).into(imgFragmentEditUserProfile);
                 imgFragmentEditUserProfile.setVisibility(View.VISIBLE);
             }
         });
@@ -121,6 +150,26 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         spFragmentEditUserState.setAdapter(arrayAdapter);
         spFragmentEditUserCity.setAdapter(arrayAdapter);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_REQUEST_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+            Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent,OPEN_GALLERY_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == OPEN_GALLERY_REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
+            Upload upload = new Upload();
+            img = upload.pickFile(data,getActivity());
+        }
+    }
+
 
     @Override
     public Context getViewContext() {
