@@ -1,6 +1,8 @@
 package com.intek.kalabean.Login;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 
 public class LoginFragment extends BaseFragment implements LoginContract.View {
@@ -18,6 +22,15 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     TextInputEditText edtFragmentLoginPassword;
     Button btnFragmentLoginLogin;
     ConstraintLayout conLogin;
+    User user;
+    LoginContract.Presenter presenter;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        user = new User();
+        presenter = new LoginPresenter(new KalaBeanRepository());
+    }
+
     @Override
     public int getLayout() {
         return R.layout.fragment_login;
@@ -40,7 +53,9 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
                 if(!validateUsername() || !validatePassword()){
                     return;
                 }else{
-                    Toast.makeText(getViewContext(), "Continue", Toast.LENGTH_SHORT).show();
+                    user.setMobile(edtFragmentLoginUsername.getText().toString());
+                    user.setPassword(edtFragmentLoginPassword.getText().toString());
+                    presenter.login(user);
                 }
             }
         });
@@ -71,5 +86,27 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
             tilFragmentLoginPassword.setError(null);
             return true;
         }
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginSuccess(User user) {
+        Toast.makeText(getViewContext(), user.getMobile(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.attachView(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.detachView();
     }
 }
