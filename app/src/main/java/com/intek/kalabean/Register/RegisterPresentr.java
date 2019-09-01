@@ -42,7 +42,7 @@ public class RegisterPresentr implements RegisterContract.Presenter {
 
                     @Override
                     public void onSuccess(User user) {
-                        view.showSuccess(user);
+                        view.showSuccess(user.getResult());
                     }
 
                     @Override

@@ -49,15 +49,19 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     MaterialSpinner sp_fragmentRegister_locationState;
     MaterialSpinner sp_fragmentRegister_locationCity;
     Button btn_fragmentRegister_save;
-
-    ArrayList<String> items;
+    String state;
+    String city;
+    ArrayList<String> province;
+    ArrayList<String> cities;
     ArrayAdapter<String> arrayAdapter;
+    ArrayAdapter<String> cityArrayAdapter;
     private RegisterContract.Presenter presenter;
-
+    User user;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new RegisterPresentr(new KalaBeanRepository());
+        user = new User();
     }
 
     @Override
@@ -116,26 +120,99 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                 }else if(sp_fragmentRegister_locationCity.getSelectedItemId() == -1){
                     Toast.makeText(getViewContext(), "لطفا شهر خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getViewContext(), "Continue", Toast.LENGTH_SHORT).show();
+                    user.setFirstName(edt_fragmentRegister_name.getText().toString());
+                    user.setLastName(edt_fragmentRegister_family.getText().toString());
+                    user.setPassword(edt_fragmentRegister_password.getText().toString());
+                    user.setProvince(state);
+                    user.setCity(city);
+                    user.setMobile(edt_fragmentRegister_mobile.getText().toString());
+                    presenter.register(user);
                 }
             }
         });
 
-        items = new ArrayList<>();
+        cities = new ArrayList<>();
+        province = new ArrayList<>();
 
-
-        items.add("دلار آمریکا");
-        items.add("یورو");
-        items.add("پوند انگلیس");
-        items.add("مارک آلمان");
-        items.add("ریال عربستان");
-        items.add("تومان ایران ");
+        province.add("تهران");
+        province.add("خراسان رضوی");
+        province.add("اصفهان");
+        province.add("گلستان");
+        province.add("هرمزگان");
+        province.add("سیستان و بلوچستان");
         //android.R.layout.simple_spinner_item
 
-        arrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, items);
+        arrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, province);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_fragmentRegister_locationState.setAdapter(arrayAdapter);
         sp_fragmentRegister_locationCity.setAdapter(arrayAdapter);
+        cityArrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item, cities);
+        cityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_fragmentRegister_locationState.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner materialSpinner, View view, int i, long l) {
+                state = sp_fragmentRegister_locationState.getSelectedItem().toString();
+                switch (state){
+                    case "تهران":
+                        cities.clear();
+                        cities.add("تهران");
+                        cities.add("شهرری");
+                        cities.add("گرمسار");
+                        break;
+                    case "خراسان رضوی":
+                        cities.clear();
+                        sp_fragmentRegister_locationCity.setAdapter(null);
+                        cities.add("مشهد");
+                        cities.add("نیشابور");
+                        cities.add("سبزوار");
+                        cities.add("قوچان");
+                        cities.add("گلبهار");
+                        break;
+                    case "اصفهان":
+                        cities.clear();
+                        sp_fragmentRegister_locationCity.setAdapter(null);
+                        cities.add("اصقهان");
+                        cities.add("نایین");
+                        cities.add("نجف آباد");
+                        break;
+                    case "گلستان":
+                        cities.clear();
+                        sp_fragmentRegister_locationCity.setAdapter(null);
+                        cities.add("گرگان");
+                        break;
+                    case "هرمزگان":
+                        cities.clear();
+                        sp_fragmentRegister_locationCity.setAdapter(null);
+                        cities.add("بندر عباس");
+                        cities.add("قشم");
+                        cities.add("کیش");
+                        break;
+                    case "سیستان و بلوچستان":
+                        cities.clear();
+                        sp_fragmentRegister_locationCity.setAdapter(null);
+                        cities.add("زاهدان");
+                        break;
+                }
+
+                sp_fragmentRegister_locationCity.setAdapter(cityArrayAdapter);
+                sp_fragmentRegister_locationCity.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(MaterialSpinner materialSpinner, View view, int i, long l) {
+                      city = sp_fragmentRegister_locationCity.getSelectedItem().toString();
+                    }
+
+                    @Override
+                    public void onNothingSelected(MaterialSpinner materialSpinner) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(MaterialSpinner materialSpinner) {
+
+            }
+        });
     }
 
     @Override
@@ -245,9 +322,21 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     }
 
     @Override
-    public void showSuccess(User user) {
-        if (user.getFirstName().isEmpty()){
-            showMessage("ثبت نام با موفقیت انجام شد");
+    public void showSuccess(int id) {
+        if(id > 0){
+            Toast.makeText(getViewContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.attachView(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.detachView();
     }
 }
