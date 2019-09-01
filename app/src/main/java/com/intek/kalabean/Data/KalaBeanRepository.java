@@ -17,4 +17,9 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     public Single<String> upload(MultipartBody.Part file, RequestBody name) {
         return serverDataSource.upload(file , name);
     }
+
+    @Override
+    public Single<User> login(User user) {
+        return serverDataSource.login(user);
+    }
 }

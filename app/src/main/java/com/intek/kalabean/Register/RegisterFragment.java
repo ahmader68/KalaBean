@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
-import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
@@ -247,7 +246,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
     @Override
     public void showSuccess(User user) {
-        if (user.getName().isEmpty()){
+        if (user.getFirstName().isEmpty()){
             showMessage("ثبت نام با موفقیت انجام شد");
         }
     }

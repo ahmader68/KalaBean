@@ -1,39 +1,100 @@
 package com.intek.kalabean.Model;
 
 public class User {
-    private String name;
-    private String family;
-    private int gender;
+    private int id;
+    private String userLevel;
+    private String CreatorId;
+    private String firstName;
+    private String lastName;
+    private String fatherName;
+    private String userName;
+    private String gender;
     private String email;
     private String mobile;
-    private String phone;
-    private String password;
-    private String state;
+    private String tel;
+    private String companytel;
+    private String BirthCertificate;
+    private String BirthCity;
+    private String nationalCode;
+    private String postalCode;
+    private String birthDate;
+    private String CreateDate;
+    private String Status;
+    private String LogicallyDeleted;
+    private String FullName;
+    private String Password;
+    private String province;
+    private String provinceTitle;
     private String city;
+    private String workTel;
     private String address;
-    private String imgProfile;
+    private String ImageUrl;
+    private String education;
+    private String reshteh;
+    private String personalNo;
+    private int result;
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getFamily() {
-        return family;
+    public String getUserLevel() {
+        return userLevel;
     }
 
-    public void setFamily(String family) {
-        this.family = family;
+    public void setUserLevel(String userLevel) {
+        this.userLevel = userLevel;
     }
 
-    public int getGender() {
+    public String getCreatorId() {
+        return CreatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        CreatorId = creatorId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -53,28 +114,116 @@ public class User {
         this.mobile = mobile;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTel() {
+        return tel;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getCompanytel() {
+        return companytel;
+    }
+
+    public void setCompanytel(String companytel) {
+        this.companytel = companytel;
+    }
+
+    public String getBirthCertificate() {
+        return BirthCertificate;
+    }
+
+    public void setBirthCertificate(String birthCertificate) {
+        BirthCertificate = birthCertificate;
+    }
+
+    public String getBirthCity() {
+        return BirthCity;
+    }
+
+    public void setBirthCity(String birthCity) {
+        BirthCity = birthCity;
+    }
+
+    public String getNationalCode() {
+        return nationalCode;
+    }
+
+    public void setNationalCode(String nationalCode) {
+        this.nationalCode = nationalCode;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCreateDate() {
+        return CreateDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        CreateDate = createDate;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public String getLogicallyDeleted() {
+        return LogicallyDeleted;
+    }
+
+    public void setLogicallyDeleted(String logicallyDeleted) {
+        LogicallyDeleted = logicallyDeleted;
+    }
+
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String fullName) {
+        FullName = fullName;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        Password = password;
     }
 
-    public String getState() {
-        return state;
+    public String getProvince() {
+        return province;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getProvinceTitle() {
+        return provinceTitle;
+    }
+
+    public void setProvinceTitle(String provinceTitle) {
+        this.provinceTitle = provinceTitle;
     }
 
     public String getCity() {
@@ -85,6 +234,14 @@ public class User {
         this.city = city;
     }
 
+    public String getWorkTel() {
+        return workTel;
+    }
+
+    public void setWorkTel(String workTel) {
+        this.workTel = workTel;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -93,11 +250,43 @@ public class User {
         this.address = address;
     }
 
-    public String getImgProfile() {
-        return imgProfile;
+    public String getImageUrl() {
+        return ImageUrl;
     }
 
-    public void setImgProfile(String imgProfile) {
-        this.imgProfile = imgProfile;
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getReshteh() {
+        return reshteh;
+    }
+
+    public void setReshteh(String reshteh) {
+        this.reshteh = reshteh;
+    }
+
+    public String getPersonalNo() {
+        return personalNo;
+    }
+
+    public void setPersonalNo(String personalNo) {
+        this.personalNo = personalNo;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 }

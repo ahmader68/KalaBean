@@ -17,10 +17,15 @@ import retrofit2.http.Part;
 
 public interface ApiService {
     @FormUrlEncoded
-    @GET("")
+    @POST("default.aspx?Action=Login")
+    Single<User>login(@Field("usr") String usr,
+                      @Field("pwd") String pwd,
+                      @Field("ShowImageType") int showimage);
+    @FormUrlEncoded
+    @POST("default.aspx?Action=Register")
     Single<User>register(@Field("name") String name,
                          @Field("family") String family,
-                         @Field("gender") int gender,
+                         @Field("gender") String gender,
                          @Field("email") String email,
                          @Field("mobile") String mobile,
                          @Field("phone") String phone,
@@ -28,8 +33,6 @@ public interface ApiService {
                          @Field("state") String state,
                          @Field("city") String city,
                          @Field("address") String address);
-
-
 
     @POST("")
     Single<String> uploadFile(@Part MultipartBody.Part file, @Part("name") RequestBody name);
