@@ -29,7 +29,7 @@ public class ServerDataSource implements KalaBeanDataSource {
 
     @Override
     public Single<User> register(User user) {
-        return apiService.register(user.getFirstName(),user.getLastName(),user.getGender(),user.getEmail(),user.getMobile(),user.getTel(),user.getPassword(),user.getProvince(),user.getCity(),user.getAddress());
+        return apiService.register(user.getFirstName(),user.getLastName(),user.getPassword(),user.getProvince(),user.getCity(),user.getMobile(),user.getPassword());
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.intek.kalabean.Model.User;
 public interface RegisterContract {
     interface View extends BaseView {
         void showMessage(String msg);
-        void showSuccess(User user);
+        void showSuccess(int id);
     }
     interface Presenter extends BasePresenter<View> {
         void register(User user);

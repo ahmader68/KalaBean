@@ -8,7 +8,7 @@ import java.io.File;
 
 
 public class G extends Application {
-    public Context context;
+    public static Context context;
     public static String AppAddress= Environment.getExternalStorageDirectory().getAbsolutePath()+"/captured";
 
 

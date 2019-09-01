@@ -23,16 +23,13 @@ public interface ApiService {
                       @Field("ShowImageType") int showimage);
     @FormUrlEncoded
     @POST("default.aspx?Action=Register")
-    Single<User>register(@Field("name") String name,
-                         @Field("family") String family,
-                         @Field("gender") String gender,
-                         @Field("email") String email,
-                         @Field("mobile") String mobile,
-                         @Field("phone") String phone,
-                         @Field("password") String password,
-                         @Field("state") String state,
+    Single<User>register(@Field("firstname") String firstname,
+                         @Field("lastname") String lastname,
+                         @Field("pwd") String pwd,
+                         @Field("province") String province,
                          @Field("city") String city,
-                         @Field("address") String address);
+                         @Field("mobile") String mobile,
+                         @Field("pwd2") String pwd2);
 
     @POST("")
     Single<String> uploadFile(@Part MultipartBody.Part file, @Part("name") RequestBody name);

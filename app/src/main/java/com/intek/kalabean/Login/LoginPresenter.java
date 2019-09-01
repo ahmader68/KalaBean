@@ -43,7 +43,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onSuccess(User user) {
-                        if(user.getFirstName().isEmpty()){
+                        if(user.getResult() <= -1 && user.getResult() >= -3){
                             switch (user.getResult()){
                                 case -1:
                                     view.showMessage("نام کاربری یا کلمه عبور صحیح نمی باشد");
