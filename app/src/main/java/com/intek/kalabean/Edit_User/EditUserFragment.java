@@ -1,9 +1,15 @@
 package com.intek.kalabean.Edit_User;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +18,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,14 +28,17 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.G;
 import com.intek.kalabean.Classes.Upload;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 import com.tiper.MaterialSpinner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -62,8 +72,11 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
 
     ArrayList<String> items;
 
-    int PERMISSION_REQUEST_CODE = 10;
-    int OPEN_GALLERY_REQUEST_CODE = 100;
+    public static final int PERMISSION_REQUEST_CODE = 10;
+    public static final int PERMISSION_REQUEST = 20;
+    public static final int OPEN_GALLERY_REQUEST_CODE = 100;
+    public static final int TAKE_CODE = 400;
+    Long name;
 
     String img;
 
@@ -121,15 +134,45 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
             @Override
             public void onClick(View view) {
 
-                if (ContextCompat.checkSelfPermission(getActivity(),
-                        Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            PERMISSION_REQUEST_CODE);
-                } else {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent,OPEN_GALLERY_REQUEST_CODE);
-                }
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getViewContext());
+                // ...Irrelevant code for customizing the buttons and title
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.open_camera_dialog, null);
+                dialogBuilder.setView(dialogView);
+
+                ImageView imgGallery = dialogView.findViewById(R.id.img_fragmentEditUser_dialogGallery);
+                ImageView imgCamera = dialogView.findViewById(R.id.img_fragmentEditUser_dialogCamera);
+
+                AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+
+                imgGallery.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (ContextCompat.checkSelfPermission(getViewContext(),
+                                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(getActivity(),
+                                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                    PERMISSION_REQUEST_CODE);
+                        } else {
+                            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(intent, OPEN_GALLERY_REQUEST_CODE);
+                        }
+                    }
+                });
+
+                imgCamera.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                        StrictMode.setVmPolicy(builder.build());
+                        if (Build.VERSION.SDK_INT >= 23) {
+                            chechMyPermissions();
+                        } else {
+                            takePicture();
+                        }
+                    }
+                });
 
                 //imgFragmentEditUserProfile.setImageResource(R.drawable.ic_launcher_background);
                 Picasso.get().load(img).into(imgFragmentEditUserProfile);
@@ -152,25 +195,57 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         spFragmentEditUserCity.setAdapter(arrayAdapter);
     }
 
+    private void chechMyPermissions() {
+        if (ContextCompat.checkSelfPermission(getViewContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+        } else {
+            takePicture();
+        }
+    }
+
+    public void takePicture() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        name = System.currentTimeMillis();
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(G.AppAddress + "/" + name + ".jpg")));
+        startActivityForResult(intent, TAKE_CODE);
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == PERMISSION_REQUEST_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-
-            Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent,OPEN_GALLERY_REQUEST_CODE);
+        switch (requestCode) {
+            case PERMISSION_REQUEST: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    takePicture();
+                } else {
+                    Toast.makeText(getViewContext(), "You must accept permission", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+            case PERMISSION_REQUEST_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, OPEN_GALLERY_REQUEST_CODE);
+                }
+                break;
+            }
         }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == OPEN_GALLERY_REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
-            Upload upload = new Upload();
-            img = upload.pickFile(data,getActivity());
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case TAKE_CODE:
+                Bitmap bitmap = BitmapFactory.decodeFile(G.AppAddress + "/" + name + ".jpg");
+                imgFragmentEditUserProfile.setImageBitmap(bitmap);
+                break;
+            case OPEN_GALLERY_REQUEST_CODE:
+                if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+                    Upload upload = new Upload();
+                    img = upload.pickFile(data, getActivity());
+                }
+                break;
         }
     }
-
 
     @Override
     public Context getViewContext() {
