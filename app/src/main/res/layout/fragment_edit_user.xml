@@ -271,6 +271,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_margin="8dp"
+                        android:rotation="90"
                         android:contentDescription="@string/img_fragmentEditUser_contentDesc"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
