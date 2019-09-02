@@ -1,6 +1,8 @@
 package com.intek.kalabean.Search;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.widget.Button;
@@ -9,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
 
@@ -26,6 +29,13 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     TextInputEditText edt_fragmentSearch_productName;
     Button btn_fragmentSearch_search;
     TextView txt_fragmentSearch_resultNumber;
+    SearchContract.Presenter presenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter = new SearchPresenter(new KalaBeanRepository());
+    }
 
     @Override
     public int getLayout() {
@@ -51,5 +61,17 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @Override
     public Context getViewContext() {
         return getContext();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.attachView(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.detachView();
     }
 }

@@ -15,7 +15,7 @@ import com.intek.kalabean.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HandamadeFragment extends BaseFragment implements HandmadeContract.View {
+public class HandmadeFragment extends BaseFragment implements HandmadeContract.View {
     private HandmadeContract.Presenter presenter;
     private RecyclerCircleImageAdapter handmadeAdapter;
     private List<Store> stores;

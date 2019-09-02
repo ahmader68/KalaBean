@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.Store;
 import com.intek.kalabean.R;
 
@@ -25,7 +26,7 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new MarketsPresenter();
+        presenter = new MarketsPresenter(new KalaBeanRepository());
         stores = new ArrayList<>();
     }
 
