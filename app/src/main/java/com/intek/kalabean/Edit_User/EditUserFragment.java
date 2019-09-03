@@ -181,8 +181,6 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
             }
         });
 
-
-
         cities = new ArrayList<>();
         province = new ArrayList<>();
 
