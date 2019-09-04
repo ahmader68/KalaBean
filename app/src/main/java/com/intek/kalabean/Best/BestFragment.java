@@ -2,10 +2,10 @@ package com.intek.kalabean.Best;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -39,7 +39,7 @@ public class BestFragment extends BaseFragment implements BestContract.View {
         rvBest = rootView.findViewById(R.id.rv_fragmentBest_list);
         conBest.setRotationY(180);
         bestAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvBest.setLayoutManager(new LinearLayoutManager(getViewContext(),LinearLayoutManager.VERTICAL,false));
+        rvBest.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvBest.setAdapter(bestAdapter);
     }
 

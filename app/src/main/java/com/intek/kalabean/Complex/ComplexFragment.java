@@ -2,10 +2,10 @@ package com.intek.kalabean.Complex;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -40,7 +40,7 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
         rvComplex = rootView.findViewById(R.id.rv_fragmentComplex_list);
         conComplex.setRotationY(180);
         complexAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvComplex.setLayoutManager(new LinearLayoutManager(getViewContext(),LinearLayoutManager.VERTICAL,false));
+        rvComplex.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvComplex.setAdapter(complexAdapter);
     }
 

@@ -2,10 +2,10 @@ package com.intek.kalabean.Factories;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -40,7 +40,7 @@ public class FactoriesFragment extends BaseFragment implements FactoriesContract
         rvFactories = rootView.findViewById(R.id.rv_fragmentFactories_list);
         conFactories.setRotationY(180);
         factoriesAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvFactories.setLayoutManager(new LinearLayoutManager(getViewContext(),LinearLayoutManager.VERTICAL,false));
+        rvFactories.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvFactories.setAdapter(factoriesAdapter);
     }
 

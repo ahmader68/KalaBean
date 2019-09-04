@@ -2,10 +2,10 @@ package com.intek.kalabean.Login;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;

@@ -2,10 +2,10 @@ package com.intek.kalabean.Markets;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -41,7 +41,7 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         conFragmentMarkets.setRotationY(180);
         rvMarkets = rootView.findViewById(R.id.rv_fragmentMarkets_list);
         marketsAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvMarkets.setLayoutManager(new LinearLayoutManager(getViewContext(),LinearLayoutManager.VERTICAL,false));
+        rvMarkets.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvMarkets.setAdapter(marketsAdapter);
     }
 

@@ -2,10 +2,10 @@ package com.intek.kalabean.Chain_Store;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -39,7 +39,7 @@ public class ChainFragment extends BaseFragment implements ChainContract.View {
         conChainStore.setRotationY(180);
         rvChainStore = rootView.findViewById(R.id.rv_fragmentChainStore_list);
         chainStoreAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvChainStore.setLayoutManager(new LinearLayoutManager(getViewContext(),LinearLayoutManager.VERTICAL,false));
+        rvChainStore.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvChainStore.setAdapter(chainStoreAdapter);
     }
 
