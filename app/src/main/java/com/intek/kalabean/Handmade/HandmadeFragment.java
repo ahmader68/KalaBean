@@ -2,10 +2,10 @@ package com.intek.kalabean.Handmade;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -39,7 +39,7 @@ public class HandmadeFragment extends BaseFragment implements HandmadeContract.V
         rvHandmade = rootView.findViewById(R.id.rv_fragmentHandmade_list);
         conHandmade.setRotationY(180);
         handmadeAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvHandmade.setLayoutManager(new LinearLayoutManager(getViewContext(),LinearLayoutManager.VERTICAL,false));
+        rvHandmade.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvHandmade.setAdapter(handmadeAdapter);
     }
 

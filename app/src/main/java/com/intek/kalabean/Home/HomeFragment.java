@@ -1,7 +1,7 @@
 package com.intek.kalabean.Home;
 
 import android.content.Context;
-import android.support.constraint.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.R;

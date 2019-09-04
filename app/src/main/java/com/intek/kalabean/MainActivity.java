@@ -2,35 +2,26 @@ package com.intek.kalabean;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.core.view.GravityCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
-import com.intek.kalabean.Classes.G;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Register.RegisterFragment;
 
-import java.io.File;
-
 import static com.intek.kalabean.Edit_User.EditUserFragment.OPEN_GALLERY_REQUEST_CODE;
-import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
 import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST_CODE;
-import static com.intek.kalabean.Edit_User.EditUserFragment.TAKE_CODE;
 
 public class MainActivity extends AppCompatActivity {
 
