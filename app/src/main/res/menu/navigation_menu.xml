@@ -9,6 +9,10 @@
                 android:icon="@drawable/ic_hamber_menu"
                 android:title="ثبت نام" />
             <item
+                android:id="@+id/login"
+                android:icon="@drawable/ic_hamber_menu"
+                android:title="ورود"/>
+            <item
                 android:id="@+id/editInfo"
                 android:icon="@drawable/ic_hamber_menu"
                 android:title="ویرایش حساب کاربری"/>

@@ -3,28 +3,40 @@ package com.intek.kalabean;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.provider.MediaStore;
+
 import androidx.annotation.NonNull;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
+import com.intek.kalabean.Data.ServerDataSource;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Register.RegisterFragment;
 
+import java.util.zip.Inflater;
+
 import static com.intek.kalabean.Edit_User.EditUserFragment.OPEN_GALLERY_REQUEST_CODE;
 import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST_CODE;
 
 public class MainActivity extends AppCompatActivity {
-
+    NavigationView navigationView;
     DrawerLayout drawer;
     ImageView hamburgMenu;
     ViewPagerAdapter viewPagerAdapter;
@@ -34,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        navigationView = findViewById(R.id.navigation);
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         drawer = findViewById(R.id.drawer);
@@ -47,15 +62,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new LoginFragment(),"ورود");
-        viewPagerAdapter.addFragment(new EditUserFragment(),"ویرایش کاربر");
-        viewPagerAdapter.addFragment(new RegisterFragment(),"ثبت نام");
-        viewPagerAdapter.addFragment(new HomeFragment(),"خانه");
+        viewPagerAdapter.addFragment(new LoginFragment(), "ورود");
+        viewPagerAdapter.addFragment(new EditUserFragment(), "ویرایش کاربر");
+        viewPagerAdapter.addFragment(new RegisterFragment(), "ثبت نام");
+        viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
 
         viewPager.setRotationY(180);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
 
     }
 
