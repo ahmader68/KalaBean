@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.gms.common.SignInButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import android.view.View;
@@ -20,6 +22,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     TextInputLayout tilFragmentLoginPassword;
     TextInputEditText edtFragmentLoginUsername;
     TextInputEditText edtFragmentLoginPassword;
+    SignInButton btnFragmentLogingLogin;
     Button btnFragmentLoginLogin;
     ConstraintLayout conLogin;
     User user;
