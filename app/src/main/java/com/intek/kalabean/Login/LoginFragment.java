@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 
