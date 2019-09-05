@@ -31,6 +31,8 @@ import com.intek.kalabean.Classes.G;
 import com.intek.kalabean.Classes.Upload;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tiper.MaterialSpinner;
 
 import java.io.File;
@@ -134,49 +136,13 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         btnFragmentEditUserUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getViewContext());
-                // ...Irrelevant code for customizing the buttons and title
-                LayoutInflater inflater = getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.open_camera_dialog, null);
-                dialogBuilder.setView(dialogView);
-
-                ImageView imgGallery = dialogView.findViewById(R.id.img_fragmentEditUser_dialogGallery);
-                ImageView imgCamera = dialogView.findViewById(R.id.img_fragmentEditUser_dialogCamera);
-
-                AlertDialog alertDialog = dialogBuilder.create();
-                alertDialog.show();
-
-                imgGallery.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (ContextCompat.checkSelfPermission(getViewContext(),
-                                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(getActivity(),
-                                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                    PERMISSION_REQUEST_CODE);
-                        } else {
-                            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                            startActivityForResult(intent, OPEN_GALLERY_REQUEST_CODE);
-                        }
-                    }
-                });
-
-                imgCamera.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-                        StrictMode.setVmPolicy(builder.build());
-                        if (Build.VERSION.SDK_INT >= 23) {
-                            chechMyPermissions();
-                        } else {
-                            takePicture();
-                        }
-                    }
-                });
-
-                //imgFragmentEditUserProfile.setImageResource(R.drawable.ic_launcher_background);
-                Picasso.get().load(img).into(imgFragmentEditUserProfile);
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
+                if (Build.VERSION.SDK_INT >= 23) {
+                    chechMyPermissions();
+                } else {
+                    takePicture();
+                }
                 imgFragmentEditUserProfile.setVisibility(View.VISIBLE);
             }
         });
@@ -838,47 +804,9 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     }
 
     public void takePicture() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        name = System.currentTimeMillis();
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(G.AppAddress + "/" + name + ".jpg")));
-        startActivityForResult(intent, TAKE_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    takePicture();
-                } else {
-                    Toast.makeText(getViewContext(), "You must accept permission", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-            case PERMISSION_REQUEST_CODE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, OPEN_GALLERY_REQUEST_CODE);
-                }
-                break;
-            }
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case TAKE_CODE:
-                Bitmap bitmap = BitmapFactory.decodeFile(G.AppAddress + "/" + name + ".jpg");
-                imgFragmentEditUserProfile.setImageBitmap(bitmap);
-                break;
-            case OPEN_GALLERY_REQUEST_CODE:
-                if (resultCode == RESULT_OK && data != null && data.getData() != null) {
-                    Upload upload = new Upload();
-                    img = upload.pickFile(data, getActivity());
-                }
-                break;
-        }
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(getActivity());
     }
 
     @Override
