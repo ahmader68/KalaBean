@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new LoginFragment(), "ورود");
         viewPagerAdapter.addFragment(new EditUserFragment(), "ویرایش کاربر");
         viewPagerAdapter.addFragment(new RegisterFragment(), "ثبت نام");
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
