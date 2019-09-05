@@ -161,15 +161,15 @@ public class MainActivity extends AppCompatActivity {
                                         switch (user.getResult()) {
                                             case -1:
                                                 Toast.makeText(MainActivity.this, "نام کاربری یا کلمه عبور صحیح نمی باشد", Toast.LENGTH_SHORT).show();
-                                                ;
+
                                                 break;
                                             case -2:
                                                 Toast.makeText(MainActivity.this, "اکانت شما غیر فعال شده است", Toast.LENGTH_SHORT).show();
-                                                ;
+
                                                 break;
                                             case -3:
                                                 Toast.makeText(MainActivity.this, "کاربر با این مشخصات یافت نشد", Toast.LENGTH_SHORT).show();
-                                                ;
+
                                                 break;
                                         }
                                     } else {
@@ -270,5 +270,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void loginSuccess(User user) {
         Toast.makeText(this, user.getMobile(), Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(compositeDisposable != null && compositeDisposable.size() > 0){
+            compositeDisposable.clear();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GoogleSignInAccount alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if(alreadyloggedAccount != null){
+            onLoggedIn(alreadyloggedAccount);
+        }
     }
 }
