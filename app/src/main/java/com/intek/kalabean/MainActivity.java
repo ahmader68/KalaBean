@@ -236,8 +236,6 @@ public class MainActivity extends AppCompatActivity {
                         CropImage.ActivityResult result = CropImage.getActivityResult(data);
                         if (resultCode == RESULT_OK) {
                             Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
-                            Toast.makeText(
-                                    this, "Cropping successful, Sample: " + result.getSampleSize(), Toast.LENGTH_LONG).show();
                         } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                             Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
                         }
