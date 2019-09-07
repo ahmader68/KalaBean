@@ -3,7 +3,12 @@ package com.intek.kalabean.Data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
+import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -40,5 +45,20 @@ public class ServerDataSource implements KalaBeanDataSource {
     @Override
     public Single<User> login(User user) {
         return apiService.login(user.getMobile(),user.getPassword(),0);
+    }
+
+    @Override
+    public Single<List<MallKind>> getStoreKind() {
+        return apiService.getStoreKind();
+    }
+
+    @Override
+    public Single<List<ActivityKind>> getActivityKind() {
+        return apiService.getActivityKind();
+    }
+
+    @Override
+    public Single<Ticket> sendTicket(Ticket ticket) {
+        return apiService.sendTicket(ticket.getUserId(),ticket.getTitle(),ticket.getContent());
     }
 }

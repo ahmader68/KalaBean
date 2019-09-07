@@ -1,6 +1,11 @@
 package com.intek.kalabean.Data;
 
+import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -21,5 +26,20 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<User> login(User user) {
         return serverDataSource.login(user);
+    }
+
+    @Override
+    public Single<List<MallKind>> getStoreKind() {
+        return serverDataSource.getStoreKind();
+    }
+
+    @Override
+    public Single<List<ActivityKind>> getActivityKind() {
+        return serverDataSource.getActivityKind();
+    }
+
+    @Override
+    public Single<Ticket> sendTicket(Ticket ticket) {
+        return serverDataSource.sendTicket(ticket);
     }
 }
