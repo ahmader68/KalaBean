@@ -52,5 +52,5 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("default.aspx?Action=ListBazar")
     Single<StoreList> getMarkets(@Field("SellCenterCatID") int SellCenterCatID,
-                                 @Field("CityCenterID") int CityCenterID);
+                                 @Field("CityId") int CityCenterID);
 }
