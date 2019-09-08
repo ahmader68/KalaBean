@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,8 +20,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCircleImageAdapter.StoreInfoHolder> {
     private Context context;
-    private List<Store> stores;
-    public RecyclerCircleImageAdapter(Context context,List<Store> stores) {
+    private StoreList stores;
+    public RecyclerCircleImageAdapter(Context context,StoreList stores) {
         this.context = context;
         this.stores = stores;
     }
@@ -34,9 +35,11 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
 
     @Override
     public void onBindViewHolder(@NonNull StoreInfoHolder holder, int position) {
-        final Store store = stores.get(position);
+        final Store store = stores.getStoreList().get(position);
         Picasso.get().load(store.getImage()).into(holder.imgProfile);
+
         holder.txtStoreName.setText(store.getTitleFA());
+        /*
         holder.txtStoreCount.setText(store.getStoreCount());
         holder.txtFloorCount.setText(store.getStoreCount());
         holder.txtAddress.setText(store.getAddress());
@@ -66,11 +69,12 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         }if(store.isWifi()){
             holder.imgNet.setImageResource(R.drawable.ic_launcher_background);
         }
+        */
     }
 
     @Override
     public int getItemCount() {
-        return stores.size();
+        return stores.getStoreList().size();
     }
 
     public class StoreInfoHolder extends RecyclerView.ViewHolder{
