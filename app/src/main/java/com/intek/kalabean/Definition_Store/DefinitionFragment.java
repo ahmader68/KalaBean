@@ -72,13 +72,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
     @Override
     public void getActivityKind(List<ActivityKind> activityKinds) {
-//        akinds = activityKinds;
-//        for (ActivityKind activityKind:activityKinds){
-//            akindName.add(activityKind.getActivityName());
-//        }
-//        activityKindsArrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,akindName);
-//        activityKindsArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spActivityKind.setAdapter(activityKindsArrayAdapter);
+
 
     }
 

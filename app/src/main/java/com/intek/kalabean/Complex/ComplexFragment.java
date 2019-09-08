@@ -26,7 +26,7 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         stores = new ArrayList<>();
-        presenter = new ComplexPresenter();
+
     }
 
     @Override
