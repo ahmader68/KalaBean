@@ -39,7 +39,7 @@ public class FactoriesFragment extends BaseFragment implements FactoriesContract
         conFactories = rootView.findViewById(R.id.con_fragmentFactories_mainLayout);
         rvFactories = rootView.findViewById(R.id.rv_fragmentFactories_list);
         conFactories.setRotationY(180);
-        factoriesAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
+        //factoriesAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         rvFactories.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvFactories.setAdapter(factoriesAdapter);
     }

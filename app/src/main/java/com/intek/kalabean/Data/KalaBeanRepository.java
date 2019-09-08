@@ -3,6 +3,7 @@ package com.intek.kalabean.Data;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
 
@@ -45,7 +46,7 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<List<Store>> getMarkets(int catId, int cityId) {
-        return serverDataSource.getMarkets(catId , cityId);
+    public Single<StoreList> getMarkets(int SellCenterCatID, int CityCenterID) {
+        return serverDataSource.getMarkets(SellCenterCatID , CityCenterID);
     }
 }

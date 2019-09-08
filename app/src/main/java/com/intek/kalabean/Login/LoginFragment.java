@@ -13,8 +13,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -50,6 +52,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         user = new User();
         presenter = new LoginPresenter(new KalaBeanRepository());
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(getViewContext(),gso);
@@ -126,8 +129,10 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         }
     }
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
-        fragmentManager = getActivity().getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
+        Intent intent = new Intent(getViewContext(),MainActivity.class);
+        intent.putExtra("flag",3);
+        startActivity(intent);
+        getActivity().finish();
 
     }
     private boolean validatePassword(){
@@ -149,7 +154,10 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
     @Override
     public void loginSuccess(User user) {
-        Toast.makeText(getViewContext(), user.getMobile(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getViewContext(),MainActivity.class);
+        intent.putExtra("flag",3);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     @Override

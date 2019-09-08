@@ -2,6 +2,7 @@ package com.intek.kalabean.Markets;
 
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.StoreList;
 
 import java.util.List;
 
@@ -35,19 +36,19 @@ public class MarketsPresenter implements MarketsContract.Presenter {
     }
 
     @Override
-    public void getMarkets(int catId , int cityId) {
+    public void getMarkets(int SellCenterCatID , int CityCenterID) {
 
-        kalaBeanDataSource.getMarkets(catId , cityId).subscribeOn(Schedulers.newThread())
+        kalaBeanDataSource.getMarkets(SellCenterCatID , CityCenterID).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<List<Store>>() {
+                .subscribe(new SingleObserver<StoreList>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(List<Store> stores) {
-                        view.getMarketList(stores);
+                    public void onSuccess(StoreList storeList) {
+                        view.getMarketList(storeList);
                     }
 
                     @Override

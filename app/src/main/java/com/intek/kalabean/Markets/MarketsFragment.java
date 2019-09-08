@@ -2,6 +2,8 @@ package com.intek.kalabean.Markets;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -28,7 +31,6 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         super.onCreate(savedInstanceState);
         presenter = new MarketsPresenter(new KalaBeanRepository());
         stores = new ArrayList<>();
-        presenter.getMarkets(1206 , 1201);
     }
 
     @Override
@@ -41,9 +43,8 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         conFragmentMarkets = rootView.findViewById(R.id.con_fragmentMarkets_mainLayout);
         conFragmentMarkets.setRotationY(180);
         rvMarkets = rootView.findViewById(R.id.rv_fragmentMarkets_list);
-        marketsAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
-        rvMarkets.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
-        rvMarkets.setAdapter(marketsAdapter);
+
+        presenter.getMarkets(1206 , 1201);
     }
 
     @Override
@@ -65,13 +66,13 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
 
     @Override
     public void showMessage(String msg) {
-
+        Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void getMarketList(List<Store> stores) {
-
+    public void getMarketList(StoreList stores) {
+        marketsAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
+        rvMarkets.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
+        rvMarkets.setAdapter(marketsAdapter);
     }
-
-
 }
