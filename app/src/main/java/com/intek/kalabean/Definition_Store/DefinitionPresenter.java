@@ -39,15 +39,15 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
     public void storeKind() {
         kalaBeanDataSource.getStoreKind().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<List<MallKind>>() {
+                .subscribe(new SingleObserver<MallKind>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(List<MallKind> mallKinds) {
-                        view.getStoreKind(mallKinds);
+                    public void onSuccess(MallKind mallKind) {
+                        view.getStoreKind(mallKind);
                     }
 
                     @Override

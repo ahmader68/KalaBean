@@ -28,6 +28,8 @@
                         android:id="@+id/sp_fragmentDefinition_mallKind"
                         android:layout_width="0dp"
                         app:layout_constraintHorizontal_weight="0.5"
+                        android:focusedByDefault="false"
+                        android:focusableInTouchMode="true"
                         android:layout_margin="8dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"

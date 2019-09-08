@@ -10,7 +10,7 @@ import java.util.List;
 public interface DefinitionContract {
     interface View extends BaseView{
         void showMessage(String msg);
-        void getStoreKind(List<MallKind> mallKinds);
+        void getStoreKind(MallKind mallKinds);
         void getActivityKind(List<ActivityKind> activityKinds);
     }
     interface Presenter extends BasePresenter<View>{

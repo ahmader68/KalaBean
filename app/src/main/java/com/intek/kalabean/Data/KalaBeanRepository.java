@@ -29,7 +29,7 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<List<MallKind>> getStoreKind() {
+    public Single<MallKind> getStoreKind() {
         return serverDataSource.getStoreKind();
     }
 

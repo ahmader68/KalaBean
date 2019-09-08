@@ -2,6 +2,7 @@ package com.intek.kalabean.Definition_Store;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -55,11 +56,11 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     }
 
     @Override
-    public void getStoreKind(List<MallKind> mallKinds) {
-        mkinds = mallKinds;
-        for(MallKind mallKind : mallKinds){
-            mkindsName.add(mallKind.getName());
-        }
+    public void getStoreKind(MallKind mallKinds) {
+        //mkinds = mallKinds;
+//        for(MallKind mallKind : mallKinds){
+//            mkindsName.add(mallKind.getName());
+//        }
         storeKindArrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item, mkindsName);
         storeKindArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spMallKind.setAdapter(storeKindArrayAdapter);
