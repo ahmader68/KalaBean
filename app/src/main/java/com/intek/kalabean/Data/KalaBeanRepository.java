@@ -1,7 +1,8 @@
 package com.intek.kalabean.Data;
 
 import com.intek.kalabean.Model.ActivityKind;
-import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.MallKindList;
+import com.intek.kalabean.Model.Store;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
 
@@ -29,7 +30,7 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<MallKind> getStoreKind() {
+    public Single<MallKindList> getStoreKind() {
         return serverDataSource.getStoreKind();
     }
 
@@ -41,5 +42,10 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<Ticket> sendTicket(Ticket ticket) {
         return serverDataSource.sendTicket(ticket);
+    }
+
+    @Override
+    public Single<List<Store>> getMarkets(int catId, int cityId) {
+        return serverDataSource.getMarkets(catId , cityId);
     }
 }

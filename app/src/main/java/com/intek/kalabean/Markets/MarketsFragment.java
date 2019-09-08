@@ -28,6 +28,7 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         super.onCreate(savedInstanceState);
         presenter = new MarketsPresenter(new KalaBeanRepository());
         stores = new ArrayList<>();
+        presenter.getMarkets(1206 , 1201);
     }
 
     @Override
@@ -61,4 +62,16 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         super.onStop();
         presenter.detachView();
     }
+
+    @Override
+    public void showMessage(String msg) {
+
+    }
+
+    @Override
+    public void getMarketList(List<Store> stores) {
+
+    }
+
+
 }
