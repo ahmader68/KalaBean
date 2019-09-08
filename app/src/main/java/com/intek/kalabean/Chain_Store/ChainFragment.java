@@ -38,7 +38,7 @@ public class ChainFragment extends BaseFragment implements ChainContract.View {
         conChainStore = rootView.findViewById(R.id.con_fragmentChainStore_mainLayout);
         conChainStore.setRotationY(180);
         rvChainStore = rootView.findViewById(R.id.rv_fragmentChainStore_list);
-        chainStoreAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
+        //chainStoreAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         rvChainStore.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvChainStore.setAdapter(chainStoreAdapter);
     }

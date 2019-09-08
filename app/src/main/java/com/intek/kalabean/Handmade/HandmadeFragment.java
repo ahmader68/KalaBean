@@ -38,7 +38,7 @@ public class HandmadeFragment extends BaseFragment implements HandmadeContract.V
         conHandmade = rootView.findViewById(R.id.con_fragmentHandmade_mainLayout);
         rvHandmade = rootView.findViewById(R.id.rv_fragmentHandmade_list);
         conHandmade.setRotationY(180);
-        handmadeAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
+        //handmadeAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         rvHandmade.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         rvHandmade.setAdapter(handmadeAdapter);
     }

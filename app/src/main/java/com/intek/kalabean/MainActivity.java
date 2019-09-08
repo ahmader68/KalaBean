@@ -51,6 +51,7 @@ import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
+import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.Register.RegisterFragment;
 import com.squareup.picasso.Picasso;
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new EditUserFragment(), "ویرایش کاربر");
+        viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
         viewPagerAdapter.addFragment(new RegisterFragment(), "ثبت نام");
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
         viewPagerAdapter.addFragment(new DefinitionFragment(),"ثبت فروشگاه");
