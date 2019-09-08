@@ -3,6 +3,7 @@ package com.intek.kalabean.Definition_Store;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.MallKindList;
 
 import java.util.List;
 
@@ -39,15 +40,15 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
     public void storeKind() {
         kalaBeanDataSource.getStoreKind().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<MallKind>() {
+                .subscribe(new SingleObserver<MallKindList>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(MallKind mallKind) {
-                        view.getStoreKind(mallKind);
+                    public void onSuccess(MallKindList mallKindList) {
+                        view.getStoreKind(mallKindList);
                     }
 
                     @Override

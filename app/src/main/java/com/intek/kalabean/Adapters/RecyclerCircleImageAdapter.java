@@ -35,8 +35,8 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
     @Override
     public void onBindViewHolder(@NonNull StoreInfoHolder holder, int position) {
         final Store store = stores.get(position);
-        Picasso.get().load(store.getCimgProfile()).into(holder.imgProfile);
-        holder.txtStoreName.setText(store.getStoreName());
+        Picasso.get().load(store.getImage()).into(holder.imgProfile);
+        holder.txtStoreName.setText(store.getTitleFA());
         holder.txtStoreCount.setText(store.getStoreCount());
         holder.txtFloorCount.setText(store.getStoreCount());
         holder.txtAddress.setText(store.getAddress());

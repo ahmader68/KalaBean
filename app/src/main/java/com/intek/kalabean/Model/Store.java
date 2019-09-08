@@ -1,8 +1,8 @@
 package com.intek.kalabean.Model;
 
 public class Store {
-    private String cimgProfile;
-    private String storeName;
+    private String image;
+    private String TitleFA;
     private int storeCount;
     private int floorCount;
     private String address;
@@ -16,20 +16,20 @@ public class Store {
     private boolean wifi;
     private boolean elevator;
 
-    public String getCimgProfile() {
-        return cimgProfile;
+    public String getImage() {
+        return image;
     }
 
-    public void setCimgProfile(String cimgProfile) {
-        this.cimgProfile = cimgProfile;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getTitleFA() {
+        return TitleFA;
     }
 
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
+    public void setTitleFA(String titleFA) {
+        this.TitleFA = titleFA;
     }
 
     public int getStoreCount() {

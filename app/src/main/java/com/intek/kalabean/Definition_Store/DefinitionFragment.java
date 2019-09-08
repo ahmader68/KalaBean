@@ -2,17 +2,17 @@ package com.intek.kalabean.Definition_Store;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
 
@@ -29,9 +29,11 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private MaterialSpinner spMallKind;
     private MaterialSpinner spActivityKind;
     private ArrayAdapter<String> storeKindArrayAdapter;
+    public ConstraintLayout con_fragmentDefinition_mainLayout;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         presenter = new DefinitionPresenter(new KalaBeanRepository());
         mkindsName = new ArrayList<>();
         akindName = new ArrayList<>();
@@ -46,6 +48,8 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
     @Override
     public void setupViews() {
+        con_fragmentDefinition_mainLayout = rootView.findViewById(R.id.con_fragmentDefinition_mainLayout);
+        con_fragmentDefinition_mainLayout.setRotationY(180);
         spMallKind = rootView.findViewById(R.id.sp_fragmentDefinition_mallKind);
         spActivityKind = rootView.findViewById(R.id.sp_fragmentDefinition_activityKind);
     }
@@ -56,7 +60,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     }
 
     @Override
-    public void getStoreKind(MallKind mallKinds) {
+    public void getStoreKind(MallKindList mallKinds) {
         //mkinds = mallKinds;
 //        for(MallKind mallKind : mallKinds){
 //            mkindsName.add(mallKind.getName());

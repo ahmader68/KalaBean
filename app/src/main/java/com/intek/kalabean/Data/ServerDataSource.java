@@ -1,12 +1,11 @@
 package com.intek.kalabean.Data;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
 import com.intek.kalabean.Model.ActivityKind;
-import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.MallKindList;
+import com.intek.kalabean.Model.Store;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
 
@@ -50,7 +49,7 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<MallKind> getStoreKind() {
+    public Single<MallKindList> getStoreKind() {
         return apiService.getStoreKind();
     }
 
@@ -63,4 +62,11 @@ public class ServerDataSource implements KalaBeanDataSource {
     public Single<Ticket> sendTicket(Ticket ticket) {
         return apiService.sendTicket(ticket.getUserId(),ticket.getTitle(),ticket.getContent());
     }
+
+    @Override
+    public Single<List<Store>> getMarkets(int catId, int cityId) {
+        return apiService.getMarkets(catId , cityId);
+    }
+
+
 }
