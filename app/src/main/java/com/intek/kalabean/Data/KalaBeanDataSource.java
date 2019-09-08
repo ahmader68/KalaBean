@@ -1,6 +1,11 @@
 package com.intek.kalabean.Data;
 
+import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -11,4 +16,7 @@ public interface KalaBeanDataSource {
     Single<User> register(User user);
     Single<String> upload(@Part MultipartBody.Part file, @Part("name") RequestBody name);
     Single<User> login(User user);
+    Single<MallKind> getStoreKind();
+    Single<List<ActivityKind>> getActivityKind();
+    Single<Ticket> sendTicket(Ticket ticket);
 }

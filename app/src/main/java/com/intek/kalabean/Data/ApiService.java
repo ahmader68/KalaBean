@@ -1,7 +1,8 @@
 package com.intek.kalabean.Data;
 
-import com.intek.kalabean.Model.Product;
-
+import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.MallKind;
+import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
 
 import java.util.List;
@@ -33,4 +34,16 @@ public interface ApiService {
 
     @POST("")
     Single<String> uploadFile(@Part MultipartBody.Part file, @Part("name") RequestBody name);
+
+    @POST("default.aspx?Action=SellCenterCat")
+    Single<MallKind> getStoreKind();
+
+    @GET("")
+    Single<List<ActivityKind>> getActivityKind();
+
+    @FormUrlEncoded
+    @POST("")
+    Single<Ticket> sendTicket(@Field("userId") int id,
+                              @Field("title") String title,
+                              @Field("content") String content);
 }

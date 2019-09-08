@@ -47,6 +47,7 @@ import com.intek.kalabean.Classes.Upload;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Data.ServerDataSource;
+import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new EditUserFragment(), "ویرایش کاربر");
         viewPagerAdapter.addFragment(new RegisterFragment(), "ثبت نام");
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
+        viewPagerAdapter.addFragment(new DefinitionFragment(),"ثبت فروشگاه");
 
         viewPager.setRotationY(180);
         viewPager.setAdapter(viewPagerAdapter);
