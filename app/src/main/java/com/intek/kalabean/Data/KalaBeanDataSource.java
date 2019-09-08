@@ -16,7 +16,7 @@ public interface KalaBeanDataSource {
     Single<User> register(User user);
     Single<String> upload(@Part MultipartBody.Part file, @Part("name") RequestBody name);
     Single<User> login(User user);
-    Single<List<MallKind>> getStoreKind();
+    Single<MallKind> getStoreKind();
     Single<List<ActivityKind>> getActivityKind();
     Single<Ticket> sendTicket(Ticket ticket);
 }

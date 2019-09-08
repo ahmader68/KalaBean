@@ -35,8 +35,8 @@ public interface ApiService {
     @POST("")
     Single<String> uploadFile(@Part MultipartBody.Part file, @Part("name") RequestBody name);
 
-    @GET("default.aspx?Action=SellCenterCat")
-    Single<List<MallKind>> getStoreKind();
+    @POST("default.aspx?Action=SellCenterCat")
+    Single<MallKind> getStoreKind();
 
     @GET("")
     Single<List<ActivityKind>> getActivityKind();

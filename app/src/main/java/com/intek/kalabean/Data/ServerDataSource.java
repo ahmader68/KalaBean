@@ -1,5 +1,7 @@
 package com.intek.kalabean.Data;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
@@ -48,7 +50,7 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<List<MallKind>> getStoreKind() {
+    public Single<MallKind> getStoreKind() {
         return apiService.getStoreKind();
     }
 
