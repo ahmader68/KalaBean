@@ -8,21 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.intek.kalabean.Model.Store;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCircleImageAdapter.StoreInfoHolder> {
-    private Context context;
+
     private StoreList stores;
     public RecyclerCircleImageAdapter(Context context,StoreList stores) {
-        this.context = context;
+
         this.stores = stores;
     }
 
@@ -36,13 +33,27 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
     @Override
     public void onBindViewHolder(@NonNull StoreInfoHolder holder, int position) {
         final Store store = stores.getStoreList().get(position);
-        Picasso.get().load(store.getImage()).into(holder.imgProfile);
 
+        String imgUrl = store.getImage();
+        String[] separated = imgUrl.split("'");
+        String url = separated[0];
+
+        Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(store.getTitleFA());
-        /*
-        holder.txtStoreCount.setText(store.getStoreCount());
-        holder.txtFloorCount.setText(store.getStoreCount());
+        holder.txtStoreCount.setText(store.getShopCount());
+        //holder.txtFloorCount.setText(store.getStoreCount());
         holder.txtAddress.setText(store.getAddress());
+
+        List<Store.SubSettings> settings = store.getSettings();
+
+        if (settings.get(3).getValue().equals("1")){
+            holder.imgCafe.setImageResource(R.drawable.ic_black_coffee);
+        }
+
+        if (settings.get(4).getValue().equals("1")){
+            holder.imgStair.setImageResource(R.drawable.ic_black_parking);
+        }
+/*
         if(store.isStair()){
             holder.imgStair.setImageResource(R.drawable.ic_launcher_background);
         }
@@ -77,7 +88,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         return stores.getStoreList().size();
     }
 
-    public class StoreInfoHolder extends RecyclerView.ViewHolder{
+    class StoreInfoHolder extends RecyclerView.ViewHolder{
         CircleImageView imgProfile;
         TextView txtStoreName;
         TextView txtStoreCount;
@@ -92,7 +103,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         ImageView imgWC;
         ImageView imgParking;
         ImageView imgNet;
-        public StoreInfoHolder(@NonNull View itemView) {
+        StoreInfoHolder(@NonNull View itemView) {
             super(itemView);
             imgProfile = itemView.findViewById(R.id.cimg_rvCircle_profile);
             txtStoreName = itemView.findViewById(R.id.txt_rvCircle_storeNameContent);
