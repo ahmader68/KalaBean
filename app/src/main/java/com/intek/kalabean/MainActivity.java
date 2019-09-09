@@ -31,6 +31,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -89,11 +90,12 @@ public class MainActivity extends AppCompatActivity {
     CompositeDisposable compositeDisposable;
     private final int GOOGLE_LOGIN_REQUEST = 101;
     private static final String TAG = "AndroidClarified";
-    GoogleSignInOptions gso;
-    SignInButton btnLoginDialogGoogle;
-    GoogleSignInClient googleSignInClient;
+//    GoogleSignInOptions gso;
+//    SignInButton btnLoginDialogGoogle;
+//    GoogleSignInClient googleSignInClient;
     String googleUsername;
     String googleEmail;
+    private int flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
-        viewPagerAdapter.addFragment(new RegisterFragment(), "ثبت نام");
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
         viewPagerAdapter.addFragment(new DefinitionFragment(),"ثبت فروشگاه");
 
@@ -133,76 +134,89 @@ public class MainActivity extends AppCompatActivity {
         edtLoginDialogPassword = dialogLogin.findViewById(R.id.edt_fragmentLogin_password);
         tilLoginDialogUsername = dialogLogin.findViewById(R.id.til_fragmentLogin_username);
         tilLoginDialogPassword = dialogLogin.findViewById(R.id.til_fragmentLogin_password);
-        btnLoginDialogGoogle = dialogLogin.findViewById(R.id.btn_fragmentLogin_gLogin);
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        flag = getIntent().getIntExtra("flag",0);
+        if(flag == 3){
+            Menu menu = navigationView.getMenu();
+            menu.findItem(R.id.sabtenam).setVisible(false);
+            menu.findItem(R.id.login).setVisible(false);
+        }
+        //btnLoginDialogGoogle = dialogLogin.findViewById(R.id.btn_fragmentLogin_gLogin);
+//        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//        googleSignInClient = GoogleSignIn.getClient(this, gso);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if (id == R.id.login) {
                     drawer.closeDrawer(GravityCompat.START);
-                    dialogLogin.show();
-                    dialogLogin.getWindow().setLayout(1200, 1200);
+                    Intent intent = new Intent(MainActivity.this,SecondaryActivity.class);
+                    intent.putExtra("flag",2);
+                    startActivity(intent);
+                }else if(id == R.id.sabtenam){
+                    drawer.closeDrawer(GravityCompat.START);
+                    Intent intent = new Intent(MainActivity.this,SecondaryActivity.class);
+                    intent.putExtra("flag",1);
+                    startActivity(intent);
                 }
                 return true;
             }
         });
-        btnLoginDialogLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!validateUsername() || !validatePassword()) {
-                    return;
-                } else {
-                    user.setMobile(edtLoginDialogUsername.getText().toString());
-                    user.setPassword(edtLoginDialogPassword.getText().toString());
-                    kalaBeanDataSource.login(user).subscribeOn(Schedulers.newThread())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new SingleObserver<User>() {
-                                @Override
-                                public void onSubscribe(Disposable d) {
-                                    compositeDisposable.add(d);
-                                }
-
-                                @Override
-                                public void onSuccess(User user) {
-                                    if (user.getResult() <= -1 && user.getResult() >= -3) {
-                                        switch (user.getResult()) {
-                                            case -1:
-                                                Toast.makeText(MainActivity.this, "نام کاربری یا کلمه عبور صحیح نمی باشد", Toast.LENGTH_SHORT).show();
-
-                                                break;
-                                            case -2:
-                                                Toast.makeText(MainActivity.this, "اکانت شما غیر فعال شده است", Toast.LENGTH_SHORT).show();
-
-                                                break;
-                                            case -3:
-                                                Toast.makeText(MainActivity.this, "کاربر با این مشخصات یافت نشد", Toast.LENGTH_SHORT).show();
-
-                                                break;
-                                        }
-                                    } else {
-                                        loginSuccess(user);
-                                    }
-                                }
-
-                                @Override
-                                public void onError(Throwable e) {
-                                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
-            }
-        });
-        btnLoginDialogGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, GOOGLE_LOGIN_REQUEST);
-            }
-        });
+//        btnLoginDialogLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!validateUsername() || !validatePassword()) {
+//                    return;
+//                } else {
+//                    user.setMobile(edtLoginDialogUsername.getText().toString());
+//                    user.setPassword(edtLoginDialogPassword.getText().toString());
+//                    kalaBeanDataSource.login(user).subscribeOn(Schedulers.newThread())
+//                            .observeOn(AndroidSchedulers.mainThread())
+//                            .subscribe(new SingleObserver<User>() {
+//                                @Override
+//                                public void onSubscribe(Disposable d) {
+//                                    compositeDisposable.add(d);
+//                                }
+//
+//                                @Override
+//                                public void onSuccess(User user) {
+//                                    if (user.getResult() <= -1 && user.getResult() >= -3) {
+//                                        switch (user.getResult()) {
+//                                            case -1:
+//                                                Toast.makeText(MainActivity.this, "نام کاربری یا کلمه عبور صحیح نمی باشد", Toast.LENGTH_SHORT).show();
+//
+//                                                break;
+//                                            case -2:
+//                                                Toast.makeText(MainActivity.this, "اکانت شما غیر فعال شده است", Toast.LENGTH_SHORT).show();
+//
+//                                                break;
+//                                            case -3:
+//                                                Toast.makeText(MainActivity.this, "کاربر با این مشخصات یافت نشد", Toast.LENGTH_SHORT).show();
+//
+//                                                break;
+//                                        }
+//                                    } else {
+//                                        loginSuccess(user);
+//                                    }
+//                                }
+//
+//                                @Override
+//                                public void onError(Throwable e) {
+//                                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            });
+//                }
+//            }
+//        });
+//        btnLoginDialogGoogle.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent signInIntent = googleSignInClient.getSignInIntent();
+//                startActivityForResult(signInIntent, GOOGLE_LOGIN_REQUEST);
+//            }
+//        });
     }
 
     @Override
@@ -226,15 +240,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                case GOOGLE_LOGIN_REQUEST:
-                    try {
-                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                        GoogleSignInAccount account = task.getResult(ApiException.class);
-                        onLoggedIn(account);
-                    } catch (ApiException e) {
-                        Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                    break;
                 case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
                         CropImage.ActivityResult result = CropImage.getActivityResult(data);
                         if (resultCode == RESULT_OK) {
