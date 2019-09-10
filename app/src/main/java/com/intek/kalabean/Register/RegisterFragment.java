@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
@@ -74,7 +77,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     public void setupViews() {
 
         conRegister = rootView.findViewById(R.id.con_fragmentRegister_mainLayout);
-        conRegister.setRotationY(180);
+        //conRegister.setRotationY(180);
 
         rg_fragmentRegistry_regKind = rootView.findViewById(R.id.rg_fragmentRegistry_regKind);
         rg_fragmentRegistry_gender = rootView.findViewById(R.id.rg_fragmentRegistry_gender);
@@ -890,7 +893,28 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     public void showSuccess(int id) {
         if (id > 0) {
             Toast.makeText(getViewContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
