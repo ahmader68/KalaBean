@@ -95,6 +95,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = googleSignInClient.getSignInIntent();
+                signInIntent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
                 startActivityForResult(signInIntent,GOOGLE_LOGIN_REQUEST);
             }
         });
