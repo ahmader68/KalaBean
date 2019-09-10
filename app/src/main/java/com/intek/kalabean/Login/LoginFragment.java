@@ -3,6 +3,7 @@ package com.intek.kalabean.Login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,6 +21,9 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import android.preference.PreferenceManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -27,6 +31,7 @@ import android.widget.Toast;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.MainActivity;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 
@@ -44,8 +49,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     private static final String TAG = "AndroidClarified";
     GoogleSignInOptions gso;
     GoogleSignInClient googleSignInClient;
-    FragmentManager fragmentManager;
-    FragmentTransaction transaction;
+    SharedPreferences sharedPreferences;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(getViewContext(),gso);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
     }
 
     @Override
@@ -67,7 +72,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     public void setupViews() {
 
         conLogin = rootView.findViewById(R.id.con_fragmentLogin_mainLayout);
-        conLogin.setRotationY(180);
+        //conLogin.setRotationY(180);
         btnFragmentLogingLogin = rootView.findViewById(R.id.btn_fragmentLogin_gLogin);
         tilFragmentLoginUsername = rootView.findViewById(R.id.til_fragmentLogin_username);
         tilFragmentLoginPassword = rootView.findViewById(R.id.til_fragmentLogin_password);
@@ -129,10 +134,15 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         }
     }
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
-        Intent intent = new Intent(getViewContext(),MainActivity.class);
-        intent.putExtra("flag",3);
-        startActivity(intent);
-        getActivity().finish();
+        String username = googleSignInAccount.getEmail();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username",username);
+        editor.apply();
+        editor.commit();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.commit();
 
     }
     private boolean validatePassword(){
@@ -154,12 +164,35 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
     @Override
     public void loginSuccess(User user) {
-        Intent intent = new Intent(getViewContext(),MainActivity.class);
-        intent.putExtra("flag",3);
-        startActivity(intent);
-        getActivity().finish();
+        String username = user.getMobile()+"";
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username",username);
+        editor.apply();
+        editor.commit();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.commit();
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
     @Override
     public void onStart() {
         super.onStart();
