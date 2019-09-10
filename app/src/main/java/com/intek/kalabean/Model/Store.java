@@ -1,11 +1,21 @@
 package com.intek.kalabean.Model;
 
+import android.util.ArrayMap;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class Store {
     private String image;
     private String TitleFA;
-    private int storeCount;
+    private String ShopCount;
     private int floorCount;
-    private String address;
+    private String Address;
+
+    private List<SubSettings> settings;
+
     private boolean stair;
     private boolean cafe;
     private boolean wc;
@@ -32,12 +42,12 @@ public class Store {
         this.TitleFA = titleFA;
     }
 
-    public int getStoreCount() {
-        return storeCount;
+    public String getShopCount() {
+        return ShopCount;
     }
 
-    public void setStoreCount(int storeCount) {
-        this.storeCount = storeCount;
+    public void setShopCount(String shopCount) {
+        ShopCount = shopCount;
     }
 
     public int getFloorCount() {
@@ -49,11 +59,19 @@ public class Store {
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        Address = address;
+    }
+
+    public List<SubSettings> getSettings() {
+        return settings;
+    }
+
+    public void setSettings(List<SubSettings> settings) {
+        this.settings = settings;
     }
 
     public boolean isStair() {
@@ -126,5 +144,26 @@ public class Store {
 
     public void setElevator(boolean elevator) {
         this.elevator = elevator;
+    }
+
+    public class SubSettings {
+        private String id;
+        private String value;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
     }
 }

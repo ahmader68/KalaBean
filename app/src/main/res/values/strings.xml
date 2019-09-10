@@ -68,4 +68,14 @@
     <string name="sp_fragmentDefinition_storeName">نام مجتمع تجاری</string>
     <string name="sp_fragmentDefinition_floor">طبقه</string>
     <string name="sp_fragmentDefinition_activityKind">زمینه فعالیت</string>
+    <string name="zero">0</string>
+    <string name="stairs">Stairs</string>
+    <string name="cafe">cafe</string>
+    <string name="wc">wc</string>
+    <string name="gift">gift</string>
+    <string name="parking">parking</string>
+    <string name="playstation">PlayStation</string>
+    <string name="shop">Shop</string>
+    <string name="wifi">WiFi</string>
+    <string name="elevator">Elevator</string>
 </resources>
