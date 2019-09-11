@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "617504351237",
+    "firebase_url": "https://fir-notification-58eca.firebaseio.com",
+    "project_id": "fir-notification-58eca",
+    "storage_bucket": "fir-notification-58eca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617504351237:android:fbe5c02859614c42",
+        "android_client_info": {
+          "package_name": "com.hooman.firebasenotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617504351237-kdqb62c7qm4f6s4aal5iler273nlpppr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLx61Q9Zt6eThj64She-1r2QIXAP_yvIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617504351237-kdqb62c7qm4f6s4aal5iler273nlpppr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
