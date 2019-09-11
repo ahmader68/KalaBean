@@ -11,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.ActivityKind;
-import com.intek.kalabean.Model.MallKind;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
@@ -23,7 +22,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private DefinitionContract.Presenter presenter;
     private List<String> mkindsName;
     private List<String> akindName;
-    private List<MallKind> mkinds;
+    private List<MallKindList.MallKind> mkinds;
     private List<ActivityKind> akinds;
     private ArrayAdapter<String> activityKindsArrayAdapter;
     private MaterialSpinner spMallKind;

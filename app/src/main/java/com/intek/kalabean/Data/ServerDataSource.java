@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.MallKindList;
-import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
@@ -65,8 +65,13 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<StoreList> getMarkets(int SellCenterCatID, int CityCenterID) {
-        return apiService.getMarkets(SellCenterCatID , CityCenterID);
+    public Single<StoreList> getMarkets(int SellCenterCatID, int CityId) {
+        return apiService.getMarkets(SellCenterCatID , CityId);
+    }
+
+    @Override
+    public Single<ShopsList> getShops(int SellCenterID, int FloorID) {
+        return apiService.getShops(SellCenterID , FloorID);
     }
 
 
