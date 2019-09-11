@@ -2,7 +2,6 @@ package com.intek.kalabean.Definition_Store;
 
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ActivityKind;
-import com.intek.kalabean.Model.MallKind;
 import com.intek.kalabean.Model.MallKindList;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
     private KalaBeanDataSource kalaBeanDataSource;
     private DefinitionContract.View view;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private List<MallKind> kinds;
+    private List<MallKindList.MallKind> kinds;
     public DefinitionPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }

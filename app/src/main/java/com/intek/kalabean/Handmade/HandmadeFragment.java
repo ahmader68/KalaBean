@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 public class HandmadeFragment extends BaseFragment implements HandmadeContract.View {
     private HandmadeContract.Presenter presenter;
     private RecyclerCircleImageAdapter handmadeAdapter;
-    private List<Store> stores;
+    private List<StoreList.Store> stores;
     private RecyclerView rvHandmade;
     private ConstraintLayout conHandmade;
     @Override

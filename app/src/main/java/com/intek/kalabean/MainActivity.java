@@ -77,29 +77,7 @@ import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST_C
 import static com.intek.kalabean.Edit_User.EditUserFragment.TAKE_CODE;
 
 public class MainActivity extends AppCompatActivity {
-    NavigationView navigationView;
-    DrawerLayout drawer;
-    ImageView hamburgMenu;
-    ViewPagerAdapter viewPagerAdapter;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    Dialog dialogLogin;
-    Button btnLoginDialogLogin;
-    TextInputEditText edtLoginDialogUsername;
-    TextInputEditText edtLoginDialogPassword;
-    TextInputLayout tilLoginDialogUsername;
-    TextInputLayout tilLoginDialogPassword;
-    User user;
-    KalaBeanDataSource kalaBeanDataSource;
-    CompositeDisposable compositeDisposable;
-    private final int GOOGLE_LOGIN_REQUEST = 101;
-    private static final String TAG = "AndroidClarified";
-    //    GoogleSignInOptions gso;
-//    SignInButton btnLoginDialogGoogle;
-//    GoogleSignInClient googleSignInClient;
-    String googleUsername;
-    String googleEmail;
-    private int flag;
+
     private FragmentManager manager;
     private FragmentTransaction transaction;
     @Override
