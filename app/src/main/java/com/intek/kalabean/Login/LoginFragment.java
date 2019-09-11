@@ -56,7 +56,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         user = new User();
         presenter = new LoginPresenter(new KalaBeanRepository());
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
+                //.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(getViewContext(),gso);
