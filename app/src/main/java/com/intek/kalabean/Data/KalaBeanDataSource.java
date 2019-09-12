@@ -1,6 +1,7 @@
 package com.intek.kalabean.Data;
 
 import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreList;
@@ -22,5 +23,6 @@ public interface KalaBeanDataSource {
     Single<List<ActivityKind>> getActivityKind();
     Single<Ticket> sendTicket(Ticket ticket);
     Single<StoreList> getMarkets(int SellCenterCatID , int CityId);
+    Single<ComplexList> getComplex(int SellCenterCatID , int CityId);
     Single<ShopsList> getShops(int SellCenterID , int FloorID);
 }
