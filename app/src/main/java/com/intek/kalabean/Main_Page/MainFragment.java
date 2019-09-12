@@ -27,6 +27,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
@@ -84,6 +85,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
         viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
+        viewPagerAdapter.addFragment(new ComplexFragment(), "مجتمع تجاری");
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
         viewPagerAdapter.addFragment(new DefinitionFragment(), "ثبت فروشگاه");
 

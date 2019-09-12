@@ -42,7 +42,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     @Override
     public void setupViews() {
         conFragmentShops = rootView.findViewById(R.id.con_fragmentShops_mainLayout);
-        conFragmentShops.setRotationY(180);
+        //conFragmentShops.setRotationY(180);
         rv_fragmentShops_list = rootView.findViewById(R.id.rv_fragmentShops_list);
 
         presenter.getShops(SellCenterID , -1);
