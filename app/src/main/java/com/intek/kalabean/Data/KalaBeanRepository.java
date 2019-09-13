@@ -1,6 +1,7 @@
 package com.intek.kalabean.Data;
 
 import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopsList;
@@ -54,6 +55,11 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<ComplexList> getComplex(int SellCenterCatID, int CityId) {
         return serverDataSource.getComplex(SellCenterCatID, CityId);
+    }
+
+    @Override
+    public Single<ChainStoreList> getChainStore(int SellCenterCatID, int CityId) {
+        return serverDataSource.getChainStore(SellCenterCatID, CityId);
     }
 
     @Override

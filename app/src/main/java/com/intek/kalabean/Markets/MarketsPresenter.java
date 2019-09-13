@@ -15,7 +15,7 @@ public class MarketsPresenter implements MarketsContract.Presenter {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
 
-    public MarketsPresenter(KalaBeanDataSource kalaBeanDataSource){
+    MarketsPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
     @Override
