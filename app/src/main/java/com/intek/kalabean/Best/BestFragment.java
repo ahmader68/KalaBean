@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BestFragment extends BaseFragment implements BestContract.View {
     private BestContract.Presenter presenter;
-    private List<Store> stores;
+    private List<StoreList.Store> stores;
     private RecyclerCircleImageAdapter bestAdapter;
     private RecyclerView rvBest;
     private ConstraintLayout conBest;

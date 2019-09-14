@@ -172,10 +172,22 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
     private int PERMISSION_UPLOAD_REQUEST_CODE = 200;
 
+    private List<String> mkindsName;
+    private List<String> akindName;
+    private List<MallKindList.MallKind> mkinds;
+    private List<ActivityKind> akinds;
+    private ArrayAdapter<String> activityKindsArrayAdapter;
+    private MaterialSpinner spMallKind;
+    private MaterialSpinner spActivityKind;
+    private ArrayAdapter<String> storeKindArrayAdapter;
+    public ConstraintLayout con_fragmentDefinition_mainLayout;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         presenter = new DefinitionPresenter(new KalaBeanRepository());
+        mkindsName = new ArrayList<>();
+        akindName = new ArrayList<>();
         presenter.storeKind();
         presenter.activityKind();
     }

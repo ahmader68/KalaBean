@@ -3,10 +3,13 @@ package com.intek.kalabean.Data;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
+import com.intek.kalabean.Model.ChainStoreList;
+import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
+import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
@@ -63,6 +66,22 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("default.aspx?Action=ListBazar")
     Single<StoreList> getMarkets(@Field("SellCenterCatID") int SellCenterCatID,
+                                 @Field("CityId") int CityId);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=ListBazar")
+    Single<ComplexList> getComplex(@Field("SellCenterCatID") int SellCenterCatID,
+                                   @Field("CityId") int CityId);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=ListBazar")
+    Single<ChainStoreList> getChainStore(@Field("SellCenterCatID") int SellCenterCatID,
+                                         @Field("CityId") int CityId);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=ShowShopsList")
+    Single<ShopsList> getShops(@Field("SellCenterID") int SellCenterID,
+                                     @Field("FloorID") int FloorID);
                                  @Field("CityId") int CityCenterID);
 
     @FormUrlEncoded

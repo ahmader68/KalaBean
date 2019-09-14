@@ -22,7 +22,7 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
     private KalaBeanDataSource kalaBeanDataSource;
     private DefinitionContract.View view;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private List<MallKind> kinds;
+    private List<MallKindList.MallKind> kinds;
     public DefinitionPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
@@ -151,6 +151,4 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
                     }
                 });
     }
-
-
 }

@@ -1,6 +1,8 @@
 package com.intek.kalabean.Data;
 
 import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.ChainStoreList;
+import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.MallKindList;
@@ -44,15 +46,29 @@ public class KalaBeanRepository implements KalaBeanDataSource {
         return serverDataSource.getActivityKind();
     }
 
-
     @Override
     public Single<Ticket> sendTicket(Ticket ticket) {
         return serverDataSource.sendTicket(ticket);
     }
 
     @Override
-    public Single<StoreList> getMarkets(int SellCenterCatID, int CityCenterID) {
-        return serverDataSource.getMarkets(SellCenterCatID , CityCenterID);
+    public Single<StoreList> getMarkets(int SellCenterCatID, int CityId) {
+        return serverDataSource.getMarkets(SellCenterCatID , CityId);
+    }
+
+    @Override
+    public Single<ComplexList> getComplex(int SellCenterCatID, int CityId) {
+        return serverDataSource.getComplex(SellCenterCatID, CityId);
+    }
+
+    @Override
+    public Single<ChainStoreList> getChainStore(int SellCenterCatID, int CityId) {
+        return serverDataSource.getChainStore(SellCenterCatID, CityId);
+    }
+
+    @Override
+    public Single<ShopsList> getShops(int SellCenterID, int FloorID) {
+        return serverDataSource.getShops(SellCenterID , FloorID);
     }
 
     @Override

@@ -1,6 +1,13 @@
 package com.intek.kalabean.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
@@ -8,49 +15,47 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.intek.kalabean.Model.StoreList;
+import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Shops.ShopsFragment;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCircleImageAdapter.StoreInfoHolder> {
+public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplexAdapter.ComplexViewHolder> {
+
     private Context context;
-    private StoreList stores;
-    public RecyclerCircleImageAdapter(Context context,StoreList stores) {
+    private ComplexList complexList;
+
+    public RecyclerComplexAdapter(Context context , ComplexList complexList){
         this.context = context;
-        this.stores = stores;
+        this.complexList = complexList;
     }
 
     @NonNull
     @Override
-        public StoreInfoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.rv_circle,parent,false);
-        return new StoreInfoHolder(v);
+    public ComplexViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.rv_circle , parent , false);
+        return new ComplexViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StoreInfoHolder holder, int position) {
-        final StoreList.Store store = stores.getStoreList().get(position);
+    public void onBindViewHolder(@NonNull ComplexViewHolder holder, int position) {
+        final ComplexList.Complex complex = complexList.getStoreList().get(position);
 
-        String imgUrl = store.getImage();
+        String imgUrl = complex.getImage();
         final String[] separated = imgUrl.split("'");
         String url = separated[0];
 
         Picasso.get().load(url).into(holder.imgProfile);
-        holder.txtStoreName.setText(store.getTitleFA());
-        holder.txtStoreCount.setText(store.getShopCount());
+        holder.txtStoreName.setText(complex.getTitleFA());
+        holder.txtStoreCount.setText(complex.getShopCount());
         //holder.txtFloorCount.setText(store.getStoreCount());
-        holder.txtAddress.setText(store.getAddress());
+        holder.txtAddress.setText(complex.getAddress());
 
-        List<StoreList.Store.SubSettings> settings = store.getSettings();
+        List<ComplexList.Complex.SubSettings> settings = complex.getSettings();
 
         if (settings.get(3).getValue().equals("1")){
             holder.imgCafe.setImageResource(R.drawable.ic_black_coffee);
@@ -64,7 +69,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID" , store.getSellCenterID());
+                bundle.putInt("SellCenterID" , complex.getSellCenterID());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();
@@ -73,42 +78,14 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
                 transaction.commit();
             }
         });
-/*
-        if(store.isStair()){
-            holder.imgStair.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isCafe()){
-            holder.imgCafe.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isElevator()){
-            holder.imgElevator.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isGift()){
-            holder.imgGift.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isParking()){
-            holder.imgParking.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isPlay()){
-            holder.imgPlay.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isShop()){
-            holder.imgShop.setImageResource(R.drawable.ic_launcher_background);
-        }
-        if(store.isWc()){
-            holder.imgWC.setImageResource(R.drawable.ic_launcher_background);
-        }if(store.isWifi()){
-            holder.imgNet.setImageResource(R.drawable.ic_launcher_background);
-        }
-        */
     }
 
     @Override
     public int getItemCount() {
-        return stores.getStoreList().size();
+        return complexList.getStoreList().size();
     }
 
-    class StoreInfoHolder extends RecyclerView.ViewHolder{
+    class ComplexViewHolder extends RecyclerView.ViewHolder {
         CardView cv_rvCircle_layout;
         CircleImageView imgProfile;
         TextView txtStoreName;
@@ -124,7 +101,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         ImageView imgWC;
         ImageView imgParking;
         ImageView imgNet;
-        StoreInfoHolder(@NonNull View itemView) {
+        ComplexViewHolder(@NonNull View itemView) {
             super(itemView);
             cv_rvCircle_layout = itemView.findViewById(R.id.cv_rvCircle_layout);
             imgProfile = itemView.findViewById(R.id.cimg_rvCircle_profile);
@@ -141,7 +118,6 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
             imgWC = itemView.findViewById(R.id.img_rvCircle_wc);
             imgParking = itemView.findViewById(R.id.img_rvCircle_parking);
             imgNet = itemView.findViewById(R.id.img_rvCircle_net);
-
         }
     }
 }

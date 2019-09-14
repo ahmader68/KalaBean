@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
-import com.intek.kalabean.Model.Store;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 
@@ -22,7 +21,7 @@ import java.util.List;
 public class MarketsFragment extends BaseFragment implements MarketsContract.View {
     private MarketsContract.Presenter presenter;
     private RecyclerCircleImageAdapter marketsAdapter;
-    private List<Store> stores;
+    private List<StoreList.Store> stores;
     private RecyclerView rvMarkets;
     private ConstraintLayout conFragmentMarkets;
 
@@ -49,7 +48,7 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
 
     @Override
     public Context getViewContext() {
-        return getContext();
+        return getActivity();
     }
 
     @Override
