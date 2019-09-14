@@ -28,6 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
+import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Markets.MarketsFragment;
@@ -122,6 +123,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 } else if (id == R.id.sabtenam) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new RegisterFragment();
+                }else if(id == R.id.editInfo){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new EditUserFragment();
                 }
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();

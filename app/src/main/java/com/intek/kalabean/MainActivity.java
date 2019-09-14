@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
     private int flag;
     private FragmentManager manager;
     private FragmentTransaction transaction;
+
+    public static int requestCodeCheck = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,11 +138,16 @@ public class MainActivity extends AppCompatActivity {
                 case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
                     CropImage.ActivityResult result = CropImage.getActivityResult(data);
                     if (resultCode == RESULT_OK) {
-                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
+                        if(requestCodeCheck == 1) {
+                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_storePic));
+                        }else if(requestCodeCheck == 2){
+                            Picasso.get().load(result.getUri()).into((ImageView)findViewById(R.id.img_fragmentEditUser_profile));
+                        }
                     } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
                     }
                     break;
+
             }
         }
     }

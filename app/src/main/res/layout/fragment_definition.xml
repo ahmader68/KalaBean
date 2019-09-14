@@ -1,60 +1,504 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/con_fragmentDefinition_mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layoutDirection="rtl"
-    android:id="@+id/con_fragmentDefinition_mainLayout">
+    android:layoutDirection="rtl">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_fragmentDefinition_storeKind"
+                android:id="@+id/cv_fragmentDefinition_firstCV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentDefinition_spinnersLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_storeName"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toEndOf="@id/sp_fragmentDefinition_floor"
+                        app:layout_constraintHorizontal_weight="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/sp_fragmentDefinition_floor">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_storeName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/edt_fragmentDefinition_storeName"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_storeNameEn"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toEndOf="@id/sp_fragmentDefinition_floor"
+                        app:layout_constraintHorizontal_weight="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_storeName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_storeNameEn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/edt_fragmentDefinition_storeNameEn"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_storeNameAr"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toEndOf="@id/sp_fragmentDefinition_floor"
+                        app:layout_constraintHorizontal_weight="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_storeNameEn">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_storeNameAr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/edt_fragmentDefinition_storeNameAr"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.tiper.MaterialSpinner
+                        android:id="@+id/sp_fragmentDefinition_storeKind"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:hint="@string/sp_fragmentDefinition_storeKind"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_weight="0.4"
+                        app:layout_constraintEnd_toStartOf="@id/sp_fragmentDefinition_complexName"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.tiper.MaterialSpinner
+                        android:id="@+id/sp_fragmentDefinition_complexName"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        android:hint="@string/sp_fragmentDefinition_storeName"
+                        app:layout_constraintStart_toEndOf="@id/sp_fragmentDefinition_storeKind"
+                        app:layout_constraintHorizontal_weight="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.tiper.MaterialSpinner
+                        android:id="@+id/sp_fragmentDefinition_floor"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        android:hint="@string/sp_fragmentDefinition_floor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_weight="0.4"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_storeName"
+                        app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_storeKind" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentDefinition_secondCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 app:cardCornerRadius="10dp"
-                android:layout_margin="8dp">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_firstCV">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentDefinition_ActivityKindLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <Button
+                        android:id="@+id/btn_fragmentDefinition_addActivity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@string/btn_fragmentDefinition_addActivity"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@id/sp_fragmentDefinition_activityKind"
+                        app:layout_constraintStart_toEndOf="@id/sp_fragmentDefinition_activityKind"
+                        app:layout_constraintHorizontal_weight="0.4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/sp_fragmentDefinition_activityKind" />
+
+                    <com.tiper.MaterialSpinner
+                        android:id="@+id/sp_fragmentDefinition_activityKind"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        android:hint="@string/sp_fragmentDefinition_activityKind"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_weight="0.6"
+                        app:layout_constraintEnd_toStartOf="@id/btn_fragmentDefinition_addActivity"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentDefinition_thirdCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_secondCV">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentDefinition_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_mobile"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentEditUser_phone"
+                            android:inputType="phone"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_mobile"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_phone"
+                        app:layout_constraintStart_toEndOf="@id/til_fragmentDefinition_phone"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_phone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentEditUser_mobile"
+                            android:inputType="phone"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_fax"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_weight="0.4"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_email"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_phone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_fax"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="phone"
+                            android:text="@string/edt_fragmentDefinition_fax"
+                            android:textAlignment="viewStart"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_email"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_fax"
+                        app:layout_constraintStart_toEndOf="@id/til_fragmentDefinition_fax"
+                        app:layout_constraintHorizontal_weight="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_fax">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentEditUser_email"
+                            android:inputType="textEmailAddress"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentDefinition_fourthCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_thirdCV">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <com.tiper.MaterialSpinner
-                        android:id="@+id/sp_fragmentDefinition_mallKind"
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_workHour"
                         android:layout_width="0dp"
-                        app:layout_constraintHorizontal_weight="0.5"
-                        android:focusedByDefault="false"
-                        android:focusableInTouchMode="true"
+                        android:layout_height="70dp"
                         android:layout_margin="8dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:hint="@string/sp_fragmentDefinition_storeKind"
-                        app:layout_constraintEnd_toStartOf="@id/sp_fragmentDefinition_storeName"/>
-                    <com.tiper.MaterialSpinner
-                        android:id="@+id/sp_fragmentDefinition_storeName"
-                        android:layout_width="0dp"
-                        android:layout_margin="8dp"
                         app:layout_constraintHorizontal_weight="0.5"
-                        android:hint="@string/sp_fragmentDefinition_storeName"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_off"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_workHour"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_workHour"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_off"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_workHour"
+                        app:layout_constraintStart_toEndOf="@id/til_fragmentDefinition_workHour"
+                        app:layout_constraintHorizontal_weight="0.5"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_workHour">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_off"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_off"
+                            android:inputType="number"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentDefinition_fifthCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_fourthCV">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentDefinition_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_addressFA"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_addressFA"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefintion_addressFA"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_addressAR"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_addressFA">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_addressAR"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_addressAR"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_addressEN"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_addressAR">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_addressEN"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_addressEN"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentDefinition_sixthCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_fifthCV">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_descriptionFA"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_descriptionFA"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_descriptionFA"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_descriptionEN"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_descriptionFA">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_descriptionEN"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_descriptionEN"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentDefinition_seventh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_sixthCV">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btn_fragmentDefinition_upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_fragmentEditUser_upload"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/sp_fragmentDefinition_mallKind"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_fragmentDefinition_storePic"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_fragmentDefinition_floorAndName"
+                android:id="@+id/cv_fragmentDefinition_eighthCV"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_storeKind"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_seventh"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="8dp"
@@ -62,32 +506,151 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <com.tiper.MaterialSpinner
-                        android:id="@+id/sp_fragmentDefinition_floor"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/sp_fragmentDefinition_floor"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_artificialTour"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_weight="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                    </com.tiper.MaterialSpinner>
-
-                    <com.tiper.MaterialSpinner
-                        android:id="@+id/sp_fragmentDefinition_activityKind"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_floor"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_artificialTour"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_artificialTour"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_twitter"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
                         android:layout_margin="8dp"
-                        android:hint="@string/sp_fragmentDefinition_activityKind"/>
+                        app:layout_constraintHorizontal_weight="0.5"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toEndOf="@id/til_fragmentDefinition_linkedIn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_artificialTour">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_twitter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_twitter"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_linkedIn"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_twitter"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_artificialTour">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_linkedIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_linkedIn"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_google"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_telegram"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_linkedIn">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_google"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_google"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_telegram"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toEndOf="@id/til_fragmentDefinition_google"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_twitter">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_telegram"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_telegram"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_facebook"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/til_fragmentDefinition_whatsApp"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_google">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_facebook"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_facebook"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_fragmentDefinition_whatsApp"
+                        android:layout_width="0dp"
+                        app:layout_constraintHorizontal_weight="0.5"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintStart_toEndOf="@id/til_fragmentDefinition_facebook"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_telegram">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_fragmentDefinition_whatsApp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/edt_fragmentDefinition_whatsApp"
+                            android:inputType="text"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/btn_fragmentDefinition_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentDefinition_eighthCV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="8dp"
+                android:text="@string/btn_fragmentEditUser_save"
+                android:textSize="20sp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
