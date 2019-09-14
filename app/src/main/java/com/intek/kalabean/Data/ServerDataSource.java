@@ -4,8 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
 import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.MallKindList;
-import com.intek.kalabean.Model.Store;
+import com.intek.kalabean.Model.ShopCenter;
+import com.intek.kalabean.Model.ShopCenterList;
+import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
@@ -55,9 +59,10 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<List<ActivityKind>> getActivityKind() {
+    public Single<ActivityKindList> getActivityKind() {
         return apiService.getActivityKind();
     }
+
 
     @Override
     public Single<Ticket> sendTicket(Ticket ticket) {
@@ -67,6 +72,21 @@ public class ServerDataSource implements KalaBeanDataSource {
     @Override
     public Single<StoreList> getMarkets(int SellCenterCatID, int CityCenterID) {
         return apiService.getMarkets(SellCenterCatID , CityCenterID);
+    }
+
+    @Override
+    public Single<ShopCenterList> getShopCenterList(int idCenterCat) {
+        return apiService.getShopCenterList(idCenterCat);
+    }
+
+    @Override
+    public Single<FloorList> getFloorList(int idCenter) {
+        return apiService.getFloorList(idCenter);
+    }
+
+    @Override
+    public Single<StoreDif> storeDefinition(StoreDif storeDif) {
+        return apiService.storeDefinition(storeDif.getShopCenterKind(),storeDif.getShopCenterName(),storeDif.getStoreFloor(),storeDif.getFstoreName(),storeDif.getActivityField(),storeDif.getPhone(),storeDif.getFaddress(),storeDif.getCityid(),storeDif.getJobcatid(),storeDif.getFax(),storeDif.getEmail());
     }
 
 
