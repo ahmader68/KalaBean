@@ -15,31 +15,57 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
-import com.intek.kalabean.Login.LoginFragment;
+import com.intek.kalabean.Data.KalaBeanDataSource;
+import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Model.Init;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 import static com.intek.kalabean.Definition_Store.DefinitionFragment.PERMISSION_UPLOAD_REQUEST_CODE;
 import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
-import static com.intek.kalabean.Login.LoginFragment.GOOGLE_LOGIN_REQUEST;
 
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager manager;
     private FragmentTransaction transaction;
     SharedPreferences sharedPreferences;
-
+    private KalaBeanDataSource kalaBeanDataSource;
+    private CompositeDisposable compositeDisposable;
     public static int requestCodeCheck = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        kalaBeanDataSource = new KalaBeanRepository();
+        compositeDisposable = new CompositeDisposable();
+        kalaBeanDataSource.getInit().subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Init>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Init init) {
+                       getInit(init);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
         manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
         transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
@@ -101,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+    private void getInit(Init init){
+        Toast.makeText(this, init.getCompany(), Toast.LENGTH_SHORT).show();
     }
 //    private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
 //        String username = googleSignInAccount.getEmail();

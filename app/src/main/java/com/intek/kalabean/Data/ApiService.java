@@ -5,6 +5,7 @@ import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
+import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
@@ -96,4 +97,7 @@ public interface ApiService {
                                      @Field("jobcatid") int jobcatid,
                                      @Field("fax") String fax,
                                      @Field("email") String email);
+
+    @POST("default.aspx?Action=Init")
+    Single<Init> getInit();
 }
