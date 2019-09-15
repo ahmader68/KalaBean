@@ -7,10 +7,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 
 import com.intek.kalabean.Data.ServerDataSource;
@@ -28,7 +24,7 @@ import okhttp3.RequestBody;
 
 public class Upload {
 
-    ServerDataSource serverDataSource;
+    private ServerDataSource serverDataSource;
     private Handler handler;
     private CompositeDisposable compositeDisposable;
     private ProgressDialog dialog;

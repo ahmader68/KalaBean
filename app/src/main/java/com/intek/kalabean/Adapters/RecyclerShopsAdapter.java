@@ -14,7 +14,7 @@ import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+
 
 public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdapter.ShopViewHolder> {
 

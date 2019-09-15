@@ -1,6 +1,6 @@
 package com.intek.kalabean.Main_Page;
 
-import android.app.Dialog;
+
 import android.content.Context;
 
 import android.content.SharedPreferences;
@@ -10,8 +10,6 @@ import android.content.pm.PackageManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,8 +24,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
@@ -42,26 +38,14 @@ import com.intek.kalabean.Register.RegisterFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.util.Objects;
+
 import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
 
 public class MainFragment extends BaseFragment implements MainContract.View {
-    NavigationView navigationView;
-    DrawerLayout drawer;
-    ImageView hamburgMenu;
-    ViewPagerAdapter viewPagerAdapter;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    Dialog dialogLogin;
-    Button btnLoginDialogLogin;
-    TextInputEditText edtLoginDialogUsername;
-    TextInputEditText edtLoginDialogPassword;
-    TextInputLayout tilLoginDialogUsername;
-    TextInputLayout tilLoginDialogPassword;
-    String googleUsername;
-    String googleEmail;
-    Fragment fragment;
-    private int flag;
-    SharedPreferences sharedPreferences;
+    private DrawerLayout drawer;
+    private Fragment fragment;
+
     @Override
     public int getLayout() {
         return R.layout.fragment_main;
@@ -69,12 +53,12 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @Override
     public void setupViews() {
-        navigationView = rootView.findViewById(R.id.navigation);
-        tabLayout = rootView.findViewById(R.id.tabLayout);
-        viewPager = rootView.findViewById(R.id.viewPager);
+        NavigationView navigationView = rootView.findViewById(R.id.navigation);
+        TabLayout tabLayout = rootView.findViewById(R.id.tabLayout);
+        ViewPager viewPager = rootView.findViewById(R.id.viewPager);
         drawer = rootView.findViewById(R.id.drawer);
-        hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
+        ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         String check = sharedPreferences.getString("username",null);
         if(check != null){
             Menu menu = navigationView.getMenu();
@@ -88,7 +72,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             }
         });
 
-        viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
         viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
         viewPagerAdapter.addFragment(new ComplexFragment(), "مجتمع تجاری");
         viewPagerAdapter.addFragment(new ChainFragment(), "فروشگاه زنجیره ای");
@@ -99,15 +83,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-
-        dialogLogin = new Dialog(getViewContext());
-        dialogLogin.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialogLogin.setContentView(R.layout.fragment_login);
-        btnLoginDialogLogin = dialogLogin.findViewById(R.id.btn_fragmentLogin_login);
-        edtLoginDialogUsername = dialogLogin.findViewById(R.id.edt_fragmentLogin_username);
-        edtLoginDialogPassword = dialogLogin.findViewById(R.id.edt_fragmentLogin_password);
-        tilLoginDialogUsername = dialogLogin.findViewById(R.id.til_fragmentLogin_username);
-        tilLoginDialogPassword = dialogLogin.findViewById(R.id.til_fragmentLogin_password);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -123,7 +98,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new EditUserFragment();
                 }
-                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.frm_MainActivity_mainLayout,fragment);
                 transaction.commit();
@@ -139,16 +114,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    CropImage.activity()
-                            .setGuidelines(CropImageView.Guidelines.ON)
-                            .start(getActivity());
-                } else {
-                    Toast.makeText(getViewContext(), "اجازه دسترسی داده نشد.", Toast.LENGTH_SHORT).show();
-                }
-                break;
+        if (requestCode == PERMISSION_REQUEST) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(Objects.requireNonNull(getActivity()));
+            } else {
+                Toast.makeText(getViewContext(), "اجازه دسترسی داده نشد.", Toast.LENGTH_SHORT).show();
             }
         }
     }

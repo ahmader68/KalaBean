@@ -1,5 +1,6 @@
 package com.intek.kalabean.Adapters;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,11 +13,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragments;
     private List<String> titles;
     public ViewPagerAdapter(FragmentManager fm) {
-        super(fm);
+        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         fragments = new ArrayList<>();
         titles = new ArrayList<>();
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int i) {
         return fragments.get(i);
