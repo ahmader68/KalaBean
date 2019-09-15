@@ -47,7 +47,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
 
         String imgUrl = complex.getImage();
         final String[] separated = imgUrl.split("'");
-        String url = separated[0];
+        final String url = separated[0];
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(complex.getTitleFA());
@@ -70,6 +70,8 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("SellCenterID" , complex.getSellCenterID());
+                bundle.putString("image" , url);
+                bundle.putString("title" , complex.getTitleFA());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();
