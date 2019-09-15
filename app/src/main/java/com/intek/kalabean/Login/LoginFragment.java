@@ -36,13 +36,13 @@ import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 
 public class LoginFragment extends BaseFragment implements LoginContract.View {
-    TextInputLayout tilFragmentLoginUsername;
-    TextInputLayout tilFragmentLoginPassword;
-    TextInputEditText edtFragmentLoginUsername;
-    TextInputEditText edtFragmentLoginPassword;
-    SignInButton btnFragmentLogingLogin;
-    Button btnFragmentLoginLogin;
-    ConstraintLayout conLogin;
+    private TextInputLayout tilFragmentLoginUsername;
+    private TextInputLayout tilFragmentLoginPassword;
+    private TextInputEditText edtFragmentLoginUsername;
+    private TextInputEditText edtFragmentLoginPassword;
+    private SignInButton btnFragmentLogingLogin;
+    private Button btnFragmentLoginLogin;
+    private ConstraintLayout conLogin;
     User user;
     LoginContract.Presenter presenter;
     private final int GOOGLE_LOGIN_REQUEST = 101;
