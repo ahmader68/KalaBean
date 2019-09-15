@@ -13,7 +13,7 @@ public class ComplexPresenter implements ComplexContract.Presenter {
     private ComplexContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    public ComplexPresenter(KalaBeanDataSource kalaBeanDataSource){
+    ComplexPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
     @Override
