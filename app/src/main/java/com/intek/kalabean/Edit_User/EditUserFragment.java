@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Classes.G;
 import com.intek.kalabean.Classes.Upload;
+import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -92,7 +93,6 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     public void setupViews() {
 
         conEditUser = rootView.findViewById(R.id.con_fragmentEditUser_mainLayout);
-        conEditUser.setRotationY(180);
 
         rgFragmentEditUserGender = rootView.findViewById(R.id.rg_fragmentEditUser_gender);
         rbFragmetEditUserMan = rootView.findViewById(R.id.rb_fragmentEditUser_man);
@@ -804,6 +804,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     }
 
     public void takePicture() {
+        MainActivity.requestCodeCheck = 2;
         CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(getActivity());

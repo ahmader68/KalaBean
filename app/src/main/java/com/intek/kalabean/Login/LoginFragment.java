@@ -10,19 +10,23 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import android.preference.PreferenceManager;
+import android.se.omapi.SEService;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +49,8 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     private ConstraintLayout conLogin;
     User user;
     LoginContract.Presenter presenter;
-    private final int GOOGLE_LOGIN_REQUEST = 101;
+    GoogleApiClient googleApiClient;
+    public static final int GOOGLE_LOGIN_REQUEST = 101;
     private static final String TAG = "AndroidClarified";
     GoogleSignInOptions gso;
     GoogleSignInClient googleSignInClient;
@@ -55,6 +60,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         super.onCreate(savedInstanceState);
         user = new User();
         presenter = new LoginPresenter(new KalaBeanRepository());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 //.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
                 .requestEmail()
@@ -95,7 +101,6 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = googleSignInClient.getSignInIntent();
-                signInIntent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
                 startActivityForResult(signInIntent,GOOGLE_LOGIN_REQUEST);
             }
         });
@@ -118,7 +123,18 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
             }
         }
     }
+    private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
+        String username = googleSignInAccount.getEmail();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username",username);
+        editor.apply();
+        editor.commit();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.commit();
 
+    }
     @Override
     public Context getViewContext() {
         return getContext();
@@ -134,18 +150,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
             return true;
         }
     }
-    private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
-        String username = googleSignInAccount.getEmail();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username",username);
-        editor.apply();
-        editor.commit();
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
-        transaction.commit();
 
-    }
     private boolean validatePassword(){
         String passwordInput = edtFragmentLoginPassword.getText().toString().trim();
         if(passwordInput.isEmpty()){
