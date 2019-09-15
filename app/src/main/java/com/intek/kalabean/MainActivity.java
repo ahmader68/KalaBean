@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager manager;
     private FragmentTransaction transaction;
-    SharedPreferences sharedPreferences;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable;
     public static int requestCodeCheck = 0;
@@ -115,15 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
                     }
                     break;
-//                case GOOGLE_LOGIN_REQUEST:
-//                    try{
-//                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//                        GoogleSignInAccount account = task.getResult(ApiException.class);
-//                        onLoggedIn(account);
-//                    }catch (ApiException e){
-//                        Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-//                    }
-//                    break;
+
 
             }
         }
@@ -131,16 +122,4 @@ public class MainActivity extends AppCompatActivity {
     private void getInit(Init init){
         Toast.makeText(this, init.getCompany(), Toast.LENGTH_SHORT).show();
     }
-//    private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
-//        String username = googleSignInAccount.getEmail();
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("username",username);
-//        editor.apply();
-//        editor.commit();
-//        FragmentManager manager = getSupportFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
-//        transaction.commit();
-//
-//    }
 }
