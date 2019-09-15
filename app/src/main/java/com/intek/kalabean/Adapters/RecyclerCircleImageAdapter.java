@@ -42,7 +42,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
 
         String imgUrl = store.getImage();
         final String[] separated = imgUrl.split("'");
-        String url = separated[0];
+        final String url = separated[0];
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(store.getTitleFA());
@@ -65,6 +65,8 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("SellCenterID" , store.getSellCenterID());
+                bundle.putString("image" , url);
+                bundle.putString("title" , store.getTitleFA());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();

@@ -50,7 +50,7 @@ public class RecyclerChainStoreAdapter extends RecyclerView.Adapter<RecyclerChai
 
         String imgUrl = chainStore.getImage();
         final String[] separated = imgUrl.split("'");
-        String url = separated[0];
+        final String url = separated[0];
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(chainStore.getTitleFA());
@@ -73,6 +73,8 @@ public class RecyclerChainStoreAdapter extends RecyclerView.Adapter<RecyclerChai
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("SellCenterID" , chainStore.getSellCenterID());
+                bundle.putString("image" , url);
+                bundle.putString("title" , chainStore.getTitleFA());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();
