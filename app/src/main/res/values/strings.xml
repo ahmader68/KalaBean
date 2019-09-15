@@ -79,4 +79,5 @@
     <string name="wifi">WiFi</string>
     <string name="elevator">Elevator</string>
     <string name="ShopName">نام فروشگاه</string>
+    <string name="shopsName">نام بازار</string>
 </resources>
