@@ -104,7 +104,7 @@ public class ServerDataSource implements KalaBeanDataSource {
 
     @Override
     public Single<StoreDif> storeDefinition(StoreDif storeDif) {
-        return apiService.storeDefinition(storeDif.getShopCenterKind(),storeDif.getShopCenterName(),storeDif.getStoreFloor(),storeDif.getFstoreName(),storeDif.getActivityField(),storeDif.getPhone(),storeDif.getFaddress(),storeDif.getCityid(),storeDif.getJobcatid(),storeDif.getFax(),storeDif.getEmail());
+        return apiService.storeDefinition(storeDif.getShopCenterKind(),storeDif.getShopCenterName(),storeDif.getStoreFloor(),storeDif.getFstoreName(),storeDif.getPhone(),storeDif.getFaddress(),storeDif.getCityid(),storeDif.getJobcatid(),storeDif.getFax(),storeDif.getEmail());
     }
 
 

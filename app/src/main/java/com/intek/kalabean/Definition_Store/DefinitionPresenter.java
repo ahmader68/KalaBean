@@ -97,6 +97,7 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
 
                     @Override
                     public void onSuccess(ShopCenterList shopCenterList) {
+
                         view.getShopCenterList(shopCenterList);
                     }
 
@@ -141,7 +142,17 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
 
                     @Override
                     public void onSuccess(StoreDif storeDif) {
-                        view.getStoreId(storeDif);
+                        if(storeDif.getResult() <= -1 && storeDif.getResult() >= -2){
+                            switch (storeDif.getResult()){
+                                case -1:
+                                    view.showMessage("لطفا همه گزینه های الزامی را وارد کنید");
+                                    break;
+                                case -2:
+                                    view.showMessage("عملیات ثبت با خطا روبرو شد، لطفا مجدد تلاش کنید");
+                            }
+                        }else {
+                            view.getStoreId(storeDif);
+                        }
                     }
 
                     @Override

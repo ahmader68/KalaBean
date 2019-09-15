@@ -90,7 +90,6 @@ public interface ApiService {
                                      @Field("shopCenterName") int shopCenterName,
                                      @Field("storeFloor") int storeFloor,
                                      @Field("fstoreName") String fstoreName,
-                                     @Field("activityField") int activityField,
                                      @Field("phone") String phone,
                                      @Field("faddress") String faddress,
                                      @Field("cityid") int cityid,

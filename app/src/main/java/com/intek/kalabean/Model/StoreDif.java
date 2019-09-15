@@ -8,7 +8,6 @@ public class StoreDif {
     private String fstoreName;
     private String estoreName;
     private String astoreName;
-    private int activityField;
     private String phone;
     private String faddress;
     private int cityid;
@@ -79,14 +78,6 @@ public class StoreDif {
 
     public void setAstoreName(String astoreName) {
         this.astoreName = astoreName;
-    }
-
-    public int getActivityField() {
-        return activityField;
-    }
-
-    public void setActivityField(int activityField) {
-        this.activityField = activityField;
     }
 
     public String getPhone() {

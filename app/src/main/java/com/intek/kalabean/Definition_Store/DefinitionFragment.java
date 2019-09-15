@@ -363,7 +363,6 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     int complexName;
                     int floor;
                     String fName;
-                    int activityKind;
                     String phone;
                     String fAddress;
                     int jobCatid;
@@ -374,7 +373,6 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     complexName = shopCenterId;
                     floor = floorId;
                     fName = edtFragmentDefinitionStoreName.getText().toString();
-                    activityKind = activityId;
                     phone = edtFragmentDefinitionPhone.getText().toString();
                     fAddress = edtFragmentDefinitionAddressFa.getText().toString();
                     fax = edtFragmentDefinitionFax.getText().toString();
@@ -384,7 +382,6 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     storeDif.setShopCenterName(complexName);
                     storeDif.setStoreFloor(floor);
                     storeDif.setFstoreName(fName);
-                    storeDif.setActivityField(activityKind);
                     storeDif.setPhone(phone);
                     storeDif.setFaddress(fAddress);
                     storeDif.setFax(fax);
