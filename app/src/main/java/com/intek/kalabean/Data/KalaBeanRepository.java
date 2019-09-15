@@ -3,8 +3,13 @@ package com.intek.kalabean.Data;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
+import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.MallKindList;
+import com.intek.kalabean.Model.ShopCenter;
+import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.ShopsList;
+import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
@@ -38,7 +43,7 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<List<ActivityKind>> getActivityKind() {
+    public Single<ActivityKindList> getActivityKind() {
         return serverDataSource.getActivityKind();
     }
 
@@ -65,5 +70,20 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<ShopsList> getShops(int SellCenterID, int FloorID) {
         return serverDataSource.getShops(SellCenterID , FloorID);
+    }
+
+    @Override
+    public Single<ShopCenterList> getShopCenterList(int idCenterCat) {
+        return serverDataSource.getShopCenterList(idCenterCat);
+    }
+
+    @Override
+    public Single<FloorList> getFloorList(int idCenter) {
+        return serverDataSource.getFloorList(idCenter);
+    }
+
+    @Override
+    public Single<StoreDif> storeDefinition(StoreDif storeDif) {
+        return serverDataSource.storeDefinition(storeDif);
     }
 }

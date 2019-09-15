@@ -2,7 +2,7 @@ package com.intek.kalabean.Model;
 
 public class ActivityKind {
     private int id;
-    private String activityName;
+    private String name;
 
     public int getId() {
         return id;
@@ -12,11 +12,11 @@ public class ActivityKind {
         this.id = id;
     }
 
-    public String getActivityName() {
-        return activityName;
+    public String getName() {
+        return name;
     }
 
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

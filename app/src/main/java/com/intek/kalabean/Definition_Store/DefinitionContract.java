@@ -3,7 +3,12 @@ package com.intek.kalabean.Definition_Store;
 import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
 import com.intek.kalabean.Model.ActivityKind;
+import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.MallKindList;
+import com.intek.kalabean.Model.ShopCenter;
+import com.intek.kalabean.Model.ShopCenterList;
+import com.intek.kalabean.Model.StoreDif;
 
 import java.util.List;
 
@@ -11,11 +16,16 @@ public interface DefinitionContract {
     interface View extends BaseView{
         void showMessage(String msg);
         void getStoreKind(MallKindList mallKindList);
-        void getActivityKind(List<ActivityKind> activityKinds);
+        void getActivityKind(ActivityKindList activityKindList);
+        void getShopCenterList(ShopCenterList shopCenterList);
+        void getFloorList(FloorList floorList);
+        void getStoreId(StoreDif storeDif);
     }
     interface Presenter extends BasePresenter<View>{
         void storeKind();
         void activityKind();
-        //void storeDenifition(Store store);
+        void ShopCenterList(int idCenterCat);
+        void floorList(int idCenter);
+        void storeDefinition(StoreDif storeDif);
     }
 }

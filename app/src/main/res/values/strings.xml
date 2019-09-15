@@ -78,6 +78,26 @@
     <string name="shop">Shop</string>
     <string name="wifi">WiFi</string>
     <string name="elevator">Elevator</string>
+    <string name="edt_fragmentDefinition_storeName">نام فارسی فروشگاه</string>
+    <string name="edt_fragmentDefinition_storeNameEn">Store name</string>
+    <string name="edt_fragmentDefinition_storeNameAr">اسم المتجر</string>
+    <string name="btn_fragmentDefinition_addActivity">افزودن فعالیت</string>
+    <string name="edt_fragmentDefinition_fax">فکس</string>
+    <string name="edt_fragmentDefinition_workHour">ساعت کاری</string>
+    <string name="edt_fragmentDefinition_off">درصد حراج</string>
+    <string name="edt_fragmentDefintion_addressFA">آدرس فارسی فروشگاه</string>
+    <string name="edt_fragmentDefinition_addressAR">عنوان المتجر</string>
+    <string name="edt_fragmentDefinition_addressEN">Store address</string>
+    <string name="edt_fragmentDefinition_descriptionFA">توضیحات فارسی</string>
+    <string name="edt_fragmentDefinition_descriptionEN">Description</string>
+    <string name="edt_fragmentDefinition_artificialTour">لینک تور مجازی</string>
+    <string name="edt_fragmentDefinition_twitter">twitter</string>
+    <string name="edt_fragmentDefinition_linkedIn">LinkedIn</string>
+    <string name="edt_fragmentDefinition_google">Google</string>
+    <string name="edt_fragmentDefinition_telegram">Telegram</string>
+    <string name="edt_fragmentDefinition_facebook">Facebook</string>
+    <string name="edt_fragmentDefinition_whatsApp">WhatsApp</string>
     <string name="ShopName">نام فروشگاه</string>
     <string name="shopsName">نام بازار</string>
+    <string name="clientID">782676318210-skc96tqs45ju3f0nk7e0g2enaqqagoer.apps.googleusercontent.com</string>
 </resources>
