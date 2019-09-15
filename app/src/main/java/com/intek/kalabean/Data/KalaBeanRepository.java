@@ -5,6 +5,7 @@ import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
+import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
@@ -70,6 +71,11 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<ShopsList> getShops(int SellCenterID, int FloorID) {
         return serverDataSource.getShops(SellCenterID , FloorID);
+    }
+
+    @Override
+    public Single<Init> getInit() {
+        return serverDataSource.getInit();
     }
 
     @Override
