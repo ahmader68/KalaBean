@@ -29,24 +29,25 @@ import retrofit2.http.Query;
 public interface ApiService {
     @FormUrlEncoded
     @POST("default.aspx?Action=Login")
-    Single<User>login(@Field("usr") String usr,
-                      @Field("pwd") String pwd,
-                      @Field("ShowImageType") int showimage);
+    Single<User> login(@Field("usr") String usr,
+                       @Field("pwd") String pwd,
+                       @Field("ShowImageType") int showimage);
+
     @FormUrlEncoded
     @POST("default.aspx?Action=Register")
-    Single<User>register(@Field("firstname") String firstname,
-                         @Field("lastname") String lastname,
-                         @Field("pwd") String pwd,
-                         @Field("province") String province,
-                         @Field("city") String city,
-                         @Field("mobile") String mobile,
-                         @Field("pwd2") String pwd2);
+    Single<User> register(@Field("firstname") String firstname,
+                          @Field("lastname") String lastname,
+                          @Field("pwd") String pwd,
+                          @Field("province") String province,
+                          @Field("city") String city,
+                          @Field("mobile") String mobile,
+                          @Field("pwd2") String pwd2);
 
     @POST("default.aspx?Action=shopCenterList")
-    Single<ShopCenterList>getShopCenterList(@Query("idCenterCat") int idCenterCat);
+    Single<ShopCenterList> getShopCenterList(@Query("idCenterCat") int idCenterCat);
 
     @POST("default.aspx?Action=floorList")
-    Single<FloorList>getFloorList(@Query("idCenter") int idCenter);
+    Single<FloorList> getFloorList(@Query("idCenter") int idCenter);
 
     @POST("")
     Single<String> uploadFile(@Part MultipartBody.Part file, @Part("name") RequestBody name);
@@ -81,8 +82,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("default.aspx?Action=ShowShopsList")
     Single<ShopsList> getShops(@Field("SellCenterID") int SellCenterID,
-                                     @Field("FloorID") int FloorID);
-                                 @Field("CityId") int CityCenterID);
+                               @Field("FloorID") int FloorID);
 
     @FormUrlEncoded
     @POST("default.aspx?Action=store_definition")

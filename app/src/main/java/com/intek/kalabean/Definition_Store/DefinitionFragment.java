@@ -16,17 +16,19 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.Floor;
 import com.intek.kalabean.Model.FloorList;
-import com.intek.kalabean.Model.MallKind;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
@@ -170,7 +172,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private int cityId;
 
 
-    private int PERMISSION_UPLOAD_REQUEST_CODE = 200;
+    public static final int PERMISSION_UPLOAD_REQUEST_CODE = 200;
 
     private List<String> mkindsName;
     private List<String> akindName;
@@ -178,7 +180,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private List<ActivityKind> akinds;
     private ArrayAdapter<String> activityKindsArrayAdapter;
     private MaterialSpinner spMallKind;
-    private MaterialSpinner spActivityKind;
+   // private MaterialSpinner spActivityKind;
     private ArrayAdapter<String> storeKindArrayAdapter;
     public ConstraintLayout con_fragmentDefinition_mainLayout;
     @Override
@@ -377,7 +379,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     fAddress = edtFragmentDefinitionAddressFa.getText().toString();
                     fax = edtFragmentDefinitionFax.getText().toString();
                     email = edtFragmentDefinitionEmail.getText().toString();
-
+                    jobCatid = activityId;
                     storeDif.setShopCenterKind(storeKind);
                     storeDif.setShopCenterName(complexName);
                     storeDif.setStoreFloor(floor);
@@ -388,6 +390,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     storeDif.setFax(fax);
                     storeDif.setEmail(email);
                     storeDif.setCityid(cityId);
+                    storeDif.setJobcatid(jobCatid);
                     presenter.storeDefinition(storeDif);
                 }
             }
@@ -419,7 +422,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     public void getStoreKind(MallKindList mallKinds) {
         malkind = new ArrayList<>();
         spMalKindList = mallKinds;
-        for (MallKind kind : mallKinds.getItems()) {
+        for (MallKindList.MallKind kind : mallKinds.getItems()) {
             malkind.add(kind.getName());
         }
         malKindArrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, malkind);
@@ -466,7 +469,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
     @Override
     public void getStoreId(StoreDif storeDif) {
-        int storeId = storeDif.getId();
+        int storeId = storeDif.getResult();
         if(storeId > 0){
             showMessage("فروشگاه با موفقیت ثبت شد");
         }

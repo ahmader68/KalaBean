@@ -15,6 +15,15 @@ public class StoreDif {
     private int jobcatid;
     private String fax;
     private String email;
+    private int result;
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
 
     public int getId() {
         return Id;

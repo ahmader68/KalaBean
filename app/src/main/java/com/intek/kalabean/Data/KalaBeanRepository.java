@@ -8,6 +8,7 @@ import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
+import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;

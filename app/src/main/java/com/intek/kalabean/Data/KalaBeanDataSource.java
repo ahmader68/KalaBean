@@ -29,7 +29,6 @@ public interface KalaBeanDataSource {
     Single<MallKindList> getStoreKind();
     Single<ActivityKindList> getActivityKind();
     Single<Ticket> sendTicket(Ticket ticket);
-    Single<StoreList> getMarkets(int SellCenterCatID , int CityCenterID);
     Single<ShopCenterList>getShopCenterList(int idCenterCat);
     Single<FloorList>getFloorList(int idCenter);
     Single<StoreDif> storeDefinition(StoreDif storeDif);

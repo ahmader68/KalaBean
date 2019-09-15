@@ -4,7 +4,6 @@ import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
-import com.intek.kalabean.Model.MallKind;
 import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
