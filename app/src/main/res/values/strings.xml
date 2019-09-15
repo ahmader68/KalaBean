@@ -100,4 +100,24 @@
     <string name="ShopName">نام فروشگاه</string>
     <string name="shopsName">نام بازار</string>
     <string name="clientID">782676318210-skc96tqs45ju3f0nk7e0g2enaqqagoer.apps.googleusercontent.com</string>
+    <string name="picture">عکس</string>
+    <string name="product_image">تصویر محصول :</string>
+    <string name="film">فیلم تبلیغاتی محصول</string>
+    <string name="uploadvideo">آپلود فیلم</string>
+    <string name="Cat">دسته</string>
+    <string name="productName">نام محصول</string>
+    <string name="Farsi">فارسی</string>
+    <string name="english">English</string>
+    <string name="Arabic">العربی</string>
+    <string name="price">قیمت</string>
+    <string name="Rial">ریال</string>
+    <string name="reduction">تخفیف</string>
+    <string name="percent">%</string>
+    <string name="order">ترتیب</string>
+    <string name="number">تعداد</string>
+    <string name="KeyWords">کلمات کلیدی</string>
+    <string name="NewProduct">محصول جدید</string>
+    <string name="Description">توضیحات</string>
+    <string name="save">دخیره</string>
+    <string name="formRemove">حذف فرم</string>
 </resources>
