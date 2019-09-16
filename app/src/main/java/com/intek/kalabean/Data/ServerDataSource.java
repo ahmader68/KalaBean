@@ -11,6 +11,9 @@ import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
 
+import com.intek.kalabean.Model.Product;
+import com.intek.kalabean.Model.ShopCenter;
+
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.ShopsList;
@@ -96,6 +99,11 @@ public class ServerDataSource implements KalaBeanDataSource {
     @Override
     public Single<Init> getInit() {
         return apiService.getInit();
+    }
+
+    @Override
+    public Single<List<Product>> getProduct(int shopID) {
+        return apiService.getProduct(shopID);
     }
 
     @Override

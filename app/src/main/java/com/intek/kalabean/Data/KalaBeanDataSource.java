@@ -8,6 +8,9 @@ import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
 
+import com.intek.kalabean.Model.Product;
+import com.intek.kalabean.Model.ShopCenter;
+
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.ShopsList;
@@ -25,7 +28,7 @@ import retrofit2.http.Part;
 
 public interface KalaBeanDataSource {
     Single<User> register(User user);
-    Single<String> upload(@Part MultipartBody.Part file, @Part("name") RequestBody name);
+    Single<String> upload(MultipartBody.Part file,RequestBody name);
     Single<User> login(User user);
     Single<MallKindList> getStoreKind();
     Single<ActivityKindList> getActivityKind();
@@ -39,4 +42,5 @@ public interface KalaBeanDataSource {
     Single<ChainStoreList> getChainStore(int SellCenterCatID , int CityId);
     Single<ShopsList> getShops(int SellCenterID , int FloorID);
     Single<Init> getInit();
+    Single<List<Product>> getProduct(int shopID);
 }
