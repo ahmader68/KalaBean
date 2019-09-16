@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Base.BaseView;
 import com.intek.kalabean.Data.KalaBeanRepository;
 
 public class AddProductFragment extends BaseFragment implements AddProductContract.View {
