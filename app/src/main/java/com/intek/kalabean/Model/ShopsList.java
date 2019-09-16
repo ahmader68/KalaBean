@@ -16,6 +16,7 @@ public class ShopsList {
 
     public class Shops {
         private int Shopid;
+        private int SellCenterID;
         private String TitleFA;
         private String image;
 
@@ -25,6 +26,14 @@ public class ShopsList {
 
         public void setShopid(int shopid) {
             Shopid = shopid;
+        }
+
+        public int getSellCenterID() {
+            return SellCenterID;
+        }
+
+        public void setSellCenterID(int sellCenterID) {
+            SellCenterID = sellCenterID;
         }
 
         public String getTitleFA() {
@@ -43,4 +52,6 @@ public class ShopsList {
             this.image = image;
         }
     }
+
+
 }
