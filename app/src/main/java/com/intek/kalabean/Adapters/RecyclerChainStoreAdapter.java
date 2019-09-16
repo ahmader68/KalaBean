@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Model.ChainStoreList;
-import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Shops.ShopsFragment;
 import com.squareup.picasso.Picasso;
@@ -75,6 +74,7 @@ public class RecyclerChainStoreAdapter extends RecyclerView.Adapter<RecyclerChai
                 bundle.putInt("SellCenterID" , chainStore.getSellCenterID());
                 bundle.putString("image" , url);
                 bundle.putString("title" , chainStore.getTitleFA());
+                bundle.putInt("flag",chainStore.getSellCenterCatID());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();

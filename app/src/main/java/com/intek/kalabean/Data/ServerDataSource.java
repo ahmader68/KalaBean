@@ -3,7 +3,7 @@ package com.intek.kalabean.Data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
-import com.intek.kalabean.Model.ActivityKind;
+
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
@@ -33,7 +33,7 @@ public class ServerDataSource implements KalaBeanDataSource {
             .setLenient()
             .create();
     private ApiService apiService;
-    public ServerDataSource(){
+    ServerDataSource(){
         Retrofit retrofit = new Retrofit.Builder()
                 .client(Network.getOkHttpClient())
                 .baseUrl("http://kalabean.com/wservice/")

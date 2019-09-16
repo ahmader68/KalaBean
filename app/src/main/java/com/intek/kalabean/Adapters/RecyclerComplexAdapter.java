@@ -72,6 +72,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
                 bundle.putInt("SellCenterID" , complex.getSellCenterID());
                 bundle.putString("image" , url);
                 bundle.putString("title" , complex.getTitleFA());
+                bundle.putInt("flag",complex.getSellCenterCatID());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();

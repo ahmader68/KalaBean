@@ -9,23 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Model.StoreList;
+
 import com.intek.kalabean.R;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class BestFragment extends BaseFragment implements BestContract.View {
     private BestContract.Presenter presenter;
-    private List<StoreList.Store> stores;
-    private RecyclerCircleImageAdapter bestAdapter;
-    private RecyclerView rvBest;
-    private ConstraintLayout conBest;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new BestPresenter();
-        stores = new ArrayList<>();
+
     }
 
     @Override
@@ -35,12 +31,12 @@ public class BestFragment extends BaseFragment implements BestContract.View {
 
     @Override
     public void setupViews() {
-        conBest = rootView.findViewById(R.id.con_fragmentBest_mainLayout);
-        rvBest = rootView.findViewById(R.id.rv_fragmentBest_list);
+        ConstraintLayout conBest = rootView.findViewById(R.id.con_fragmentBest_mainLayout);
+        RecyclerView rvBest = rootView.findViewById(R.id.rv_fragmentBest_list);
         conBest.setRotationY(180);
         //bestAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         rvBest.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
-        rvBest.setAdapter(bestAdapter);
+        //rvBest.setAdapter(bestAdapter);
     }
 
     @Override

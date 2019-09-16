@@ -3,7 +3,9 @@ package com.intek.kalabean;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+
 import androidx.annotation.NonNull;
 
 import androidx.annotation.Nullable;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(Init init) {
-                       getInit(init);
+                        getInit(init);
                     }
 
                     @Override
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 });
         manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
-        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.replace(R.id.frm_MainActivity_mainLayout, new MainFragment());
         transaction.commit();
     }
 
@@ -84,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             }
-            case PERMISSION_UPLOAD_REQUEST_CODE:{
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            case PERMISSION_UPLOAD_REQUEST_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     CropImage.activity()
                             .setGuidelines(CropImageView.Guidelines.ON)
                             .start(this);
-                }else{
+                } else {
                     Toast.makeText(this, "اجازه دسترسی داده نشد.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -105,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
                     CropImage.ActivityResult result = CropImage.getActivityResult(data);
                     if (resultCode == RESULT_OK) {
-                        if(requestCodeCheck == 1) {
+                        if (requestCodeCheck == 1) {
                             Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_storePic));
-                        }else if(requestCodeCheck == 2){
-                            Picasso.get().load(result.getUri()).into((ImageView)findViewById(R.id.img_fragmentEditUser_profile));
+                        } else if (requestCodeCheck == 2) {
+                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
                         }
                     } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
@@ -119,7 +121,25 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    private void getInit(Init init){
+
+    private void getInit(Init init) {
         Toast.makeText(this, init.getCompany(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
+
+//Get App Version
+
+
+//        try{
+//                PackageInfo packageInfo = this.getPackageManager().getPackageInfo(getPackageName(),0);
+//                String versionName = packageInfo.versionName;
+//                int versionCode = packageInfo.versionCode;
+//                Toast.makeText(this, versionName + "/" + versionCode, Toast.LENGTH_SHORT).show();
+//                }catch (PackageManager.NameNotFoundException e){
+//                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+//                }

@@ -19,7 +19,16 @@ public class ComplexList {
         private String image;
         private String ShopCount;
         private String Address;
+        private int SellCenterCatID;
         private List<SubSettings> settings;
+
+        public int getSellCenterCatID() {
+            return SellCenterCatID;
+        }
+
+        public void setSellCenterCatID(int sellCenterCatID) {
+            SellCenterCatID = sellCenterCatID;
+        }
 
         public int getSellCenterID() {
             return SellCenterID;
