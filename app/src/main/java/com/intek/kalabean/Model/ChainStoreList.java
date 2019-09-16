@@ -20,8 +20,17 @@ public class ChainStoreList {
         private String ShopCount;
         private int floorCount;
         private String Address;
+        private int SellCenterCatID;
 
         private List<SubSettings> settings;
+
+        public int getSellCenterCatID() {
+            return SellCenterCatID;
+        }
+
+        public void setSellCenterCatID(int sellCenterCatID) {
+            SellCenterCatID = sellCenterCatID;
+        }
 
         public int getSellCenterID() {
             return SellCenterID;

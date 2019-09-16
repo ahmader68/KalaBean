@@ -20,6 +20,7 @@ import com.intek.kalabean.R;
 import com.intek.kalabean.ShowShop.ShowShopFragment;
 import com.squareup.picasso.Picasso;
 
+
 public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdapter.ShopViewHolder> {
 
     private ShopsList shopsList;

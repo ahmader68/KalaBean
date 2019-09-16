@@ -67,6 +67,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
                 bundle.putInt("SellCenterID" , store.getSellCenterID());
                 bundle.putString("image" , url);
                 bundle.putString("title" , store.getTitleFA());
+                bundle.putInt("flag",store.getSellCenterCatID());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();
