@@ -125,6 +125,11 @@ public class MainActivity extends AppCompatActivity {
     private void getInit(Init init) {
         Toast.makeText(this, init.getCompany(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
 
 //Get App Version

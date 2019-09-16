@@ -21,7 +21,7 @@ public class StoreList {
         private String ShopCount;
         private int floorCount;
         private String Address;
-
+        private int SellCenterCatID;
         private List<SubSettings> settings;
 
         private boolean stair;
@@ -33,6 +33,14 @@ public class StoreList {
         private boolean shop;
         private boolean wifi;
         private boolean elevator;
+
+        public int getSellCenterCatID() {
+            return SellCenterCatID;
+        }
+
+        public void setSellCenterCatID(int sellCenterCatID) {
+            SellCenterCatID = sellCenterCatID;
+        }
 
         public int getSellCenterID() {
             return SellCenterID;

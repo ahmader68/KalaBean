@@ -16,11 +16,6 @@ import com.intek.kalabean.R;
 
 public class BestFragment extends BaseFragment implements BestContract.View {
     private BestContract.Presenter presenter;
-    private RecyclerCircleImageAdapter bestAdapter;
-
-    public BestFragment(RecyclerCircleImageAdapter bestAdapter) {
-        this.bestAdapter = bestAdapter;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +36,7 @@ public class BestFragment extends BaseFragment implements BestContract.View {
         conBest.setRotationY(180);
         //bestAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         rvBest.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
-        rvBest.setAdapter(bestAdapter);
+        //rvBest.setAdapter(bestAdapter);
     }
 
     @Override

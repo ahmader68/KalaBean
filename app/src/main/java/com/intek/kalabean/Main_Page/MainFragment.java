@@ -3,10 +3,14 @@ package com.intek.kalabean.Main_Page;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
 
+import android.os.Handler;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +49,7 @@ import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
 public class MainFragment extends BaseFragment implements MainContract.View {
     private DrawerLayout drawer;
     private Fragment fragment;
+    private boolean checkExit = false;
 
     @Override
     public int getLayout() {
@@ -59,8 +64,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         drawer = rootView.findViewById(R.id.drawer);
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
-        String check = sharedPreferences.getString("username",null);
-        if(check != null){
+        String check = sharedPreferences.getString("username", null);
+        if (check != null) {
             Menu menu = navigationView.getMenu();
             menu.findItem(R.id.login).setVisible(false);
             menu.findItem(R.id.sabtenam).setVisible(false);
@@ -94,13 +99,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 } else if (id == R.id.sabtenam) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new RegisterFragment();
-                }else if(id == R.id.editInfo){
+                } else if (id == R.id.editInfo) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new EditUserFragment();
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.frm_MainActivity_mainLayout,fragment);
+                transaction.replace(R.id.frm_MainActivity_mainLayout, fragment);
                 transaction.commit();
                 return true;
             }
@@ -123,5 +128,45 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 Toast.makeText(getViewContext(), "اجازه دسترسی داده نشد.", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() == null) {
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (drawer.isDrawerOpen(GravityCompat.START)) {
+                        drawer.closeDrawer(GravityCompat.START);
+                    } else {
+                        if (checkExit) {
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            Objects.requireNonNull(getActivity()).finish();
+                            System.exit(0);
+                        } else if (!checkExit) {
+                            Toast.makeText(getViewContext(), "برای خروج دکمه بازگشت را مجدد کلیک کنید", Toast.LENGTH_SHORT).show();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    checkExit = false;
+                                }
+                            },2000);
+                            checkExit = true;
+                        }
+                    }
+                }
+                return false;
+            }
+        });
+
     }
 }
