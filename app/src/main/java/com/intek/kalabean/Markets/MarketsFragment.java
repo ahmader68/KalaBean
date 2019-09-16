@@ -68,6 +68,7 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
+
     @Override
     public void getMarketList(StoreList stores) {
         marketsAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
