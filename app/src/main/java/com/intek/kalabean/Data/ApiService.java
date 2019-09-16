@@ -1,14 +1,16 @@
 package com.intek.kalabean.Data;
 
-import com.intek.kalabean.Model.ActivityKind;
+
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
+
 import com.intek.kalabean.Model.Product;
 import com.intek.kalabean.Model.ShopCenter;
+
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.ShopsList;

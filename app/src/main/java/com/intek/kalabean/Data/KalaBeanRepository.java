@@ -7,6 +7,7 @@ import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
+
 import com.intek.kalabean.Model.Product;
 import com.intek.kalabean.Model.ShopCenter;
 
