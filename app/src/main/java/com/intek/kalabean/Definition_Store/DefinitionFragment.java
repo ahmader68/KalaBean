@@ -445,7 +445,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         shopCenterNames = new ArrayList<>();
         spShopCenter = shopCenterList;
         for (ShopCenter shopCenter : shopCenterList.getItems()) {
-            shopCenterNames.add(shopCenter.getId() + "");
+            shopCenterNames.add(shopCenter.getTitleFA() + "");
         }
         shopCenterListAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, shopCenterNames);
         shopCenterListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
