@@ -39,6 +39,7 @@ import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
+import com.intek.kalabean.Shops.ShopsFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -78,6 +79,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         });
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
+        //viewPagerAdapter.addFragment(new ShopsFragment(), "بازارها");
         viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
         viewPagerAdapter.addFragment(new ComplexFragment(), "مجتمع تجاری");
         viewPagerAdapter.addFragment(new ChainFragment(), "فروشگاه زنجیره ای");

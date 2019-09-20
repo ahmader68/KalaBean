@@ -7,6 +7,7 @@ import android.webkit.WebSettings;
 import com.intek.kalabean.Data.ApiService;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -24,6 +25,8 @@ public class Network {
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create();
     public static OkHttpClient getOkHttpClient(){
         OkHttpClient httpClient = new OkHttpClient.Builder()
+                .connectTimeout(6 , TimeUnit.MINUTES)
+                .readTimeout(6 , TimeUnit.MINUTES)
                 .addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
