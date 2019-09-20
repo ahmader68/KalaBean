@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ShopCenter {
     private int id;
+    private String TitleFA;
     private String DescriptionFA;
     private String AddressFA;
     private int Cityid;
@@ -22,6 +23,14 @@ public class ShopCenter {
     private String toor;
     private long Center_LastUpdateDate;
     private List<SubSettings> settings;
+
+    public String getTitleFA() {
+        return TitleFA;
+    }
+
+    public void setTitleFA(String titleFA) {
+        TitleFA = titleFA;
+    }
 
     public int getId() {
         return id;

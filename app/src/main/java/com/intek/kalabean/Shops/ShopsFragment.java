@@ -71,7 +71,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         Picasso.get().load(image).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(title);
 
-        presenter.getShops(SellCenterID, -1);
+        presenter.getShops(-1, -1);
     }
 
     @Override
