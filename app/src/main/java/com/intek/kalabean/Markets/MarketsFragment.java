@@ -43,7 +43,7 @@ public class MarketsFragment extends BaseFragment implements MarketsContract.Vie
         conFragmentMarkets.setRotationY(180);
         rvMarkets = rootView.findViewById(R.id.rv_fragmentMarkets_list);
 
-        presenter.getMarkets(1206 , 1201);
+        presenter.getMarkets(1206 , 1202);
     }
 
     @Override
