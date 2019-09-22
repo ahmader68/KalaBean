@@ -2,6 +2,7 @@ package com.intek.kalabean.Data;
 
 
 import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
@@ -82,6 +83,10 @@ public interface ApiService {
     @POST("default.aspx?Action=ListBazar")
     Single<ChainStoreList> getChainStore(@Field("SellCenterCatID") int SellCenterCatID,
                                          @Field("CityId") int CityId);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=ListBazar")
+    Single<BrandList> getBrands(@Field("SellCenterCatID") int SellCenterCatID);
 
     @FormUrlEncoded
     @POST("default.aspx?Action=ShowShopsList")

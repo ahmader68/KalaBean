@@ -30,6 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
 import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
@@ -79,7 +80,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         });
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
-        //viewPagerAdapter.addFragment(new ShopsFragment(), "بازارها");
+        viewPagerAdapter.addFragment(new BrandsFragment(), "برندها");
         viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
         viewPagerAdapter.addFragment(new ComplexFragment(), "مجتمع تجاری");
         viewPagerAdapter.addFragment(new ChainFragment(), "فروشگاه زنجیره ای");

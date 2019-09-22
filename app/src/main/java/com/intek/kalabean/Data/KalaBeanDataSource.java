@@ -2,6 +2,7 @@ package com.intek.kalabean.Data;
 
 
 import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
@@ -41,6 +42,7 @@ public interface KalaBeanDataSource {
     Single<StoreList> getMarkets(int SellCenterCatID , int CityId);
     Single<ComplexList> getComplex(int SellCenterCatID , int CityId);
     Single<ChainStoreList> getChainStore(int SellCenterCatID , int CityId);
+    Single<BrandList> getBrands(int SellCenterCatID);
     Single<ShopsList> getShops(int SellCenterID , int FloorID);
     Single<Init> getInit();
     Single<List<Product>> getProduct(int shopID);

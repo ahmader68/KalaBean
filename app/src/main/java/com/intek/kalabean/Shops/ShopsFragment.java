@@ -50,11 +50,11 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new ShopsPresenter(new KalaBeanRepository());
-        //extras = getArguments();
-        //SellCenterID = extras.getInt("SellCenterID", 1);
-        //image = extras.getString("image", "");
-        //title = extras.getString("title", "");
-        //sellCenterCatId = extras.getInt("flag", 0);
+        extras = getArguments();
+        SellCenterID = extras.getInt("SellCenterID", 1);
+        image = extras.getString("image", "");
+        title = extras.getString("title", "");
+        sellCenterCatId = extras.getInt("flag", 0);
     }
 
     @Override
@@ -68,10 +68,10 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         img_fragmentShops_Market = rootView.findViewById(R.id.img_fragmentShops_Market);
         txt_fragmentShops_title = rootView.findViewById(R.id.txt_fragmentShops_title);
 
-        //Picasso.get().load(image).into(img_fragmentShops_Market);
-        //txt_fragmentShops_title.setText(title);
+        Picasso.get().load(image).into(img_fragmentShops_Market);
+        txt_fragmentShops_title.setText(title);
 
-        presenter.getShops(-1, -1);
+        presenter.getShops(SellCenterID, -1);
     }
 
     @Override
