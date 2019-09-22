@@ -18,12 +18,26 @@ public class StoreList {
         private int SellCenterID;
         private String image;
         private String TitleFA;
+        private String TitleEN;
+        private String TitleAR;
+
         private String ShopCount;
         private int floorCount;
         private String Address;
+        private String AddressEN;
+        private String AddressAR;
+        private String Description;
+        private String DescriptionEN;
+        private String DescriptionAR;
+        private int CityId;
+        private boolean HasHaraj;
+        private String toor;
+
         private int SellCenterCatID;
         private List<SubSettings> settings;
-
+        private double data_lat;
+        private double data_lng;
+        private String url;
         private boolean stair;
         private boolean cafe;
         private boolean wc;
@@ -33,6 +47,110 @@ public class StoreList {
         private boolean shop;
         private boolean wifi;
         private boolean elevator;
+
+        public String getTitleEN() {
+            return TitleEN;
+        }
+
+        public void setTitleEN(String titleEN) {
+            TitleEN = titleEN;
+        }
+
+        public String getTitleAR() {
+            return TitleAR;
+        }
+
+        public void setTitleAR(String titleAR) {
+            TitleAR = titleAR;
+        }
+
+        public String getAddressEN() {
+            return AddressEN;
+        }
+
+        public void setAddressEN(String addressEN) {
+            AddressEN = addressEN;
+        }
+
+        public String getAddressAR() {
+            return AddressAR;
+        }
+
+        public void setAddressAR(String addressAR) {
+            AddressAR = addressAR;
+        }
+
+        public String getDescription() {
+            return Description;
+        }
+
+        public void setDescription(String description) {
+            Description = description;
+        }
+
+        public String getDescriptionEN() {
+            return DescriptionEN;
+        }
+
+        public void setDescriptionEN(String descriptionEN) {
+            DescriptionEN = descriptionEN;
+        }
+
+        public String getDescriptionAR() {
+            return DescriptionAR;
+        }
+
+        public void setDescriptionAR(String descriptionAR) {
+            DescriptionAR = descriptionAR;
+        }
+
+        public int getCityId() {
+            return CityId;
+        }
+
+        public void setCityId(int cityId) {
+            CityId = cityId;
+        }
+
+        public boolean isHasHaraj() {
+            return HasHaraj;
+        }
+
+        public void setHasHaraj(boolean hasHaraj) {
+            HasHaraj = hasHaraj;
+        }
+
+        public String getToor() {
+            return toor;
+        }
+
+        public void setToor(String toor) {
+            this.toor = toor;
+        }
+
+        public double getData_lat() {
+            return data_lat;
+        }
+
+        public void setData_lat(double data_lat) {
+            this.data_lat = data_lat;
+        }
+
+        public double getData_lng() {
+            return data_lng;
+        }
+
+        public void setData_lng(double data_lng) {
+            this.data_lng = data_lng;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
 
         public int getSellCenterCatID() {
             return SellCenterCatID;
