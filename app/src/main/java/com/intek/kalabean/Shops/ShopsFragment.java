@@ -44,6 +44,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     private RecyclerShopsAdapter adapter;
     private CircleImageView img_fragmentShops_Market;
     private TextView txt_fragmentShops_title;
+    private TextView txt_fragmentShops_Null;
     private int sellCenterCatId;
 
     @Override
@@ -67,6 +68,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         rv_fragmentShops_list = rootView.findViewById(R.id.rv_fragmentShops_list);
         img_fragmentShops_Market = rootView.findViewById(R.id.img_fragmentShops_Market);
         txt_fragmentShops_title = rootView.findViewById(R.id.txt_fragmentShops_title);
+        txt_fragmentShops_Null = rootView.findViewById(R.id.txt_fragmentShops_Null);
 
         Picasso.get().load(image).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(title);
@@ -81,9 +83,13 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void getShopsList(ShopsList shops) {
-        adapter = new RecyclerShopsAdapter(getViewContext(), shops);
-        rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL));
-        rv_fragmentShops_list.setAdapter(adapter);
+        if (shops.getItems() == null){
+            txt_fragmentShops_Null.setVisibility(View.VISIBLE);
+        } else {
+            adapter = new RecyclerShopsAdapter(getViewContext(), shops);
+            rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL));
+            rv_fragmentShops_list.setAdapter(adapter);
+        }
     }
 
     @Override

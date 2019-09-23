@@ -2,14 +2,14 @@ package com.intek.kalabean.ShowShop;
 
 import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
-import com.intek.kalabean.Model.Product;
+import com.intek.kalabean.Model.ProductList;
 
 import java.util.List;
 
 public interface ShowShopContract {
     interface View extends BaseView{
         void showMessage(String msg);
-        void getProductList(List<Product> photoURL);
+        void getProductList(ProductList productList);
     }
 
     interface Presenter extends BasePresenter<View>{

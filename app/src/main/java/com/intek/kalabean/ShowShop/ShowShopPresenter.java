@@ -1,6 +1,6 @@
 package com.intek.kalabean.ShowShop;
 import com.intek.kalabean.Data.KalaBeanDataSource;
-import com.intek.kalabean.Model.Product;
+import com.intek.kalabean.Model.ProductList;
 import java.util.List;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,15 +36,15 @@ public class ShowShopPresenter implements ShowShopContract.Presenter {
     public void getProduct(int shopID) {
         kalaBeanDataSource.getProduct(shopID).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<List<Product>>() {
+                .subscribe(new SingleObserver<ProductList>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(List<Product> products) {
-                        view.getProductList(products);
+                    public void onSuccess(ProductList productLists) {
+                        view.getProductList(productLists);
                     }
 
                     @Override
