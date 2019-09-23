@@ -126,7 +126,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
         String username = googleSignInAccount.getEmail();
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username",username);
+        editor.putString("email",username);
         editor.apply();
         editor.commit();
         FragmentManager manager = getActivity().getSupportFragmentManager();
@@ -171,7 +171,13 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     @Override
     public void loginSuccess(User user) {
         String username = user.getMobile()+"";
+        int userId = user.getResult();
+        String name = user.getFirstName();
+        String family = user.getLastName();
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("userid",userId);
+        editor.putString("name",name);
+        editor.putString("family",family);
         editor.putString("username",username);
         editor.apply();
         editor.commit();
