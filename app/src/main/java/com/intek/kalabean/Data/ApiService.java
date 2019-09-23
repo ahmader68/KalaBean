@@ -9,8 +9,7 @@ import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
 
-import com.intek.kalabean.Model.Product;
-import com.intek.kalabean.Model.ShopCenter;
+import com.intek.kalabean.Model.ProductList;
 
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
@@ -26,7 +25,6 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
@@ -110,6 +108,6 @@ public interface ApiService {
     Single<Init> getInit();
 
     @FormUrlEncoded
-    @POST("")
-    Single<List<Product>> getProduct(@Field("id") int shopID);
+    @POST("default.aspx?Action=ShowPeroductShop")
+    Single<ProductList> getProduct(@Field("ShopId") int ShopId);
 }

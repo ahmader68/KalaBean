@@ -2,22 +2,20 @@ package com.intek.kalabean.ShowShop;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
-import com.intek.kalabean.Adapters.RecyclerShopsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
-import com.intek.kalabean.Model.Product;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
-import com.intek.kalabean.Shops.ShopsContract;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,9 +31,11 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     public int SellCenterID;
     public String image;
     public String title;
+    public int ShopId;
     private RecyclerProductAdapter adapter;
     private CircleImageView img_fragmentShops_Market;
     private TextView txt_fragmentShops_title;
+    private TextView txt_fragmentShops_Null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         SellCenterID = extras.getInt("SellCenterID" , 1);
         image = extras.getString("image" , "");
         title = extras.getString("title" , "");
+        ShopId = extras.getInt("ShopId", 0);
     }
 
     @Override
@@ -57,12 +58,13 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         rv_fragmentShops_list = rootView.findViewById(R.id.rv_fragmentShops_list);
         img_fragmentShops_Market = rootView.findViewById(R.id.img_fragmentShops_Market);
         txt_fragmentShops_title = rootView.findViewById(R.id.txt_fragmentShops_title);
+        txt_fragmentShops_Null = rootView.findViewById(R.id.txt_fragmentShops_Null);
 
         Picasso.get().load(image).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(title);
 
 
-        //presenter.getProduct(1025);
+        presenter.getProduct(ShopId);
     }
 
     @Override
@@ -71,10 +73,14 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     }
 
     @Override
-    public void getProductList(List<Product> products) {
-        adapter = new RecyclerProductAdapter(getViewContext() , products);
-        rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(3 , RecyclerView.VERTICAL));
-        rv_fragmentShops_list.setAdapter(adapter);
+    public void getProductList(ProductList productLists) {
+        if (productLists.getItems() == null){
+            txt_fragmentShops_Null.setVisibility(View.VISIBLE);
+        } else {
+            adapter = new RecyclerProductAdapter(getViewContext(), productLists);
+            rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
+            rv_fragmentShops_list.setAdapter(adapter);
+        }
     }
 
 

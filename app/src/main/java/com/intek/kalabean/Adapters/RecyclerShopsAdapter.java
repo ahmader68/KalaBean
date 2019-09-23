@@ -51,6 +51,7 @@ public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdap
                 bundle.putInt("SellCenterID" , shop.getSellCenterID());
                 bundle.putString("image" , shop.getImage());
                 bundle.putString("title" , shop.getTitleFA());
+                bundle.putInt("ShopId" , shop.getShopid());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShowShopFragment shopShopFragment = new ShowShopFragment();

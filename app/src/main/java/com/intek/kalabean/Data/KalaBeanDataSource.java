@@ -9,8 +9,7 @@ import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
 import com.intek.kalabean.Model.MallKindList;
 
-import com.intek.kalabean.Model.Product;
-import com.intek.kalabean.Model.ShopCenter;
+import com.intek.kalabean.Model.ProductList;
 
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
@@ -25,8 +24,6 @@ import java.util.List;
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-
-import retrofit2.http.Part;
 
 public interface KalaBeanDataSource {
     Single<User> register(User user);
@@ -45,5 +42,5 @@ public interface KalaBeanDataSource {
     Single<BrandList> getBrands(int SellCenterCatID);
     Single<ShopsList> getShops(int SellCenterID , int FloorID);
     Single<Init> getInit();
-    Single<List<Product>> getProduct(int shopID);
+    Single<ProductList> getProduct(int ShopId);
 }

@@ -7,8 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.intek.kalabean.Model.Product;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
@@ -16,35 +17,38 @@ import java.util.List;
 
 public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProductAdapter.ProductHolder> {
     private Context context;
-    private List<Product> products;
-    public RecyclerProductAdapter(Context context,List<Product> products) {
+    private ProductList productLists;
+    public RecyclerProductAdapter(Context context,ProductList productLists) {
         this.context = context;
-        this.products = products;
+        this.productLists = productLists;
     }
 
     @NonNull
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_shops,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_product,parent,false);
         return new ProductHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
-        final Product product = products.get(position);
-        Picasso.get().load(product.getImgProduct()).into(holder.imgProduct);
+        final ProductList.Product product = productLists.getItems().get(position);
+        Picasso.get().load(product.getCoverimage()).into(holder.imgProduct);
+        holder.txtProduct.setText(product.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return productLists.getItems().size();
     }
 
-    public class ProductHolder extends RecyclerView.ViewHolder{
+    class ProductHolder extends RecyclerView.ViewHolder{
         ImageView imgProduct;
-        public ProductHolder(@NonNull View itemView) {
+        TextView txtProduct;
+        ProductHolder(@NonNull View itemView) {
             super(itemView);
-            imgProduct = itemView.findViewById(R.id.img_rvSquare_image);
+            imgProduct = itemView.findViewById(R.id.imgProduct);
+            txtProduct = itemView.findViewById(R.id.txtProduct);
         }
     }
 }

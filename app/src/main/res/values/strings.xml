@@ -120,4 +120,6 @@
     <string name="Description">توضیحات</string>
     <string name="save">دخیره</string>
     <string name="formRemove">حذف فرم</string>
+    <string name="ProductTitle">عنوان محصول</string>
+    <string name="txt_fragmentShops_Null">هیچ کالایی برای نمایش وجود ندارد</string>
 </resources>
