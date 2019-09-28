@@ -1,6 +1,7 @@
 package com.intek.kalabean.Model;
 
 public class User {
+
     private int id;
     private String userLevel;
     private String CreatorId;
