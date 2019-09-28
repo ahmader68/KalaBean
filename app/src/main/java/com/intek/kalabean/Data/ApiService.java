@@ -2,13 +2,16 @@ package com.intek.kalabean.Data;
 
 
 import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.AddProduct;
 import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
+import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.MallKindList;
 
+import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
 import com.intek.kalabean.Model.ShopCenterList;
@@ -32,9 +35,9 @@ import retrofit2.http.Query;
 public interface ApiService {
     @FormUrlEncoded
     @POST("default.aspx?Action=Login")
-    Single<User> login(@Field("usr") String usr,
-                       @Field("pwd") String pwd,
-                       @Field("ShowImageType") int showimage);
+    Single<LoggedinUser> login(@Field("usr") String usr,
+                               @Field("pwd") String pwd,
+                               @Field("ShowImageType") int showimage);
 
     @FormUrlEncoded
     @POST("default.aspx?Action=Register")
@@ -110,4 +113,17 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("default.aspx?Action=ShowPeroductShop")
     Single<ProductList> getProduct(@Field("ShopId") int ShopId);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=InsertProducts")
+    Single<AddProduct> insertProduct(@Field("CategoryId") int CategoryId,
+                                     @Field("SubCategoryId") int SubCategoryId,
+                                     @Field("Producer") int Producer,
+                                     @Field("Price") int Price,
+                                     @Field("TitleFA") String TitleFA,
+                                     @Field("OrderNo") int OrderNo);
+
+    @POST("default.aspx?Action=GetJobPosition")
+    Single<Positions> getPositions();
+
 }

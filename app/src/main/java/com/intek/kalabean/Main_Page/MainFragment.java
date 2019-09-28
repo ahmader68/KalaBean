@@ -29,6 +29,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
+import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
@@ -68,6 +69,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         String check = sharedPreferences.getString("username", null);
         String email = sharedPreferences.getString("email",null);
+
         if (check != null || email != null) {
             Menu menu = navigationView.getMenu();
             menu.findItem(R.id.login).setVisible(false);
@@ -87,6 +89,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         viewPagerAdapter.addFragment(new ChainFragment(), "فروشگاه زنجیره ای");
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
         viewPagerAdapter.addFragment(new DefinitionFragment(), "ثبت فروشگاه");
+        viewPagerAdapter.addFragment(new AddProductFragment(),"افزودن محصول");
 
         viewPager.setRotationY(180);
         viewPager.setAdapter(viewPagerAdapter);

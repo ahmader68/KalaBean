@@ -122,4 +122,5 @@
     <string name="formRemove">حذف فرم</string>
     <string name="ProductTitle">عنوان محصول</string>
     <string name="txt_fragmentShops_Null">هیچ کالایی برای نمایش وجود ندارد</string>
+    <string name="sp_fragmentAddProduct_subCat">زیر دسته</string>
 </resources>

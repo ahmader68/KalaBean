@@ -17,6 +17,15 @@ public class AddProduct {
     private String Brief;
     private String Manufacturer;
     private boolean IsSuggested;
+    private int result;
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+    }
 
     public int getCategoryId() {
         return CategoryId;
