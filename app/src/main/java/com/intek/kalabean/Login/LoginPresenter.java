@@ -4,7 +4,6 @@ import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.User;
 
-import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

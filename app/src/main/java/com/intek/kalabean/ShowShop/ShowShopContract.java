@@ -4,8 +4,6 @@ import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
 import com.intek.kalabean.Model.ProductList;
 
-import java.util.List;
-
 public interface ShowShopContract {
     interface View extends BaseView{
         void showMessage(String msg);

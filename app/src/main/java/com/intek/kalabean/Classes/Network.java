@@ -1,7 +1,5 @@
 package com.intek.kalabean.Classes;
 
-import android.app.Activity;
-import android.content.Context;
 import android.webkit.WebSettings;
 
 import com.intek.kalabean.Data.ApiService;
@@ -15,7 +13,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
-import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 

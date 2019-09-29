@@ -20,8 +20,7 @@ import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
-
-import java.util.List;
+import com.intek.kalabean.Model.UserShop;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -70,6 +69,9 @@ public interface ApiService {
                               @Field("title") String title,
                               @Field("content") String content);
 
+    @POST("")
+    Single<Ticket> getTicket(@Query("userId") int id);
+
     @FormUrlEncoded
     @POST("default.aspx?Action=ListBazar")
     Single<StoreList> getMarkets(@Field("SellCenterCatID") int SellCenterCatID,
@@ -85,9 +87,8 @@ public interface ApiService {
     Single<ChainStoreList> getChainStore(@Field("SellCenterCatID") int SellCenterCatID,
                                          @Field("CityId") int CityId);
 
-    @FormUrlEncoded
     @POST("default.aspx?Action=ListBazar")
-    Single<BrandList> getBrands(@Field("SellCenterCatID") int SellCenterCatID);
+    Single<BrandList> getBrands(@Query("SellCenterCatID") int SellCenterCatID);
 
     @FormUrlEncoded
     @POST("default.aspx?Action=ShowShopsList")
@@ -115,6 +116,9 @@ public interface ApiService {
     Single<ProductList> getProduct(@Field("ShopId") int ShopId);
 
     @FormUrlEncoded
+    @POST("default.aspx?Action=GetUserShop")
+    Single<UserShop> getUserShop(@Field("CreatorId") int CreatorId);
+
     @POST("default.aspx?Action=InsertProducts")
     Single<AddProduct> insertProduct(@Field("CategoryId") int CategoryId,
                                      @Field("SubCategoryId") int SubCategoryId,

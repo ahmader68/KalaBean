@@ -1,17 +1,11 @@
 package com.intek.kalabean.Edit_User;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.StrictMode;
-import android.provider.MediaStore;
-import androidx.annotation.NonNull;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,7 +13,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,20 +22,14 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Classes.G;
-import com.intek.kalabean.Classes.Upload;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.R;
-import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tiper.MaterialSpinner;
 
-import java.io.File;
 import java.util.ArrayList;
-
-import static android.app.Activity.RESULT_OK;
 
 public class EditUserFragment extends BaseFragment implements EditUserContract.View {
     RadioGroup rgFragmentEditUserGender;

@@ -2,15 +2,11 @@ package com.intek.kalabean.Definition_Store;
 
 import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
-import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.MallKindList;
-import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
-
-import java.util.List;
 
 public interface DefinitionContract {
     interface View extends BaseView{

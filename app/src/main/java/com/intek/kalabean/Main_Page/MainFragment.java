@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 
 
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +40,8 @@ import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
-import com.intek.kalabean.Shops.ShopsFragment;
+import com.intek.kalabean.ShowUserShop.UserShopFragment;
+import com.intek.kalabean.Ticket.TicketFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -83,6 +83,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         });
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new UserShopFragment(), "فروشگاه کاربر");
+        viewPagerAdapter.addFragment(new TicketFragment(), "تیکت");
         viewPagerAdapter.addFragment(new BrandsFragment(), "برندها");
         viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
         viewPagerAdapter.addFragment(new ComplexFragment(), "مجتمع تجاری");

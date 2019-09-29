@@ -1,8 +1,5 @@
 package com.intek.kalabean.Home;
 
-import android.view.View;
-
-import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 
 import io.reactivex.disposables.CompositeDisposable;
