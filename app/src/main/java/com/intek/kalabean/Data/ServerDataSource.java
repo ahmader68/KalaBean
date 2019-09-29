@@ -23,9 +23,8 @@ import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
+import com.intek.kalabean.Model.UserShop;
 
-
-import java.util.List;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -82,6 +81,11 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
+    public Single<Ticket> getTicket(int id) {
+        return apiService.getTicket(id);
+    }
+
+    @Override
     public Single<StoreList> getMarkets(int SellCenterCatID, int CityId) {
         return apiService.getMarkets(SellCenterCatID , CityId);
     }
@@ -117,6 +121,8 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
+    public Single<UserShop> getUserShop(int CreatorId) {
+        return apiService.getUserShop(CreatorId);
     public Single<AddProduct> insertProduct(AddProduct product) {
         return apiService.insertProduct(product.getUsrid(),product.getAutolang(),product.getCategoryId(),product.getSubCategoryId(),product.getProducer(),product.getPrice(),product.getTitleFA(),product.getOrderNo());
     }

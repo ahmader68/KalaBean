@@ -122,5 +122,16 @@
     <string name="formRemove">حذف فرم</string>
     <string name="ProductTitle">عنوان محصول</string>
     <string name="txt_fragmentShops_Null">هیچ کالایی برای نمایش وجود ندارد</string>
+    <string name="ticket">+ ایجاد تیکت جدید</string>
+    <string name="subject">عنوان</string>
+    <string name="question">سوال</string>
+    <string name="Cancel">انصراف</string>
+    <string name="Send">ارسال</string>
+    <string name="rv_ticket_nameHolder">نام</string>
+    <string name="txt_rvTicket_nameHolder">عنوان</string>
+    <string name="txt_rvTicket_contentHolder">محتوا</string>
+    <string name="txt_rvTicket_dateHolder">تاریخ</string>
+    <string name="txt_rvTicket_hourHolder">ساعت</string>
+    <string name="txt_rvTicket_statusHolder">وضعیت</string>
     <string name="sp_fragmentAddProduct_subCat">زیر دسته</string>
 </resources>

@@ -20,9 +20,7 @@ import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.Model.Ticket;
 import com.intek.kalabean.Model.User;
-
-
-import java.util.List;
+import com.intek.kalabean.Model.UserShop;
 
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
@@ -35,6 +33,7 @@ public interface KalaBeanDataSource {
     Single<MallKindList> getStoreKind();
     Single<ActivityKindList> getActivityKind();
     Single<Ticket> sendTicket(Ticket ticket);
+    Single<Ticket> getTicket(int id);
     Single<ShopCenterList>getShopCenterList(int idCenterCat);
     Single<FloorList>getFloorList(int idCenter);
     Single<StoreDif> storeDefinition(StoreDif storeDif);
@@ -46,6 +45,7 @@ public interface KalaBeanDataSource {
     Single<ShopsList> getShops(int SellCenterID , int FloorID);
     Single<Init> getInit();
     Single<ProductList> getProduct(int ShopId);
+    Single<UserShop> getUserShop(int CreatorId);
     Single<AddProduct> insertProduct(AddProduct product);
     Single<Positions> getPositions();
 }

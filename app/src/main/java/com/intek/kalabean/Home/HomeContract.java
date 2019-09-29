@@ -1,7 +1,5 @@
 package com.intek.kalabean.Home;
 
-import android.view.View;
-
 import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
 

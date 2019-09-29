@@ -5,8 +5,6 @@ import com.intek.kalabean.Base.BaseView;
 import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.User;
 
-import io.reactivex.Single;
-
 public interface LoginContract {
     interface View extends BaseView{
         void showMessage(String msg);

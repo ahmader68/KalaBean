@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Model.BrandList;
-import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Shops.ShopsFragment;
 import com.squareup.picasso.Picasso;

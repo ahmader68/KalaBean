@@ -1,4 +1,4 @@
-package com.intek.kalabean.ShowShop;
+package com.intek.kalabean.ShowUserShop;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,20 +8,19 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
-import com.intek.kalabean.Model.ProductList;
+import com.intek.kalabean.Model.UserShop;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ShowShopFragment extends BaseFragment implements ShowShopContract.View {
+public class UserShopFragment extends BaseFragment implements UserShopContract.View {
 
-    private ShowShopContract.Presenter presenter;
+    public UserShopContract.Presenter presenter;
 
     private RecyclerView rv_fragmentShops_list;
     private Bundle extras;
@@ -34,15 +33,11 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     private TextView txt_fragmentShops_title;
     private TextView txt_fragmentShops_Null;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new ShowShopPresenter(new KalaBeanRepository());
-        extras = getArguments();
-        SellCenterID = extras.getInt("SellCenterID" , 1);
-        image = extras.getString("image" , "");
-        title = extras.getString("title" , "");
-        ShopId = extras.getInt("ShopId", 0);
+        presenter = new UserShopPresenter(new KalaBeanRepository());
     }
 
     @Override
@@ -61,29 +56,18 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         txt_fragmentShops_title.setText(title);
 
 
-        presenter.getProduct(ShopId);
+        presenter.getUserShop(5599);
     }
-
-    @Override
-    public void showMessage(String msg) {
-        Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void getProductList(ProductList productLists) {
-        if (productLists.getItems() == null){
-            txt_fragmentShops_Null.setVisibility(View.VISIBLE);
-        } else {
-            adapter = new RecyclerProductAdapter(getViewContext(), productLists);
-            rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
-            rv_fragmentShops_list.setAdapter(adapter);
-        }
-    }
-
 
     @Override
     public Context getViewContext() {
         return getContext();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.attachView(this);
     }
 
     @Override
@@ -93,8 +77,34 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        presenter.attachView(this);
+    public void showMessage(String msg) {
+        Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showUserShop(UserShop userShop) {
+
+        String imgUrl = userShop.getItems().get(0).getIcon();
+        final String[] separated = imgUrl.split("/");
+        final String p00 = separated[0];
+        final String p01 = separated[1];
+        final String p02 = separated[2];
+        final String p03 = separated[3];
+        final String p04 = separated[4];
+        final String p05 = separated[5];
+
+        String url = "http://www.kalabean.com/Images/formModules/shop/images/" + p05 + "/image.png";
+
+        Picasso.get().load(url).into(img_fragmentShops_Market);
+        txt_fragmentShops_title.setText(userShop.getItems().get(0).getTitle());
+
+
+        if (userShop.getItems() == null){
+            txt_fragmentShops_Null.setVisibility(View.VISIBLE);
+        } else {
+            //adapter = new RecyclerProductAdapter(getViewContext(), userShop);
+            //rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
+            //rv_fragmentShops_list.setAdapter(adapter);
+        }
     }
 }

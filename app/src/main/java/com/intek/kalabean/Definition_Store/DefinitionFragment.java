@@ -16,14 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
-import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;

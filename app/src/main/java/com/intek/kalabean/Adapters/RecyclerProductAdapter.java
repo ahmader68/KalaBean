@@ -13,8 +13,6 @@ import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProductAdapter.ProductHolder> {
     private Context context;
     private ProductList productLists;

@@ -3,8 +3,6 @@ package com.intek.kalabean.Brands;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.BrandList;
 
-import java.util.List;
-
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

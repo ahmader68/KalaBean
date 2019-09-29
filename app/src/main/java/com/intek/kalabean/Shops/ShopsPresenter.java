@@ -1,13 +1,7 @@
 package com.intek.kalabean.Shops;
 
-import com.google.android.gms.common.data.DataBufferObserver;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ShopsList;
-
-import java.sql.Time;
-import java.util.List;
-import java.util.Observable;
-import java.util.concurrent.TimeUnit;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
