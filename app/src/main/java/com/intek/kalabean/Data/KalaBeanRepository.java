@@ -101,6 +101,7 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<UserShop> getUserShop(int CreatorId) {
         return serverDataSource.getUserShop(CreatorId);
+    }
     public Single<AddProduct> insertProduct(AddProduct product) {
         return serverDataSource.insertProduct(product);
     }

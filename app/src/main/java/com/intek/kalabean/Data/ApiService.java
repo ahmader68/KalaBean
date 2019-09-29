@@ -119,6 +119,7 @@ public interface ApiService {
     @POST("default.aspx?Action=GetUserShop")
     Single<UserShop> getUserShop(@Field("CreatorId") int CreatorId);
 
+    @FormUrlEncoded
     @POST("default.aspx?Action=InsertProducts")
     Single<AddProduct> insertProduct(@Field("usrid") int usrid,
                                      @Field("autolang") String autolang,
