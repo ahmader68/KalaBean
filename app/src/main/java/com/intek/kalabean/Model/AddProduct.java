@@ -18,6 +18,24 @@ public class AddProduct {
     private String Manufacturer;
     private boolean IsSuggested;
     private int result;
+    private int usrid;
+    private String autolang;
+
+    public String getAutolang() {
+        return autolang;
+    }
+
+    public void setAutolang(String autolang) {
+        this.autolang = autolang;
+    }
+
+    public int getUsrid() {
+        return usrid;
+    }
+
+    public void setUsrid(int usrid) {
+        this.usrid = usrid;
+    }
 
     public int getResult() {
         return result;

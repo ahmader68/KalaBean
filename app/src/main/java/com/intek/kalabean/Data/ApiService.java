@@ -116,7 +116,9 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("default.aspx?Action=InsertProducts")
-    Single<AddProduct> insertProduct(@Field("CategoryId") int CategoryId,
+    Single<AddProduct> insertProduct(@Field("usrid") int usrid,
+                                     @Field("autolang") String autolang,
+                                     @Field("CategoryId") int CategoryId,
                                      @Field("SubCategoryId") int SubCategoryId,
                                      @Field("Producer") int Producer,
                                      @Field("Price") int Price,

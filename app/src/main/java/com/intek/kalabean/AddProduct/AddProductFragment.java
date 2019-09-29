@@ -104,6 +104,8 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     private int id;
 
+    private int shopidentify;
+
     private ActivityKindList spActivityKind;
 
     private List<String> activityName;
@@ -181,6 +183,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
     @Override
     public void setupViews() {
         id = sharedPreferences.getInt("userid", 0);
+        shopidentify = sharedPreferences.getInt("ShopId",0);
         conMainLayout = rootView.findViewById(R.id.con_fragmentAddProduct_mainLayout);
         conMainLayout.setRotationY(180);
         presenter.activityKind();
@@ -269,7 +272,9 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
                     product.setCategoryId(activityId);
                     product.setPrice(price);
                     product.setSubCategoryId(subCatId);
-                    product.setProducer(id);
+                    product.setProducer(shopidentify);
+                    product.setUsrid(id);
+                    product.setAutolang("fa");
                     presenter.insertProduct(product);
                 }
             }

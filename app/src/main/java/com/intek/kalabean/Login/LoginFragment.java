@@ -173,6 +173,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     public void loginSuccess(LoggedinUser user) {
         String username = user.getItems().get(0).getMobile()+"";
         int userId = user.getItems().get(0).getResult();
+        int shop = user.getItems().get(0).getShopId();
         String name = user.getItems().get(0).getFirstName();
         String family = user.getItems().get(0).getLastName();
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -180,6 +181,8 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         editor.putString("name",name);
         editor.putString("family",family);
         editor.putString("username",username);
+        editor.putInt("ShopId",shop);
+
         editor.apply();
         editor.commit();
         FragmentManager manager = getActivity().getSupportFragmentManager();
