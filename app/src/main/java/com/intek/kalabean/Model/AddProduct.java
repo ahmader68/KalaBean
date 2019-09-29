@@ -21,20 +21,20 @@ public class AddProduct {
     private int usrid;
     private String autolang;
 
-    public String getAutolang() {
-        return autolang;
-    }
-
-    public void setAutolang(String autolang) {
-        this.autolang = autolang;
-    }
-
     public int getUsrid() {
         return usrid;
     }
 
     public void setUsrid(int usrid) {
         this.usrid = usrid;
+    }
+
+    public String getAutolang() {
+        return autolang;
+    }
+
+    public void setAutolang(String autolang) {
+        this.autolang = autolang;
     }
 
     public int getResult() {
