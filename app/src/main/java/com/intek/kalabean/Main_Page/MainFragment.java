@@ -2,6 +2,7 @@ package com.intek.kalabean.Main_Page;
 
 
 import android.content.Context;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -30,8 +31,13 @@ import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
+import com.intek.kalabean.Markets.MarketsFragment;
+import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
+import com.intek.kalabean.ShowUserShop.UserShopFragment;
+import com.intek.kalabean.Ticket.TicketFragment;
+import com.intek.kalabean.VIP_User_Profile.VUFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 

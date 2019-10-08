@@ -11,6 +11,15 @@
     <color name="colorBlueIcon">#5663FF</color>
     <color name="colorGreen">#046304</color>
     <color name="colorBrown">#441A02</color>
+    <color name="selectedSwitchButton">#173ba6</color>
+    <color name="unselectedSwitchButton">#dfe4f5</color>
+    <color name="textIconColor">#103398</color>
+    <color name="cardViewFavouriteBackground">#f7f7f7</color>
+    <color name="black">#000000</color>
+    <color name="purple">#614ad3</color>
+    <color name="cardLightBlue">#4f81c7</color>
+    <color name="cardNormalBlue">#1089ff</color>
     <color name="colorTransparent">#00441A02</color>
     <color name="colorBlack">#000000</color>
+
 </resources>

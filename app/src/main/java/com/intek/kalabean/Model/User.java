@@ -34,6 +34,15 @@ public class User {
     private String reshteh;
     private String personalNo;
     private int result;
+    private int ShopId;
+
+    public int getShopId() {
+        return ShopId;
+    }
+
+    public void setShopId(int shopId) {
+        ShopId = shopId;
+    }
 
     public int getId() {
         return id;

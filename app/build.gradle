@@ -39,10 +39,13 @@ dependencies {
     implementation('com.google.api-client:google-api-client-android:1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+    implementation 'com.mikhaellopez:circularimageview:4.0.2'
+    implementation 'info.hoang8f:android-segmented:1.0.6'
+    implementation 'lib.kingja.switchbutton:switchbutton:1.1.8'
     implementation "androidx.preference:preference:1.1.0"
     implementation 'com.android.support:multidex:1.0.3'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'com.google.android.material:material:1.1.0-beta01'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'junit:junit:4.12'
     //testImplementation 'androidx.test.runner.AndroidJUnitRunner:1.1.0'

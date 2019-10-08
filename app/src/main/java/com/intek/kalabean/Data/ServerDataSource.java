@@ -125,7 +125,7 @@ public class ServerDataSource implements KalaBeanDataSource {
         return apiService.getUserShop(CreatorId);
     }
     public Single<AddProduct> insertProduct(AddProduct product) {
-        return apiService.insertProduct(product.getCategoryId(),product.getSubCategoryId(),product.getProducer(),product.getPrice(),product.getTitleFA(),product.getOrderNo());
+        return apiService.insertProduct(product.getUsrid(),product.getAutolang(),product.getCategoryId(),product.getSubCategoryId(),product.getProducer(),product.getPrice(),product.getTitleFA(),product.getOrderNo());
     }
 
     @Override
