@@ -38,10 +38,12 @@ import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Markets.MarketsFragment;
+import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
 import com.intek.kalabean.ShowUserShop.UserShopFragment;
 import com.intek.kalabean.Ticket.TicketFragment;
+import com.intek.kalabean.VIP_User_Profile.VUFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -92,6 +94,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
         viewPagerAdapter.addFragment(new DefinitionFragment(), "ثبت فروشگاه");
         viewPagerAdapter.addFragment(new AddProductFragment(),"افزودن محصول");
+        viewPagerAdapter.addFragment(new VUFragment(),"تست");
 
         viewPager.setRotationY(180);
         viewPager.setAdapter(viewPagerAdapter);

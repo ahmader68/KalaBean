@@ -134,4 +134,13 @@
     <string name="txt_rvTicket_hourHolder">ساعت</string>
     <string name="txt_rvTicket_statusHolder">وضعیت</string>
     <string name="sp_fragmentAddProduct_subCat">زیر دسته</string>
+    <string name="rb_fragmentOrdinaryUser_favStore">فروشگاه های مورد علاقه من</string>
+    <string name="rb_fragmentOrdinaryUser_favProd">محصولات مورد علاقه من</string>
+    <string name="txt_fragmentOrdinaryUser_profile">پروفایل</string>
+    <string name="txt_basket">سبد خرید</string>
+    <string name="txt_wallet">کیف پول</string>
+    <string name="txt_message">پیام</string>
+    <string name="addProduct">افزودن محصول</string>
+    <string name="product_management">مدیریت محصول</string>
+    <string name="edit_store">ویرایش اطلاعات فروشگاه</string>
 </resources>
