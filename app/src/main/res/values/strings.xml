@@ -137,4 +137,5 @@
     <string name="Category">دسته بندی</string>
     <string name="Cities">شهرها</string>
     <string name="enter">ورود</string>
+    <string name="sp_fragmentAddProduct_subCat">زیر دسته</string>
 </resources>

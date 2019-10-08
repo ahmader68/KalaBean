@@ -2,13 +2,16 @@ package com.intek.kalabean.Data;
 
 
 import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.AddProduct;
 import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
+import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.MallKindList;
 
+import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
 import com.intek.kalabean.Model.ShopCenterList;
@@ -26,7 +29,7 @@ import okhttp3.RequestBody;
 public interface KalaBeanDataSource {
     Single<User> register(User user);
     Single<String> upload(MultipartBody.Part file,RequestBody name);
-    Single<User> login(User user);
+    Single<LoggedinUser> login(User user);
     Single<MallKindList> getStoreKind();
     Single<ActivityKindList> getActivityKind();
     Single<Ticket> sendTicket(Ticket ticket);
@@ -43,4 +46,6 @@ public interface KalaBeanDataSource {
     Single<Init> getInit();
     Single<ProductList> getProduct(int ShopId);
     Single<UserShop> getUserShop(int CreatorId);
+    Single<AddProduct> insertProduct(AddProduct product);
+    Single<Positions> getPositions();
 }

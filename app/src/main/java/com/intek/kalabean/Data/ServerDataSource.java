@@ -5,13 +5,16 @@ import com.google.gson.GsonBuilder;
 import com.intek.kalabean.Classes.Network;
 
 import com.intek.kalabean.Model.ActivityKindList;
+import com.intek.kalabean.Model.AddProduct;
 import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.Init;
+import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.MallKindList;
 
+import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
 import com.intek.kalabean.Model.ShopCenterList;
@@ -56,9 +59,10 @@ public class ServerDataSource implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<User> login(User user) {
+    public Single<LoggedinUser> login(User user) {
         return apiService.login(user.getMobile(),user.getPassword(),0);
     }
+
 
     @Override
     public Single<MallKindList> getStoreKind() {
@@ -119,6 +123,13 @@ public class ServerDataSource implements KalaBeanDataSource {
     @Override
     public Single<UserShop> getUserShop(int CreatorId) {
         return apiService.getUserShop(CreatorId);
+    public Single<AddProduct> insertProduct(AddProduct product) {
+        return apiService.insertProduct(product.getCategoryId(),product.getSubCategoryId(),product.getProducer(),product.getPrice(),product.getTitleFA(),product.getOrderNo());
+    }
+
+    @Override
+    public Single<Positions> getPositions() {
+        return apiService.getPositions();
     }
 
 

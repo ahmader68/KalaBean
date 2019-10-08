@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 
@@ -120,7 +121,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
         String username = googleSignInAccount.getEmail();
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username",username);
+        editor.putString("email",username);
         editor.apply();
         editor.commit();
         FragmentManager manager = getActivity().getSupportFragmentManager();
@@ -163,9 +164,15 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     }
 
     @Override
-    public void loginSuccess(User user) {
-        String username = user.getMobile()+"";
+    public void loginSuccess(LoggedinUser user) {
+        String username = user.getItems().get(0).getMobile()+"";
+        int userId = user.getItems().get(0).getResult();
+        String name = user.getItems().get(0).getFirstName();
+        String family = user.getItems().get(0).getLastName();
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("userid",userId);
+        editor.putString("name",name);
+        editor.putString("family",family);
         editor.putString("username",username);
         editor.apply();
         editor.commit();

@@ -23,6 +23,9 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.intek.kalabean.Adapters.ViewPagerAdapter;
+import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
@@ -57,7 +60,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         String check = sharedPreferences.getString("username", null);
-        if (check != null) {
+        String email = sharedPreferences.getString("email",null);
+
+        if (check != null || email != null) {
             Menu menu = navigationView.getMenu();
             menu.findItem(R.id.login).setVisible(false);
             menu.findItem(R.id.sabtenam).setVisible(false);
@@ -145,7 +150,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void onResume() {
         super.onResume();
-
         if (getView() == null) {
             return;
         }

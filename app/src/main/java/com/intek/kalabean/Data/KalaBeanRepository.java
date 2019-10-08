@@ -1,13 +1,16 @@
 package com.intek.kalabean.Data;
 
+import com.intek.kalabean.Model.AddProduct;
 import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.Init;
+import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.MallKindList;
 
+import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
 import com.intek.kalabean.Model.ShopCenterList;
@@ -35,9 +38,10 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
-    public Single<User> login(User user) {
+    public Single<LoggedinUser> login(User user) {
         return serverDataSource.login(user);
     }
+
 
     @Override
     public Single<MallKindList> getStoreKind() {
@@ -97,6 +101,13 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     @Override
     public Single<UserShop> getUserShop(int CreatorId) {
         return serverDataSource.getUserShop(CreatorId);
+    public Single<AddProduct> insertProduct(AddProduct product) {
+        return serverDataSource.insertProduct(product);
+    }
+
+    @Override
+    public Single<Positions> getPositions() {
+        return serverDataSource.getPositions();
     }
 
     @Override
