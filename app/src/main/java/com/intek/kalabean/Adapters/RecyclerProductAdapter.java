@@ -1,13 +1,14 @@
 package com.intek.kalabean.Adapters;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
@@ -31,7 +32,9 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         final ProductList.Product product = productLists.getItems().get(position);
-        Picasso.get().load(product.getCoverimage()).into(holder.imgProduct);
+        if (!(product.getCoverimage().isEmpty())) {
+            Picasso.get().load(product.getCoverimage()).into(holder.imgProduct);
+        }
         holder.txtProduct.setText(product.getTitle());
     }
 
