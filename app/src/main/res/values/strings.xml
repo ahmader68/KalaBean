@@ -133,6 +133,10 @@
     <string name="txt_rvTicket_dateHolder">تاریخ</string>
     <string name="txt_rvTicket_hourHolder">ساعت</string>
     <string name="txt_rvTicket_statusHolder">وضعیت</string>
+    <string name="home">خانه</string>
+    <string name="Category">دسته بندی</string>
+    <string name="Cities">شهرها</string>
+    <string name="enter">ورود</string>
     <string name="sp_fragmentAddProduct_subCat">زیر دسته</string>
     <string name="rb_fragmentOrdinaryUser_favStore">فروشگاه های مورد علاقه من</string>
     <string name="rb_fragmentOrdinaryUser_favProd">محصولات مورد علاقه من</string>

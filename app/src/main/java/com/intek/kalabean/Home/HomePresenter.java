@@ -24,4 +24,9 @@ public class HomePresenter implements HomeContract.Presenter   {
             compositeDisposable.clear();
         }
     }
+
+    @Override
+    public void getOrderList() {
+
+    }
 }

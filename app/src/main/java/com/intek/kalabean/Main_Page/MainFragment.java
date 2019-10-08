@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-
-
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -17,23 +15,19 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.preference.PreferenceManager;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+import androidx.preference.PreferenceManager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.intek.kalabean.Adapters.ViewPagerAdapter;
 import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Brands.BrandsFragment;
-import com.intek.kalabean.Chain_Store.ChainFragment;
-import com.intek.kalabean.Complex.ComplexFragment;
-import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login.LoginFragment;
@@ -55,6 +49,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private DrawerLayout drawer;
     private Fragment fragment;
     private boolean checkExit = false;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     public int getLayout() {
@@ -63,9 +58,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @Override
     public void setupViews() {
+
+        bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
+
         NavigationView navigationView = rootView.findViewById(R.id.navigation);
-        TabLayout tabLayout = rootView.findViewById(R.id.tabLayout);
-        ViewPager viewPager = rootView.findViewById(R.id.viewPager);
         drawer = rootView.findViewById(R.id.drawer);
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
@@ -83,22 +79,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 drawer.openDrawer(GravityCompat.START);
             }
         });
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(Objects.requireNonNull(getActivity()).getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new UserShopFragment(), "فروشگاه کاربر");
-        viewPagerAdapter.addFragment(new TicketFragment(), "تیکت");
-        viewPagerAdapter.addFragment(new BrandsFragment(), "برندها");
-        viewPagerAdapter.addFragment(new MarketsFragment(), "بازارها");
-        viewPagerAdapter.addFragment(new ComplexFragment(), "مجتمع تجاری");
-        viewPagerAdapter.addFragment(new ChainFragment(), "فروشگاه زنجیره ای");
-        viewPagerAdapter.addFragment(new HomeFragment(), "خانه");
-        viewPagerAdapter.addFragment(new DefinitionFragment(), "ثبت فروشگاه");
-        viewPagerAdapter.addFragment(new AddProductFragment(),"افزودن محصول");
-        viewPagerAdapter.addFragment(new VUFragment(),"تست");
-
-        viewPager.setRotationY(180);
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -119,6 +99,37 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.frm_MainActivity_mainLayout, fragment);
                 transaction.commit();
+                return true;
+            }
+        });
+
+        fragment = new HomeFragment();
+        FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        FragmentTransaction transactions = managers.beginTransaction();
+        transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+        transactions.commit();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        fragment = new HomeFragment();
+                        break;
+                    case R.id.cat:
+                        //fragment = new EditUserFragment();
+                        break;
+                    case R.id.cities:
+                        //fragment = new EditUserFragment();
+                        break;
+                    case R.id.enter:
+                        //fragment = new EditUserFragment();
+                        break;
+                }
+                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                FragmentTransaction transactions = managers.beginTransaction();
+                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                transactions.commit();
                 return true;
             }
         });
