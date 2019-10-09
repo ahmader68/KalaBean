@@ -93,11 +93,14 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     fragment = new RegisterFragment();
                 } else if (id == R.id.editInfo) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new EditUserFragment();
+                    fragment = new OUFragment();
+                }else if(id == R.id.wallet){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new VUFragment();
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.frm_MainActivity_mainLayout, fragment);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                 transaction.commit();
                 return true;
             }

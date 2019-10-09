@@ -21,5 +21,6 @@
     <color name="cardNormalBlue">#1089ff</color>
     <color name="colorTransparent">#00441A02</color>
     <color name="colorBlack">#000000</color>
-
+    <color name="cardViewMap">#3ea0ae</color>
+    <color name="showStore">#64c9ed</color>
 </resources>

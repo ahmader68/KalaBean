@@ -3,6 +3,9 @@ package com.intek.kalabean.Oridinary_User_Profile;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,6 +31,7 @@ public class OUFragment extends BaseFragment implements OUContract.View {
     private OUContract.Presenter presenter;
     private CircularImageView cimgProfile;
     private TextView txtProfileName;
+    private TextView txtInfo;
     ConstraintLayout conProfile;
     ConstraintLayout conBasket;
     ConstraintLayout conWallet;
@@ -35,15 +39,19 @@ public class OUFragment extends BaseFragment implements OUContract.View {
     RadioGroup sgFavourite;
     RadioButton rbFavProduct;
     RadioButton rbFavStore;
+    RadioButton rbSelectedProd;
     RecyclerView rvList;
     RecyclerFavouriteAdapter favShopAdapter;
     ShopsList shops;
     ShopsList.Shops shop;
+    private Drawable drawableHeart;
+    private Drawable drawablePin;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new OUPresenter(new KalaBeanRepository());
-        shop.setTitleFA("hjgffhg");
+        //shop.setTitleFA("hjgffhg");
 
     }
 
@@ -56,6 +64,7 @@ public class OUFragment extends BaseFragment implements OUContract.View {
     public void setupViews() {
         cimgProfile = rootView.findViewById(R.id.cimg_fragmentOrdinaryUser_profilePic);
         txtProfileName = rootView.findViewById(R.id.txt_fragmentOrdinaryUser_name);
+        txtInfo = rootView.findViewById(R.id.txt_fragmentOrdinaryUser_info);
         conProfile = rootView.findViewById(R.id.con_fragmentOrdinaryUser_profile);
         conBasket = rootView.findViewById(R.id.con_fragmentOrdinaryUser_basket);
         conWallet = rootView.findViewById(R.id.con_fragmentOrdinaryUser_wallet);
@@ -63,13 +72,22 @@ public class OUFragment extends BaseFragment implements OUContract.View {
         sgFavourite = rootView.findViewById(R.id.sg_fragmentOrdinaryUser_fav);
         rbFavProduct = rootView.findViewById(R.id.rb_fragmentOrdinaryUser_favProd);
         rbFavStore = rootView.findViewById(R.id.rb_fragmentOrdinaryUser_favStore);
+        rbSelectedProd = rootView.findViewById(R.id.rb_fragmentOrdinaryUser_selectedProd);
         rvList = rootView.findViewById(R.id.rv_fragmentOrdinaryUser_list);
-        for (int i = 0;i < 20; i++){
-            shop.setTitleFA("فروشگاه شماره"+i);
-            shop.setDescriptionFA("پوشاک");
-            shop.setImage("drawable://" + R.drawable.ic_launcher_foreground);
-            shops.getItems().add(shop);
-        }
+        drawableHeart = getResources().getDrawable(R.drawable.red_heart);
+        int lineHeight = txtInfo.getLineHeight();
+        drawableHeart.setBounds(0, 0, lineHeight, lineHeight);
+        drawablePin = getResources().getDrawable(R.drawable.pin);
+        drawablePin.setBounds(0, 0, lineHeight, lineHeight);
+        SpannableStringBuilder builder = new SpannableStringBuilder(getResources().getString(R.string.favourite_store));
+        builder.setSpan(new ImageSpan(drawableHeart), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        txtInfo.setText(builder, TextView.BufferType.SPANNABLE);
+//        for (int i = 0;i < 20; i++){
+//            shop.setTitleFA("فروشگاه شماره"+i);
+//            shop.setDescriptionFA("پوشاک");
+//            shop.setImage("drawable://" + R.drawable.ic_launcher_foreground);
+//            shops.getItems().add(shop);
+//        }
 
         conProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,12 +116,20 @@ public class OUFragment extends BaseFragment implements OUContract.View {
         sgFavourite.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(i == R.id.rb_fragmentOrdinaryUser_favProd){
-                    Toast.makeText(getViewContext(), "1", Toast.LENGTH_SHORT).show();
-                }else if(i == R.id.rb_fragmentOrdinaryUser_favStore){
-                    favShopAdapter = new RecyclerFavouriteAdapter( shops,getViewContext());
-                    rvList.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
-                    rvList.setAdapter(favShopAdapter);
+                if (i == R.id.rb_fragmentOrdinaryUser_favProd) {
+                    txtInfo.setText(R.string.favourite_product);
+
+                } else if (i == R.id.rb_fragmentOrdinaryUser_favStore) {
+
+                    SpannableStringBuilder builder = new SpannableStringBuilder(getResources().getString(R.string.favourite_store));
+                    builder.setSpan(new ImageSpan(drawableHeart), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    txtInfo.setText(builder, TextView.BufferType.SPANNABLE);
+
+                } else if (i == R.id.rb_fragmentOrdinaryUser_selectedProd) {
+
+                    SpannableStringBuilder builder = new SpannableStringBuilder(getResources().getString(R.string.selected_product_description));
+                    builder.setSpan(new ImageSpan(drawablePin), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    txtInfo.setText(builder, TextView.BufferType.SPANNABLE);
                 }
             }
         });
