@@ -8,10 +8,12 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.UserShop;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
@@ -57,6 +59,7 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
 
 
         presenter.getUserShop(5599);
+        presenter.getUserShop(5599);
     }
 
     @Override
@@ -97,14 +100,16 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
 
         Picasso.get().load(url).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(userShop.getItems().get(0).getTitle());
+    }
 
-
-        if (userShop.getItems() == null){
+    @Override
+    public void getProductList(ProductList productList) {
+        if (productList.getItems() == null){
             txt_fragmentShops_Null.setVisibility(View.VISIBLE);
         } else {
-            //adapter = new RecyclerProductAdapter(getViewContext(), userShop);
-            //rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
-            //rv_fragmentShops_list.setAdapter(adapter);
+            adapter = new RecyclerProductAdapter(getViewContext(), productList);
+            rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
+            rv_fragmentShops_list.setAdapter(adapter);
         }
     }
 }

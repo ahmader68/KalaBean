@@ -59,7 +59,7 @@
     <string name="txt_fragmentSearch_resultText">نتیجه برای جستجو شما...</string>
     <string name="txt_fragmentHome_markets">بازارها</string>
     <string name="txt_fragmentHome_kalaBeanLook">کالابین در یک نگاه</string>
-    <string name="txt_fragmentHome_malls">مجتمع های تجاری</string>
+    <string name="txt_fragmentHome_malls">مجتمع های"\n"تجاری</string>
     <string name="txt_fragmentHome_advanceSearch">جستجو پیشرفته</string>
     <string name="txt_fragmentHome_chainStore">فروشگاه"\n"زنجیره ای</string>
     <string name="txt_fragmentHome_gallery">گالری</string>
@@ -147,4 +147,6 @@
     <string name="addProduct">افزودن محصول</string>
     <string name="product_management">مدیریت محصول</string>
     <string name="edit_store">ویرایش اطلاعات فروشگاه</string>
+    <string name="txt_fragmentHome_best">برترینها</string>
+    <string name="txt_fragmentHome_newProductAdded">جدیدترین محصولات اضافه شده</string>
 </resources>

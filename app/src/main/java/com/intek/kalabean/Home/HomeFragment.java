@@ -1,15 +1,22 @@
 package com.intek.kalabean.Home;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.glide.slider.library.SliderLayout;
+import com.glide.slider.library.SliderTypes.DefaultSliderView;
 import com.intek.kalabean.Adapters.RecyclerOrderAdapter;
+import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.Order;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -19,14 +26,22 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
 
     private ConstraintLayout con_fragmentHome_orders;
     ConstraintLayout con_fragmentHome_slideShow;
-    ConstraintLayout con_fragmentHome_malls;
-    ConstraintLayout con_fragmentHome_search;
-    ConstraintLayout con_fragmentHome_chainStore;
+    ConstraintLayout con_fragmentHome_cat;
     ConstraintLayout con_fragmentHome_gallery;
     ConstraintLayout con_fragmentHome_brands;
+    private HomeContract.Presenter presenter;
 
     private RecyclerView rv_fragmentHome_orders;
+    private RecyclerView rv_fragmentHome_newProduct;
     private RecyclerOrderAdapter adapter;
+
+    private SliderLayout slider;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter = new HomePresenter(new KalaBeanRepository());
+    }
 
     @Override
     public int getLayout() {
@@ -36,14 +51,30 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     @Override
     public void setupViews() {
         con_fragmentHome_orders = rootView.findViewById(R.id.con_fragmentHome_orders);
-        con_fragmentHome_slideShow = rootView.findViewById(R.id.con_fragmentHome_kalaBeanLook);
-        con_fragmentHome_malls = rootView.findViewById(R.id.con_fragmentHome_malls);
-        con_fragmentHome_search = rootView.findViewById(R.id.con_fragmentHome_search);
-        con_fragmentHome_chainStore = rootView.findViewById(R.id.con_fragmentHome_chainStore);
+        con_fragmentHome_slideShow = rootView.findViewById(R.id.con_fragmentHome_slideShow);
+        con_fragmentHome_cat = rootView.findViewById(R.id.con_fragmentHome_cat);
         con_fragmentHome_gallery = rootView.findViewById(R.id.con_fragmentHome_gallery);
         con_fragmentHome_brands = rootView.findViewById(R.id.con_fragmentHome_brands);
-
         rv_fragmentHome_orders = rootView.findViewById(R.id.rv_fragmentHome_orders);
+        rv_fragmentHome_newProduct = rootView.findViewById(R.id.rv_fragmentHome_newProduct);
+        slider = rootView.findViewById(R.id.slider);
+
+        presenter.getProductList(5599);
+
+        List<String> linkList;
+
+        linkList = new ArrayList<>();
+        linkList.add("https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/8/11/0/FND_HE-Inflammation-Opener_s4x3.jpg.rend.hgtvcom.966.725.suffix/1502480247120.jpeg");
+        linkList.add("https://www.time4diamonds.com/pub/media/wysiwyg/luxury-question.jpg");
+        linkList.add("https://www.emmajohnson.co.uk/wp-content/uploads/2016/07/muzakpic.png");
+
+        //slider.setCustomIndicator(indicator);
+        for (int i = 0; i < linkList.size(); i++) {
+            DefaultSliderView defaultSliderView = new DefaultSliderView(getActivity());
+            defaultSliderView.image(linkList.get(i));
+            slider.addSlider(defaultSliderView);
+        }
+
 
 
         List<Order> orderList = new ArrayList<>();
@@ -116,5 +147,24 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         adapter = new RecyclerOrderAdapter(getViewContext() , orderList);
         rv_fragmentHome_orders.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
         rv_fragmentHome_orders.setAdapter(adapter);
+    }
+
+    @Override
+    public void showProductList(ProductList productList) {
+        RecyclerProductAdapter adapter = new RecyclerProductAdapter(getViewContext() , productList);
+        rv_fragmentHome_newProduct.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
+        rv_fragmentHome_newProduct.setAdapter(adapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.attachView(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.detachView();
     }
 }

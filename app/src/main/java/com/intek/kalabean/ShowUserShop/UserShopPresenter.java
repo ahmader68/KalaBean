@@ -1,6 +1,7 @@
 package com.intek.kalabean.ShowUserShop;
 
 import com.intek.kalabean.Data.KalaBeanDataSource;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.UserShop;
 
 import io.reactivex.SingleObserver;
@@ -45,6 +46,28 @@ public class UserShopPresenter implements UserShopContract.Presenter {
                     @Override
                     public void onSuccess(UserShop userShop) {
                         view.showUserShop(userShop);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.showMessage(e.toString());
+                    }
+                });
+    }
+
+    @Override
+    public void getProduct(int shopID) {
+        kalaBeanDataSource.getProduct(shopID).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<ProductList>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(ProductList productList) {
+                        view.getProductList(productList);
                     }
 
                     @Override

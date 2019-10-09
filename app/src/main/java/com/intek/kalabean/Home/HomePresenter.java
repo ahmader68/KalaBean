@@ -1,14 +1,20 @@
 package com.intek.kalabean.Home;
 
 import com.intek.kalabean.Data.KalaBeanDataSource;
+import com.intek.kalabean.Model.ProductList;
 
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
-public class HomePresenter implements HomeContract.Presenter   {
+public class HomePresenter implements HomeContract.Presenter {
     private HomeContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
-    private CompositeDisposable compositeDisposable;
-    public HomePresenter(KalaBeanDataSource kalaBeanDataSource){
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    public HomePresenter(KalaBeanDataSource kalaBeanDataSource) {
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
 
@@ -20,7 +26,7 @@ public class HomePresenter implements HomeContract.Presenter   {
     @Override
     public void detachView() {
         view = null;
-        if(compositeDisposable != null && compositeDisposable.size() > 0){
+        if (compositeDisposable != null && compositeDisposable.size() > 0) {
             compositeDisposable.clear();
         }
     }
@@ -28,5 +34,27 @@ public class HomePresenter implements HomeContract.Presenter   {
     @Override
     public void getOrderList() {
 
+    }
+
+    @Override
+    public void getProductList(int ShopId) {
+        kalaBeanDataSource.getProduct(ShopId).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<ProductList>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(ProductList productList) {
+                        view.showProductList(productList);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.showError(e.toString());
+                    }
+                });
     }
 }

@@ -33,7 +33,7 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         final ProductList.Product product = productLists.getItems().get(position);
         if (!(product.getCoverimage().isEmpty())) {
-            Picasso.get().load(product.getCoverimage()).into(holder.imgProduct);
+            Picasso.get().load(product.getCoverimage()).fit().into(holder.imgProduct);
         }
         holder.txtProduct.setText(product.getTitle());
     }
