@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layoutDirection="rtl">
 
 
     <androidx.core.widget.NestedScrollView
@@ -33,7 +33,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
+                <RadioButton
+                    android:id="@+id/rb_fragmentOrdinaryUser_favStore"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:paddingEnd="4dp"
+                    android:paddingStart="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:checked="true"
+                    android:text="@string/rb_fragmentOrdinaryUser_favStore"
+                    android:textAlignment="center"
+                    android:layout_margin="4dp"/>
                 <RadioButton
                     android:id="@+id/rb_fragmentOrdinaryUser_favProd"
                     android:layout_width="0dp"
@@ -50,24 +65,31 @@
                     android:textAlignment="center"
                     android:layout_margin="4dp"/>
 
+
                 <RadioButton
-                    android:id="@+id/rb_fragmentOrdinaryUser_favStore"
+                    android:id="@+id/rb_fragmentOrdinaryUser_selectedProd"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:background="@drawable/radio_flat_selector"
                     android:button="@android:color/transparent"
-                    android:checked="true"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:paddingEnd="4dp"
                     android:paddingStart="4dp"
-                    android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:text="@string/rb_fragmentOrdinaryUser_favStore"
+                    android:paddingTop="8dp"
                     android:textAlignment="center"
-                    android:layout_margin="4dp"/>
+                    android:layout_margin="4dp"
+                    android:text="@string/selected_product"/>
             </RadioGroup>
-
+            <TextView
+                android:id="@+id/txt_fragmentOrdinaryUser_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sg_fragmentOrdinaryUser_fav"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_fragmentOrdinaryUser_list"
                 android:layout_width="match_parent"
@@ -75,7 +97,7 @@
                 android:layout_margin="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sg_fragmentOrdinaryUser_fav" />
+                app:layout_constraintTop_toBottomOf="@id/txt_fragmentOrdinaryUser_info" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -117,8 +139,8 @@
                         android:textColor="@color/textIconColor"
                         android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="@id/cimg_fragmentOrdinaryUser_profilePic"
-                        app:layout_constraintEnd_toStartOf="@id/cimg_fragmentOrdinaryUser_profilePic"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/cimg_fragmentOrdinaryUser_profilePic"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/cimg_fragmentOrdinaryUser_profilePic" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -127,8 +149,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/con_fragmentOrdinaryUser_basket"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/con_fragmentOrdinaryUser_basket"
                         app:layout_constraintTop_toBottomOf="@id/cimg_fragmentOrdinaryUser_profilePic">
 
                         <ImageView
@@ -161,8 +183,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
                         app:layout_constraintBottom_toBottomOf="@id/con_fragmentOrdinaryUser_profile"
-                        app:layout_constraintEnd_toStartOf="@id/con_fragmentOrdinaryUser_profile"
-                        app:layout_constraintStart_toEndOf="@id/con_fragmentOrdinaryUser_wallet"
+                        app:layout_constraintStart_toEndOf="@id/con_fragmentOrdinaryUser_profile"
+                        app:layout_constraintEnd_toStartOf="@id/con_fragmentOrdinaryUser_wallet"
                         app:layout_constraintTop_toTopOf="@id/con_fragmentOrdinaryUser_profile">
 
                         <ImageView
@@ -194,8 +216,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
                         app:layout_constraintBottom_toBottomOf="@id/con_fragmentOrdinaryUser_basket"
-                        app:layout_constraintEnd_toStartOf="@id/con_fragmentOrdinaryUser_basket"
-                        app:layout_constraintStart_toEndOf="@id/con_fragmentOrdinaryUser_message"
+                        app:layout_constraintStart_toEndOf="@id/con_fragmentOrdinaryUser_basket"
+                        app:layout_constraintEnd_toStartOf="@id/con_fragmentOrdinaryUser_message"
                         app:layout_constraintTop_toTopOf="@id/con_fragmentOrdinaryUser_basket">
 
                         <ImageView
@@ -227,8 +249,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
                         app:layout_constraintBottom_toBottomOf="@id/con_fragmentOrdinaryUser_wallet"
-                        app:layout_constraintEnd_toStartOf="@id/con_fragmentOrdinaryUser_wallet"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/con_fragmentOrdinaryUser_wallet"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/con_fragmentOrdinaryUser_wallet">
 
                         <ImageView
@@ -264,7 +286,7 @@
                         app:civ_shadow="true"
                         app:civ_shadow_radius="10"
 
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
