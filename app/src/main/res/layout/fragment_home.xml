@@ -37,239 +37,195 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_fragmentHome_slideShow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/con_fragmentHome_orders">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_fragmentHome_kalaBeanLook"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="8dp">
-
-                    <com.daimajia.slider.library.SliderLayout
-                        android:id="@+id/slider"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toTopOf="@+id/custom_indicator"/>
-
-                    <com.daimajia.slider.library.Indicators.PagerIndicator
-                        android:id="@+id/custom_indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/slider"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_fragmentHome_malls"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/colorBlue"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_fragmentHome_slideShow">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_fragmentHome_malls"
+                    android:id="@+id/con_fragmentHome_slideShow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
-                    android:background="@color/colorBlue">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/con_fragmentHome_orders">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/txt_fragmentHome_malls"
-                        android:textSize="40sp"
+                    <com.glide.slider.library.SliderLayout
+                        android:id="@+id/slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentHome_cat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/con_fragmentHome_slideShow">
+
+
+                    <ImageView
+                        android:id="@+id/img_fragmentHome_complex"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_mall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/img_fragmentHome_malls"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/txt_fragmentHome_malls"
+                        android:textAlignment="center"
+                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_complex"
+                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_complex"
+                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_complex"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/img_fragmentHome_malls"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_bazar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_fragmentHome_complex"
+                        app:layout_constraintEnd_toStartOf="@+id/img_fragmentHome_chainStore"/>
+
+                    <TextView
+                        android:id="@+id/txt_fragmentHome_bazaar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/txt_fragmentHome_markets"
+                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_malls"
+                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_malls"
+                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_malls"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/img_fragmentHome_chainStore"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_chain_store"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_fragmentHome_malls"
+                        app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_best"/>
+
+                    <TextView
+                        android:id="@+id/txt_fragmentHome_chainStore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/txt_fragmentHome_chainStore"
+                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_chainStore"
+                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_chainStore"
+                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_chainStore"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                    <ImageView
+                        android:id="@+id/img_fragmentHome_best"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_bests"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_fragmentHome_chainStore"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/txt_fragmentHome_best"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="@string/txt_fragmentHome_best"
+                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_best"
+                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_best"
+                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_best"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/con_container_one"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:background="@drawable/shadow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_fragmentHome_malls">
+                app:layout_constraintTop_toBottomOf="@+id/con_fragmentHome_cat">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_fragmentHome_search"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dp"
-                    app:cardBackgroundColor="@color/colorYellow"
-                    app:cardCornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/cv_fragmentHome_chainStore"
-                    app:layout_constraintHorizontal_weight="0.4"
+
+                <TextView
+                    android:id="@+id/txt_fragmentHome_newProducts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_fragmentHome_newProductAdded"
+                    android:textSize="18sp"
+                    android:layout_margin="8dp"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/con_fragmentHome_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:background="@color/colorYellow">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_fragmentHome_advanceSearch"
-                            android:textAlignment="center"
-                            android:textSize="25sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_fragmentHome_chainStore"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dp"
-                    app:cardBackgroundColor="@color/colorGreen"
-                    app:cardCornerRadius="10dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_fragmentHome_newProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/shadow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="0.6"
-                    app:layout_constraintStart_toEndOf="@+id/cv_fragmentHome_search"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/con_fragmentHome_chainStore"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:background="@color/colorGreen">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_fragmentHome_chainStore"
-                            android:textAlignment="center"
-                            android:textSize="30sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_fragmentHome_newProducts" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_margin="4dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/con_container_one">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_fragmentHome_gallery"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dp"
-                    app:cardBackgroundColor="@color/colorBrown"
-                    app:cardCornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/cv_fragmentHome_brands"
-                    app:layout_constraintHorizontal_weight="0.5"
+                <TextView
+                    android:id="@+id/txt_fragmentHome_reductProducts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/reduct"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/con_fragmentHome_gallery"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:background="@color/colorBrown">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_fragmentHome_gallery"
-                            android:textAlignment="center"
-                            android:textSize="25sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_fragmentHome_brands"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dp"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="10dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_fragmentHome_reductedProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/shadow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/cv_fragmentHome_gallery"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/con_fragmentHome_brands"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:background="@color/colorWhite">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txt_fragmentHome_brands"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorBrown"
-                            android:textSize="30sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_fragmentHome_reductProducts" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

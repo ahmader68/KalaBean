@@ -26,18 +26,17 @@
             android:clipToPadding="false"
             android:textDirection="rtl">
 
+
             <include
                 android:id="@+id/include"
                 layout="@layout/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 app:layout_constraintBottom_toTopOf="@+id/frm_fragmentMain_mainLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_weight="0.1" />
-
 
             <FrameLayout
                 android:id="@+id/frm_fragmentMain_mainLayout"
@@ -66,8 +65,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bottom_navigation"
                 android:orientation="vertical"
-                android:padding="8dp"
-                app:elevation="80dp"
+                android:paddingTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +82,9 @@
                     app:itemRippleColor="@color/colorBlue"
                     app:itemTextColor="@color/colorBlueText"
                     app:labelVisibilityMode="labeled"
-                    app:itemIconSize="30dp"
+                    app:itemIconSize="25dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="6dp"
                     app:itemTextAppearanceActive="@color/colorBlueIcon"
                     app:itemTextAppearanceInactive="@color/colorBlack"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -106,9 +106,9 @@
                 android:focusable="true"
                 android:src="@drawable/ic_plus"
                 app:maxImageSize="50dp"
+                app:fabCustomSize="60dp"
                 app:backgroundTint="@color/colorBlueIcon"
                 app:elevation="100dp"
-                app:fabCustomSize="80dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
