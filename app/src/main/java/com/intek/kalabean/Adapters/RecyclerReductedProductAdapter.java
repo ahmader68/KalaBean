@@ -14,10 +14,10 @@ import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
-public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProductAdapter.ProductHolder> {
+public class RecyclerReductedProductAdapter extends RecyclerView.Adapter<RecyclerReductedProductAdapter.ProductHolder> {
     private Context context;
     private ProductList productLists;
-    public RecyclerProductAdapter(Context context,ProductList productLists) {
+    public RecyclerReductedProductAdapter(Context context, ProductList productLists) {
         this.context = context;
         this.productLists = productLists;
     }
@@ -25,7 +25,7 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
     @NonNull
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_selected_product,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_reducted_product,parent,false);
         return new ProductHolder(v);
     }
 
@@ -34,9 +34,9 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
         final ProductList.Product product = productLists.getItems().get(position);
         if (!(product.getCoverimage().isEmpty())) {
 
-            Picasso.get().load(product.getCoverimage()).fit().into(holder.img_rvSelectedProduct_image);
+            Picasso.get().load(product.getCoverimage()).fit().into(holder.img_rvReductedProduct_image);
         }
-        holder.txt_rvSelectedProduct.setText(product.getTitle());
+        holder.txt_rvReductedProduct.setText(product.getTitle());
     }
 
     @Override
@@ -45,14 +45,14 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
     }
 
     class ProductHolder extends RecyclerView.ViewHolder{
-        ImageView img_rvSelectedProduct_image;
-        ImageView img_rvSelectedProduct_pin;
-        TextView txt_rvSelectedProduct;
+        ImageView img_rvReductedProduct_image;
+        TextView txt_rvReductedProduct;
+        TextView txt_rvReductedProduct_percent;
         ProductHolder(@NonNull View itemView) {
             super(itemView);
-            img_rvSelectedProduct_image = itemView.findViewById(R.id.img_rvSelectedProduct_image);
-            img_rvSelectedProduct_pin = itemView.findViewById(R.id.img_rvSelectedProduct_pin);
-            txt_rvSelectedProduct = itemView.findViewById(R.id.txt_rvSelectedProduct);
+            img_rvReductedProduct_image = itemView.findViewById(R.id.img_rvReductedProduct_image);
+            txt_rvReductedProduct = itemView.findViewById(R.id.txt_rvReductedProduct);
+            txt_rvReductedProduct_percent = itemView.findViewById(R.id.txt_rvReductedProduct_percent);
         }
     }
 }

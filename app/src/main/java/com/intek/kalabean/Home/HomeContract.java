@@ -12,9 +12,11 @@ public interface HomeContract {
         void showError(String msg);
         void showOrderList(List<Order> orders);
         void showProductList(ProductList productList);
+        void showReductedProductList(ProductList productList);
     }
     interface Presenter extends BasePresenter<View> {
         void getOrderList();
         void getProductList(int ShopId);
+        void getReductedProductList(int ShopId);
     }
 }

@@ -57,4 +57,26 @@ public class HomePresenter implements HomeContract.Presenter {
                     }
                 });
     }
+
+    @Override
+    public void getReductedProductList(int ShopId) {
+        kalaBeanDataSource.getProduct(ShopId).subscribeOn(Schedulers.newThread())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<ProductList>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(ProductList productList) {
+                        view.showReductedProductList(productList);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.showError(e.toString());
+                    }
+                });
+    }
 }

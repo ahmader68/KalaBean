@@ -138,8 +138,8 @@
     <string name="Cities">شهرها</string>
     <string name="enter">ورود</string>
     <string name="sp_fragmentAddProduct_subCat">زیر دسته</string>
-    <string name="rb_fragmentOrdinaryUser_favStore">فروشگاه های مورد علاقه من</string>
-    <string name="rb_fragmentOrdinaryUser_favProd">محصولات مورد علاقه من</string>
+    <string name="rb_fragmentOrdinaryUser_favStore">فروشگاه محبوب</string>
+    <string name="rb_fragmentOrdinaryUser_favProd">محصولات محبوب</string>
     <string name="txt_fragmentOrdinaryUser_profile">پروفایل</string>
     <string name="txt_basket">سبد خرید</string>
     <string name="txt_wallet">کیف پول</string>
@@ -147,6 +147,14 @@
     <string name="addProduct">افزودن محصول</string>
     <string name="product_management">مدیریت محصول</string>
     <string name="edit_store">ویرایش اطلاعات فروشگاه</string>
+    <string name="place">ثبت روی نقشه</string>
+    <string name="showStore">مشاهده فروشگاه</string>
+    <string name="selected_product">محصولات منتخب</string>
+    <string name="favourite_product">در اینجا جدیدترین محصولات فروشگاه محبوب خود را مشاهده کنید</string>
+    <string name="favourite_store">با لمس   فروشگاه را به لیست علاقمندی های خود اضافه کنید</string>
+    <string name="selected_product_description">با لمس     محصول را به لیست علاقمندی های خود اضافه کنید</string>
+
     <string name="txt_fragmentHome_best">برترینها</string>
     <string name="txt_fragmentHome_newProductAdded">جدیدترین محصولات اضافه شده</string>
+    <string name="reduct">حراجی ها</string>
 </resources>

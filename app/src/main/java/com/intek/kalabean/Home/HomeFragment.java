@@ -13,6 +13,7 @@ import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
 import com.intek.kalabean.Adapters.RecyclerOrderAdapter;
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
+import com.intek.kalabean.Adapters.RecyclerReductedProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.Order;
@@ -33,6 +34,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
 
     private RecyclerView rv_fragmentHome_orders;
     private RecyclerView rv_fragmentHome_newProduct;
+    private RecyclerView rv_fragmentHome_reductedProduct;
     private RecyclerOrderAdapter adapter;
 
     private SliderLayout slider;
@@ -53,13 +55,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         con_fragmentHome_orders = rootView.findViewById(R.id.con_fragmentHome_orders);
         con_fragmentHome_slideShow = rootView.findViewById(R.id.con_fragmentHome_slideShow);
         con_fragmentHome_cat = rootView.findViewById(R.id.con_fragmentHome_cat);
-        con_fragmentHome_gallery = rootView.findViewById(R.id.con_fragmentHome_gallery);
-        con_fragmentHome_brands = rootView.findViewById(R.id.con_fragmentHome_brands);
         rv_fragmentHome_orders = rootView.findViewById(R.id.rv_fragmentHome_orders);
         rv_fragmentHome_newProduct = rootView.findViewById(R.id.rv_fragmentHome_newProduct);
+        rv_fragmentHome_reductedProduct = rootView.findViewById(R.id.rv_fragmentHome_reductedProduct);
         slider = rootView.findViewById(R.id.slider);
 
         presenter.getProductList(5599);
+        presenter.getReductedProductList(5599);
 
         List<String> linkList;
 
@@ -154,6 +156,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         RecyclerProductAdapter adapter = new RecyclerProductAdapter(getViewContext() , productList);
         rv_fragmentHome_newProduct.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
         rv_fragmentHome_newProduct.setAdapter(adapter);
+    }
+
+    @Override
+    public void showReductedProductList(ProductList productList) {
+        RecyclerReductedProductAdapter adapter = new RecyclerReductedProductAdapter(getViewContext() , productList);
+        rv_fragmentHome_reductedProduct.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
+        rv_fragmentHome_reductedProduct.setAdapter(adapter);
     }
 
     @Override
