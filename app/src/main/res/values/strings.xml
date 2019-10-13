@@ -60,8 +60,10 @@
     <string name="txt_fragmentHome_markets">بازارها</string>
     <string name="txt_fragmentHome_kalaBeanLook">کالابین در یک نگاه</string>
     <string name="txt_fragmentHome_malls">مجتمع های"\n"تجاری</string>
+    <string name="txt_fragmentHome_mallsOneLine">مجتمع های تجاری</string>
     <string name="txt_fragmentHome_advanceSearch">جستجو پیشرفته</string>
     <string name="txt_fragmentHome_chainStore">فروشگاه"\n"زنجیره ای</string>
+    <string name="txt_fragmentHome_chainStoreLine">فروشگاه زنجیره ای</string>
     <string name="txt_fragmentHome_gallery">گالری</string>
     <string name="txt_fragmentHome_brands">برندها</string>
     <string name="sp_fragmentDefinition_storeKind">نوع مرکز خرید</string>
@@ -158,4 +160,17 @@
     <string name="txt_fragmentHome_newProductAdded">جدیدترین محصولات اضافه شده</string>
     <string name="reduct">حراجی ها</string>
     <string name="newJob">آخرین مشاغل اضافه شده</string>
+    <string name="txt_fragmentHome_readMore">مطالعه بیشتر</string>
+    <string name="txt_fragmentHome_lastNews">آخرین اخبار روز دنیا</string>
+    <string name="txt_fragmentHome_lastNewsDescription">متن آخرین اخبار روز دنیا این یه متن گرافیکی است تنها جهت مشاهده است</string>
+    <string name="news">خبر</string>
+    <string name="txt_fragmentHome_more">بیشتر</string>
+    <string name="txt_fragmentHome_reductPercent">%15</string>
+    <string name="item_drawer_cities">شهرها</string>
+    <string name="item_drawer_language">زبان</string>
+    <string name="item_drawer_article">مقالات</string>
+    <string name="item_drawer_guide">راهنما</string>
+    <string name="item_drawer_support">پشتیبانی</string>
+    <string name="item_drawer_about">درباره ما</string>
+    <string name="item_drawer_exit">خروج</string>
 </resources>
