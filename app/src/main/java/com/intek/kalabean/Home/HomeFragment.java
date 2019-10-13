@@ -46,6 +46,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new HomePresenter(new KalaBeanRepository());
+
+        presenter.getProductList(5599);
+        presenter.getReductedProductList(5599);
+        presenter.getShopList(1074 , -1);
     }
 
     @Override
@@ -63,10 +67,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         rv_fragmentHome_reductedProduct = rootView.findViewById(R.id.rv_fragmentHome_reductedProduct);
         rv_fragmentHome_newJob = rootView.findViewById(R.id.rv_fragmentHome_newJob);
         slider = rootView.findViewById(R.id.slider);
-
-        presenter.getProductList(5599);
-        presenter.getReductedProductList(5599);
-        presenter.getShopList(1074 , -1);
 
         List<String> linkList;
 
