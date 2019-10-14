@@ -25,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Home.HomeFragment;
+import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
 import com.intek.kalabean.Shops.ShopsFragment;
@@ -80,26 +81,27 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                /*
-                if (id == R.id.login) {
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new LoginFragment();
-                } else if (id == R.id.sabtenam) {
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new RegisterFragment();
-                } else if (id == R.id.editInfo) {
-                    drawer.closeDrawer(GravityCompat.START);
-                    Toast.makeText(getViewContext(), "OK", Toast.LENGTH_SHORT).show();
-                }else if(id == R.id.wallet){
+
+//                if (id == R.id.login) {
+//                    drawer.closeDrawer(GravityCompat.START);
+//                    fragment = new LoginFragment();
+//                }
+                if (id == R.id.item_drawer_cities) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new ShopsFragment();
+                } else if (id == R.id.item_drawer_about) {
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new OUFragment();
+                }else if(id == R.id.item_drawer_article){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new VUFragment();
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                 transaction.commit();
 
-                 */
+
                 return true;
             }
         });
