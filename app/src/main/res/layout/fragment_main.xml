@@ -127,8 +127,7 @@
             android:background="@color/colorPrimary"
             android:layoutDirection="rtl"
             app:headerLayout="@layout/navigation_header"
-            app:itemIconTint="@color/colorAccent"
-            app:itemTextColor="@color/colorBlack"
+            app:itemTextColor="@color/lightDarkBlueText"
             app:menu="@menu/navigation_menu">
 
         </com.google.android.material.navigation.NavigationView>

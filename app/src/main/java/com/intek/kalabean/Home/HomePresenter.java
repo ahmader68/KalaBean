@@ -2,6 +2,7 @@ package com.intek.kalabean.Home;
 
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ProductList;
+import com.intek.kalabean.Model.ShopsList;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -71,6 +72,28 @@ public class HomePresenter implements HomeContract.Presenter {
                     @Override
                     public void onSuccess(ProductList productList) {
                         view.showReductedProductList(productList);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.showError(e.toString());
+                    }
+                });
+    }
+
+    @Override
+    public void getShopList(int SellCenterID, int FloorID) {
+        kalaBeanDataSource.getShops(SellCenterID , FloorID).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<ShopsList>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(ShopsList shopsList) {
+                        view.showNewJob(shopsList);
                     }
 
                     @Override

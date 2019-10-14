@@ -2,7 +2,6 @@ package com.intek.kalabean.Main_Page;
 
 
 import android.content.Context;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -24,15 +23,8 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.intek.kalabean.Adapters.ViewPagerAdapter;
-import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Home.HomeFragment;
-import com.intek.kalabean.Login.LoginFragment;
-import com.intek.kalabean.Markets.MarketsFragment;
-import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
 import com.intek.kalabean.Shops.ShopsFragment;
@@ -70,10 +62,11 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         String check = sharedPreferences.getString("username", null);
         String email = sharedPreferences.getString("email",null);
 
+        navigationView.setItemIconTintList(null);
         if (check != null || email != null) {
             Menu menu = navigationView.getMenu();
-            menu.findItem(R.id.login).setVisible(false);
-            menu.findItem(R.id.sabtenam).setVisible(false);
+            //menu.findItem(R.id.login).setVisible(false);
+            //menu.findItem(R.id.sabtenam).setVisible(false);
         }
         hamburgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +80,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
+                /*
                 if (id == R.id.login) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new LoginFragment();
@@ -104,6 +98,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                 transaction.commit();
+
+                 */
                 return true;
             }
         });

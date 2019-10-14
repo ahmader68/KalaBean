@@ -17,12 +17,12 @@
 
     <style name="PopMenu" parent="@android:style/Widget.PopupMenu">
         <item name="android:popupBackground">@android:color/white</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/lightDarkBlueText</item>
         <item name="android:textSize">22sp</item>
     </style>
 
     <style name="popMenuTextApearanceSmall" parent="@android:style/TextAppearance.DeviceDefault.Widget.PopupMenu.Small">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/lightDarkBlueText</item>
         <item name="android:textSize">15sp</item>
     </style>
 

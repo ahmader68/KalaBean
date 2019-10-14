@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
+import com.intek.kalabean.Adapters.RecyclerNewJobAdapter;
 import com.intek.kalabean.Adapters.RecyclerOrderAdapter;
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Adapters.RecyclerReductedProductAdapter;
@@ -18,6 +19,7 @@ import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.Order;
 import com.intek.kalabean.Model.ProductList;
+import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     private RecyclerView rv_fragmentHome_orders;
     private RecyclerView rv_fragmentHome_newProduct;
     private RecyclerView rv_fragmentHome_reductedProduct;
+    private RecyclerView rv_fragmentHome_newJob;
     private RecyclerOrderAdapter adapter;
 
     private SliderLayout slider;
@@ -43,6 +46,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new HomePresenter(new KalaBeanRepository());
+
+        presenter.getProductList(5599);
+        presenter.getReductedProductList(5599);
+        presenter.getShopList(1074 , -1);
     }
 
     @Override
@@ -58,10 +65,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         rv_fragmentHome_orders = rootView.findViewById(R.id.rv_fragmentHome_orders);
         rv_fragmentHome_newProduct = rootView.findViewById(R.id.rv_fragmentHome_newProduct);
         rv_fragmentHome_reductedProduct = rootView.findViewById(R.id.rv_fragmentHome_reductedProduct);
+        rv_fragmentHome_newJob = rootView.findViewById(R.id.rv_fragmentHome_newJob);
         slider = rootView.findViewById(R.id.slider);
-
-        presenter.getProductList(5599);
-        presenter.getReductedProductList(5599);
 
         List<String> linkList;
 
@@ -163,6 +168,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         RecyclerReductedProductAdapter adapter = new RecyclerReductedProductAdapter(getViewContext() , productList);
         rv_fragmentHome_reductedProduct.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
         rv_fragmentHome_reductedProduct.setAdapter(adapter);
+    }
+
+    @Override
+    public void showNewJob(ShopsList shopsList) {
+        RecyclerNewJobAdapter adapter = new RecyclerNewJobAdapter(getViewContext() , shopsList);
+        rv_fragmentHome_newJob.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
+        rv_fragmentHome_newJob.setAdapter(adapter);
     }
 
     @Override
