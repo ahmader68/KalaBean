@@ -35,6 +35,8 @@ import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
+import com.intek.kalabean.Shops.ShopsFragment;
+import com.intek.kalabean.ShowShop.ShowShopFragment;
 import com.intek.kalabean.ShowUserShop.UserShopFragment;
 import com.intek.kalabean.Ticket.TicketFragment;
 import com.intek.kalabean.VIP_User_Profile.VUFragment;
@@ -93,10 +95,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     fragment = new RegisterFragment();
                 } else if (id == R.id.editInfo) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new OUFragment();
+                    Toast.makeText(getViewContext(), "OK", Toast.LENGTH_SHORT).show();
                 }else if(id == R.id.wallet){
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new VUFragment();
+                    fragment = new ShopsFragment();
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();

@@ -21,7 +21,7 @@
 
     <string name="edt_fragmentLogin_username">شماره همراه</string>
     <string name="edt_fragmentLogin_password">کلمه عبور</string>
-    <string name="btn_fragmentLogin_login">ورود</string>
+    <string name="btn_fragmentLogin_login">تایید</string>
     <string name="sp_fragmentRegister_locationCity">انتخاب شهر</string>
 
     <string name="rb_fragmentEditUser_man">مرد</string>
@@ -157,4 +157,12 @@
     <string name="txt_fragmentHome_best">برترینها</string>
     <string name="txt_fragmentHome_newProductAdded">جدیدترین محصولات اضافه شده</string>
     <string name="reduct">حراجی ها</string>
+    <string name="txt_enterPhoneNumber">لطفا شماره موبایل خود را وارد کنید</string>
+    <string name="txtVerificationCode">کد تایید</string>
+    <string name="btn_store_info">اطلاعات فروشگاه</string>
+    <string name="shop_contact_info">تماس با فروشگاه</string>
+    <string name="txt_count_view">تعداد بازدید</string>
+    <string name="menu_cat_product">دسته بندی محصولات</string>
+    <string name="menu_store_description">توضیحات</string>
+    <string name="menu_store_branchs">شعب</string>
 </resources>

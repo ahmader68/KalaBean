@@ -52,10 +52,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
     @Override
     public void setupViews() {
-        rv_fragmentShops_list = rootView.findViewById(R.id.rv_fragmentShops_list);
-        img_fragmentShops_Market = rootView.findViewById(R.id.img_fragmentShops_Market);
-        txt_fragmentShops_title = rootView.findViewById(R.id.txt_fragmentShops_title);
-        txt_fragmentShops_Null = rootView.findViewById(R.id.txt_fragmentShops_Null);
+
 
         Picasso.get().load(image).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(title);

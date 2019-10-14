@@ -4,22 +4,59 @@
     android:id="@+id/con_fragmentLogin_mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:background="@drawable/login_gradient">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_fragmentLogin_center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
+        app:layout_constraintGuide_percent="0.3" />
+    <ImageView
+        android:id="@+id/img_fragmentLogin_logo"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        app:layout_constraintBottom_toBottomOf="@id/gl_fragmentLogin_center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_logo"/>
+    <TextView
+        android:id="@+id/txt_fragmentLogin_site"
+        app:layout_constraintTop_toBottomOf="@id/img_fragmentLogin_logo"
+        app:layout_constraintBottom_toTopOf="@id/gl_fragmentLogin_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/txt_fragmentLogin_enterPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_fragmentLogin_center"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp"
+        android:text="@string/txt_enterPhoneNumber"
+        android:layout_marginTop="16dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_fragmentLogin_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="64dp"
+
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
         app:errorEnabled="true"
-        app:layout_constraintBottom_toTopOf="@id/gl_fragmentLogin_center"
+        android:padding="2dp"
+        android:background="@drawable/login_edittext_style"
+        app:layout_constraintTop_toBottomOf="@id/txt_fragmentLogin_enterPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -27,29 +64,10 @@
             android:id="@+id/edt_fragmentLogin_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edt_fragmentLogin_username"
             android:inputType="phone"
+            android:textAlignment="center"
+            android:background="@color/colorTransparent"
             android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_fragmentLogin_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_fragmentLogin_center">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_fragmentLogin_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/edt_fragmentLogin_password"
-            android:inputType="textPassword"
-            android:textSize="20sp" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -57,18 +75,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_fragmentLogin_login"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/login_button_style"
         android:textSize="20sp"
+        android:padding="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_fragmentLogin_password" />
+        app:layout_constraintTop_toBottomOf="@id/til_fragmentLogin_username" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btn_fragmentLogin_gLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="8dp"
-        android:padding="4dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_fragmentLogin_login" />
 </androidx.constraintlayout.widget.ConstraintLayout>
