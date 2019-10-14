@@ -22,9 +22,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.preference.PreferenceManager;
+
+import android.text.Html;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
@@ -36,19 +39,13 @@ import com.intek.kalabean.R;
 
 public class LoginFragment extends BaseFragment implements LoginContract.View {
     private TextInputLayout tilFragmentLoginUsername;
-    private TextInputLayout tilFragmentLoginPassword;
     private TextInputEditText edtFragmentLoginUsername;
     private TextInputEditText edtFragmentLoginPassword;
-    private SignInButton btnFragmentLogingLogin;
     private Button btnFragmentLoginLogin;
     private ConstraintLayout conLogin;
+    private TextView txtSite;
     User user;
     LoginContract.Presenter presenter;
-    GoogleApiClient googleApiClient;
-    public static final int GOOGLE_LOGIN_REQUEST = 101;
-    private static final String TAG = "AndroidClarified";
-    GoogleSignInOptions gso;
-    GoogleSignInClient googleSignInClient;
     SharedPreferences sharedPreferences;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,11 +53,6 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         user = new User();
         presenter = new LoginPresenter(new KalaBeanRepository());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                //.requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(getViewContext(),gso);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
     }
 
@@ -74,62 +66,54 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
         conLogin = rootView.findViewById(R.id.con_fragmentLogin_mainLayout);
         //conLogin.setRotationY(180);
-        btnFragmentLogingLogin = rootView.findViewById(R.id.btn_fragmentLogin_gLogin);
         tilFragmentLoginUsername = rootView.findViewById(R.id.til_fragmentLogin_username);
-        tilFragmentLoginPassword = rootView.findViewById(R.id.til_fragmentLogin_password);
         edtFragmentLoginUsername = rootView.findViewById(R.id.edt_fragmentLogin_username);
-        edtFragmentLoginPassword = rootView.findViewById(R.id.edt_fragmentLogin_password);
         btnFragmentLoginLogin = rootView.findViewById(R.id.btn_fragmentLogin_login);
+        txtSite = rootView.findViewById(R.id.txt_fragmentLogin_site);
+        String htmlStyle = "<span><font color=\"black\">WWW.KALAB</font><font color =\"red\">EA</font><font color=\"black\">N.COM</font></span>";
+        txtSite.setText(Html.fromHtml(htmlStyle));
         btnFragmentLoginLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!validateUsername() || !validatePassword()){
+                if(!validateUsername()){
                     return;
                 }else{
                     user.setMobile(edtFragmentLoginUsername.getText().toString());
-                    user.setPassword(edtFragmentLoginPassword.getText().toString());
                     presenter.login(user);
                 }
             }
         });
-        btnFragmentLogingLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent,GOOGLE_LOGIN_REQUEST);
-            }
-        });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == Activity.RESULT_OK){
-            switch (requestCode){
-                case GOOGLE_LOGIN_REQUEST:
-                    try{
-                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                        GoogleSignInAccount account = task.getResult(ApiException.class);
-                        onLoggedIn(account);
-                    }catch (ApiException e){
-                        Toast.makeText(getViewContext(), e.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-            }
-        }
-    }
-    private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
-        String username = googleSignInAccount.getEmail();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("email",username);
-        editor.apply();
-        editor.commit();
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
-        transaction.commit();
-
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == Activity.RESULT_OK){
+//            switch (requestCode){
+//                case GOOGLE_LOGIN_REQUEST:
+//                    try{
+//                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//                        GoogleSignInAccount account = task.getResult(ApiException.class);
+//                        onLoggedIn(account);
+//                    }catch (ApiException e){
+//                        Toast.makeText(getViewContext(), e.toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                    break;
+//            }
+//        }
+//    }
+//    private void onLoggedIn(GoogleSignInAccount googleSignInAccount){
+//        String username = googleSignInAccount.getEmail();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("email",username);
+//        editor.apply();
+//        editor.commit();
+//        FragmentManager manager = getActivity().getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+//        transaction.commit();
+//
+//    }
     @Override
     public Context getViewContext() {
         return getContext();
@@ -146,17 +130,6 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         }
     }
 
-    private boolean validatePassword(){
-        String passwordInput = edtFragmentLoginPassword.getText().toString().trim();
-        if(passwordInput.isEmpty()){
-            tilFragmentLoginPassword.setError("فیلد کلمه عبور خالی است");
-            edtFragmentLoginPassword.requestFocus();
-            return false;
-        }else {
-            tilFragmentLoginPassword.setError(null);
-            return true;
-        }
-    }
 
     @Override
     public void showMessage(String msg) {

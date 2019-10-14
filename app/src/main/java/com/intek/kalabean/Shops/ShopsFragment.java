@@ -3,7 +3,12 @@ package com.intek.kalabean.Shops;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,28 +30,33 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
-    private RecyclerView rv_fragmentShops_list;
-    private ConstraintLayout conFragmentShops;
     private ShopsContract.Presenter presenter;
-    private Bundle extras;
-    public int SellCenterID;
-    public String image;
-    public String title;
     private RecyclerShopsAdapter adapter;
-    private CircleImageView img_fragmentShops_Market;
-    private TextView txt_fragmentShops_title;
-    private TextView txt_fragmentShops_Null;
-    private int sellCenterCatId;
+
+    private ImageView imgShop;
+    private ImageView imgHeart;
+    private ImageView imgInstagram;
+    private ImageView imgTelegram;
+    private ImageView imgEmail;
+    private ImageView imgDomain;
+    private ImageView imgHambur;
+    private ImageView imgShare;
+
+    private Button btnInfo;
+    private Button btnContact;
+
+    private TextView txtAddress;
+    private TextView txtViewCount;
+    private TextView txtHourWork;
+
+    private RecyclerView rvProductList;
+
+    private boolean checkHeart = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new ShopsPresenter(new KalaBeanRepository());
-        extras = getArguments();
-        SellCenterID = extras.getInt("SellCenterID", 1);
-        image = extras.getString("image", "");
-        title = extras.getString("title", "");
-        sellCenterCatId = extras.getInt("flag", 0);
     }
 
     @Override
@@ -56,15 +66,62 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void setupViews() {
-        rv_fragmentShops_list = rootView.findViewById(R.id.rv_fragmentShops_list);
-        img_fragmentShops_Market = rootView.findViewById(R.id.img_fragmentShops_Market);
-        txt_fragmentShops_title = rootView.findViewById(R.id.txt_fragmentShops_title);
-        txt_fragmentShops_Null = rootView.findViewById(R.id.txt_fragmentShops_Null);
+        imgShop = rootView.findViewById(R.id.img_fragmentShop_shop);
+        imgHeart = rootView.findViewById(R.id.img_fragmentShop_heart);
+        imgInstagram = rootView.findViewById(R.id.img_fragmentShop_instagram);
+        imgTelegram = rootView.findViewById(R.id.img_fragmentShop_telegram);
+        imgEmail = rootView.findViewById(R.id.img_fragmentShop_email);
+        imgDomain = rootView.findViewById(R.id.img_fragmentShop_domain);
+        imgShare = rootView.findViewById(R.id.img_fragmentShop_share);
+        imgHambur = rootView.findViewById(R.id.img_fragmentShop_hambur);
 
-        Picasso.get().load(image).into(img_fragmentShops_Market);
-        txt_fragmentShops_title.setText(title);
+        btnInfo = rootView.findViewById(R.id.btn_fragmentShop_info);
+        btnContact = rootView.findViewById(R.id.btn_fragmentShop_contact);
 
-        presenter.getShops(SellCenterID, -1);
+        txtAddress = rootView.findViewById(R.id.txt_fragmentShop_address);
+        txtViewCount = rootView.findViewById(R.id.txt_fragmentShop_countView);
+        txtHourWork = rootView.findViewById(R.id.txt_fragmentShop_hourWork);
+
+        rvProductList = rootView.findViewById(R.id.rv_fragmentShop_list);
+
+        imgHeart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkHeart){
+                    checkHeart = false;
+                    imgHeart.setImageResource(R.drawable.white_heart);
+                }else{
+                    checkHeart = true;
+                    imgHeart.setImageResource(R.drawable.red_heart);
+                }
+            }
+        });
+
+        imgHambur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(getViewContext(),imgHambur);
+                popupMenu.getMenuInflater().inflate(R.menu.shop_menu,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        int id = menuItem.getItemId();
+                        switch (id){
+                            case R.id.menu_store_catProduct:
+                                Toast.makeText(getViewContext(), "1", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.menu_store_description:
+                                Toast.makeText(getViewContext(), "2", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.menu_store_branchs:
+                                Toast.makeText(getViewContext(), "3", Toast.LENGTH_SHORT).show();
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
     }
 
     @Override
@@ -74,13 +131,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void getShopsList(ShopsList shops) {
-        if (shops.getItems() == null){
-            txt_fragmentShops_Null.setVisibility(View.VISIBLE);
-        } else {
-            adapter = new RecyclerShopsAdapter(getViewContext(), shops);
-            rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL));
-            rv_fragmentShops_list.setAdapter(adapter);
-        }
+
     }
 
     @Override

@@ -28,4 +28,10 @@
     <color name="lightGray">#1F5C5B5B</color>
     <color name="darkGray">#1F181818</color>
     <color name="lightDarkBlueText">#3E3F68</color>
+    <color name="startBlackGradient">#040404</color>
+    <color name="endBlackGradient">#c3bfc4</color>
+    <color name="editTextBackground">#8f8f8f</color>
+    <color name="startDefGradient">#869cd6</color>
+    <color name="endDefGradient">#edf0f7</color>
+    <color name="pestasioGreen">#94fc13</color>
 </resources>
