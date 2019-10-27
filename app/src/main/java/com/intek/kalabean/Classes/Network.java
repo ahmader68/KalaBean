@@ -17,9 +17,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Network {
-   // private static ApiService apiService;
-   // private static Converter.Factory gsonConvertFactory = GsonConverterFactory.create();
-   // private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create();
+
     public static OkHttpClient getOkHttpClient(){
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .connectTimeout(6 , TimeUnit.MINUTES)
