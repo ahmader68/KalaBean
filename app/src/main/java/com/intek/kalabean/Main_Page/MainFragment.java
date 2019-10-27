@@ -77,6 +77,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         });
 
 
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -117,7 +118,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        fragment = new HomeFragment();
+
                         break;
                     case R.id.cat:
                         //fragment = new EditUserFragment();
@@ -129,10 +130,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                         //fragment = new EditUserFragment();
                         break;
                 }
-                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-                FragmentTransaction transactions = managers.beginTransaction();
-                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transactions.commit();
+
                 return true;
             }
         });

@@ -41,8 +41,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_rvReductedProduct"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:cardCornerRadius="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
