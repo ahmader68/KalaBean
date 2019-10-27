@@ -1,19 +1,28 @@
 package com.intek.kalabean.Main_Page;
 
 
+import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -45,6 +54,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private Fragment fragment;
     private boolean checkExit = false;
     private BottomNavigationView bottomNavigationView;
+    private EditText edt_toolbar_search;
+    private ImageView kalabeanIcon;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public int getLayout() {
@@ -61,7 +77,29 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         String check = sharedPreferences.getString("username", null);
-        String email = sharedPreferences.getString("email",null);
+        String email = sharedPreferences.getString("email", null);
+
+        ConstraintLayout searchToolbar = rootView.findViewById(R.id.search_toolbar);
+        edt_toolbar_search = rootView.findViewById(R.id.edt_toolbar_search);
+        kalabeanIcon = rootView.findViewById(R.id.kalabeanIcon);
+
+        searchToolbar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                if (edt_toolbar_search.getVisibility() == View.INVISIBLE) {
+                    edt_toolbar_search.setVisibility(View.VISIBLE);
+
+                    //InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    //imm.showSoftInput(edt_toolbar_search, InputMethodManager.SHOW_IMPLICIT);
+
+                    kalabeanIcon.setVisibility(View.INVISIBLE);
+                } else if (edt_toolbar_search.getVisibility() == View.VISIBLE) {
+                    edt_toolbar_search.setVisibility(View.INVISIBLE);
+                    kalabeanIcon.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         navigationView.setItemIconTintList(null);
         if (check != null || email != null) {
@@ -92,7 +130,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 } else if (id == R.id.item_drawer_about) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new OUFragment();
-                }else if(id == R.id.item_drawer_article){
+                } else if (id == R.id.item_drawer_article) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new VUFragment();
                 }
@@ -117,7 +155,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        fragment = new HomeFragment();
+
                         break;
                     case R.id.cat:
                         //fragment = new EditUserFragment();
@@ -129,10 +167,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                         //fragment = new EditUserFragment();
                         break;
                 }
-                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-                FragmentTransaction transactions = managers.beginTransaction();
-                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transactions.commit();
+
                 return true;
             }
         });
@@ -185,7 +220,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                                 public void run() {
                                     checkExit = false;
                                 }
-                            },2000);
+                            }, 2000);
                             checkExit = true;
                         }
                     }

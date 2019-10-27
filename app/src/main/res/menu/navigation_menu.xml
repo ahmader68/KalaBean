@@ -1,56 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:title="منو اصلی">
 
-        <menu>
-            <item
-                android:id="@+id/item_drawer_cities"
-                android:icon="@drawable/ic_cities"
-                android:title="@string/item_drawer_cities" />
-            <item
-                android:id="@+id/item_drawer_language"
-                android:icon="@drawable/ic_language"
-                android:title="@string/item_drawer_language" />
-            <item
-                android:id="@+id/item_drawer_article"
-                android:icon="@drawable/ic_article"
-                android:title="@string/item_drawer_article" />
+    <item
+        android:id="@+id/item_drawer_cities"
+        android:icon="@drawable/ic_cities"
+        android:title="@string/item_drawer_cities" />
+    <item
+        android:id="@+id/item_drawer_language"
+        android:icon="@drawable/ic_language"
+        android:title="@string/item_drawer_language" />
+    <item
+        android:id="@+id/item_drawer_article"
+        android:icon="@drawable/ic_article"
+        android:title="@string/item_drawer_article" />
 
-            <item
-                android:id="@+id/item_drawer_search"
-                android:icon="@drawable/ic_search"
-                android:title="@string/txt_fragmentHome_advanceSearch" />
+    <item
+        android:id="@+id/item_drawer_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/txt_fragmentHome_advanceSearch" />
 
-            <item
-                android:id="@+id/item_drawer_guide"
-                android:icon="@drawable/ic_guide"
-                android:title="@string/item_drawer_guide" />
+    <item
+        android:id="@+id/item_drawer_guide"
+        android:icon="@drawable/ic_guide"
+        android:title="@string/item_drawer_guide" />
 
-            <item
-                android:id="@+id/item_drawer_support"
-                android:icon="@drawable/ic_support"
-                android:title="@string/item_drawer_support" />
+    <item
+        android:id="@+id/item_drawer_support"
+        android:icon="@drawable/ic_support"
+        android:title="@string/item_drawer_support" />
 
-            <item
-                android:id="@+id/item_drawer_about"
-                android:icon="@drawable/ic_about"
-                android:title="@string/item_drawer_about" />
+    <item
+        android:id="@+id/item_drawer_about"
+        android:icon="@drawable/ic_about"
+        android:title="@string/item_drawer_about" />
 
-            <item
-                android:id="@+id/item_drawer_exit"
-                android:icon="@drawable/ic_exit"
-                android:title="@string/item_drawer_exit" />
+    <item
+        android:id="@+id/item_drawer_exit"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/item_drawer_exit" />
 
-            <item
-                android:id="@+id/social_items"
-                android:checkable="true"
-                android:title=""
-                app:actionLayout="@layout/connect_us"
-                app:showAsAction="always" />
+    <item
+        android:id="@+id/social_items"
+        android:checkable="true"
+        android:title=""
+        app:actionLayout="@layout/connect_us"
+        app:showAsAction="always" />
 
-
-        </menu>
-
-    </item>
 </menu>

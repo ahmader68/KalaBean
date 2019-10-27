@@ -37,7 +37,7 @@ public class RecyclerNewJobAdapter extends RecyclerView.Adapter<RecyclerNewJobAd
             Picasso.get().load(shops.getImage()).fit().into(holder.img_rvNewJobs_image);
         }
         holder.txt_rvNewJobs.setText(shops.getTitleFA());
-        holder.txt_rvNewJobCat.setText(String.valueOf(shops.getJobCatid()));
+        //holder.txt_rvNewJobCat.setText(String.valueOf(shops.getJobCatid()));
     }
 
     @Override

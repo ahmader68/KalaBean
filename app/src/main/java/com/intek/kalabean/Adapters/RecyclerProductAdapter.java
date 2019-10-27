@@ -46,12 +46,12 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
 
     class ProductHolder extends RecyclerView.ViewHolder{
         ImageView img_rvSelectedProduct_image;
-        ImageView img_rvSelectedProduct_pin;
+        //ImageView img_rvSelectedProduct_pin;
         TextView txt_rvSelectedProduct;
         ProductHolder(@NonNull View itemView) {
             super(itemView);
             img_rvSelectedProduct_image = itemView.findViewById(R.id.img_rvSelectedProduct_image);
-            img_rvSelectedProduct_pin = itemView.findViewById(R.id.img_rvSelectedProduct_pin);
+            //img_rvSelectedProduct_pin = itemView.findViewById(R.id.img_rvSelectedProduct_pin);
             txt_rvSelectedProduct = itemView.findViewById(R.id.txt_rvSelectedProduct);
         }
     }

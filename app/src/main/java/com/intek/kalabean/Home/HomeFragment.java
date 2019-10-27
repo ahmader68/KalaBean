@@ -2,10 +2,15 @@ package com.intek.kalabean.Home;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +21,11 @@ import com.intek.kalabean.Adapters.RecyclerOrderAdapter;
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Adapters.RecyclerReductedProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Best.BestFragment;
+import com.intek.kalabean.Chain_Store.ChainFragment;
+import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.Model.Order;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.ShopsList;
@@ -24,21 +33,24 @@ import com.intek.kalabean.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends BaseFragment implements HomeContract.View  {
 
     private ConstraintLayout con_fragmentHome_orders;
-    ConstraintLayout con_fragmentHome_slideShow;
-    ConstraintLayout con_fragmentHome_cat;
-    ConstraintLayout con_fragmentHome_gallery;
-    ConstraintLayout con_fragmentHome_brands;
+    private ConstraintLayout con_fragmentHome_slideShow;
+    private ConstraintLayout con_fragmentHome_cat;
     private HomeContract.Presenter presenter;
-
     private RecyclerView rv_fragmentHome_orders;
     private RecyclerView rv_fragmentHome_newProduct;
     private RecyclerView rv_fragmentHome_reductedProduct;
     private RecyclerView rv_fragmentHome_newJob;
     private RecyclerOrderAdapter adapter;
+    private ImageView img_fragmentHome_complex;
+    private ImageView img_fragmentHome_malls;
+    private ImageView img_fragmentHome_chainStore;
+    private ImageView img_fragmentHome_best;
+    private Fragment fragment;
 
     private SliderLayout slider;
 
@@ -66,6 +78,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         rv_fragmentHome_newProduct = rootView.findViewById(R.id.rv_fragmentHome_newProduct);
         rv_fragmentHome_reductedProduct = rootView.findViewById(R.id.rv_fragmentHome_reductedProduct);
         rv_fragmentHome_newJob = rootView.findViewById(R.id.rv_fragmentHome_newJob);
+        img_fragmentHome_complex = rootView.findViewById(R.id.img_fragmentHome_complex);
+        img_fragmentHome_malls = rootView.findViewById(R.id.img_fragmentHome_malls);
+        img_fragmentHome_chainStore = rootView.findViewById(R.id.img_fragmentHome_chainStore);
+        img_fragmentHome_best = rootView.findViewById(R.id.img_fragmentHome_best);
         slider = rootView.findViewById(R.id.slider);
 
         List<String> linkList;
@@ -137,6 +153,54 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         orderList.add(order);
 
         showOrderList(orderList);
+
+
+        //////////////////////////////////////////////////////////////////
+
+        img_fragmentHome_complex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new ComplexFragment();
+                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                FragmentTransaction transactions = managers.beginTransaction();
+                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                transactions.commit();
+            }
+        });
+
+        img_fragmentHome_malls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new MarketsFragment();
+                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                FragmentTransaction transactions = managers.beginTransaction();
+                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                transactions.commit();
+            }
+        });
+
+        img_fragmentHome_chainStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new ChainFragment();
+                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                FragmentTransaction transactions = managers.beginTransaction();
+                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                transactions.commit();
+            }
+        });
+
+        img_fragmentHome_best.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new BestFragment();
+                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+                FragmentTransaction transactions = managers.beginTransaction();
+                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                transactions.commit();
+            }
+        });
+
     }
 
     @Override
