@@ -12,7 +12,7 @@
     <string name="edt_fragmentRegister_email">ایمیل</string>
     <string name="edt_fragmentRegister_mobile">شماره موبایل</string>
     <string name="txt_fragmentRegister_noteMobile">توجه : شماره موبایل شما به عنوان نام کاربری برای ورود به سایت تعریف می شود</string>
-    <string name="edt_fragmentRegister_phone">تلفن ثابت</string>
+    <string name="edt_fragmentRegister_phone">شماره تماس</string>
     <string name="txt_fragmentRegister_notePhone">نمونه: 05130123456</string>
     <string name="edt_fragmentRegister_address">آدرس</string>
     <string name="edt_fragmentRegister_password">کلمه عبور</string>
@@ -181,4 +181,15 @@
     <string name="menu_cat_product">دسته بندی محصولات</string>
     <string name="menu_store_description">توضیحات</string>
     <string name="menu_store_branchs">شعب</string>
+    <string name="definition_store">ایجاد فروشگاه</string>
+    <string name="add_outer_image">افزودن عکس بیرونی</string>
+    <string name="add_inner_image">افزودن عکس ذاخلی</string>
+    <string name="http">http://</string>
+    <string name="instagram">\@instagram account</string>
+    <string name="telegram">\@telegram account</string>
+    <string name="accept">تایید</string>
+    <string name="storeName">نام مرکز خرید</string>
+    <string name="site">وب سایت</string>
+    <string name="instagramFA">اینستاگرام</string>
+    <string name="telegramFA">تلگرام</string>
 </resources>

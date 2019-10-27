@@ -46,98 +46,43 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private TextInputEditText edtFragmentDefinitionStoreName;
 
 
-    private TextInputLayout tilFragmentDefinitionStoreNameEn;
-    private TextInputEditText edtFragmentDefinitionStoreNameEn;
-
-
-    private TextInputLayout tilFragmentDefinitionStoreNameAr;
-    private TextInputEditText edtFragmentDefinitionStoreNameAr;
-
-
-    private TextInputLayout tilFragmentDefinitionArtificialTour;
-    private TextInputEditText edtFragmentDefinitionArtificialTour;
-
-
-    private TextInputLayout tilFragmentDefinitionTwitter;
-    private TextInputEditText edtFragmentDefinitionTwitter;
-
-
-    private TextInputLayout tilFragmentDefinitionLinkedIn;
-    private TextInputEditText edtFragmentDefinitionLinkedIn;
-
-
-    private TextInputLayout tilFragmentDefinitionGoogle;
-    private TextInputEditText edtFragmentDefinitionGoogle;
-
 
     private TextInputLayout tilFragmentDefinitionTelegram;
     private TextInputEditText edtFragmentDefinitionTelegram;
-
-
-    private TextInputLayout tilFragmentDefinitionFacebook;
-    private TextInputEditText edtFragmentDefinitionFacebook;
-
-
-    private TextInputLayout tilFragmentDefinitionWhatsApp;
-    private TextInputEditText edtFragmentDefinitionWhatsApp;
 
 
     private TextInputLayout tilFragmentDefinitionPhone;
     private TextInputEditText edtFragmentDefinitionPhone;
 
 
-    private TextInputLayout tilFragmentDefinitionMobile;
-    private TextInputEditText edtFragmentDefinitionMobile;
-
-
-    private TextInputLayout tilFragmentDefinitionFax;
-    private TextInputEditText edtFragmentDefinitionFax;
-
-
-    private TextInputLayout tilFragmentDefinitionEmail;
-    private TextInputEditText edtFragmentDefinitionEmail;
+    private TextInputLayout tilFragmentDefinitionSite;
+    private TextInputEditText edtFragmentDefinitionSite;
 
 
     private TextInputLayout tilFragmentDefinitionWorkHour;
     private TextInputEditText edtFragmentDefinitionWorkHour;
 
 
-    private TextInputLayout tilFragmentDefinitionOff;
-    private TextInputEditText edtFragmentDefinitionOff;
-
 
     private TextInputLayout tilFragmentDefinitionAddressFa;
     private TextInputEditText edtFragmentDefinitionAddressFa;
 
 
-    private TextInputLayout tilFragmentDefinitionAddressAr;
-    private TextInputEditText edtFragmentDefinitionAddressAr;
-
-
-    private TextInputLayout tilFragmentDefinitionAddressEn;
-    private TextInputEditText edtFragmentDefinitionAddressEn;
-
-
-    private TextInputLayout tilFragmentDefinitionDescriptionFa;
-    private TextInputEditText edtFragmentDefinitionDescriptionFa;
-
-
-    private TextInputLayout tilFragmentDefinitionDescriptionEn;
-    private TextInputEditText edtFragmentDefinitionDescriptionEn;
 
 
     private MaterialSpinner spFragmentDefinitionStoreKind;
     private MaterialSpinner spFragmentDefinitionComplexName;
     private MaterialSpinner spFragmentDefinitionFloor;
-    private MaterialSpinner spFragmentDefinitionActivityKind;
+    private MaterialSpinner spFragmentDefinitionPrivince;
+    private MaterialSpinner getSpFragmentDefinitionCity;
 
 
-    private Button btnFragmentDefinitionAddActivity;
-    private Button btnFragmentDefinitionSave;
-    private Button btnFragmentDefinitionUpload;
+    private Button btnFragmentDefinitionAccept;
 
 
-    private ImageView imgFragmentDefinitionStorePic;
+
+    private ImageView imgFragmentDefinitionInnerImage;
+    private ImageView ImgFragmentDefinitionOuterImage;
 
     private ConstraintLayout conFragmentDefinitionMainLayout;
     private ConstraintLayout conFragmentDefinitionSpinner;
@@ -201,87 +146,41 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         conFragmentDefinitionMainLayout = rootView.findViewById(R.id.con_fragmentDefinition_mainLayout);
         conFragmentDefinitionMainLayout.setRotationY(180);
 
-        conFragmentDefinitionSpinner = rootView.findViewById(R.id.con_fragmentDefinition_spinnersLayout);
-
-        conFragmentDefinitionActivityKind = rootView.findViewById(R.id.con_fragmentDefinition_ActivityKindLayout);
-
-        conFragmentDefinitionPhone = rootView.findViewById(R.id.con_fragmentDefinition_phone);
-
-        conFragmentDefinitionAddress = rootView.findViewById(R.id.con_fragmentDefinition_address);
 
         tilFragmentDefinitionStoreName = rootView.findViewById(R.id.til_fragmentDefinition_storeName);
         edtFragmentDefinitionStoreName = rootView.findViewById(R.id.edt_fragmentDefinition_storeName);
 
-        tilFragmentDefinitionStoreNameAr = rootView.findViewById(R.id.til_fragmentDefinition_storeNameAr);
-        edtFragmentDefinitionStoreNameAr = rootView.findViewById(R.id.edt_fragmentDefinition_storeNameAr);
 
-        tilFragmentDefinitionStoreNameEn = rootView.findViewById(R.id.til_fragmentDefinition_storeNameEn);
-        edtFragmentDefinitionStoreNameEn = rootView.findViewById(R.id.edt_fragmentDefinition_storeNameEn);
-
-        tilFragmentDefinitionArtificialTour = rootView.findViewById(R.id.til_fragmentDefinition_artificialTour);
-        edtFragmentDefinitionArtificialTour = rootView.findViewById(R.id.edt_fragmentDefinition_artificialTour);
-
-        tilFragmentDefinitionTwitter = rootView.findViewById(R.id.til_fragmentDefinition_twitter);
-        edtFragmentDefinitionTwitter = rootView.findViewById(R.id.edt_fragmentDefinition_twitter);
-
-        tilFragmentDefinitionLinkedIn = rootView.findViewById(R.id.til_fragmentDefinition_linkedIn);
-        edtFragmentDefinitionLinkedIn = rootView.findViewById(R.id.edt_fragmentDefinition_linkedIn);
-
-        tilFragmentDefinitionGoogle = rootView.findViewById(R.id.til_fragmentDefinition_google);
-        edtFragmentDefinitionGoogle = rootView.findViewById(R.id.edt_fragmentDefinition_google);
 
         tilFragmentDefinitionTelegram = rootView.findViewById(R.id.til_fragmentDefinition_telegram);
         edtFragmentDefinitionTelegram = rootView.findViewById(R.id.edt_fragmentDefinition_telegram);
 
-        tilFragmentDefinitionFacebook = rootView.findViewById(R.id.til_fragmentDefinition_facebook);
-        edtFragmentDefinitionFacebook = rootView.findViewById(R.id.edt_fragmentDefinition_facebook);
-
-        tilFragmentDefinitionWhatsApp = rootView.findViewById(R.id.til_fragmentDefinition_whatsApp);
-        edtFragmentDefinitionWhatsApp = rootView.findViewById(R.id.edt_fragmentDefinition_whatsApp);
 
         tilFragmentDefinitionPhone = rootView.findViewById(R.id.til_fragmentDefinition_phone);
         edtFragmentDefinitionPhone = rootView.findViewById(R.id.edt_fragmentDefinition_phone);
 
-        tilFragmentDefinitionMobile = rootView.findViewById(R.id.til_fragmentDefinition_mobile);
-        edtFragmentDefinitionMobile = rootView.findViewById(R.id.edt_fragmentDefinition_mobile);
 
-        tilFragmentDefinitionFax = rootView.findViewById(R.id.til_fragmentDefinition_fax);
-        edtFragmentDefinitionFax = rootView.findViewById(R.id.edt_fragmentDefinition_fax);
-
-        tilFragmentDefinitionEmail = rootView.findViewById(R.id.til_fragmentDefinition_email);
-        edtFragmentDefinitionEmail = rootView.findViewById(R.id.edt_fragmentDefinition_email);
+        tilFragmentDefinitionSite = rootView.findViewById(R.id.til_fragmentDefinition_site);
+        edtFragmentDefinitionSite = rootView.findViewById(R.id.edt_fragmentDefinition_site);
 
         tilFragmentDefinitionWorkHour = rootView.findViewById(R.id.til_fragmentDefinition_workHour);
         edtFragmentDefinitionWorkHour = rootView.findViewById(R.id.edt_fragmentDefinition_workHour);
 
-        tilFragmentDefinitionOff = rootView.findViewById(R.id.til_fragmentDefinition_off);
-        edtFragmentDefinitionOff = rootView.findViewById(R.id.edt_fragmentDefinition_off);
 
-        tilFragmentDefinitionAddressFa = rootView.findViewById(R.id.til_fragmentDefinition_addressFA);
-        edtFragmentDefinitionAddressFa = rootView.findViewById(R.id.edt_fragmentDefinition_addressFA);
+        tilFragmentDefinitionAddressFa = rootView.findViewById(R.id.til_fragmentDefinition_address);
+        edtFragmentDefinitionAddressFa = rootView.findViewById(R.id.edt_fragmentDefinition_address);
 
-        tilFragmentDefinitionAddressAr = rootView.findViewById(R.id.til_fragmentDefinition_addressAR);
-        edtFragmentDefinitionAddressAr = rootView.findViewById(R.id.edt_fragmentDefinition_addressAR);
 
-        tilFragmentDefinitionAddressEn = rootView.findViewById(R.id.til_fragmentDefinition_addressEN);
-        edtFragmentDefinitionAddressEn = rootView.findViewById(R.id.edt_fragmentDefinition_addressEN);
 
-        tilFragmentDefinitionDescriptionFa = rootView.findViewById(R.id.til_fragmentDefinition_descriptionFA);
-        edtFragmentDefinitionDescriptionFa = rootView.findViewById(R.id.edt_fragmentDefinition_descriptionFA);
-
-        tilFragmentDefinitionDescriptionEn = rootView.findViewById(R.id.til_fragmentDefinition_descriptionEN);
-        edtFragmentDefinitionDescriptionEn = rootView.findViewById(R.id.edt_fragmentDefinition_descriptionEN);
-
-        spFragmentDefinitionActivityKind = rootView.findViewById(R.id.sp_fragmentDefinition_activityKind);
-        spFragmentDefinitionComplexName = rootView.findViewById(R.id.sp_fragmentDefinition_complexName);
+        spFragmentDefinitionComplexName = rootView.findViewById(R.id.sp_fragmentDefinition_storeName);
         spFragmentDefinitionFloor = rootView.findViewById(R.id.sp_fragmentDefinition_floor);
         spFragmentDefinitionStoreKind = rootView.findViewById(R.id.sp_fragmentDefinition_storeKind);
 
-        btnFragmentDefinitionAddActivity = rootView.findViewById(R.id.btn_fragmentDefinition_addActivity);
-        btnFragmentDefinitionUpload = rootView.findViewById(R.id.btn_fragmentDefinition_upload);
-        btnFragmentDefinitionSave = rootView.findViewById(R.id.btn_fragmentDefinition_save);
 
-        imgFragmentDefinitionStorePic = rootView.findViewById(R.id.img_fragmentDefinition_storePic);
+        btnFragmentDefinitionAccept = rootView.findViewById(R.id.btn_fragmentDefinition_save);
+
+        imgFragmentDefinitionInnerImage = rootView.findViewById(R.id.img_fragmentDefinition_innerImage);
+        ImgFragmentDefinitionOuterImage = rootView.findViewById(R.id.img_fragmentDefinition_outerImage);
 
         spFragmentDefinitionStoreKind.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
@@ -322,38 +221,15 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
             }
         });
-        spFragmentDefinitionActivityKind.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
-                activityId = spActivityKind.getItems().get(position).getId();
-                Toast.makeText(getViewContext(), activityId + "", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onNothingSelected(MaterialSpinner materialSpinner) {
 
-            }
-        });
 
-        btnFragmentDefinitionUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-                StrictMode.setVmPolicy(builder.build());
-                if (Build.VERSION.SDK_INT >= 23) {
-                    checkMyPermission();
-                } else {
-                    takePicture();
-                }
-                imgFragmentDefinitionStorePic.setVisibility(View.VISIBLE);
-            }
-        });
 
-        btnFragmentDefinitionSave.setOnClickListener(new View.OnClickListener() {
+        btnFragmentDefinitionAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StoreDif storeDif = new StoreDif();
-                if (!validateStoreKind() || !validateComplexName() || !validateFloor() || !validateStoreName() || !validateActivity() || !validatePhone() || !validAddress()) {
+                if (!validateStoreKind() || !validateComplexName() || !validateFloor() || !validateStoreName()  || !validatePhone() || !validAddress()) {
                     return;
                 } else {
                     int storeKind;
@@ -363,8 +239,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     String phone;
                     String fAddress;
                     int jobCatid;
-                    String fax;
-                    String email;
+
 
                     storeKind = mallId;
                     complexName = shopCenterId;
@@ -372,8 +247,6 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     fName = edtFragmentDefinitionStoreName.getText().toString();
                     phone = edtFragmentDefinitionPhone.getText().toString();
                     fAddress = edtFragmentDefinitionAddressFa.getText().toString();
-                    fax = edtFragmentDefinitionFax.getText().toString();
-                    email = edtFragmentDefinitionEmail.getText().toString();
                     jobCatid = activityId;
                     storeDif.setShopCenterKind(storeKind);
                     storeDif.setShopCenterName(complexName);
@@ -381,8 +254,6 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     storeDif.setFstoreName(fName);
                     storeDif.setPhone(phone);
                     storeDif.setFaddress(fAddress);
-                    storeDif.setFax(fax);
-                    storeDif.setEmail(email);
                     storeDif.setCityid(cityId);
                     storeDif.setJobcatid(jobCatid);
                     presenter.storeDefinition(storeDif);
@@ -433,7 +304,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         }
         activityKindAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, activityName);
         activityKindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spFragmentDefinitionActivityKind.setAdapter(activityKindAdapter);
+
     }
 
 
@@ -535,17 +406,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         }
     }
 
-    private boolean validateActivity() {
-        String selectedItem = (String) spFragmentDefinitionActivityKind.getSelectedItem();
-        if (selectedItem == null) {
-            spFragmentDefinitionActivityKind.setError("لطفا یکی از گزینه ها را انتخاب کنید");
-            conFragmentDefinitionActivityKind.requestFocus();
-            return false;
-        } else {
-            spFragmentDefinitionActivityKind.setError(null);
-            return true;
-        }
-    }
+
 
     private boolean validatePhone() {
         String selectedItem = edtFragmentDefinitionPhone.getText().toString().trim();

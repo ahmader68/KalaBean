@@ -103,14 +103,15 @@ public class MainActivity extends AppCompatActivity {
                 case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
                     CropImage.ActivityResult result = CropImage.getActivityResult(data);
                     if (resultCode == RESULT_OK) {
-                        if (requestCodeCheck == 1) {
-                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_storePic));
-                        } else if (requestCodeCheck == 2) {
+//                        if (requestCodeCheck == 1) {
+//                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_storePic));
+                        } if (requestCodeCheck == 2) {
                             Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
                         }else if(requestCodeCheck == 3){
                             Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentAddProduct_image));
                         }
-                    } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    //}
+                    else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
                     }
                     break;

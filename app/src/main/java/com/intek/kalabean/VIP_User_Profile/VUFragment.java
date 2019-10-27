@@ -50,10 +50,10 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         cimgOuter = rootView.findViewById(R.id.cimg_fragmentVIPUser_outerImage);
 
         conImage = rootView.findViewById(R.id.con_fragmentVIPUser_image);
-        conProfile = rootView.findViewById(R.id.con_fragmentVIPUser_profile);
-        conBasket = rootView.findViewById(R.id.con_fragmentVIPUser_basket);
-        conMessage = rootView.findViewById(R.id.con_fragmentVIPUser_message);
-        conWallet = rootView.findViewById(R.id.con_fragmentVIPUser_wallet);
+//        conProfile = rootView.findViewById(R.id.con_fragmentVIPUser_profile);
+//        conBasket = rootView.findViewById(R.id.con_fragmentVIPUser_basket);
+//        conMessage = rootView.findViewById(R.id.con_fragmentVIPUser_message);
+//        conWallet = rootView.findViewById(R.id.con_fragmentVIPUser_wallet);
 
         txtStoreName = rootView.findViewById(R.id.txt_fragmentVIPUser_name);
 
@@ -63,33 +63,33 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         cvSetMap = rootView.findViewById(R.id.cv_fragmentVIPUser_map);
         cvShowStore = rootView.findViewById(R.id.cv_fragmentVIPUser_showStore);
 
-        conProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Profile", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        conBasket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Basket", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        conMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Message", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        conWallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Wallet", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        conProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getViewContext(), "Profile", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        conBasket.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getViewContext(), "Basket", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        conMessage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getViewContext(), "Message", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        conWallet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getViewContext(), "Wallet", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         cvAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
