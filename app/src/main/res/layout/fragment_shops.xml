@@ -7,6 +7,99 @@
     android:layoutDirection="rtl">
 
 
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:expandedTitleTextAppearance="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/colorPrimary">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentShop_views"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <ImageView
+                        android:id="@+id/img_fragmentShop_shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:src="@drawable/ic_launcher_background"
+                        android:scaleType="centerCrop"/>
+                    <ImageView
+                        android:id="@+id/img_fragmentShop_heart"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:src="@drawable/white_heart"
+                        android:layout_margin="16dp"/>
+                    <ImageView
+                        android:id="@+id/img_fragmentShop_hambur"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/hambur_menu"
+                        android:layout_margin="16dp"/>
+                    <ImageView
+                        android:id="@+id/img_fragmentShop_share"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/img_fragmentShop_hambur"
+                        android:src="@drawable/share"
+                        android:adjustViewBounds="true"
+                        android:layout_margin="16dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:layout_collapseMode="pin">
+
+            <Button
+                android:id="@+id/btn_fragmentShop_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/showStore"
+                android:text="@string/btn_store_info"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="13dp"
+                android:layout_marginTop="8dp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,29 +110,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_collapseMode="pin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/con_fragmentOrdinaryUser_views">
 
-            <Button
-                android:id="@+id/btn_fragmentShop_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="@color/showStore"
-                android:text="@string/btn_store_info"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_margin="8dp"/>
+
             <ImageView
                 android:id="@+id/img_fragmentShop_map"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:layout_constraintTop_toBottomOf="@id/btn_fragmentShop_info"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="8dp"
@@ -190,74 +271,4 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_fragmentShop_hourWork" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:fitsSystemWindows="true"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:expandedTitleTextAppearance="@android:color/transparent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/colorPrimary">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_fragmentShop_views"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_collapseMode="parallax"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                    <ImageView
-                        android:id="@+id/img_fragmentShop_shop"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:src="@drawable/ic_launcher_background"
-                        android:scaleType="centerCrop"/>
-                    <ImageView
-                        android:id="@+id/img_fragmentShop_heart"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:src="@drawable/white_heart"
-                        android:layout_margin="16dp"/>
-                    <ImageView
-                        android:id="@+id/img_fragmentShop_hambur"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:src="@drawable/hambur_menu"
-                        android:layout_margin="16dp"/>
-                    <ImageView
-                        android:id="@+id/img_fragmentShop_share"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/img_fragmentShop_hambur"
-                        android:src="@drawable/share"
-                        android:adjustViewBounds="true"
-                        android:layout_margin="16dp"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
