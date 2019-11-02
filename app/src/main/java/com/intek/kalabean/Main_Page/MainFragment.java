@@ -33,6 +33,7 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
@@ -126,7 +127,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                }
                 if (id == R.id.item_drawer_cities) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new ShopsFragment();
+                    fragment = new DefinitionFragment();
                 } else if (id == R.id.item_drawer_about) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new OUFragment();
