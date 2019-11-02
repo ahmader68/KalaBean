@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -105,11 +106,18 @@ public class MainActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK) {
 //                        if (requestCodeCheck == 1) {
 //                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_storePic));
-                        } if (requestCodeCheck == 2) {
-                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
-                        }else if(requestCodeCheck == 3){
-                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentAddProduct_image));
-                        }
+                    }
+                    if (requestCodeCheck == 2) {
+                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
+                    } else if (requestCodeCheck == 3) {
+                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentAddProduct_image));
+                    } else if (requestCodeCheck == 4) {
+                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_srcInner));
+
+
+                    }else if(requestCodeCheck == 5){
+                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_srcOuter));
+                    }
                     //}
                     else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();

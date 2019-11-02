@@ -192,4 +192,12 @@
     <string name="site">وب سایت</string>
     <string name="instagramFA">اینستاگرام</string>
     <string name="telegramFA">تلگرام</string>
+    <string name="request_product">درخواست کالا</string>
+    <string name="request_product_description">درخواست خرید خود را به فروشندگان سطح شهر اطلاع دهید نتیجه را در قسمت پیام ها ببینید</string>
+    <string name="color">رنگ</string>
+    <string name="size">سایز</string>
+    <string name="price_range">محمدوده قیمت</string>
+    <string name="to">تا</string>
+    <string name="toman">تومان</string>
+    <string name="request_product_image">غکس مشابه یا خود کالا</string>
 </resources>
