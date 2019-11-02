@@ -1,8 +1,12 @@
 package com.intek.kalabean.Register;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -20,6 +24,7 @@ import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Classes.GetProvinceAndCity;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
 import com.tiper.MaterialSpinner;
@@ -71,6 +76,8 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
     private GetProvinceAndCity getProvinceAndCity;
 
+    private SharedPreferences sharedPreferences;
+
 
 
     @Override
@@ -79,6 +86,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         presenter = new RegisterPresentr(new KalaBeanRepository());
         user = new User();
         getProvinceAndCity = new GetProvinceAndCity();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
     }
 
     @Override
@@ -171,6 +179,13 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                 }
             }
         });
+
+        txtFragmentRegisterClickHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getViewContext(), "Click", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -221,6 +236,28 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
             Toast.makeText(getViewContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
         }
+    }
+
+    @Override
+    public void successLogin(LoggedinUser user) {
+        String username = user.getItems().get(0).getMobile()+"";
+        int userId = user.getItems().get(0).getResult();
+        int shop = user.getItems().get(0).getShopId();
+        String name = user.getItems().get(0).getFirstName();
+        String family = user.getItems().get(0).getLastName();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("userid",userId);
+        editor.putString("name",name);
+        editor.putString("family",family);
+        editor.putString("username",username);
+        editor.putInt("ShopId",shop);
+
+        editor.apply();
+        editor.commit();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.commit();
     }
 
     @Override

@@ -53,7 +53,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         user = new User();
         presenter = new LoginPresenter(new KalaBeanRepository());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
+
     }
 
     @Override

@@ -131,7 +131,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     fragment = new RequestFragment();
                 } else if (id == R.id.item_drawer_about) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new OUFragment();
+                    fragment = new RegisterFragment();
                 } else if (id == R.id.item_drawer_article) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new VUFragment();

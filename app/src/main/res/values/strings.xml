@@ -204,4 +204,5 @@
     <string name="here">اینجا</string>
     <string name="click_here">کلیک کنید</string>
     <string name="register_and_login">ثبت نام/ورود</string>
+    <string name="register">ثبت نام</string>
 </resources>
