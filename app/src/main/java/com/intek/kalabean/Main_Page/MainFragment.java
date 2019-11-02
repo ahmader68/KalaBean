@@ -38,6 +38,7 @@ import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
+import com.intek.kalabean.Request_Product.RequestFragment;
 import com.intek.kalabean.Shops.ShopsFragment;
 import com.intek.kalabean.ShowShop.ShowShopFragment;
 import com.intek.kalabean.ShowUserShop.UserShopFragment;
@@ -127,7 +128,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                }
                 if (id == R.id.item_drawer_cities) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new DefinitionFragment();
+                    fragment = new RequestFragment();
                 } else if (id == R.id.item_drawer_about) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new OUFragment();

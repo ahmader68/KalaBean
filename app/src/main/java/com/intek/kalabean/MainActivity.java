@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }else if(requestCodeCheck == 5){
                         Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_srcOuter));
+                    }else if(requestCodeCheck == 6){
+                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentRequestProduct_srcProduct));
                     }
                     //}
                     else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
