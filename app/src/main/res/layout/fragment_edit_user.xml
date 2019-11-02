@@ -193,7 +193,7 @@
                             android:id="@+id/edt_fragmentEditUser_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/edt_fragmentEditUser_password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:textAlignment="textStart"
                             android:textSize="20sp" />
