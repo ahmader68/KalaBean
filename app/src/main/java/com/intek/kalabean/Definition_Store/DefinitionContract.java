@@ -23,5 +23,8 @@ public interface DefinitionContract {
         void ShopCenterList(int idCenterCat);
         void floorList(int idCenter);
         void storeDefinition(StoreDif storeDif);
+
+        void onSuccess(ActivityKindList activityKindList);
+        void onError(String message);
     }
 }

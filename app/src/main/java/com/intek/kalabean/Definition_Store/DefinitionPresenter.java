@@ -1,5 +1,6 @@
 package com.intek.kalabean.Definition_Store;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.FloorList;
@@ -17,17 +18,22 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DefinitionPresenter implements DefinitionContract.Presenter {
     private KalaBeanDataSource kalaBeanDataSource;
-    private DefinitionContract.View view;
+    private static DefinitionContract.View view;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private List<MallKindList.MallKind> kinds;
+    private final int databseFlag = 1;
+
+    private ActivityKindList activityKindList;
     public DefinitionPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
+        DatabaseMethods.kalaBeanDataSource = kalaBeanDataSource;
+        activityKindList = new ActivityKindList();
     }
 
 
     @Override
     public void attachView(DefinitionContract.View view) {
-        this.view = view;
+        DefinitionPresenter.view = view;
     }
 
     @Override
@@ -62,24 +68,8 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
 
     @Override
     public void activityKind() {
-        kalaBeanDataSource.getActivityKind().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ActivityKindList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+         DatabaseMethods.getActivityKind(databseFlag);
 
-                    @Override
-                    public void onSuccess(ActivityKindList activityKindList) {
-                        view.getActivityKind(activityKindList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
     }
 
 
@@ -158,5 +148,16 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
                         view.showMessage(e.toString());
                     }
                 });
+    }
+
+    @Override
+    public void onSuccess(ActivityKindList activityKindList) {
+
+        DefinitionPresenter.view.getActivityKind(activityKindList);
+    }
+
+    @Override
+    public void onError(String message) {
+        view.showMessage(message);
     }
 }
