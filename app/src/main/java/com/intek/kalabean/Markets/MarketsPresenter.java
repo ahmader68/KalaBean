@@ -1,5 +1,6 @@
 package com.intek.kalabean.Markets;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.StoreList;
 
@@ -10,17 +11,18 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class MarketsPresenter implements MarketsContract.Presenter {
-    private MarketsContract.View view;
+    private static MarketsContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 8;
 
 
-    MarketsPresenter(KalaBeanDataSource kalaBeanDataSource){
+    public MarketsPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
     @Override
     public void attachView(MarketsContract.View view) {
-        this.view = view;
+        MarketsPresenter.view = view;
     }
 
     @Override
@@ -34,23 +36,16 @@ public class MarketsPresenter implements MarketsContract.Presenter {
     @Override
     public void getMarkets(int SellCenterCatID , int CityCenterID) {
 
-        kalaBeanDataSource.getMarkets(SellCenterCatID , CityCenterID).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<StoreList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getMarkets(databaseFlag,SellCenterCatID,CityCenterID);
+    }
 
-                    @Override
-                    public void onSuccess(StoreList storeList) {
-                        view.getMarketList(storeList);
-                    }
+    @Override
+    public void onSuccessGetMarket(StoreList storeList) {
+        MarketsPresenter.view.getMarketList(storeList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onError(String message) {
+        MarketsPresenter.view.showMessage(message);
     }
 }

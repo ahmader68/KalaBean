@@ -1,19 +1,19 @@
 package com.intek.kalabean.Request_Product;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ActivityKindList;
 
-import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
+
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+
 
 public class RequestPresenter implements RequestContract.Presenter {
 
-    private RequestContract.View view;
+    private static RequestContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 2;
 
     public RequestPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
@@ -21,7 +21,7 @@ public class RequestPresenter implements RequestContract.Presenter {
     }
     @Override
     public void attachView(RequestContract.View view) {
-        this.view = view;
+        RequestPresenter.view = view;
     }
 
     @Override
@@ -34,23 +34,18 @@ public class RequestPresenter implements RequestContract.Presenter {
 
     @Override
     public void activityKind() {
-        kalaBeanDataSource.getActivityKind().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ActivityKindList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getActivityKind(databaseFlag);
+    }
 
-                    @Override
-                    public void onSuccess(ActivityKindList activityKindList) {
-                        view.getActivityKindRequest(activityKindList);
-                    }
+    @Override
+    public void onSuccess(ActivityKindList activityKindList) {
+        RequestPresenter.view.getActivityKindRequest(activityKindList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onError(String message) {
+
+        RequestPresenter.view.showMessage(message);
+
     }
 }

@@ -12,5 +12,7 @@ public interface ShowShopContract {
 
     interface Presenter extends BasePresenter<View>{
         void getProduct(int shopID);
+        void onSuccessGetProduct(ProductList productList);
+        void onError(String message);
     }
 }

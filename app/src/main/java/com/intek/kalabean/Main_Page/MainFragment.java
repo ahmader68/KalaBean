@@ -128,10 +128,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                }
                 if (id == R.id.item_drawer_cities) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new RequestFragment();
+                    fragment = new DefinitionFragment();
                 } else if (id == R.id.item_drawer_about) {
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new RegisterFragment();
+                    fragment = new RequestFragment();
                 } else if (id == R.id.item_drawer_article) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new VUFragment();

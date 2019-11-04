@@ -14,5 +14,8 @@ public interface RegisterContract {
     interface Presenter extends BasePresenter<View> {
         void register(User user);
         void login(User user);
+        void onSuccessLogin(LoggedinUser loggedinUser);
+        void onSuccessRegister(User user);
+        void onError(String message);
     }
 }

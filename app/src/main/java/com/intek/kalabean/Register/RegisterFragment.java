@@ -31,7 +31,7 @@ import com.tiper.MaterialSpinner;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class RegisterFragment extends BaseFragment implements RegisterContract.View {
@@ -176,6 +176,10 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                     user.setUserLevel(userLevel);
                     presenter.register(user);
 
+                }else if(!edtFragmentRegisterUsernameUp.getText().toString().equals("") && !edtFragmentRegisterPasswordUp.getText().toString().equals("")){
+                    user.setUserName(edtFragmentRegisterUsernameUp.getText().toString());
+                    user.setPassword(edtFragmentRegisterPasswordUp.getText().toString());
+                    presenter.login(user);
                 }
             }
         });
@@ -192,6 +196,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     public Context getViewContext() {
         return getContext();
     }
+
 
     private boolean validateName() {
         return true;

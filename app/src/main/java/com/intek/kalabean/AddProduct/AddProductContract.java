@@ -18,5 +18,9 @@ public interface AddProductContract {
         void insertProduct(AddProduct product);
         void activityKind();
         void subCatid();
+        void onSuccessActivityKind(ActivityKindList activityKindList);
+        void onSuccessInsertProduct(AddProduct product);
+        void onSuccessSubCatId(Positions positions);
+        void onError(String message);
     }
 }

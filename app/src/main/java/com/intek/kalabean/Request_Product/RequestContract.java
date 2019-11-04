@@ -12,5 +12,7 @@ public interface RequestContract {
 
     interface Presenter extends BasePresenter<View>{
         void activityKind();
+        void onSuccess(ActivityKindList activityKindList);
+        void onError(String message);
     }
 }

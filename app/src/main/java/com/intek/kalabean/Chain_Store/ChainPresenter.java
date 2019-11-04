@@ -1,5 +1,6 @@
 package com.intek.kalabean.Chain_Store;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ChainStoreList;
 
@@ -10,17 +11,18 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class ChainPresenter implements ChainContract.Presenter {
-    private ChainContract.View view;
+    private static ChainContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 5;
 
-    ChainPresenter(KalaBeanDataSource kalaBeanDataSource){
+    public ChainPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
 
     @Override
     public void attachView(ChainContract.View view) {
-        this.view = view;
+        ChainPresenter.view = view;
     }
 
     @Override
@@ -34,23 +36,16 @@ public class ChainPresenter implements ChainContract.Presenter {
     @Override
     public void getChainStore(int SellCenterCatID, int CityId) {
 
-        kalaBeanDataSource.getChainStore(SellCenterCatID , CityId).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ChainStoreList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getChainStore(databaseFlag,SellCenterCatID,CityId);
+    }
 
-                    @Override
-                    public void onSuccess(ChainStoreList chainStoreList) {
-                        view.getChainStoreList(chainStoreList);
-                    }
+    @Override
+    public void onSuccessGetChainStore(ChainStoreList chainStoreList) {
+        ChainPresenter.view.getChainStoreList(chainStoreList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onError(String message) {
+        ChainPresenter.view.showMessage(message);
     }
 }

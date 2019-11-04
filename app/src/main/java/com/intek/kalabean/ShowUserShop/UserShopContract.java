@@ -14,5 +14,8 @@ public interface UserShopContract {
     interface Presenter extends BasePresenter<View>{
         void getUserShop(int CreatorId);
         void getProduct(int shopID);
+        void onSuccessGetProduct(ProductList productList);
+        void onError(String message);
+        void onSuccessUserShop(UserShop userShop);
     }
 }

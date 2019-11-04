@@ -12,5 +12,7 @@ public interface LoginContract {
     }
     interface Presenter extends BasePresenter<View>{
         void login(User user);
+        void onSuccessLogin(LoggedinUser loggedinUser);
+        void onError(String message);
     }
 }

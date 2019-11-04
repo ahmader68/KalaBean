@@ -1,5 +1,6 @@
 package com.intek.kalabean.Shops;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ShopsList;
 
@@ -11,9 +12,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ShopsPresenter implements ShopsContract.Presenter {
 
-    private ShopsContract.View view;
+    private static ShopsContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 11;
 
     public ShopsPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
@@ -21,29 +23,22 @@ public class ShopsPresenter implements ShopsContract.Presenter {
 
     @Override
     public void getShops(int SellCenterID, int FloorID) {
-        kalaBeanDataSource.getShops(SellCenterID , FloorID).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ShopsList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getShopList(databaseFlag,SellCenterID,FloorID);
+    }
 
-                    @Override
-                    public void onSuccess(ShopsList shopsList) {
-                        view.getShopsList(shopsList);
-                    }
+    @Override
+    public void onSuccessGetShops(ShopsList shopsList) {
+        ShopsPresenter.view.getShopsList(shopsList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onError(String message) {
+        ShopsPresenter.view.showMessage(message);
     }
 
     @Override
     public void attachView(ShopsContract.View view) {
-        this.view = view;
+        ShopsPresenter.view = view;
     }
 
     @Override

@@ -12,5 +12,7 @@ public interface ShopsContract {
 
     interface Presenter extends BasePresenter<View> {
         void getShops(int SellCenterID , int FloorID);
+        void onSuccessGetShops(ShopsList shopsList);
+        void onError(String message);
     }
 }
