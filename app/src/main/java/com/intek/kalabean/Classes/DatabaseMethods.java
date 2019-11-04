@@ -1,6 +1,9 @@
 package com.intek.kalabean.Classes;
 
 import com.intek.kalabean.Data.KalaBeanDataSource;
+import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Definition_Store.DefinitionContract;
+import com.intek.kalabean.Definition_Store.DefinitionPresenter;
 import com.intek.kalabean.Model.ActivityKindList;
 
 import io.reactivex.SingleObserver;
@@ -9,43 +12,48 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public  class DatabaseMethods {
-    private KalaBeanDataSource kalaBeanDataSource;
-    private CompositeDisposable compositeDisposable;
-    private ActivityKindList activityKindListResult;
+public class DatabaseMethods {
+    public static KalaBeanDataSource kalaBeanDataSource;
+    private static CompositeDisposable compositeDisposable = new CompositeDisposable();
     public String message = null;
+    private static DefinitionContract.Presenter presenter = new DefinitionPresenter(new KalaBeanRepository());
+
+    public static int flag = 0;
 
 
-    public  DatabaseMethods(KalaBeanDataSource kalaBeanDataSource){
-        this.kalaBeanDataSource = kalaBeanDataSource;
-        compositeDisposable = new CompositeDisposable();
-        activityKindListResult = new ActivityKindList();
-    }
-
-    public  ActivityKindList getActivityKind(){
-        kalaBeanDataSource.getActivityKind().subscribeOn(Schedulers.newThread())
+    public static void getActivityKind(int id) {
+        flag = id;
+        DatabaseMethods.kalaBeanDataSource.getActivityKind().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<ActivityKindList>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+
                         compositeDisposable.add(d);
+
                     }
 
                     @Override
                     public void onSuccess(ActivityKindList activityKindList) {
-                        activityKindListResult = activityKindList;
+                        //activityKindListResult = activityKindList;
+                        switch (flag) {
+                            case 1:
+                                presenter.onSuccess(activityKindList);
+                                break;
+                        }
+
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        message = e.toString();
+                        switch (flag) {
+                            case 1:
+                                presenter.onError(e.toString());
+                                break;
+                        }
+
                     }
                 });
-
-        if(message == null && activityKindListResult.getItems().size() > 0){
-            return activityKindListResult;
-        }else{
-            return null;
-        }
     }
 }
