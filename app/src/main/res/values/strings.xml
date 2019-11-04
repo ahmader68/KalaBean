@@ -2,8 +2,8 @@
     <string name="app_name">Kala Bean</string>
     <string name="KalaBean">کالا بین</string>
     <string name="txt_fragmentRegister_register">عضویت :</string>
-    <string name="radio_fragmentRegister_spacial">کاربر ویژه - امکان افزودن فروشگاه</string>
-    <string name="radio_fragmentRegister_regular">کاربر عادی - عضویت صرفا جهت بازدید</string>
+    <string name="radio_fragmentRegister_spacial">صاحب کسب و کار هستم</string>
+    <string name="radio_fragmentRegister_regular">کاربر عادی</string>
     <string name="txt_fragmentRegister_gender">جنسیت :</string>
     <string name="txt_fragmentRegister_gender_man">مرد</string>
     <string name="txt_fragmentRegister_gender_woman">زن</string>
@@ -19,7 +19,7 @@
     <string name="edt_fragmentRegister_confirmPassword">تایید کلمه عبور</string>
     <string name="btn_fragmentRegister_save">ذخیره</string>
 
-    <string name="edt_fragmentLogin_username">شماره همراه</string>
+    <string name="username">نام کاربری</string>
     <string name="edt_fragmentLogin_password">کلمه عبور</string>
     <string name="btn_fragmentLogin_login">تایید</string>
     <string name="sp_fragmentRegister_locationCity">انتخاب شهر</string>
@@ -32,7 +32,7 @@
     <string name="edt_fragmentEditUser_email">ایمیل</string>
     <string name="edt_fragmentEditUser_mobile">موبایل</string>
     <string name="edt_fragmentEditUser_phone">تلفن</string>
-    <string name="edt_fragmentEditUser_password">کلمه عبور</string>
+    <string name="password">رمز عبور</string>
     <string name="edt_fragmentEditUser_confpass">تایید کلمه عبور</string>
     <string name="btn_fragmentEditUser_upload">آپلود عکس</string>
     <string name="btn_fragmentEditUser_save">ذخیره</string>
@@ -200,4 +200,9 @@
     <string name="to">تا</string>
     <string name="toman">تومان</string>
     <string name="request_product_image">غکس مشابه یا خود کالا</string>
+    <string name="register_description_part1">در صورتی که فروشگاه شما در سایت وجود دارد لطفا</string>
+    <string name="here">اینجا</string>
+    <string name="click_here">کلیک کنید</string>
+    <string name="register_and_login">ثبت نام/ورود</string>
+    <string name="register">ثبت نام</string>
 </resources>
