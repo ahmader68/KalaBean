@@ -25,6 +25,10 @@ public interface DefinitionContract {
         void storeDefinition(StoreDif storeDif);
 
         void onSuccess(ActivityKindList activityKindList);
+        void onSuccessStoreKind(MallKindList mallKindList);
+        void onSuccessShopCenterList(ShopCenterList shopCenterList);
+        void onSuccessFloorList(FloorList floorList);
+        void onSuccessStoreDefinition(StoreDif storeDif);
         void onError(String message);
     }
 }

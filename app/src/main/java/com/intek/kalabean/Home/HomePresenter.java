@@ -1,5 +1,6 @@
 package com.intek.kalabean.Home;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.ShopsList;
@@ -11,9 +12,10 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class HomePresenter implements HomeContract.Presenter {
-    private HomeContract.View view;
+    private static HomeContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 7;
 
     public HomePresenter(KalaBeanDataSource kalaBeanDataSource) {
         this.kalaBeanDataSource = kalaBeanDataSource;
@@ -21,7 +23,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void attachView(HomeContract.View view) {
-        this.view = view;
+        HomePresenter.view = view;
     }
 
     @Override
@@ -39,67 +41,36 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void getProductList(int ShopId) {
-        kalaBeanDataSource.getProduct(ShopId).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ProductList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(ProductList productList) {
-                        view.showProductList(productList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showError(e.toString());
-                    }
-                });
+        DatabaseMethods.getProductList(databaseFlag,ShopId);
     }
 
     @Override
     public void getReductedProductList(int ShopId) {
-        kalaBeanDataSource.getProduct(ShopId).subscribeOn(Schedulers.newThread())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ProductList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(ProductList productList) {
-                        view.showReductedProductList(productList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showError(e.toString());
-                    }
-                });
+        DatabaseMethods.getReductedProductList(databaseFlag,ShopId);
     }
 
     @Override
     public void getShopList(int SellCenterID, int FloorID) {
-        kalaBeanDataSource.getShops(SellCenterID , FloorID).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ShopsList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getShopList(databaseFlag,SellCenterID,FloorID);
+    }
 
-                    @Override
-                    public void onSuccess(ShopsList shopsList) {
-                        view.showNewJob(shopsList);
-                    }
+    @Override
+    public void onSuccessGetProductList(ProductList productList) {
+        HomePresenter.view.showProductList(productList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showError(e.toString());
-                    }
-                });
+    @Override
+    public void onSuccessGetReductedProductList(ProductList productList) {
+        HomePresenter.view.showReductedProductList(productList);
+    }
+
+    @Override
+    public void onSuccessGetShopList(ShopsList shopsList) {
+
+    }
+
+    @Override
+    public void onError(String message) {
+        HomePresenter.view.showError(message);
     }
 }

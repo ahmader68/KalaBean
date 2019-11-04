@@ -11,5 +11,7 @@ public interface ComplexContract {
     }
     interface Presenter extends BasePresenter<View>{
         void getComplex(int SellCenterCatID, int CityId);
+        void onSuccessGetComplex(ComplexList complexList);
+        void onError(String message);
     }
 }

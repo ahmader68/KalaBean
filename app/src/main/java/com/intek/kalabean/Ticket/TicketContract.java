@@ -15,5 +15,7 @@ public interface TicketContract {
     interface Presenter extends BasePresenter<View>{
         void sendTicket(Ticket ticket);
         void getTicket(List<Ticket> tickets);
+        void onSuccessSendTicket(Ticket ticket);
+        void onError(String message);
     }
 }

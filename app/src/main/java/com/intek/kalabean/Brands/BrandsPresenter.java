@@ -1,5 +1,6 @@
 package com.intek.kalabean.Brands;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.BrandList;
 
@@ -11,41 +12,35 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BrandsPresenter implements BrandsContract.Presenter {
 
-    private BrandsContract.View view;
+    private static BrandsContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
-    private CompositeDisposable compositeDisposable;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 4;
 
-    BrandsPresenter(KalaBeanDataSource kalaBeanDataSource){
+    public BrandsPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
-        this.compositeDisposable = new CompositeDisposable();
+
     }
 
     @Override
     public void getBrands(int SellCenterCatID) {
 
-        kalaBeanDataSource.getBrands(SellCenterCatID).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<BrandList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getBrands(databaseFlag,SellCenterCatID);
+    }
 
-                    @Override
-                    public void onSuccess(BrandList brandList) {
-                        view.getBrandsList(brandList);
-                    }
+    @Override
+    public void onSuccessGetBrand(BrandList brandList) {
+        BrandsPresenter.view.getBrandsList(brandList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                });
+    @Override
+    public void onError(String message) {
+        BrandsPresenter.view.showMessage(message);
     }
 
     @Override
     public void attachView(BrandsContract.View view) {
-        this.view = view;
+        BrandsPresenter.view = view;
     }
 
     @Override

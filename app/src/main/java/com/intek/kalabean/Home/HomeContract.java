@@ -21,5 +21,9 @@ public interface HomeContract {
         void getProductList(int ShopId);
         void getReductedProductList(int ShopId);
         void getShopList(int SellCenterID , int FloorID);
+        void onSuccessGetProductList(ProductList productList);
+        void onSuccessGetReductedProductList(ProductList productList);
+        void onSuccessGetShopList(ShopsList shopsList);
+        void onError(String message);
     }
 }

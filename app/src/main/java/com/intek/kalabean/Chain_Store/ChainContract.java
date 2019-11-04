@@ -11,5 +11,7 @@ public interface ChainContract {
     }
     interface Presenter extends BasePresenter<View>{
         void getChainStore(int SellCenterCatID , int CityId);
+        void onSuccessGetChainStore(ChainStoreList chainStoreList);
+        void onError(String message);
     }
 }

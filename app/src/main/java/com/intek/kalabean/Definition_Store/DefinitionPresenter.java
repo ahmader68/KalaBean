@@ -46,24 +46,7 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
 
     @Override
     public void storeKind() {
-        kalaBeanDataSource.getStoreKind().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<MallKindList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(MallKindList mallKindList) {
-                        view.getStoreKind(mallKindList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+        DatabaseMethods.getStoreKind(databseFlag);
     }
 
     @Override
@@ -75,79 +58,17 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
 
     @Override
     public void ShopCenterList(int idCenterCat) {
-        kalaBeanDataSource.getShopCenterList(idCenterCat).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ShopCenterList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(ShopCenterList shopCenterList) {
-
-                        view.getShopCenterList(shopCenterList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+        DatabaseMethods.getShopCenterList(databseFlag,idCenterCat);
     }
 
     @Override
     public void floorList(int idCenter) {
-        kalaBeanDataSource.getFloorList(idCenter).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<FloorList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(FloorList floorList) {
-                        view.getFloorList(floorList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+        DatabaseMethods.getFloorList(databseFlag,idCenter);
     }
 
     @Override
     public void storeDefinition(StoreDif storeDif) {
-        kalaBeanDataSource.storeDefinition(storeDif).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<StoreDif>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(StoreDif storeDif) {
-                        if(storeDif.getResult() <= -1 && storeDif.getResult() >= -2){
-                            switch (storeDif.getResult()){
-                                case -1:
-                                    view.showMessage("لطفا همه گزینه های الزامی را وارد کنید");
-                                    break;
-                                case -2:
-                                    view.showMessage("عملیات ثبت با خطا روبرو شد، لطفا مجدد تلاش کنید");
-                            }
-                        }else {
-                            view.getStoreId(storeDif);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+        DatabaseMethods.storeDefinition(databseFlag,storeDif);
     }
 
     @Override
@@ -157,7 +78,38 @@ public class DefinitionPresenter implements DefinitionContract.Presenter {
     }
 
     @Override
+    public void onSuccessStoreKind(MallKindList mallKindList) {
+        DefinitionPresenter.view.getStoreKind(mallKindList);
+    }
+
+    @Override
+    public void onSuccessShopCenterList(ShopCenterList shopCenterList) {
+        DefinitionPresenter.view.getShopCenterList(shopCenterList);
+    }
+
+    @Override
+    public void onSuccessFloorList(FloorList floorList) {
+        DefinitionPresenter.view.getFloorList(floorList);
+    }
+
+    @Override
+    public void onSuccessStoreDefinition(StoreDif storeDif) {
+        if(storeDif.getResult() <= -1 && storeDif.getResult() >= -2){
+            switch (storeDif.getResult()){
+                case -1:
+                    view.showMessage("لطفا همه گزینه های الزامی را وارد کنید");
+                    break;
+                case -2:
+                    view.showMessage("عملیات ثبت با خطا روبرو شد، لطفا مجدد تلاش کنید");
+            }
+        }else {
+            DefinitionPresenter.view.getStoreId(storeDif);
+        }
+
+    }
+
+    @Override
     public void onError(String message) {
-        view.showMessage(message);
+        DefinitionPresenter.view.showMessage(message);
     }
 }

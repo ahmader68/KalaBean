@@ -12,5 +12,7 @@ public interface BrandsContract {
 
     interface Presenter extends BasePresenter<View>{
         void getBrands(int SellCenterCatID);
+        void onSuccessGetBrand(BrandList brandList);
+        void onError(String message);
     }
 }

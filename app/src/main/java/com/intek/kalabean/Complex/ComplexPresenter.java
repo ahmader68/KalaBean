@@ -1,5 +1,6 @@
 package com.intek.kalabean.Complex;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ComplexList;
 
@@ -10,15 +11,16 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class ComplexPresenter implements ComplexContract.Presenter {
-    private ComplexContract.View view;
+    private static ComplexContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    ComplexPresenter(KalaBeanDataSource kalaBeanDataSource){
+    private final int databaseFlag = 6;
+    public ComplexPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
     @Override
     public void attachView(ComplexContract.View view) {
-        this.view = view;
+        ComplexPresenter.view = view;
     }
 
     @Override
@@ -32,23 +34,16 @@ public class ComplexPresenter implements ComplexContract.Presenter {
     @Override
     public void getComplex(int SellCenterCatID, int CityId) {
 
-        kalaBeanDataSource.getComplex(SellCenterCatID , CityId).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ComplexList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getComplex(databaseFlag,SellCenterCatID,CityId);
+    }
 
-                    @Override
-                    public void onSuccess(ComplexList complexList) {
-                        view.getComplexList(complexList);
-                    }
+    @Override
+    public void onSuccessGetComplex(ComplexList complexList) {
+        ComplexPresenter.view.getComplexList(complexList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onError(String message) {
+        ComplexPresenter.view.showMessage(message);
     }
 }

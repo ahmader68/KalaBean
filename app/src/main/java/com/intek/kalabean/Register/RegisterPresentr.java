@@ -1,5 +1,6 @@
 package com.intek.kalabean.Register;
 
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.User;
@@ -12,15 +13,16 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RegisterPresentr implements RegisterContract.Presenter {
     private KalaBeanDataSource kalaBeanDataSource;
-    private RegisterContract.View view;
+    private static RegisterContract.View view;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 10;
     public RegisterPresentr(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
 
     @Override
     public void attachView(RegisterContract.View view) {
-        this.view = view;
+        RegisterPresentr.view = view;
     }
 
     @Override
@@ -33,60 +35,41 @@ public class RegisterPresentr implements RegisterContract.Presenter {
 
     @Override
     public void register(User user) {
-        kalaBeanDataSource.register(user).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<User>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
-
-                    @Override
-                    public void onSuccess(User user) {
-                        view.showSuccess(user.getResult());
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+        DatabaseMethods.register(user);
     }
 
     @Override
     public void login(User user) {
-        kalaBeanDataSource.login(user).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<LoggedinUser>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.login(databaseFlag,user);
+    }
 
-                    @Override
-                    public void onSuccess(LoggedinUser user) {
-                        int id = user.getItems().get(0).getResult();
-                        if(id <= -1 && id >= -3){
-                            switch (id){
-                                case -1:
-                                    view.showMessage("نام کاربری یا کلمه عبور صحیح نمی باشد");
-                                    break;
-                                case -2:
-                                    view.showMessage("حساب کاربری شما یرفعال شده است");
-                                    break;
-                                case -3:
-                                    view.showMessage("هیچ کاربری با این مشخصات یافت نشد");
-                                    break;
-                            }
-                        }else{
-                            view.successLogin(user);
-                        }
-                    }
+    @Override
+    public void onSuccessLogin(LoggedinUser loggedinUser) {
+        int id = loggedinUser.getItems().get(0).getResult();
+        if(id <= -1 && id >= -3){
+            switch (id){
+                case -1:
+                    RegisterPresentr.view.showMessage("نام کاربری یا کلمه عبور صحیح نمی باشد");
+                    break;
+                case -2:
+                    RegisterPresentr.view.showMessage("حساب کاربری شما یرفعال شده است");
+                    break;
+                case -3:
+                    RegisterPresentr.view.showMessage("هیچ کاربری با این مشخصات یافت نشد");
+                    break;
+            }
+        }else{
+            RegisterPresentr.view.successLogin(loggedinUser);
+        }
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onSuccessRegister(User user) {
+        RegisterPresentr.view.showSuccess(user.getId());
+    }
+
+    @Override
+    public void onError(String message) {
+        RegisterPresentr.view.showMessage(message);
     }
 }

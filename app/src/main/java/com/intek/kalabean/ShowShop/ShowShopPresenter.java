@@ -1,4 +1,5 @@
 package com.intek.kalabean.ShowShop;
+import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Model.ProductList;
 
@@ -10,18 +11,19 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ShowShopPresenter implements ShowShopContract.Presenter {
 
-    private ShowShopContract.View view;
+    private static ShowShopContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final int databaseFlag = 12;
 
-    ShowShopPresenter(KalaBeanDataSource kalaBeanDataSource){
+    public ShowShopPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
 
 
     @Override
     public void attachView(ShowShopContract.View view) {
-        this.view = view;
+        ShowShopPresenter.view = view;
     }
 
     @Override
@@ -34,23 +36,16 @@ public class ShowShopPresenter implements ShowShopContract.Presenter {
 
     @Override
     public void getProduct(int shopID) {
-        kalaBeanDataSource.getProduct(shopID).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ProductList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        compositeDisposable.add(d);
-                    }
+        DatabaseMethods.getProductList(databaseFlag,shopID);
+    }
 
-                    @Override
-                    public void onSuccess(ProductList productLists) {
-                        view.getProductList(productLists);
-                    }
+    @Override
+    public void onSuccessGetProduct(ProductList productList) {
+        ShowShopPresenter.view.getProductList(productList);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showMessage(e.toString());
-                    }
-                });
+    @Override
+    public void onError(String message) {
+        ShowShopPresenter.view.showMessage(message);
     }
 }

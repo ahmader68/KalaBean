@@ -11,5 +11,7 @@ public interface MarketsContract {
     }
     interface Presenter extends BasePresenter<View>{
         void getMarkets(int SellCenterCatID , int CityId);
+        void onSuccessGetMarket(StoreList storeList);
+        void onError(String message);
     }
 }
