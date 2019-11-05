@@ -32,6 +32,7 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
@@ -127,14 +128,45 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                    fragment = new LoginFragment();
 //                }
                 if (id == R.id.item_drawer_cities) {
+
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new AddProductFragment();
+
+                }else if(id == R.id.item_drawer_language){
+
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new DefinitionFragment();
+
                 } else if (id == R.id.item_drawer_about) {
+
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new RequestFragment();
+
                 } else if (id == R.id.item_drawer_article) {
+
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new VUFragment();
+
+                }else if(id == R.id.item_drawer_search){
+
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new OUFragment();
+
+                }else if(id == R.id.item_drawer_guide){
+
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new RegisterFragment();
+
+                }else if(id == R.id.item_drawer_support){
+
+                    drawer.closeDrawer(GravityCompat.START);
+                    Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
+
+                }else if(id == R.id.item_drawer_exit){
+
+                    drawer.closeDrawer(GravityCompat.START);
+                    Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
+
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();

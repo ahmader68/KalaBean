@@ -205,4 +205,12 @@
     <string name="click_here">کلیک کنید</string>
     <string name="register_and_login">ثبت نام/ورود</string>
     <string name="register">ثبت نام</string>
+    <string name="productimage">عکس کالا</string>
+    <string name="product_video">فیلم کالا</string>
+    <string name="cat_product">دسته کالا</string>
+    <string name="farsi">فارسی</string>
+    <string name="arabic">العربی</string>
+    <string name="sales_checkbox_value">می خواهم این محصول در حراجی قرار بگیرد</string>
+    <string name="precent_sale">درصد تخفیف</string>
+    <string name="record">ثبت</string>
 </resources>

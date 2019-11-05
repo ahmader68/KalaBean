@@ -2,6 +2,7 @@ package com.intek.kalabean.VIP_User_Profile;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -147,5 +149,25 @@ public class VUFragment extends BaseFragment implements VUContract.View {
     public void onStop() {
         super.onStop();
         presenter.detachView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }

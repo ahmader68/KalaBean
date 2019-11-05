@@ -37,7 +37,7 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
     public void setupViews() {
         ConstraintLayout conComplex = rootView.findViewById(R.id.con_fragmentComplex_mainLayout);
         rvComplex = rootView.findViewById(R.id.rv_fragmentComplex_list);
-        conComplex.setRotationY(180);
+
 
         presenter.getComplex(1207 , 1202);
         //complexAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);

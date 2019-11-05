@@ -34,7 +34,7 @@ public class ChainFragment extends BaseFragment implements ChainContract.View {
     @Override
     public void setupViews() {
         ConstraintLayout conChainStore = rootView.findViewById(R.id.con_fragmentChainStore_mainLayout);
-        conChainStore.setRotationY(180);
+
         rvChainStore = rootView.findViewById(R.id.rv_fragmentChainStore_list);
         presenter.getChainStore(1208 , 1202);
     }

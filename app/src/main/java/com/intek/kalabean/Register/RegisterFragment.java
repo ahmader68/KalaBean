@@ -296,4 +296,6 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         super.onStop();
         presenter.detachView();
     }
+
+
 }
