@@ -93,12 +93,15 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 if (edt_toolbar_search.getVisibility() == View.INVISIBLE) {
                     edt_toolbar_search.setVisibility(View.VISIBLE);
 
-                    //InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
-                    //imm.showSoftInput(edt_toolbar_search, InputMethodManager.SHOW_IMPLICIT);
+                    edt_toolbar_search.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(edt_toolbar_search, InputMethodManager.SHOW_IMPLICIT);
 
                     kalabeanIcon.setVisibility(View.INVISIBLE);
                 } else if (edt_toolbar_search.getVisibility() == View.VISIBLE) {
                     edt_toolbar_search.setVisibility(View.INVISIBLE);
+                    InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(edt_toolbar_search.getWindowToken(), 0);
                     kalabeanIcon.setVisibility(View.VISIBLE);
                 }
             }
@@ -189,7 +192,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
+                        Fragment fragmentHome = new HomeFragment();
+                        if (fragment == fragmentHome) {
 
+                        }
                         break;
                     case R.id.cat:
                         //fragment = new EditUserFragment();
