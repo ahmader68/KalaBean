@@ -7,10 +7,11 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,12 +21,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Classes.GetSharedPrefrences;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.MainActivity;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.AddProduct;
@@ -41,61 +43,36 @@ import java.util.List;
 public class AddProductFragment extends BaseFragment implements AddProductContract.View {
 
     private AddProductContract.Presenter presenter;
-    private Button btnUploadPic;
-    private Button btnUploadVid;
+
+
+    private ImageView imgQuestionMark,imgProductImage;
+
+    private ConstraintLayout conImage, conVideo;
+
+    private MaterialSpinner spProductCat, spProductSubCat;
+
+    private TextInputLayout
+            tilProductNameFa,
+            tilProductNameEn,
+            tilProductNameAr,
+            tilPrice,
+            tilSales;
+
+    private TextInputEditText
+            edtProductNameFa,
+            edtProductNameEn,
+            edtProductNameAr,
+            edtPrice,
+            edtSales;
+    private EditText edtDescription;
+
+    private MaterialCheckBox chkAddtoSales;
+
     private Button btnSave;
-    private Button btnClear;
-
-    private MaterialSpinner spCat;
-    private MaterialSpinner spSubCat;
-
-    private TextInputLayout tilProductNameFa;
-    private TextInputEditText edtProductNameFa;
-
-    private TextInputLayout tilProductNameEn;
-    private TextInputEditText edtProductNameEn;
-
-    private TextInputLayout tilProductNameAr;
-    private TextInputEditText edtProductNameAr;
-
-    private TextInputLayout tilPrice;
-    private TextInputEditText edtPrice;
-
-    private TextInputLayout tilDiscount;
-    private TextInputEditText edtDiscount;
-
-    private TextInputLayout tilOrderby;
-    private TextInputEditText edtOrderby;
-
-    private TextInputLayout tilCount;
-    private TextInputEditText edtCount;
-
-    private TextInputLayout tilKeywordFa;
-    private TextInputEditText edtKeywordFa;
-
-    private TextInputLayout tilKeywordEn;
-    private TextInputEditText edtKeywordEn;
-
-    private TextInputLayout tilKeywordAr;
-    private TextInputEditText edtKeywordAr;
-
-    private TextInputLayout tilDescFa;
-    private TextInputEditText edtDescFa;
-
-    private TextInputLayout tilDescAr;
-    private TextInputEditText edtDescAr;
-
-    private TextInputLayout tilDescEn;
-    private TextInputEditText edtDescEn;
-
-    private CheckBox chkNew;
 
     private AddProduct product;
 
-    private ImageView imgProfile;
 
-    private ConstraintLayout conProductName;
-    private ConstraintLayout conPrice;
     private ConstraintLayout conMainLayout;
 
     private int catId;
@@ -155,7 +132,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         }
         activityAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, activityName);
         activityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spCat.setAdapter(activityAdapter);
+        spProductCat.setAdapter(activityAdapter);
     }
 
     @Override
@@ -171,7 +148,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         }
         positionAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, positionsName);
         positionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spSubCat.setAdapter(positionAdapter);
+        spProductSubCat.setAdapter(positionAdapter);
 
     }
 
@@ -183,74 +160,56 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
     @Override
     public void setupViews() {
         id = sharedPreferences.getInt("userid", 0);
-        shopidentify = sharedPreferences.getInt("ShopId",0);
-        conMainLayout = rootView.findViewById(R.id.con_fragmentAddProduct_mainLayout);
-        conMainLayout.setRotationY(180);
+        shopidentify = sharedPreferences.getInt("ShopId", 0);
         presenter.activityKind();
-        btnUploadPic = rootView.findViewById(R.id.btn_fragmentAddProduct_uploadPhoto);
-        btnUploadVid = rootView.findViewById(R.id.btn_fragmentAddProduct_uploadVideo);
+
+        conMainLayout = rootView.findViewById(R.id.con_fragmentAddProduct_mainLayout);
+        conImage = rootView.findViewById(R.id.con_fragmentAddProduct_image);
+        conVideo = rootView.findViewById(R.id.con_fragmentAddProduct_video);
+
+        chkAddtoSales = rootView.findViewById(R.id.chk_fragmentAddProduct_sales);
+
         btnSave = rootView.findViewById(R.id.btn_fragmentAddProduct_save);
-        btnClear = rootView.findViewById(R.id.btn_fragmentAddProduct_removeForm);
 
-        conProductName = rootView.findViewById(R.id.con_fragmentAddProduct_productName);
-        conPrice = rootView.findViewById(R.id.con_fragmentAddProduct_price);
+        imgQuestionMark = rootView.findViewById(R.id.img_fragmentAddProduct_question);
+        imgProductImage = rootView.findViewById(R.id.img_fragmentAddProduct_image);
 
-        chkNew = rootView.findViewById(R.id.chkNew);
 
-        tilProductNameFa = rootView.findViewById(R.id.til_fragmentAddProduct_faName);
-        edtProductNameFa = rootView.findViewById(R.id.edt_fragmentAddProduct_faName);
+        tilProductNameFa = rootView.findViewById(R.id.til_fragmentAddProduct_productFarsiName);
+        edtProductNameFa = rootView.findViewById(R.id.edt_fragmentAddProduct_productFaName);
 
-        tilProductNameEn = rootView.findViewById(R.id.til_fragmentAddProduct_enName);
-        edtProductNameEn = rootView.findViewById(R.id.edt_fragmentAddProduct_enName);
+        tilProductNameEn = rootView.findViewById(R.id.til_fragmentAddProduct_productEnglishName);
+        edtProductNameEn = rootView.findViewById(R.id.edt_fragmentAddProduct_productEnglishName);
 
-        tilProductNameAr = rootView.findViewById(R.id.til_fragmentAddProduct_arName);
-        edtProductNameAr = rootView.findViewById(R.id.edt_fragmentAddProduct_arName);
+        tilProductNameAr = rootView.findViewById(R.id.til_fragmentAddProduct_productArabicName);
+        edtProductNameAr = rootView.findViewById(R.id.edt_fragmentAddProduct_productArabicName);
 
         tilPrice = rootView.findViewById(R.id.til_fragmentAddProduct_price);
         edtPrice = rootView.findViewById(R.id.edt_fragmentAddProduct_price);
 
-        tilDiscount = rootView.findViewById(R.id.til_fragmentAddProduct_reduction);
-        edtDiscount = rootView.findViewById(R.id.edt_fragmentAddProduct_reduction);
-
-        tilOrderby = rootView.findViewById(R.id.til_fragmentAddProduct_order);
-        edtOrderby = rootView.findViewById(R.id.edt_fragmentAddProduct_order);
-
-        tilCount = rootView.findViewById(R.id.til_fragmentAddProduct_number);
-        edtCount = rootView.findViewById(R.id.edt_fragmentAddProduct_number);
-
-        tilKeywordFa = rootView.findViewById(R.id.til_fragmentAddProduct_faKeyWords);
-        edtKeywordFa = rootView.findViewById(R.id.edt_fragmentAddProduct_faKeyWords);
-
-        tilKeywordEn = rootView.findViewById(R.id.til_fragmentAddProduct_enKeyWords);
-        edtKeywordEn = rootView.findViewById(R.id.edt_fragmentAddProduct_enKeyWords);
-
-        tilKeywordAr = rootView.findViewById(R.id.til_fragmentAddProduct_arKeyWords);
-        edtKeywordAr = rootView.findViewById(R.id.edt_fragmentAddProduct_arKeyWords);
-
-        tilDescFa = rootView.findViewById(R.id.til_fragmentAddProduct_faDesc);
-        edtDescFa = rootView.findViewById(R.id.edt_fragmentAddProduct_faDesc);
-
-        tilDescEn = rootView.findViewById(R.id.til_fragmentAddProduct_enDesc);
-        edtDescEn = rootView.findViewById(R.id.edt_fragmentAddProduct_enDesc);
-
-        tilDescAr = rootView.findViewById(R.id.til_fragmentAddProduct_arDesc);
-        edtDescAr = rootView.findViewById(R.id.edt_fragmentAddProduct_arDesc);
-
-        spCat = rootView.findViewById(R.id.sp_fragmentAddProduct_cat);
-        spSubCat = rootView.findViewById(R.id.sp_fragmentAddProduct_subCat);
-
-        imgProfile = rootView.findViewById(R.id.img_fragmentAddProduct_image);
+        tilSales = rootView.findViewById(R.id.til_fragmentAddProduct_percentSales);
+        edtSales = rootView.findViewById(R.id.edt_fragmentAddProduct_percentSales);
 
 
-        btnUploadPic.setOnClickListener(new View.OnClickListener() {
+        edtDescription = rootView.findViewById(R.id.edt_fragmentAddProduct_description);
+
+
+        spProductCat = rootView.findViewById(R.id.sp_fragmentAddProduct_productCat);
+        spProductSubCat = rootView.findViewById(R.id.sp_fragmentAddProduct_subCatProduct);
+
+
+        conImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                 StrictMode.setVmPolicy(builder.build());
                 if (Build.VERSION.SDK_INT >= 23) {
                     checkPermissions();
+                    imgProductImage.setVisibility(View.VISIBLE);
+
                 } else {
                     takePicture();
+                    imgProductImage.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -261,31 +220,27 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
                 if (!validatePrice() || !validateProductName()) {
                     return;
                 } else {
-                    String stOrder = edtOrderby.getText().toString();
-                    int order = 0;
-                    if (!stOrder.isEmpty()) {
-                        order = Integer.parseInt(edtOrderby.getText().toString());
-                        product.setOrderNo(order);
-                    }
+
                     int price = Integer.parseInt(edtPrice.getText().toString());
                     product.setTitleFA(edtProductNameFa.getText().toString());
                     product.setCategoryId(activityId);
                     product.setPrice(price);
                     product.setSubCategoryId(subCatId);
                     product.setProducer(shopidentify);
-                    product.setUsrid(id);
+                    // product.setUsrid(id);
+                    product.setUsrid(2185);
                     product.setAutolang("fa");
                     presenter.insertProduct(product);
                 }
             }
         });
 
-        spCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spProductCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
                 activityId = spActivityKind.getItems().get(position).getId();
-                Toast.makeText(getViewContext(), activityId+"", Toast.LENGTH_SHORT).show();
-                spSubCat.setSelection(-1);
+                Toast.makeText(getViewContext(), activityId + "", Toast.LENGTH_SHORT).show();
+                spProductSubCat.setSelection(-1);
                 presenter.subCatid();
             }
 
@@ -295,11 +250,11 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
             }
         });
 
-        spSubCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spProductSubCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
                 subCatId = cutPostions.getSubCategory().get(position).getIdSubCategory();
-                Toast.makeText(getViewContext(), subCatId+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getViewContext(), subCatId + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -327,6 +282,26 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         presenter.detachView();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
     private void checkPermissions() {
         if (ContextCompat.checkSelfPermission(getViewContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE_ADDPRODUCT);
@@ -346,7 +321,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         String productName = edtProductNameFa.getText().toString().trim();
         if (productName.isEmpty()) {
             tilProductNameFa.setError("لطفا نام محصول را وارد کنید");
-            conProductName.requestFocus();
+            tilProductNameFa.requestFocus();
             return false;
         } else {
             tilProductNameFa.setError(null);
@@ -358,7 +333,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         String price = edtPrice.getText().toString().trim();
         if (price.isEmpty()) {
             tilPrice.setError("لطفا قیمت محصول را وارد کنید");
-            conPrice.requestFocus();
+            tilPrice.requestFocus();
             return false;
         } else {
             tilPrice.setError(null);

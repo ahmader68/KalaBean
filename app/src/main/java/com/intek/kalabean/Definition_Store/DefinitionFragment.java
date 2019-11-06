@@ -1,19 +1,17 @@
 package com.intek.kalabean.Definition_Store;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -27,6 +25,7 @@ import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Classes.GetProvinceAndCity;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.MainActivity;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ActivityKind;
 import com.intek.kalabean.Model.ActivityKindList;
 import com.intek.kalabean.Model.Floor;
@@ -36,7 +35,6 @@ import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.R;
-import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tiper.MaterialSpinner;
@@ -92,6 +90,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private ImageView imgFragmentDefinitionOuterImage;
     private ImageView imgFragmentDefinitionsrcInner;
     private ImageView imgFragmentDefinitionsrcOuter;
+    private ImageView imgFragmentDefinitionQuestionMark;
 
     private ConstraintLayout conFragmentDefinitionMainLayout;
     private ConstraintLayout conFragmentDefinitionSpinner;
@@ -209,6 +208,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         imgFragmentDefinitionOuterImage = rootView.findViewById(R.id.img_fragmentDefinition_outerImage);
         imgFragmentDefinitionsrcInner = rootView.findViewById(R.id.img_fragmentDefinition_srcInner);
         imgFragmentDefinitionsrcOuter = rootView.findViewById(R.id.img_fragmentDefinition_srcOuter);
+        imgFragmentDefinitionQuestionMark = rootView.findViewById(R.id.img_fragmentRegister_question);
 
         edtFragmentDefinitionSite.setText(R.string.http);
         Selection.setSelection(edtFragmentDefinitionSite.getText(), edtFragmentDefinitionSite.getText().length());
@@ -282,14 +282,20 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
             public void onClick(View v) {
                 checkMyPermission(4);
                 imgFragmentDefinitionsrcInner.setVisibility(View.VISIBLE);
+                if(!imgFragmentDefinitionsrcOuter.isShown()){
+                    imgFragmentDefinitionsrcOuter.setVisibility(View.VISIBLE);
+                }
             }
         });
+
+
 
         imgFragmentDefinitionOuterImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkMyPermission(5);
                 imgFragmentDefinitionsrcOuter.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -543,6 +549,26 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     public void onStop() {
         super.onStop();
         presenter.detachView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private boolean validateStoreKind() {

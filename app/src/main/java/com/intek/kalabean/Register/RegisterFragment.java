@@ -36,29 +36,32 @@ import java.util.List;
 
 public class RegisterFragment extends BaseFragment implements RegisterContract.View {
 
-    private TextInputLayout tilFragmentRegisterUsernameUp;
-    private TextInputEditText edtFragmentRegisterUsernameUp;
 
-    private TextInputLayout tilFragmentRegisterPasswordUp;
-    private TextInputEditText edtFragmentRegisterPasswordUp;
 
-    private TextInputLayout tilFragmentRegisterUsernameDown;
-    private TextInputEditText edtFragmentRegisterUsernameDown;
-
-    private TextInputLayout tilFragmentRegisterEmail;
-    private TextInputEditText edtFragmentRegisterEmail;
-
-    private MaterialSpinner spFragmentRegisterProvince;
-    private MaterialSpinner spFragmentRegisterCity;
+    private TextView txtFragmentRegisterClickHere;
 
     private RadioGroup rgFragmentRegisterUserKind;
 
     private RadioButton rbFragmentRegisterOrdinaryUser;
     private RadioButton rbFragmentRegisterVIPUser;
 
+    private TextInputLayout tilFragmentRegisterPassword;
+    private TextInputEditText edtFragmentRegisterPassword;
+
+    private TextInputLayout tilFragmentRegisterRepeatPassword;
+    private TextInputEditText edtFragmentRegisterRepeatPassword;
+
+    private TextInputLayout tilFragmentRegisterUsername;
+    private TextInputEditText edtFragmentRegisterUsername;
+
+    private MaterialSpinner spFragmentRegisterProvince;
+    private MaterialSpinner spFragmentRegisterCity;
+
+    private TextInputLayout tilFragmentRegisterEmail;
+    private TextInputEditText edtFragmentRegisterEmail;
+
     private Button btnFragmentRegisterAccept;
 
-    private TextView txtFragmentRegisterClickHere;
 
     private String state;
     private String city;
@@ -97,14 +100,14 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     @Override
     public void setupViews() {
 
-        tilFragmentRegisterUsernameUp = rootView.findViewById(R.id.til_fragmentRegister_usernameUp);
-        edtFragmentRegisterUsernameUp = rootView.findViewById(R.id.edt_fragmentRegister_usernameUp);
+        tilFragmentRegisterPassword = rootView.findViewById(R.id.til_fragmentRegister_password);
+        edtFragmentRegisterPassword = rootView.findViewById(R.id.edt_fragmentRegister_password);
 
-        tilFragmentRegisterPasswordUp = rootView.findViewById(R.id.til_fragmentRegister_passwordUp);
-        edtFragmentRegisterPasswordUp = rootView.findViewById(R.id.edt_fragmentRegister_passwordUp);
+        tilFragmentRegisterRepeatPassword = rootView.findViewById(R.id.til_fragmentRegister_repeatPassword);
+        edtFragmentRegisterRepeatPassword = rootView.findViewById(R.id.edt_fragmentRegister_repeatPassword);
 
-        tilFragmentRegisterUsernameDown = rootView.findViewById(R.id.til_fragmentRegister_usernameDown);
-        edtFragmentRegisterUsernameDown = rootView.findViewById(R.id.edt_fragmentRegister_usernameDown);
+        tilFragmentRegisterUsername = rootView.findViewById(R.id.til_fragmentRegister_usernameDown);
+        edtFragmentRegisterUsername = rootView.findViewById(R.id.edt_fragmentRegister_usernameDown);
 
         tilFragmentRegisterEmail = rootView.findViewById(R.id.til_fragmentRegister_email);
         edtFragmentRegisterEmail = rootView.findViewById(R.id.edt_fragmentRegister_email);
@@ -168,19 +171,17 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         btnFragmentRegisterAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!edtFragmentRegisterUsernameDown.getText().toString().equals("") && !edtFragmentRegisterEmail.getText().toString().equals("") && spFragmentRegisterCity.getSelectedItemId() > 0 && spFragmentRegisterProvince.getSelectedItemId() > 0){
+                    user.setFirstName("hhh");
+                    user.setLastName("gggg");
                     user.setEmail(edtFragmentRegisterEmail.getText().toString());
                     user.setCity(city);
                     user.setProvince(state);
-                    user.setUserName(edtFragmentRegisterUsernameDown.getText().toString());
-                    user.setUserLevel(userLevel);
+                    user.setPassword(edtFragmentRegisterPassword.getText().toString());
+                    user.setMobile(edtFragmentRegisterUsername.getText().toString());
+                    user.setUserName(edtFragmentRegisterUsername.getText().toString());
+                    //user.setUserLevel(userLevel);
                     presenter.register(user);
 
-                }else if(!edtFragmentRegisterUsernameUp.getText().toString().equals("") && !edtFragmentRegisterPasswordUp.getText().toString().equals("")){
-                    user.setUserName(edtFragmentRegisterUsernameUp.getText().toString());
-                    user.setPassword(edtFragmentRegisterPasswordUp.getText().toString());
-                    presenter.login(user);
-                }
             }
         });
 
@@ -296,4 +297,6 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         super.onStop();
         presenter.detachView();
     }
+
+
 }
