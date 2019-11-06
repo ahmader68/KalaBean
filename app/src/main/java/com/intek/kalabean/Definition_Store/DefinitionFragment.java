@@ -1,9 +1,7 @@
 package com.intek.kalabean.Definition_Store;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -38,7 +35,6 @@ import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.R;
-import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tiper.MaterialSpinner;
@@ -212,7 +208,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         imgFragmentDefinitionOuterImage = rootView.findViewById(R.id.img_fragmentDefinition_outerImage);
         imgFragmentDefinitionsrcInner = rootView.findViewById(R.id.img_fragmentDefinition_srcInner);
         imgFragmentDefinitionsrcOuter = rootView.findViewById(R.id.img_fragmentDefinition_srcOuter);
-        imgFragmentDefinitionQuestionMark = rootView.findViewById(R.id.img_fragmentDefinition_question);
+        imgFragmentDefinitionQuestionMark = rootView.findViewById(R.id.img_fragmentRegister_question);
 
         edtFragmentDefinitionSite.setText(R.string.http);
         Selection.setSelection(edtFragmentDefinitionSite.getText(), edtFragmentDefinitionSite.getText().length());

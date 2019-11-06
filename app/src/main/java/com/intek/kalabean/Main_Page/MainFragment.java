@@ -36,6 +36,7 @@ import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
+import com.intek.kalabean.MainLoginRegisterFragment;
 import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
@@ -163,8 +164,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 }else if(id == R.id.item_drawer_support){
 
                     drawer.closeDrawer(GravityCompat.START);
-                    Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
-
+                    fragment = new MainLoginRegisterFragment();
                 }else if(id == R.id.item_drawer_exit){
 
                     drawer.closeDrawer(GravityCompat.START);
