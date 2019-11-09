@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Login.LoginFragment;
+import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
 import com.intek.kalabean.Register.RegisterFragment;
 
 public class MainLoginRegisterFragment extends BaseFragment {
@@ -40,7 +41,7 @@ public class MainLoginRegisterFragment extends BaseFragment {
 
         frmContent = rootView.findViewById(R.id.frm_fragmentMainLogin_layout);
 
-        loginFragment = new LoginFragment();
+        loginFragment = new LoginWithUserPassFragment();
         registerFragment = new RegisterFragment();
 
         rbLogin.setTextColor(getResources().getColor(R.color.colorWhite));

@@ -34,8 +34,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Category.CatFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
+import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
 import com.intek.kalabean.MainLoginRegisterFragment;
 import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
@@ -60,6 +62,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private BottomNavigationView bottomNavigationView;
     private EditText edt_toolbar_search;
     private ImageView kalabeanIcon;
+    private NavigationView navigationView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,13 +79,17 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
         bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
 
-        NavigationView navigationView = rootView.findViewById(R.id.navigation);
+        navigationView = rootView.findViewById(R.id.navigation);
         drawer = rootView.findViewById(R.id.drawer);
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         String check = sharedPreferences.getString("username", null);
         String email = sharedPreferences.getString("email", null);
-
+        if(check != null){
+            hideItems(2);
+        }else {
+            hideItems(1);
+        }
         ConstraintLayout searchToolbar = rootView.findViewById(R.id.search_toolbar);
         edt_toolbar_search = rootView.findViewById(R.id.edt_toolbar_search);
         kalabeanIcon = rootView.findViewById(R.id.kalabeanIcon);
@@ -131,44 +138,63 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                    drawer.closeDrawer(GravityCompat.START);
 //                    fragment = new LoginFragment();
 //                }
-                if (id == R.id.item_drawer_cities) {
-
+                if (id == R.id.item_drawer_login){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new LoginWithUserPassFragment();
+                }else if(id == R.id.item_drawer_register){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new RegisterFragment();
+                }else if(id == R.id.item_drawer_addProduct){
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new AddProductFragment();
+                }else if(id == R.id.item_drawer_definitionStore){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new DefinitionFragment();
+                }else if(id == R.id.item_drawer_ordinaryUser){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new OUFragment();
+
+                }else if(id == R.id.item_drawer_vipUser){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new VUFragment();
+                }else if (id == R.id.item_drawer_cities) {
+
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new CatFragment();
 
                 }else if(id == R.id.item_drawer_language){
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new DefinitionFragment();
+
 
                 } else if (id == R.id.item_drawer_about) {
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new RequestFragment();
+
 
                 } else if (id == R.id.item_drawer_article) {
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new VUFragment();
+
 
                 }else if(id == R.id.item_drawer_search){
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new OUFragment();
+
 
                 }else if(id == R.id.item_drawer_guide){
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new RegisterFragment();
+
 
                 }else if(id == R.id.item_drawer_support){
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new MainLoginRegisterFragment();
+
                 }else if(id == R.id.item_drawer_exit){
 
                     drawer.closeDrawer(GravityCompat.START);
-                    Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
+
 
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
@@ -269,5 +295,26 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             }
         });
 
+    }
+
+    private void hideItems(int id){
+        Menu navMenu = navigationView.getMenu();
+        switch (id){
+            case 1:
+                navMenu.findItem(R.id.item_drawer_register).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_vipUser).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_ordinaryUser).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_definitionStore).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_addProduct).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_login).setVisible(true);
+                break;
+            case 2:
+                navMenu.findItem(R.id.item_drawer_register).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_vipUser).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_ordinaryUser).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_definitionStore).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_addProduct).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_login).setVisible(false);
+        }
     }
 }

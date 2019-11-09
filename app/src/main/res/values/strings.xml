@@ -213,4 +213,17 @@
     <string name="sales_checkbox_value">می خواهم این محصول در حراجی قرار بگیرد</string>
     <string name="precent_sale">درصد تخفیف</string>
     <string name="record">ثبت</string>
+    <string name="ordinary_profile">پروفایل کاربر عادی</string>
+    <string name="vip_profile">پروفایل کاربر ویژه</string>
+    <string name="jewellery">زیورآلات</string>
+    <string name="cloth">مد و پوشاک</string>
+    <string name="beauty">زیبایی</string>
+    <string name="industry">صنعت/خودرو/ساختمان</string>
+    <string name="food">رستوران و خوراکی ها</string>
+    <string name="digital">دیجیتال</string>
+    <string name="sport">ورزش و سرگرمی</string>
+    <string name="art">تحریر و هنر</string>
+    <string name="kid">کودک</string>
+    <string name="wedding">عروسی</string>
+    <string name="furniture">خانه و آشپزخانه</string>
 </resources>

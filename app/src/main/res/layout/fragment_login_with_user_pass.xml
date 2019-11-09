@@ -42,6 +42,7 @@
             android:id="@+id/edt_fragmentLoginWithUserPass_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="textPassword"
             android:hint="@string/password"
             android:padding="10dp"
             android:textColor="@color/black"

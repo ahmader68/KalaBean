@@ -8,7 +8,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String fatherName;
-    private String userName;
+    private String usr;
     private String gender;
     private String email;
     private String mobile;
@@ -23,7 +23,7 @@ public class User {
     private String Status;
     private String LogicallyDeleted;
     private String FullName;
-    private String Password;
+    private String pwd;
     private String province;
     private String provinceTitle;
     private String city;
@@ -92,12 +92,12 @@ public class User {
         this.fatherName = fatherName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsr() {
+        return usr;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsr(String usr) {
+        this.usr = usr;
     }
 
     public String getGender() {
@@ -213,11 +213,11 @@ public class User {
     }
 
     public String getPassword() {
-        return Password;
+        return pwd;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        pwd = password;
     }
 
     public String getProvince() {

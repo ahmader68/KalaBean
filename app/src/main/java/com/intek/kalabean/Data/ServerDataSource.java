@@ -60,7 +60,7 @@ public class ServerDataSource implements KalaBeanDataSource {
 
     @Override
     public Single<LoggedinUser> login(User user) {
-        return apiService.login(user.getMobile(),user.getPassword(),0);
+        return apiService.login(user.getUsr(),user.getPassword(),0);
     }
 
 
