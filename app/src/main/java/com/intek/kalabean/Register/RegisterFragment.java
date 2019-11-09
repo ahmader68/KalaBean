@@ -178,7 +178,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                     user.setProvince(state);
                     user.setPassword(edtFragmentRegisterPassword.getText().toString());
                     user.setMobile(edtFragmentRegisterUsername.getText().toString());
-                    user.setUserName(edtFragmentRegisterUsername.getText().toString());
+                    user.setUsr(edtFragmentRegisterUsername.getText().toString());
                     //user.setUserLevel(userLevel);
                     presenter.register(user);
 

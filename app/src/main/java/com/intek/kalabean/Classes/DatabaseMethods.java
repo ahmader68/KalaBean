@@ -16,6 +16,8 @@ import com.intek.kalabean.Home.HomeContract;
 import com.intek.kalabean.Home.HomePresenter;
 import com.intek.kalabean.Login.LoginContract;
 import com.intek.kalabean.Login.LoginPresenter;
+import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassContract;
+import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassPresenter;
 import com.intek.kalabean.Markets.MarketsContract;
 import com.intek.kalabean.Markets.MarketsPresenter;
 import com.intek.kalabean.Model.ActivityKindList;
@@ -72,6 +74,7 @@ public class DatabaseMethods {
     private static ShowShopContract.Presenter showShopPresenter = new ShowShopPresenter(new KalaBeanRepository());
     private static UserShopContract.Presenter userShopPresenter = new UserShopPresenter(new KalaBeanRepository());
     private static TicketContract.Presenter ticketPresenter = new TicketPresenter(new KalaBeanRepository());
+    private static LoginWithUserPassContract.Presenter loginWithUserPassPresenter = new LoginWithUserPassPresenter(new KalaBeanRepository());
     private static int flag = 0;
 
 
@@ -571,7 +574,7 @@ public class DatabaseMethods {
                     public void onSuccess(LoggedinUser loggedinUser) {
                         switch (flag){
                             case 9:
-                                loginPresenter.onSuccessLogin(loggedinUser);
+                                loginWithUserPassPresenter.onSuccessLogin(loggedinUser);
                                 break;
                             case 10:
                                 registerPresenter.onSuccessLogin(loggedinUser);
@@ -584,7 +587,7 @@ public class DatabaseMethods {
                     public void onError(Throwable e) {
                         switch (flag){
                             case 9:
-                                loginPresenter.onError(e.toString());
+                                loginWithUserPassPresenter.onError(e.toString());
                                 break;
                             case 10:
                                 registerPresenter.onError(e.toString());

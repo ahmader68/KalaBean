@@ -15,7 +15,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     private static LoginContract.View view;
     private KalaBeanDataSource kalaBeanDataSource;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private final int databaseFlag = 9;
+    private final int databaseFlag = -1;
     public LoginPresenter(KalaBeanDataSource kalaBeanDataSource){
         this.kalaBeanDataSource = kalaBeanDataSource;
     }
