@@ -21,8 +21,10 @@ public class BrandsFragment extends BaseFragment implements BrandsContract.View 
     private RecyclerView rv_fragmentBrands_list;
     private RecyclerBrandsAdapter recyclerBrandsAdapter;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         presenter = new BrandsPresenter(new KalaBeanRepository());
         presenter.getBrands(1319);
