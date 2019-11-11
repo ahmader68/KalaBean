@@ -157,10 +157,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 }else if(id == R.id.item_drawer_vipUser){
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new VUFragment();
+                }else if(id == R.id.item_drawer_category){
+                    drawer.closeDrawer(GravityCompat.START);
+                    fragment = new CatFragment();
                 }else if (id == R.id.item_drawer_cities) {
 
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new CatFragment();
+
 
                 }else if(id == R.id.item_drawer_language){
 
@@ -306,6 +309,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 navMenu.findItem(R.id.item_drawer_ordinaryUser).setVisible(false);
                 navMenu.findItem(R.id.item_drawer_definitionStore).setVisible(false);
                 navMenu.findItem(R.id.item_drawer_addProduct).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_category).setVisible(false);
                 navMenu.findItem(R.id.item_drawer_login).setVisible(true);
                 break;
             case 2:
@@ -314,6 +318,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 navMenu.findItem(R.id.item_drawer_ordinaryUser).setVisible(true);
                 navMenu.findItem(R.id.item_drawer_definitionStore).setVisible(true);
                 navMenu.findItem(R.id.item_drawer_addProduct).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_category).setVisible(true);
                 navMenu.findItem(R.id.item_drawer_login).setVisible(false);
         }
     }

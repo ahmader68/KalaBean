@@ -21,10 +21,14 @@
         android:icon="@drawable/add_store"/>
     <item
         android:id="@+id/item_drawer_ordinaryUser"
-        android:title="@string/ordinary_profile"/>
+        android:title="@string/ordinary_profile" />
     <item
         android:id="@+id/item_drawer_vipUser"
         android:title="@string/vip_profile"/>
+    <item
+        android:id="@+id/item_drawer_category"
+       android:icon="@drawable/category"
+        android:title="@string/category"/>
     <item
         android:id="@+id/item_drawer_cities"
         android:icon="@drawable/ic_cities"

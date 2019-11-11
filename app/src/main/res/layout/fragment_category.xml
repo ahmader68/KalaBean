@@ -8,7 +8,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -19,10 +18,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_furniture"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_furniture"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_furniture"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_furniture" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowJewellery"
@@ -30,10 +29,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_jewellery"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_jewellery"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_jewellery"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_jewellery" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowBeauty"
@@ -41,10 +40,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_beauty"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_beauty"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_beauty"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_beauty" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowCloth"
@@ -52,10 +51,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_cloth"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_cloth"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_cloth"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_cloth" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowIndustry"
@@ -63,10 +62,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_industry"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_industry"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_industry"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_industry" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowFood"
@@ -74,10 +73,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_food"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_food"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_food"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_food" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowDigital"
@@ -85,10 +84,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_digital"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_digital"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_digital"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_digital" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowSport"
@@ -96,10 +95,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_sport"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_sport"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_sport"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_sport" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowArt"
@@ -107,10 +106,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_art"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_art"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_art"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_art" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowKid"
@@ -118,10 +117,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_kid"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_kid"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_kid"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_kid" />
 
             <ImageView
                 android:id="@+id/img_fragmentCategory_arrowWedding"
@@ -129,10 +128,10 @@
                 android:layout_height="25sp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/arrow_point_down"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_wedding"
                 app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_wedding"
-                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_wedding"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentCategory_wedding" />
 
             <View
                 android:id="@+id/view_fragmentCategory_line1"
@@ -142,10 +141,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/view_line"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowCloth"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowCloth" />
 
             <View
                 android:id="@+id/view_fragmentCategory_line2"
@@ -155,10 +154,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/view_line"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowJewellery"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowJewellery" />
 
             <View
                 android:id="@+id/view_fragmentCategory_line3"
@@ -168,10 +167,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/view_line"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowIndustry"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowIndustry" />
 
             <View
                 android:id="@+id/view_fragmentCategory_line4"
@@ -181,10 +180,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/view_line"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowDigital"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowDigital" />
 
             <View
                 android:id="@+id/view_fragmentCategory_line5"
@@ -194,10 +193,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/view_line"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowArt"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowArt" />
 
             <View
                 android:id="@+id/view_fragmentCategory_line6"
@@ -207,10 +206,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/view_line"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowWedding"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentCategory_arrowWedding" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/con_fragmentCategory_furniture"
@@ -238,23 +237,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_furniture"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_furniture"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:src="@drawable/furniture2" />
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_furniture"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-                            android:src="@drawable/furniture2" />
-                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -284,24 +277,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_cloth"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_cloth"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_cloth"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-
-                            android:src="@drawable/clothing2" />
-                    </LinearLayout>
+                        android:src="@drawable/clothing2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -331,21 +317,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-                            android:src="@drawable/jewellery2" />
-                    </LinearLayout>
-
+                    <ImageView
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:src="@drawable/jewellery2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -375,20 +355,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-                            android:src="@drawable/beauty2" />
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="140sp"
+                        android:layout_height="148sp"
+                        android:src="@drawable/beauty2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -418,20 +393,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:src="@drawable/tools2" />
 
-                        <ImageView
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-                            android:src="@drawable/tools2" />
-                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -461,20 +432,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-                            android:src="@drawable/food2" />
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:src="@drawable/food2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -504,24 +470,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_digital"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_digital"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_digital"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-
-                            android:src="@drawable/digital_devices2" />
-                    </LinearLayout>
+                        android:src="@drawable/digital_devices2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -551,24 +510,18 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_sport"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_sport"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_sport"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
 
-                            android:src="@drawable/stationery_icons2" />
-                    </LinearLayout>
+                        android:src="@drawable/stationery_icons2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -598,24 +551,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_art"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_art"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_art"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-
-                            android:src="@drawable/stationery_icons2" />
-                    </LinearLayout>
+                        android:src="@drawable/stationery_icons2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -646,24 +592,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_kid"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_kid"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_kid"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-
-                            android:src="@drawable/baby2" />
-                    </LinearLayout>
+                        android:src="@drawable/baby2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -672,8 +611,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintEnd_toEndOf="@id/con_fragmentCategory_kid"
+                app:layout_constraintStart_toStartOf="@id/con_fragmentCategory_kid"
                 app:layout_constraintTop_toBottomOf="@id/rv_fragmentCategory_kid_art">
 
                 <TextView
@@ -693,24 +633,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/linear_fragmentCategory_wedding"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_fragmentCategory_wedding"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
 
-                        <ImageView
-                            android:id="@+id/img_fragmentCategory_wedding"
-                            android:layout_width="150sp"
-                            android:layout_height="150sp"
-
-                            android:src="@drawable/wedding2" />
-                    </LinearLayout>
+                        android:src="@drawable/wedding2" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -769,6 +702,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/view_fragmentCategory_line6"
