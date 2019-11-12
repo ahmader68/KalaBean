@@ -227,4 +227,5 @@
     <string name="wedding">عروسی</string>
     <string name="furniture">خانه و آشپزخانه</string>
     <string name="category">دسته بندی</string>
+    <string name="product_not_found">هیچ محصولی یافت نشد</string>
 </resources>

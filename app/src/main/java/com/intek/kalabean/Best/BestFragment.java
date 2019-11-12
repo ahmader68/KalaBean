@@ -32,7 +32,6 @@ public class BestFragment extends BaseFragment implements BestContract.View {
     public void setupViews() {
         ConstraintLayout conBest = rootView.findViewById(R.id.con_fragmentBest_mainLayout);
         RecyclerView rvBest = rootView.findViewById(R.id.rv_fragmentBest_list);
-        conBest.setRotationY(180);
         //bestAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         rvBest.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         //rvBest.setAdapter(bestAdapter);

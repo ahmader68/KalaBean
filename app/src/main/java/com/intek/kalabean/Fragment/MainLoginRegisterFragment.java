@@ -1,4 +1,4 @@
-package com.intek.kalabean;
+package com.intek.kalabean.Fragment;
 
 import android.graphics.Color;
 import android.widget.FrameLayout;
@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Login.LoginFragment;
 import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
+import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
 
 public class MainLoginRegisterFragment extends BaseFragment {

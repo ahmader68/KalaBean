@@ -22,6 +22,7 @@ import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Adapters.RecyclerReductedProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Best.BestFragment;
+import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
 import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
@@ -193,7 +194,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         img_fragmentHome_best.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragment = new BestFragment();
+                fragment = new BrandsFragment();
                 FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transactions = managers.beginTransaction();
                 transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);

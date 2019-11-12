@@ -1,7 +1,6 @@
 package com.intek.kalabean.Main_Page;
 
 
-import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,6 +30,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
@@ -38,15 +38,10 @@ import com.intek.kalabean.Category.CatFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
-import com.intek.kalabean.MainLoginRegisterFragment;
 import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
 import com.intek.kalabean.Request_Product.RequestFragment;
-import com.intek.kalabean.Shops.ShopsFragment;
-import com.intek.kalabean.ShowShop.ShowShopFragment;
-import com.intek.kalabean.ShowUserShop.UserShopFragment;
-import com.intek.kalabean.Ticket.TicketFragment;
 import com.intek.kalabean.VIP_User_Profile.VUFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -63,6 +58,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private EditText edt_toolbar_search;
     private ImageView kalabeanIcon;
     private NavigationView navigationView;
+    private FloatingActionButton fbtnPlus;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +74,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void setupViews() {
 
         bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
-
+        fbtnPlus = rootView.findViewById(R.id.floatingActionButton);
         navigationView = rootView.findViewById(R.id.navigation);
         drawer = rootView.findViewById(R.id.drawer);
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
@@ -238,6 +234,33 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 }
 
                 return true;
+            }
+        });
+
+        fbtnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenuPlus = new PopupMenu(getViewContext(),fbtnPlus);
+                popupMenuPlus.getMenuInflater().inflate(R.menu.plus_button_menu,popupMenuPlus.getMenu());
+                popupMenuPlus.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        int id = item.getItemId();
+                        switch (id){
+                            case R.id.menu_plus_product_add:
+                                fragment = new AddProductFragment();
+                                break;
+                            case R.id.menu_plus_product_request:
+                                fragment = new RequestFragment();
+                                break;
+                        }
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                        transaction.commit();
+                        return true;
+                    }
+                });
+                popupMenuPlus.show();
             }
         });
     }

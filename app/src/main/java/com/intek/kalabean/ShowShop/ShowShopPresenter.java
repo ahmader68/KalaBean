@@ -37,6 +37,7 @@ public class ShowShopPresenter implements ShowShopContract.Presenter {
     @Override
     public void getProduct(int shopID) {
         DatabaseMethods.getProductList(databaseFlag,shopID);
+
     }
 
     @Override

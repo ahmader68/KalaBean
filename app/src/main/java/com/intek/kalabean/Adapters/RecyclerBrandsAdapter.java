@@ -77,7 +77,7 @@ public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAd
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();
                 shopsFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_MainActivity_mainLayout , shopsFragment);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
                 transaction.commit();
             }
         });
