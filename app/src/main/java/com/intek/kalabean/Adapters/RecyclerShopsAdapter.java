@@ -52,11 +52,18 @@ public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdap
                 bundle.putString("image" , shop.getImage());
                 bundle.putString("title" , shop.getTitleFA());
                 bundle.putInt("ShopId" , shop.getShopid());
+                bundle.putInt("visitCount",shop.getVisiteCount());
+                bundle.putString("address",shop.getAddressFA());
+                bundle.putString("tel",shop.getTel());
+                bundle.putString("web",shop.getLinksite());
+
+
+
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShowShopFragment shopShopFragment = new ShowShopFragment();
                 shopShopFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_MainActivity_mainLayout , shopShopFragment);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopShopFragment);
                 transaction.commit();
             }
         });

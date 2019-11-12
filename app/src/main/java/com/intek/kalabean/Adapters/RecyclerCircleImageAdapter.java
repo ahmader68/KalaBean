@@ -72,7 +72,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShopsFragment shopsFragment = new ShopsFragment();
                 shopsFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_MainActivity_mainLayout , shopsFragment);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
                 transaction.commit();
             }
         });

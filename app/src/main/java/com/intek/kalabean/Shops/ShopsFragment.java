@@ -3,20 +3,15 @@ package com.intek.kalabean.Shops;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.intek.kalabean.Adapters.RecyclerShopsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
@@ -30,98 +25,48 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
+    private TextView txtTitle;
+    private CircleImageView cimgShop;
+    private RecyclerView rvShopList;
+
+
     private ShopsContract.Presenter presenter;
     private RecyclerShopsAdapter adapter;
+    private Bundle extras;
+    public int SellCenterID;
+    public String image;
+    public String title;
+    public int ShopId;
 
-    private ImageView imgShop;
-    private ImageView imgHeart;
-    private ImageView imgInstagram;
-    private ImageView imgTelegram;
-    private ImageView imgEmail;
-    private ImageView imgDomain;
-    private ImageView imgHambur;
-    private ImageView imgShare;
 
-    private Button btnInfo;
-    private Button btnContact;
 
-    private TextView txtAddress;
-    private TextView txtViewCount;
-    private TextView txtHourWork;
-
-    private RecyclerView rvProductList;
-
-    private boolean checkHeart = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new ShopsPresenter(new KalaBeanRepository());
+        extras = getArguments();
+        SellCenterID = extras.getInt("SellCenterID" , 1);
+        image = extras.getString("image" , "");
+        title = extras.getString("title" , "");
+        ShopId = extras.getInt("ShopId", 0);
     }
 
     @Override
     public int getLayout() {
-        return R.layout.fragment_shops;
+        return R.layout.fragment_show_shop;
     }
 
     @Override
     public void setupViews() {
-        imgShop = rootView.findViewById(R.id.img_fragmentShop_shop);
-        imgHeart = rootView.findViewById(R.id.img_fragmentShop_heart);
-        imgInstagram = rootView.findViewById(R.id.img_fragmentShop_instagram);
-        imgTelegram = rootView.findViewById(R.id.img_fragmentShop_telegram);
-        imgEmail = rootView.findViewById(R.id.img_fragmentShop_email);
-        imgDomain = rootView.findViewById(R.id.img_fragmentShop_domain);
-        imgShare = rootView.findViewById(R.id.img_fragmentShop_share);
-        imgHambur = rootView.findViewById(R.id.img_fragmentShop_hambur);
 
-        btnInfo = rootView.findViewById(R.id.btn_fragmentShop_info);
-        btnContact = rootView.findViewById(R.id.btn_fragmentShop_contact);
+        txtTitle = rootView.findViewById(R.id.txt_fragmentShowShops_title);
+        cimgShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
+        rvShopList = rootView.findViewById(R.id.rv_fragmentShowShops_shopList);
+        presenter.getShops(SellCenterID,0);
+        txtTitle.setText(title);
+        Picasso.get().load(image).into(cimgShop);
 
-        txtAddress = rootView.findViewById(R.id.txt_fragmentShop_address);
-        txtViewCount = rootView.findViewById(R.id.txt_fragmentShop_countView);
-        txtHourWork = rootView.findViewById(R.id.txt_fragmentShop_hourWork);
-
-        rvProductList = rootView.findViewById(R.id.rv_fragmentShop_list);
-
-        imgHeart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkHeart){
-                    checkHeart = false;
-                    imgHeart.setImageResource(R.drawable.white_heart);
-                }else{
-                    checkHeart = true;
-                    imgHeart.setImageResource(R.drawable.red_heart);
-                }
-            }
-        });
-
-        imgHambur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(getViewContext(),imgHambur);
-                popupMenu.getMenuInflater().inflate(R.menu.shop_menu,popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        int id = menuItem.getItemId();
-                        switch (id){
-                            case R.id.menu_store_catProduct:
-                                Toast.makeText(getViewContext(), "1", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menu_store_description:
-                                Toast.makeText(getViewContext(), "2", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menu_store_branchs:
-                                Toast.makeText(getViewContext(), "3", Toast.LENGTH_SHORT).show();
-                        }
-                        return true;
-                    }
-                });
-                popupMenu.show();
-            }
-        });
     }
 
     @Override
@@ -131,6 +76,9 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void getShopsList(ShopsList shops) {
+        adapter = new RecyclerShopsAdapter(getViewContext(),shops);
+        rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(),3,RecyclerView.VERTICAL,false));
+        rvShopList.setAdapter(adapter);
 
     }
 
