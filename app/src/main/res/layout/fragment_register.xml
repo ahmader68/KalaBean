@@ -4,7 +4,8 @@
     android:id="@+id/con_fragmentRegister_mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:background="@drawable/pattern_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentRegister_email" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_fragmentRegister_email" />
 
 
             <RadioGroup
@@ -105,111 +106,126 @@
                 app:layout_constraintStart_toEndOf="@id/txt_fragmentRegister_here"
                 app:layout_constraintTop_toTopOf="@id/txt_fragmentRegister_here" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentRegister_usernameDown"
+
+            <EditText
+                android:id="@+id/edt_fragmentRegister_firstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:background="@drawable/spinner_shape"
                 android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_fragmentRegister_regKind"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rg_fragmentRegister_regKind">
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:hint="@string/first_name"/>
 
-                <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/edt_fragmentRegister_LastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_shape"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintTop_toBottomOf="@id/edt_fragmentRegister_firstName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:hint="@string/last_name"/>
+
+
+                <EditText
                     android:id="@+id/edt_fragmentRegister_usernameDown"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_shape"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edt_fragmentRegister_LastName"
                     android:hint="@string/username"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentRegister_password"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentRegister_usernameDown"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentRegister_usernameDown"
 
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentRegister_usernameDown">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/edt_fragmentRegister_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_shape"
+                    android:textAlignment="textStart"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentRegister_usernameDown"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentRegister_usernameDown"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentRegister_usernameDown"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentRegister_repeatPassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentRegister_password"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentRegister_password"
 
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentRegister_password">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/edt_fragmentRegister_repeatPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_shape"
+                    android:textAlignment="textStart"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentRegister_password"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentRegister_password"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentRegister_password"
                     android:hint="@string/edt_fragmentRegister_confirmPassword"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentRegister_email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toTopOf="@id/btn_fragmentRegister_register"
-                app:layout_constraintEnd_toEndOf="@id/sp_fragmentRegister_city"
-                app:layout_constraintStart_toStartOf="@id/sp_fragmentRegister_city"
-                app:layout_constraintTop_toBottomOf="@id/sp_fragmentRegister_city">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/edt_fragmentRegister_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/spinner_shape"
+                    app:layout_constraintBottom_toTopOf="@id/btn_fragmentRegister_register"
+                    app:layout_constraintEnd_toEndOf="@id/sp_fragmentRegister_city"
+                    app:layout_constraintStart_toStartOf="@id/sp_fragmentRegister_city"
+                    app:layout_constraintTop_toBottomOf="@id/sp_fragmentRegister_city"
                     android:hint="@string/edt_fragmentEditUser_email"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentRegister_province"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/spinner_shape"
                 android:layout_marginTop="16dp"
                 android:hint="@string/sp_fragmentEditUser_state"
-                android:padding="10dp"
                 android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentRegister_repeatPassword"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentRegister_repeatPassword"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentRegister_repeatPassword" />
+                app:layout_constraintEnd_toEndOf="@+id/edt_fragmentRegister_repeatPassword"
+                app:layout_constraintStart_toStartOf="@+id/edt_fragmentRegister_repeatPassword"
+                app:layout_constraintTop_toBottomOf="@+id/edt_fragmentRegister_repeatPassword" />
 
             <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentRegister_city"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/spinner_shape"
                 android:layout_marginTop="16dp"
                 android:hint="@string/sp_fragmentEditUser_city"
-                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentRegister_province"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentRegister_province"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentRegister_province" />

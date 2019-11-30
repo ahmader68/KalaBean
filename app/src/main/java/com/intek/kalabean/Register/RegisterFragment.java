@@ -3,6 +3,7 @@ package com.intek.kalabean.Register;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -37,41 +39,36 @@ import java.util.List;
 public class RegisterFragment extends BaseFragment implements RegisterContract.View {
 
 
-
     private TextView txtFragmentRegisterClickHere;
 
     private RadioGroup rgFragmentRegisterUserKind;
 
-    private RadioButton rbFragmentRegisterOrdinaryUser;
-    private RadioButton rbFragmentRegisterVIPUser;
+    private RadioButton rbFragmentRegisterOrdinaryUser, rbFragmentRegisterVIPUser;
 
-    private TextInputLayout tilFragmentRegisterPassword;
-    private TextInputEditText edtFragmentRegisterPassword;
 
-    private TextInputLayout tilFragmentRegisterRepeatPassword;
-    private TextInputEditText edtFragmentRegisterRepeatPassword;
+    private EditText
+            edtFragmentRegisterPassword,
+            edtFragmentRegisterRepeatPassword,
+            edtFragmentRegisterUsername,
+            edtFragmentRegisterEmail,
+            edtFragmentRegisterFirstname,
+            edtFragmentRegisterLastname;
 
-    private TextInputLayout tilFragmentRegisterUsername;
-    private TextInputEditText edtFragmentRegisterUsername;
 
-    private MaterialSpinner spFragmentRegisterProvince;
-    private MaterialSpinner spFragmentRegisterCity;
+    private MaterialSpinner spFragmentRegisterProvince, spFragmentRegisterCity;
 
-    private TextInputLayout tilFragmentRegisterEmail;
-    private TextInputEditText edtFragmentRegisterEmail;
 
     private Button btnFragmentRegisterAccept;
 
 
-    private String state;
-    private String city;
-    private String userLevel;
+    private String state, city, userLevel;
 
-    private List<String> provinces;
-    private List<String> cities;
 
-    private ArrayAdapter<String> provinceArrayAdapter;
-    private ArrayAdapter<String> cityArrayAdapter;
+    private List<String> provinces, cities;
+
+
+    private ArrayAdapter<String> provinceArrayAdapter, cityArrayAdapter;
+
 
     private RegisterContract.Presenter presenter;
 
@@ -80,7 +77,6 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     private GetProvinceAndCity getProvinceAndCity;
 
     private SharedPreferences sharedPreferences;
-
 
 
     @Override
@@ -99,18 +95,12 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
     @Override
     public void setupViews() {
-
-        tilFragmentRegisterPassword = rootView.findViewById(R.id.til_fragmentRegister_password);
         edtFragmentRegisterPassword = rootView.findViewById(R.id.edt_fragmentRegister_password);
-
-        tilFragmentRegisterRepeatPassword = rootView.findViewById(R.id.til_fragmentRegister_repeatPassword);
         edtFragmentRegisterRepeatPassword = rootView.findViewById(R.id.edt_fragmentRegister_repeatPassword);
-
-        tilFragmentRegisterUsername = rootView.findViewById(R.id.til_fragmentRegister_usernameDown);
         edtFragmentRegisterUsername = rootView.findViewById(R.id.edt_fragmentRegister_usernameDown);
-
-        tilFragmentRegisterEmail = rootView.findViewById(R.id.til_fragmentRegister_email);
         edtFragmentRegisterEmail = rootView.findViewById(R.id.edt_fragmentRegister_email);
+        edtFragmentRegisterFirstname = rootView.findViewById(R.id.edt_fragmentRegister_firstName);
+        edtFragmentRegisterLastname = rootView.findViewById(R.id.edt_fragmentRegister_LastName);
 
         rgFragmentRegisterUserKind = rootView.findViewById(R.id.rg_fragmentRegister_regKind);
 
@@ -125,7 +115,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         btnFragmentRegisterAccept = rootView.findViewById(R.id.btn_fragmentRegister_register);
 
         provinces = getProvinceAndCity.getProvince();
-        provinceArrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,provinces);
+        provinceArrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, provinces);
         provinceArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentRegisterProvince.setAdapter(provinceArrayAdapter);
 
@@ -134,7 +124,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
             public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
                 state = spFragmentRegisterProvince.getSelectedItem().toString();
                 cities = getProvinceAndCity.getCity(state);
-                cityArrayAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,cities);
+                cityArrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, cities);
                 cityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spFragmentRegisterCity.setAdapter(cityArrayAdapter);
 
@@ -160,9 +150,9 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         rgFragmentRegisterUserKind.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.rb_fragmentRegister_regular){
+                if (checkedId == R.id.rb_fragmentRegister_regular) {
                     userLevel = "0";
-                }else{
+                } else {
                     userLevel = "1";
                 }
             }
@@ -171,8 +161,11 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         btnFragmentRegisterAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    user.setFirstName("hhh");
-                    user.setLastName("gggg");
+                if(!validateName() || !validateFamily() || !validateUsername() || !validatePassword() ||  !validateConpass()  ||   !validateProvince() ||  !validateCity()   || !validateEmail()){
+                    return;
+                }else {
+                    user.setFirstName(edtFragmentRegisterFirstname.getText().toString());
+                    user.setLastName(edtFragmentRegisterLastname.getText().toString());
                     user.setEmail(edtFragmentRegisterEmail.getText().toString());
                     user.setCity(city);
                     user.setProvince(state);
@@ -181,6 +174,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                     user.setUsr(edtFragmentRegisterUsername.getText().toString());
                     //user.setUserLevel(userLevel);
                     presenter.register(user);
+                }
 
             }
         });
@@ -200,36 +194,96 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
 
     private boolean validateName() {
-        return true;
+        String name = edtFragmentRegisterFirstname.getText().toString().trim();
+        if (name.isEmpty()) {
+            edtFragmentRegisterFirstname.setHint("لطفا نام خود را وارد کنید");
+            edtFragmentRegisterFirstname.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private boolean validateFamily() {
-        return true;
+        String family = edtFragmentRegisterLastname.getText().toString().trim();
+        if (family.isEmpty()) {
+            edtFragmentRegisterLastname.setHint("لطفا نام خانوادگی خود را وارد کنید");
+            edtFragmentRegisterLastname.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    private boolean validateMobile() {
-        return true;
+    private boolean validateUsername() {
+        String username = edtFragmentRegisterUsername.getText().toString().trim();
+        if (username.isEmpty()) {
+            edtFragmentRegisterUsername.setHint("لطفا شماره همراه خود را وارد کنید");
+            edtFragmentRegisterUsername.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    private boolean validatePhone() {
-        return true;
+    private boolean validateProvince() {
+        String province = spFragmentRegisterProvince.getSelectedItem().toString();
+        if (province.isEmpty()) {
+            Toast.makeText(getViewContext(), "لطفا استان خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
     }
+
+    private boolean validateCity() {
+        String city = spFragmentRegisterCity.getSelectedItem().toString();
+        if (city.isEmpty()) {
+            Toast.makeText(getViewContext(), "لطفا شهر خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     private boolean validateEmail() {
-        return true;
+        String email = edtFragmentRegisterEmail.getText().toString().trim();
+        if (email.isEmpty()) {
+            edtFragmentRegisterEmail.setHint("لطفا ایمیل خود را وارد کنید");
+            edtFragmentRegisterEmail.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private boolean validatePassword() {
-        return true;
+        String password = edtFragmentRegisterPassword.getText().toString().trim();
+        if (password.isEmpty()) {
+            edtFragmentRegisterPassword.setHint("لطفا کلمه عبور خود را وارد کنید");
+            edtFragmentRegisterPassword.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private boolean validateConpass() {
-        return true;
+        String conPass = edtFragmentRegisterRepeatPassword.getText().toString().trim();
+        if (conPass.isEmpty()) {
+            edtFragmentRegisterRepeatPassword.setHint("لطفا شماره همراه خود را وارد کنید");
+            edtFragmentRegisterRepeatPassword.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else if (!edtFragmentRegisterPassword.getText().toString().equals(conPass)) {
+            edtFragmentRegisterRepeatPassword.setHint("کلمه عبور با تکرار آن برابر نیست");
+            edtFragmentRegisterRepeatPassword.setHintTextColor(getResources().getColor(R.color.colorRed));
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    private boolean validateAddress() {
-        return true;
-    }
 
     @Override
     public void showMessage(String msg) {
@@ -240,36 +294,36 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     public void showSuccess(int id) {
         if (id > 0) {
             Toast.makeText(getViewContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout, new MainFragment()).commit();
         }
     }
 
     @Override
     public void successLogin(LoggedinUser user) {
-        String username = user.getItems().get(0).getMobile()+"";
+        String username = user.getItems().get(0).getMobile() + "";
         int userId = user.getItems().get(0).getResult();
         int shop = user.getItems().get(0).getShopId();
         String name = user.getItems().get(0).getFirstName();
         String family = user.getItems().get(0).getLastName();
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("userid",userId);
-        editor.putString("name",name);
-        editor.putString("family",family);
-        editor.putString("username",username);
-        editor.putInt("ShopId",shop);
+        editor.putInt("userid", userId);
+        editor.putString("name", name);
+        editor.putString("family", family);
+        editor.putString("username", username);
+        editor.putInt("ShopId", shop);
 
         editor.apply();
         editor.commit();
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.replace(R.id.frm_MainActivity_mainLayout, new MainFragment());
         transaction.commit();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(getView() == null){
+        if (getView() == null) {
             return;
         }
         getView().setFocusableInTouchMode(true);
@@ -277,8 +331,8 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         getView().setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout, new MainFragment()).commit();
                     return true;
                 }
                 return false;

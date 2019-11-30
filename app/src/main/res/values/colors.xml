@@ -37,4 +37,5 @@
     <color name="cardviewTitleBackground">#82acff</color>
     <color name="acceptButton">#ff5a9e</color>
     <color name="cardviewBeauty">#ebd7bc</color>
+    <color name="spinner_baclground">#f0f0f0</color>
 </resources>

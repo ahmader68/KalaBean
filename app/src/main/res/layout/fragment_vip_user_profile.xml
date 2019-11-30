@@ -16,7 +16,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/con_fragmentVIPUser_image"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:background="@drawable/ic_launcher_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/textview_stroke_white"
                     android:padding="4dp"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -40,8 +40,8 @@
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/cimg_fragmentVIPUser_outerImage"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     app:civ_border_color="@color/colorWhite"
@@ -67,8 +67,8 @@
 
                     <ImageView
                         android:id="@+id/img_fragmentVIPUser_profile"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/profile"
                         app:layout_constraintEnd_toStartOf="@id/img_fragmentVIPUser_basket"
                         app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +76,8 @@
 
                     <ImageView
                         android:id="@+id/img_fragmentVIPUser_basket"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/shopping_bag"
                         app:layout_constraintTop_toTopOf="@id/img_fragmentVIPUser_profile"
                         app:layout_constraintStart_toEndOf="@id/img_fragmentVIPUser_profile"
@@ -87,8 +87,8 @@
 
                     <ImageView
                         android:id="@+id/img_fragmentVIPUser_wallet"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/wallet"
                         app:layout_constraintTop_toTopOf="@id/img_fragmentVIPUser_basket"
                         app:layout_constraintBottom_toBottomOf="@id/img_fragmentVIPUser_basket"
@@ -98,8 +98,8 @@
 
                     <ImageView
                         android:id="@+id/img_fragmentVIPUser_message"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/speech_dark_blue"
                         app:layout_constraintTop_toTopOf="@id/img_fragmentVIPUser_wallet"
                         app:layout_constraintBottom_toBottomOf="@id/img_fragmentVIPUser_wallet"
@@ -125,8 +125,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_fragmentVIPUser_addProd"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
                     app:cardBackgroundColor="@color/purple"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp"
@@ -135,8 +135,8 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:background="@color/purple">
 
@@ -156,18 +156,20 @@
                             android:layout_margin="8dp"
                             android:text="@string/addProduct"
                             android:textColor="@color/colorWhite"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:textStyle="bold"
+                            android:textAlignment="center"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/img_fragmentVIPUser_addProduct" />
+                            app:layout_constraintTop_toBottomOf="@id/img_fragmentVIPUser_addProduct"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_fragmentVIPUser_prodManage"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
 
                     app:cardBackgroundColor="@color/cardLightBlue"
                     app:cardCornerRadius="10dp"
@@ -178,8 +180,8 @@
                     app:layout_constraintTop_toTopOf="@id/cv_fragmentVIPUser_addProd">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="8dp">
 
                         <ImageView
@@ -198,7 +200,7 @@
                             android:layout_marginTop="8dp"
                             android:text="@string/product_management"
                             android:textColor="@color/colorWhite"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -208,8 +210,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_fragmentVIPUser_editStore"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
 
                     app:cardBackgroundColor="@color/cardNormalBlue"
                     app:cardCornerRadius="10dp"
@@ -220,8 +222,8 @@
                     app:layout_constraintTop_toTopOf="@id/cv_fragmentVIPUser_prodManage">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="8dp">
 
                         <ImageView
@@ -240,17 +242,18 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/img_fragmentVIPUser_editStore"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:textAlignment="center"
                             android:layout_margin="4dp"
                             android:textColor="@color/colorWhite"
-                            android:text="@string/edit_store"/>
+                            android:text="@string/edit_store"
+                            tools:ignore="SmallSp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_fragmentVIPUser_map"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp"
                     app:cardBackgroundColor="@color/cardViewMap"
@@ -259,8 +262,8 @@
                     app:layout_constraintEnd_toStartOf="@id/cv_fragmentVIPUser_showStore"
                     android:layout_marginTop="32dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="8dp">
                         <ImageView
                             android:id="@+id/img_fragmentVIPUser_map"
@@ -277,7 +280,7 @@
                             app:layout_constraintTop_toBottomOf="@id/img_fragmentVIPUser_map"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:layout_margin="4dp"
                             android:textColor="@color/colorWhite"
                             android:textAlignment="center"
@@ -287,8 +290,8 @@
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_fragmentVIPUser_showStore"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
                     app:cardCornerRadius="10dp"
                     app:cardBackgroundColor="@color/showStore"
                     android:layout_marginTop="32dp"
@@ -297,8 +300,8 @@
                     app:layout_constraintStart_toEndOf="@id/cv_fragmentVIPUser_map"
                     app:layout_constraintEnd_toEndOf="parent">
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="8dp">
                         <ImageView
                             android:id="@+id/img_fragmentVIPUser_showStore"
@@ -307,18 +310,23 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            android:src="@drawable/eye"
-                            android:layout_marginTop="4dp"/>
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/eye"/>
                         <TextView
+                            android:id="@+id/txt_fragmentVIPUser_showStore"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toBottomOf="@id/img_fragmentVIPUser_showStore"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_margin="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="10dp"
                             android:textAlignment="center"
                             android:textColor="@color/colorWhite"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:textStyle="bold"
                             android:text="@string/showStore"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>

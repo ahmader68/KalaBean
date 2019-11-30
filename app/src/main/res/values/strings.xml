@@ -148,7 +148,7 @@
     <string name="txt_message">پیام</string>
     <string name="addProduct">افزودن محصول</string>
     <string name="product_management">مدیریت محصول</string>
-    <string name="edit_store">ویرایش اطلاعات فروشگاه</string>
+    <string name="edit_store">ویرایش اطلاعات\n فروشگاه</string>
     <string name="place">ثبت روی نقشه</string>
     <string name="showStore">مشاهده فروشگاه</string>
     <string name="selected_product">محصولات منتخب</string>
@@ -228,4 +228,6 @@
     <string name="furniture">خانه و آشپزخانه</string>
     <string name="category">دسته بندی</string>
     <string name="product_not_found">هیچ محصولی یافت نشد</string>
+    <string name="first_name">نام</string>
+    <string name="last_name">نام خانوادگی</string>
 </resources>

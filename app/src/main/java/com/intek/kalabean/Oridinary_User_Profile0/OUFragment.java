@@ -1,4 +1,4 @@
-package com.intek.kalabean.Oridinary_User_Profile;
+package com.intek.kalabean.Oridinary_User_Profile0;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerFavouriteAdapter;
@@ -25,9 +24,6 @@ import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class OUFragment extends BaseFragment implements OUContract.View {
     private OUContract.Presenter presenter;

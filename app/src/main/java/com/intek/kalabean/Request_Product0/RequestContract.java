@@ -1,4 +1,4 @@
-package com.intek.kalabean.Request_Product;
+package com.intek.kalabean.Request_Product0;
 
 import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
