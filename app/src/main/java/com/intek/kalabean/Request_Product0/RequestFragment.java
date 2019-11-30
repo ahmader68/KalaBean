@@ -1,4 +1,4 @@
-package com.intek.kalabean.Request_Product;
+package com.intek.kalabean.Request_Product0;
 
 import android.Manifest;
 import android.content.Context;
@@ -22,7 +22,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Classes.GetProvinceAndCity;
 import com.intek.kalabean.Data.KalaBeanRepository;
-import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ActivityKind;

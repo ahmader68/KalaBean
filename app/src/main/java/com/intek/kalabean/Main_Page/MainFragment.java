@@ -38,17 +38,17 @@ import com.intek.kalabean.Category.CatFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
-import com.intek.kalabean.Oridinary_User_Profile.OUFragment;
+import com.intek.kalabean.Oridinary_User_Profile0.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
-import com.intek.kalabean.Request_Product.RequestFragment;
+import com.intek.kalabean.Request_Product0.RequestFragment;
 import com.intek.kalabean.VIP_User_Profile.VUFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.Objects;
 
-import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
+import static com.intek.kalabean.Edit_User0.EditUserFragment.PERMISSION_REQUEST;
 
 public class MainFragment extends BaseFragment implements MainContract.View {
     private DrawerLayout drawer;

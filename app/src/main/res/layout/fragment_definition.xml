@@ -32,7 +32,7 @@
                 android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_branches" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_branches" />
 
             <ImageView
                 android:id="@+id/img_fragmentDefinition_outerImage"
@@ -107,10 +107,10 @@
 
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_storeName"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_storeName"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_storeName" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_storeName" />
 
             <TextView
                 android:id="@+id/txt_fragmentDefinition_province"
@@ -191,10 +191,10 @@
                 android:text="@string/edt_fragmentRegister_address"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_address"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_address"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_address" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_address" />
 
             <TextView
                 android:id="@+id/txt_fragmentDefinition_phone"
@@ -204,10 +204,10 @@
                 android:text="@string/edt_fragmentRegister_phone"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_phone"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_phone"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_phone" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_phone" />
 
 
             <TextView
@@ -218,10 +218,10 @@
                 android:text="@string/site"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_site"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_site"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_site" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_site" />
 
             <TextView
                 android:id="@+id/txt_fragmentDefinition_instagram"
@@ -231,10 +231,10 @@
                 android:text="@string/instagramFA"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_instagram"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_instagram"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_instagram" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_instagram" />
 
             <TextView
                 android:id="@+id/txt_fragmentDefinition_telegram"
@@ -244,10 +244,10 @@
                 android:text="@string/telegramFA"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_telegram"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_telegram"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_telegram" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_telegram" />
 
             <TextView
                 android:id="@+id/txt_fragmentDefinition_workHour"
@@ -257,10 +257,10 @@
                 android:text="@string/edt_fragmentDefinition_workHour"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_workHour"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_workHour"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_workHour" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_workHour" />
 
             <TextView
                 android:id="@+id/txt_fragmentDefinition_branches"
@@ -270,10 +270,10 @@
                 android:text="@string/menu_store_branchs"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/til_fragmentDefinition_branches"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_fragmentDefinition_branches"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/til_fragmentDefinition_branches" />
+                app:layout_constraintTop_toTopOf="@+id/edt_fragmentDefinition_branches" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_fragmentRegister_layoutTitle"
@@ -301,7 +301,7 @@
                         android:text="@string/definition_store"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -318,44 +318,38 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_storeName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toEndOf="@id/txt_fragmentDefinition_storeNameTitle"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentDefinition_srcOuter">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_storeName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/ShopName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_shape"
+                    android:padding="10dp"
+                    android:layout_margin="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toEndOf="@id/txt_fragmentDefinition_storeNameTitle"
+                    app:layout_constraintTop_toBottomOf="@id/img_fragmentDefinition_srcOuter"
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_address"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_floor"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_floor"
-                app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_floor">
+
+
 
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_fragmentDefinition_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/edt_fragmentRegister_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/spinner_shape"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_floor"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_floor"
+                    app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_floor"
                     android:inputType="textMultiLine"
                     android:lines="5"
                     android:maxLines="5"
@@ -363,160 +357,145 @@
                     android:scrollbars="vertical"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_phone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_address"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_address"
 
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_address">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/edt_fragmentRegister_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:padding="10dp"
+                    android:background="@drawable/spinner_shape"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_address"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_address"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_address"
                     android:inputType="phone"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_site"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_phone"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_phone"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_phone">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_site"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:hint="@string/site"
+                    android:layout_marginTop="32dp"
+                    android:padding="10dp"
+                    android:background="@drawable/spinner_shape"
+                    android:hint="@string/http"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_phone"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_phone"
                     android:textDirection="ltr"
                     android:inputType="text"
 
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
 
-                android:id="@+id/til_fragmentDefinition_instagram"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_site"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_site"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_site">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_instagram"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:padding="10dp"
+                    android:background="@drawable/spinner_shape"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_site"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_site"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_site"
                     android:hint="@string/instagram"
                     android:inputType="text"
                     android:textDirection="ltr"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_telegram"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_instagram"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_instagram"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_instagram">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_telegram"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:padding="10dp"
+                    android:background="@drawable/spinner_shape"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_instagram"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_instagram"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_instagram"
                     android:hint="@string/telegram"
                     android:inputType="text"
                     android:textDirection="ltr"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_workHour"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_telegram"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_telegram"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_telegram">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_workHour"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/edt_fragmentDefinition_workHour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_telegram"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_telegram"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_telegram"
+                    android:background="@drawable/spinner_shape"
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentDefinition_branches"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_workHour"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_workHour"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_workHour">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/edt_fragmentDefinition_branches"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/menu_store_branchs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_shape"
+                    android:layout_marginTop="32dp"
+                    android:padding="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_workHour"
+                    app:layout_constraintHorizontal_weight="0.7"
+                    app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_workHour"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_workHour"
+
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.tiper.MaterialSpinner
+
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_province"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sp_fragmentEditUser_state"
+                android:background="@drawable/spinner_shape"
+                android:padding="10dp"
+                android:layout_marginTop="32dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textDirection="rtl"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/til_fragmentDefinition_storeName"
+                app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_storeName"
                 app:layout_constraintHorizontal_weight="0.7"
 
-                app:layout_constraintStart_toStartOf="@id/til_fragmentDefinition_storeName"
-                app:layout_constraintTop_toBottomOf="@id/til_fragmentDefinition_storeName" />
+                app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_storeName"
+                app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_storeName" />
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_city"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sp_fragmentEditUser_city"
+                android:background="@drawable/spinner_shape"
+                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textDirection="rtl"
-
-                app:errorEnabled="true"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_province"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_province"
@@ -537,50 +516,57 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/sp_fragmentDefinition_activityKind"/>
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_activityKind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_weight="0.7"
+                android:background="@drawable/spinner_shape"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_city"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_city"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_city"
-                android:hint="@string/sp_fragmentDefinition_activityKind"
+                android:layout_marginTop="32dp"
+                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"/>
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_storeKind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/spinner_shape"
                 android:layout_marginStart="8dp"
-                android:hint="@string/sp_fragmentDefinition_storeKind"
+
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                app:errorEnabled="true"
+                android:layout_marginTop="32dp"
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_activityKind"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_activityKind"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_activityKind" />
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_storeName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/storeName"
+                android:background="@drawable/spinner_shape"
+                android:layout_marginTop="32dp"
+                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_storeKind"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_storeKind"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_storeKind" />
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_floor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sp_fragmentDefinition_floor"
+                android:background="@drawable/spinner_shape"
+                android:layout_marginTop="32dp"
+                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 app:errorEnabled="true"

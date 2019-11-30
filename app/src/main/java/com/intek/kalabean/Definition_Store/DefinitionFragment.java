@@ -9,9 +9,12 @@ import android.text.Selection;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -48,87 +51,93 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private DefinitionContract.Presenter presenter;
 
 
-    private TextInputLayout tilFragmentDefinitionStoreName;
-    private TextInputEditText edtFragmentDefinitionStoreName;
+    private EditText
+                edtFragmentDefinitionStoreName,
+                edtFragmentDefinitionTelegram,
+                edtFragmentDefinitionInstagram,
+                edtFragmentDefinitionPhone,
+                edtFragmentDefinitionSite,
+                edtFragmentDefinitionWorkHour,
+                edtFragmentDefinitionAddressFa;
 
 
-    private TextInputLayout tilFragmentDefinitionTelegram;
-    private TextInputEditText edtFragmentDefinitionTelegram;
-
-    private TextInputLayout tilFragmentDefinitionInstagram;
-    private TextInputEditText edtFragmentDefinitionInstagram;
 
 
-    private TextInputLayout tilFragmentDefinitionPhone;
-    private TextInputEditText edtFragmentDefinitionPhone;
 
 
-    private TextInputLayout tilFragmentDefinitionSite;
-    private TextInputEditText edtFragmentDefinitionSite;
+
+    private Spinner
+            spFragmentDefinitionStoreKind,
+            spFragmentDefinitionComplexName,
+            spFragmentDefinitionFloor,
+            spFragmentDefinitionProvince,
+            spFragmentDefinitionCity,
+            spFragmentDefinitionActivityKind,
+            spMallKind;
 
 
-    private TextInputLayout tilFragmentDefinitionWorkHour;
-    private TextInputEditText edtFragmentDefinitionWorkHour;
-
-
-    private TextInputLayout tilFragmentDefinitionAddressFa;
-    private TextInputEditText edtFragmentDefinitionAddressFa;
-
-
-    private MaterialSpinner spFragmentDefinitionStoreKind;
-    private MaterialSpinner spFragmentDefinitionComplexName;
-    private MaterialSpinner spFragmentDefinitionFloor;
-    private MaterialSpinner spFragmentDefinitionProvince;
-    private MaterialSpinner spFragmentDefinitionCity;
-    private MaterialSpinner spFragmentDefinitionActivityKind;
 
 
     private Button btnFragmentDefinitionAccept;
 
 
-    private ImageView imgFragmentDefinitionInnerImage;
-    private ImageView imgFragmentDefinitionOuterImage;
-    private ImageView imgFragmentDefinitionsrcInner;
-    private ImageView imgFragmentDefinitionsrcOuter;
-    private ImageView imgFragmentDefinitionQuestionMark;
+    private ImageView
+            imgFragmentDefinitionInnerImage,
+            imgFragmentDefinitionOuterImage,
+            imgFragmentDefinitionsrcInner,
+            imgFragmentDefinitionsrcOuter,
+            imgFragmentDefinitionQuestionMark;
 
-    private ConstraintLayout conFragmentDefinitionMainLayout;
-    private ConstraintLayout conFragmentDefinitionSpinner;
-    private ConstraintLayout conFragmentDefinitionActivityKind;
-    private ConstraintLayout conFragmentDefinitionPhone;
-    private ConstraintLayout conFragmentDefinitionAddress;
 
-    private ArrayAdapter<String> malKindArrayAdapter;
-    private ArrayAdapter<String> shopCenterListAdapter;
-    private ArrayAdapter<String> floorListAdapter;
-    private ArrayAdapter<String> activityKindAdapter;
-    private ArrayAdapter<String> adapterCity;
-    private ArrayAdapter<String> adapterState;
-    private ArrayAdapter<String> activityKindsArrayAdapter;
+    private ConstraintLayout
+            conFragmentDefinitionMainLayout,
+            con_fragmentDefinition_mainLayout,
+            conFragmentDefinitionSpinner,
+            conFragmentDefinitionActivityKind,
+            conFragmentDefinitionPhone,
+            conFragmentDefinitionAddress;
 
-    private List<String> cities;
-    private List<String> province;
 
-    private List<String> malkind;
+    private ArrayAdapter<String>
+            malKindArrayAdapter,
+            shopCenterListAdapter,
+            floorListAdapter,
+            activityKindAdapter,
+            adapterCity,
+            adapterState,
+            activityKindsArrayAdapter;
+
+    private List<String>
+            cities,
+            province,
+            malkind,
+            shopCenterNames,
+            floorNames,
+            activityName,
+            mkindsName,
+            akindName;
+
+
     private MallKindList spMalKindList;
 
-    private List<String> shopCenterNames;
+
     private ShopCenterList spShopCenter;
 
-    private List<String> floorNames;
+
     private FloorList spFloorList;
 
-    private List<String> activityName;
     private ActivityKindList spActivityKind;
 
-    private int mallId;
-    private int shopCenterId;
-    private int floorId;
-    private int activityId;
-    private int cityId;
+    private int
+            mallId,
+            shopCenterId,
+            floorId,
+            activityId,
+            cityId;
 
-    private String state;
-    private String city;
+
+    private String state,city;
+
 
     private GetProvinceAndCity getProvinceAndCity;
 
@@ -137,15 +146,13 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
     public static final int PERMISSION_UPLOAD_REQUEST_CODE = 200;
 
-    private List<String> mkindsName;
-    private List<String> akindName;
     private List<MallKindList.MallKind> mkinds;
     private List<ActivityKind> akinds;
 
-    private MaterialSpinner spMallKind;
+
     // private MaterialSpinner spActivityKind;
     private ArrayAdapter<String> storeKindArrayAdapter;
-    public ConstraintLayout con_fragmentDefinition_mainLayout;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -167,30 +174,12 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     public void setupViews() {
         conFragmentDefinitionMainLayout = rootView.findViewById(R.id.con_fragmentDefinition_mainLayout);
 
-
-        tilFragmentDefinitionStoreName = rootView.findViewById(R.id.til_fragmentDefinition_storeName);
         edtFragmentDefinitionStoreName = rootView.findViewById(R.id.edt_fragmentDefinition_storeName);
-
-
-        tilFragmentDefinitionTelegram = rootView.findViewById(R.id.til_fragmentDefinition_telegram);
         edtFragmentDefinitionTelegram = rootView.findViewById(R.id.edt_fragmentDefinition_telegram);
-
-
-        tilFragmentDefinitionPhone = rootView.findViewById(R.id.til_fragmentDefinition_phone);
         edtFragmentDefinitionPhone = rootView.findViewById(R.id.edt_fragmentDefinition_phone);
-
-
-        tilFragmentDefinitionSite = rootView.findViewById(R.id.til_fragmentDefinition_site);
         edtFragmentDefinitionSite = rootView.findViewById(R.id.edt_fragmentDefinition_site);
-
-        tilFragmentDefinitionWorkHour = rootView.findViewById(R.id.til_fragmentDefinition_workHour);
         edtFragmentDefinitionWorkHour = rootView.findViewById(R.id.edt_fragmentDefinition_workHour);
-
-
-        tilFragmentDefinitionAddressFa = rootView.findViewById(R.id.til_fragmentDefinition_address);
         edtFragmentDefinitionAddressFa = rootView.findViewById(R.id.edt_fragmentDefinition_address);
-
-        tilFragmentDefinitionInstagram = rootView.findViewById(R.id.til_fragmentDefinition_instagram);
         edtFragmentDefinitionInstagram = rootView.findViewById(R.id.edt_fragmentDefinition_instagram);
 
 
@@ -321,56 +310,51 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         });
 
 
-        spFragmentDefinitionActivityKind.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spFragmentDefinitionActivityKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int position, long l) {
-
-
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 activityId = spActivityKind.getItems().get(position).getId();
             }
 
             @Override
-            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
-        spFragmentDefinitionStoreKind.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spFragmentDefinitionStoreKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mallId = spMalKindList.getItems().get(position).getId();
                 presenter.ShopCenterList(mallId);
-
-
             }
 
             @Override
-            public void onNothingSelected(MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-        spFragmentDefinitionComplexName.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spFragmentDefinitionComplexName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 shopCenterId = spShopCenter.getItems().get(position).getId();
                 cityId = spShopCenter.getItems().get(position).getCityid();
                 presenter.floorList(shopCenterId);
             }
 
             @Override
-            public void onNothingSelected(MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-        spFragmentDefinitionFloor.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spFragmentDefinitionFloor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 floorId = spFloorList.getFloorList().get(position).getId();
-
             }
 
             @Override
-            public void onNothingSelected(MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -385,32 +369,30 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         spFragmentDefinitionProvince.setAdapter(adapterState);
 
 
-        spFragmentDefinitionProvince.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spFragmentDefinitionProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 state = spFragmentDefinitionProvince.getSelectedItem().toString();
                 cities = getProvinceAndCity.getCity(state);
                 adapterCity = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, cities);
                 adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spFragmentDefinitionCity.setAdapter(adapterCity);
 
-                spFragmentDefinitionCity.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+                spFragmentDefinitionCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         city = spFragmentDefinitionCity.getSelectedItem().toString();
-
                     }
 
                     @Override
-                    public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+                    public void onNothingSelected(AdapterView<?> parent) {
 
                     }
                 });
-
             }
 
             @Override
-            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -574,11 +556,9 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private boolean validateStoreKind() {
         String selectedItem = (String) spFragmentDefinitionStoreKind.getSelectedItem();
         if (selectedItem == null) {
-            spFragmentDefinitionStoreKind.setError("لطفا یکی از گزینه ها را انتخاب کنید");
-            conFragmentDefinitionSpinner.requestFocus();
+            Toast.makeText(getViewContext(), "لطفا نوع فروشگاه خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            spFragmentDefinitionStoreKind.setError(null);
             return true;
         }
     }
@@ -586,11 +566,9 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private boolean validateComplexName() {
         String selectedItem = (String) spFragmentDefinitionComplexName.getSelectedItem();
         if (selectedItem == null) {
-            spFragmentDefinitionComplexName.setError("لطفا یکی از گزینه ها را انتخاب کنید");
-            conFragmentDefinitionSpinner.requestFocus();
+            Toast.makeText(getViewContext(), "لطفا مجتمع تجاری خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            spFragmentDefinitionComplexName.setError(null);
             return true;
         }
     }
@@ -598,11 +576,10 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private boolean validateFloor() {
         String selectedItem = (String) spFragmentDefinitionFloor.getSelectedItem();
         if (selectedItem == null) {
-            spFragmentDefinitionFloor.setError("لطفا یکی از گزینه ها را انتخاب کنید");
-            conFragmentDefinitionSpinner.requestFocus();
+            Toast.makeText(getViewContext(), "لطفا طبقه خود را انتخاب کنید", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            spFragmentDefinitionFloor.setError(null);
+
             return true;
         }
     }
@@ -610,11 +587,10 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private boolean validateStoreName() {
         String selectedItem = edtFragmentDefinitionStoreName.getText().toString().trim();
         if (selectedItem.isEmpty()) {
-            tilFragmentDefinitionStoreName.setError("فیلد نام فروشگاه خالی است");
-            conFragmentDefinitionSpinner.requestFocus();
+            edtFragmentDefinitionStoreName.setHint("فیلد نام فروشگاه خالی است");
+            edtFragmentDefinitionStoreName.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         } else {
-            tilFragmentDefinitionStoreName.setError(null);
             return true;
         }
     }
@@ -623,11 +599,11 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private boolean validatePhone() {
         String selectedItem = edtFragmentDefinitionPhone.getText().toString().trim();
         if (selectedItem.isEmpty()) {
-            tilFragmentDefinitionPhone.setError("فیلد تلفن خالی است");
-            conFragmentDefinitionPhone.requestFocus();
+            edtFragmentDefinitionPhone.setHint("فیلد تلفن خالی است");
+            edtFragmentDefinitionPhone.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         } else {
-            tilFragmentDefinitionPhone.setError(null);
+
             return true;
         }
 
@@ -636,11 +612,11 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     private boolean validAddress() {
         String selectedItem = edtFragmentDefinitionAddressFa.getText().toString().trim();
         if (selectedItem.isEmpty()) {
-            tilFragmentDefinitionAddressFa.setError("فیلد آدرس فارسی فروشگاه خالی است");
-            conFragmentDefinitionAddress.requestFocus();
+           edtFragmentDefinitionAddressFa.setHint("فیلد آدرس خالی است");
+           edtFragmentDefinitionAddressFa.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         } else {
-            tilFragmentDefinitionAddressFa.setError(null);
+
             return true;
         }
     }

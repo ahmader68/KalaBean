@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -49,7 +51,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     private ConstraintLayout conImage, conVideo;
 
-    private MaterialSpinner spProductCat, spProductSubCat;
+    private Spinner spProductCat,spProductSubCat;
 
     private TextInputLayout
             tilProductNameFa,
@@ -58,13 +60,13 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
             tilPrice,
             tilSales;
 
-    private TextInputEditText
+    private EditText
             edtProductNameFa,
             edtProductNameEn,
             edtProductNameAr,
             edtPrice,
-            edtSales;
-    private EditText edtDescription;
+            edtSales,
+            edtDescription;
 
     private MaterialCheckBox chkAddtoSales;
 
@@ -175,19 +177,14 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         imgProductImage = rootView.findViewById(R.id.img_fragmentAddProduct_image);
 
 
-        tilProductNameFa = rootView.findViewById(R.id.til_fragmentAddProduct_productFarsiName);
         edtProductNameFa = rootView.findViewById(R.id.edt_fragmentAddProduct_productFaName);
 
-        tilProductNameEn = rootView.findViewById(R.id.til_fragmentAddProduct_productEnglishName);
         edtProductNameEn = rootView.findViewById(R.id.edt_fragmentAddProduct_productEnglishName);
 
-        tilProductNameAr = rootView.findViewById(R.id.til_fragmentAddProduct_productArabicName);
         edtProductNameAr = rootView.findViewById(R.id.edt_fragmentAddProduct_productArabicName);
 
-        tilPrice = rootView.findViewById(R.id.til_fragmentAddProduct_price);
         edtPrice = rootView.findViewById(R.id.edt_fragmentAddProduct_price);
 
-        tilSales = rootView.findViewById(R.id.til_fragmentAddProduct_percentSales);
         edtSales = rootView.findViewById(R.id.edt_fragmentAddProduct_percentSales);
 
 
@@ -235,9 +232,9 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
             }
         });
 
-        spProductCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spProductCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 activityId = spActivityKind.getItems().get(position).getId();
                 Toast.makeText(getViewContext(), activityId + "", Toast.LENGTH_SHORT).show();
                 spProductSubCat.setSelection(-1);
@@ -245,20 +242,20 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
             }
 
             @Override
-            public void onNothingSelected(MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
-        spProductSubCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spProductSubCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(MaterialSpinner materialSpinner, View view, int position, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 subCatId = cutPostions.getSubCategory().get(position).getIdSubCategory();
                 Toast.makeText(getViewContext(), subCatId + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onNothingSelected(MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });

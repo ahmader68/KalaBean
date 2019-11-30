@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,9 +26,8 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
 
     private LoginWithUserPassContract.Presenter presenter;
 
-    private TextInputLayout tilUsername,tilPassword;
 
-    private TextInputEditText edtUsername,edtPassword;
+    private EditText edtUsername,edtPassword;
 
     private Button btnLogin;
 
@@ -49,8 +49,7 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
 
     @Override
     public void setupViews() {
-        tilUsername = rootView.findViewById(R.id.til_fragmentLoginWithUserPass_username);
-        tilPassword = rootView.findViewById(R.id.til_fragmentLoginWithUserPass_password);
+
 
         edtUsername = rootView.findViewById(R.id.edt_fragmentLoginWithUserPass_username);
         edtPassword = rootView.findViewById(R.id.edt_fragmentLoginWithUserPass_password);
@@ -122,11 +121,10 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
     private boolean validateUsername(){
         String username = edtUsername.getText().toString().trim();
         if(username.isEmpty()){
-            tilUsername.setError("لطفا نام کاربری را وارد کنید");
-            tilUsername.requestFocus();
+            edtUsername.setHint("لطفا نام کاربری را وارد کنید");
+            edtUsername.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         }else{
-            tilUsername.setError(null);
             return true;
         }
     }
@@ -134,11 +132,10 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
     private boolean validatePassword(){
         String password = edtPassword.getText().toString().trim();
         if(password.isEmpty()){
-            tilPassword.setError("لطفا کلمه عبور را وارد کنید");
-            tilPassword.requestFocus();
+            edtPassword.setHint("لطفا کلمه عبور را وارد کنید");
+            edtPassword.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         }else{
-            tilPassword.setError(null);
             return true;
         }
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,7 +28,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.intek.kalabean.Definition_Store.DefinitionFragment.PERMISSION_UPLOAD_REQUEST_CODE;
-import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
+import static com.intek.kalabean.Edit_User0.EditUserFragment.PERMISSION_REQUEST;
 
 public class MainActivity extends AppCompatActivity {
 

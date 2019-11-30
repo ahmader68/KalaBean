@@ -1,4 +1,4 @@
-package com.intek.kalabean.Oridinary_User_Profile;
+package com.intek.kalabean.Oridinary_User_Profile0;
 
 import com.intek.kalabean.Base.BasePresenter;
 import com.intek.kalabean.Base.BaseView;
