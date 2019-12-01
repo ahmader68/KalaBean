@@ -66,7 +66,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
 
 
-    private Spinner
+    private MaterialSpinner
             spFragmentDefinitionStoreKind,
             spFragmentDefinitionComplexName,
             spFragmentDefinitionFloor,
@@ -310,51 +310,51 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         });
 
 
-        spFragmentDefinitionActivityKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spFragmentDefinitionActivityKind.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                activityId = spActivityKind.getItems().get(position).getId();
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                activityId = spActivityKind.getItems().get(i).getId();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
 
-        spFragmentDefinitionStoreKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spFragmentDefinitionStoreKind.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mallId = spMalKindList.getItems().get(position).getId();
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                mallId = spMalKindList.getItems().get(i).getId();
                 presenter.ShopCenterList(mallId);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
-        spFragmentDefinitionComplexName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spFragmentDefinitionComplexName.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                shopCenterId = spShopCenter.getItems().get(position).getId();
-                cityId = spShopCenter.getItems().get(position).getCityid();
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                shopCenterId = spShopCenter.getItems().get(i).getId();
+                cityId = spShopCenter.getItems().get(i).getCityid();
                 presenter.floorList(shopCenterId);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
-        spFragmentDefinitionFloor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spFragmentDefinitionFloor.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                floorId = spFloorList.getFloorList().get(position).getId();
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                floorId = spFloorList.getFloorList().get(i).getId();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
@@ -369,30 +369,31 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         spFragmentDefinitionProvince.setAdapter(adapterState);
 
 
-        spFragmentDefinitionProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spFragmentDefinitionProvince.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
                 state = spFragmentDefinitionProvince.getSelectedItem().toString();
                 cities = getProvinceAndCity.getCity(state);
                 adapterCity = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, cities);
                 adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spFragmentDefinitionCity.setAdapter(adapterCity);
 
-                spFragmentDefinitionCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                spFragmentDefinitionCity.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
                         city = spFragmentDefinitionCity.getSelectedItem().toString();
+
                     }
 
                     @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
+                    public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
                     }
                 });
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
