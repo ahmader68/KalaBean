@@ -333,7 +333,7 @@
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
 
 
@@ -470,28 +470,24 @@
                     android:textColorHint="@color/black" />
 
 
-            <Spinner
+            <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentDefinition_province"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/spinner_shape"
-                android:padding="10dp"
                 android:layout_marginTop="32dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textDirection="rtl"
                 app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_storeName"
                 app:layout_constraintHorizontal_weight="0.7"
-
                 app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_storeName"
                 app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_storeName" />
 
-            <Spinner
+            <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentDefinition_city"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/spinner_shape"
-                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textDirection="rtl"
@@ -516,7 +512,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/sp_fragmentDefinition_activityKind"/>
 
-            <Spinner
+            <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentDefinition_activityKind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -526,33 +522,29 @@
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_city"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_city"
                 android:layout_marginTop="32dp"
-                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"/>
 
-            <Spinner
+            <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentDefinition_storeKind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/spinner_shape"
                 android:layout_marginStart="8dp"
-
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:layout_marginTop="32dp"
-                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_activityKind"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_activityKind"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_activityKind" />
 
-            <Spinner
+            <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentDefinition_storeName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/spinner_shape"
                 android:layout_marginTop="32dp"
-                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_storeKind"
@@ -560,13 +552,12 @@
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_storeKind"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_storeKind" />
 
-            <Spinner
+            <com.tiper.MaterialSpinner
                 android:id="@+id/sp_fragmentDefinition_floor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/spinner_shape"
                 android:layout_marginTop="32dp"
-                android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 app:errorEnabled="true"
