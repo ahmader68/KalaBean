@@ -133,6 +133,16 @@ public class ServerDataSource implements KalaBeanDataSource {
         return apiService.getPositions();
     }
 
+    @Override
+    public Single<User> getUserInfo(int userId) {
+        return apiService.getUserInfo(userId);
+    }
+
+    @Override
+    public Single<User> editUser(int uid, String mobile, String email) {
+        return apiService.editUser(uid, mobile, email);
+    }
+
 
     @Override
     public Single<ShopCenterList> getShopCenterList(int idCenterCat) {
@@ -146,7 +156,7 @@ public class ServerDataSource implements KalaBeanDataSource {
 
     @Override
     public Single<StoreDif> storeDefinition(StoreDif storeDif) {
-        return apiService.storeDefinition(storeDif.getShopCenterKind(),storeDif.getShopCenterName(),storeDif.getStoreFloor(),storeDif.getFstoreName(),storeDif.getPhone(),storeDif.getFaddress(),storeDif.getCityid(),storeDif.getJobcatid(),storeDif.getFax(),storeDif.getEmail());
+        return apiService.storeDefinition(storeDif.getUserid(),storeDif.getShopCenterKind(),storeDif.getShopCenterName(),storeDif.getStoreFloor(),storeDif.getFstoreName(),storeDif.getPhone(),storeDif.getFaddress(),storeDif.getCityid(),storeDif.getJobcatid(),storeDif.getFax(),storeDif.getEmail());
     }
 
 

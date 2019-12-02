@@ -48,6 +48,12 @@ public interface ApiService {
                           @Field("mobile") String mobile,
                           @Field("pwd2") String pwd2);
 
+    @FormUrlEncoded
+    @POST("default.aspx?Action=EditUser")
+    Single<User> editUser(@Field("usrid") int usrid,
+                          @Field("mobile") String mobile,
+                          @Field("email") String email);
+
     @POST("default.aspx?Action=shopCenterList")
     Single<ShopCenterList> getShopCenterList(@Query("idCenterCat") int idCenterCat);
 
@@ -97,7 +103,8 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("default.aspx?Action=store_definition")
-    Single<StoreDif> storeDefinition(@Field("shopCenterKind") int shopCenterKind,
+    Single<StoreDif> storeDefinition(@Field("userid") int userid,
+                                     @Field("shopCenterKind") int shopCenterKind,
                                      @Field("shopCenterName") int shopCenterName,
                                      @Field("storeFloor") int storeFloor,
                                      @Field("fstoreName") String fstoreName,
@@ -132,5 +139,9 @@ public interface ApiService {
 
     @POST("default.aspx?Action=GetJobPosition")
     Single<Positions> getPositions();
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=GetInfoUser")
+    Single<User> getUserInfo(@Field("usrid") int usrid);
 
 }

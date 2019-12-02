@@ -12,6 +12,8 @@ import com.intek.kalabean.Data.KalaBeanDataSource;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Definition_Store.DefinitionContract;
 import com.intek.kalabean.Definition_Store.DefinitionPresenter;
+import com.intek.kalabean.Edit_User.EditUserContract;
+import com.intek.kalabean.Edit_User.EditUserPresenter;
 import com.intek.kalabean.Home.HomeContract;
 import com.intek.kalabean.Home.HomePresenter;
 import com.intek.kalabean.Login.LoginContract;
@@ -75,6 +77,7 @@ public class DatabaseMethods {
     private static UserShopContract.Presenter userShopPresenter = new UserShopPresenter(new KalaBeanRepository());
     private static TicketContract.Presenter ticketPresenter = new TicketPresenter(new KalaBeanRepository());
     private static LoginWithUserPassContract.Presenter loginWithUserPassPresenter = new LoginWithUserPassPresenter(new KalaBeanRepository());
+    private static EditUserContract.Presenter editUserPresenter = new EditUserPresenter(new KalaBeanRepository());
     private static int flag = 0;
 
 
@@ -645,6 +648,47 @@ public class DatabaseMethods {
                     @Override
                     public void onError(Throwable e) {
                         registerPresenter.onError(e.toString());
+                    }
+                });
+    }
+
+    public static void getUserInfo(int userId){
+        DatabaseMethods.kalaBeanDataSource.getUserInfo(userId).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<User>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(User user) {
+                        editUserPresenter.onSuccessGetUserInfo(user);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        editUserPresenter.onError(e.toString());
+                    }
+                });
+    }
+    public static void editUser(int uid,String mobile,String email){
+        DatabaseMethods.kalaBeanDataSource.editUser(uid, mobile, email).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<User>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(User user) {
+                        editUserPresenter.onSuccessEditUser(user);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        editUserPresenter.onError(e.toString());
                     }
                 });
     }

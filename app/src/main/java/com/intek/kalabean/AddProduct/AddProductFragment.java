@@ -39,6 +39,8 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tiper.MaterialSpinner;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,14 +53,8 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     private ConstraintLayout conImage, conVideo;
 
-    private Spinner spProductCat,spProductSubCat;
+    private MaterialSpinner spProductCat,spProductSubCat;
 
-    private TextInputLayout
-            tilProductNameFa,
-            tilProductNameEn,
-            tilProductNameAr,
-            tilPrice,
-            tilSales;
 
     private EditText
             edtProductNameFa,
@@ -81,7 +77,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     private SharedPreferences sharedPreferences;
 
-    private int id;
+    private int userId;
 
     private int shopidentify;
 
@@ -122,6 +118,15 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
     public void showSuccess(int id) {
         if (id > 0) {
             showMesssage("محصول با موفقیت ثبت گردید");
+            edtPrice.setText("");
+            edtProductNameFa.setText("");
+            edtDescription.setText("");
+            edtSales.setText("");
+            edtProductNameAr.setText("");
+            edtProductNameEn.setText("");
+            spProductCat.setSelection(-1);
+            spProductSubCat.setSelection(-1);
+
         }
     }
 
@@ -161,8 +166,8 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     @Override
     public void setupViews() {
-        id = sharedPreferences.getInt("userid", 0);
-        shopidentify = sharedPreferences.getInt("ShopId", 0);
+        userId = sharedPreferences.getInt("userid", 0);
+        shopidentify = sharedPreferences.getInt("storeId", 0);
         presenter.activityKind();
 
         conMainLayout = rootView.findViewById(R.id.con_fragmentAddProduct_mainLayout);
@@ -224,38 +229,37 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
                     product.setPrice(price);
                     product.setSubCategoryId(subCatId);
                     product.setProducer(shopidentify);
-                    // product.setUsrid(id);
-                    product.setUsrid(2185);
+                    product.setUsrid(userId);
                     product.setAutolang("fa");
                     presenter.insertProduct(product);
                 }
             }
         });
 
-        spProductCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spProductCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                activityId = spActivityKind.getItems().get(position).getId();
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                activityId = spActivityKind.getItems().get(i).getId();
                 Toast.makeText(getViewContext(), activityId + "", Toast.LENGTH_SHORT).show();
                 spProductSubCat.setSelection(-1);
                 presenter.subCatid();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
 
-        spProductSubCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spProductSubCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                subCatId = cutPostions.getSubCategory().get(position).getIdSubCategory();
+            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                subCatId = cutPostions.getSubCategory().get(i).getIdSubCategory();
                 Toast.makeText(getViewContext(), subCatId + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
 
             }
         });
@@ -317,11 +321,10 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
     private boolean validateProductName() {
         String productName = edtProductNameFa.getText().toString().trim();
         if (productName.isEmpty()) {
-            tilProductNameFa.setError("لطفا نام محصول را وارد کنید");
-            tilProductNameFa.requestFocus();
+            edtProductNameFa.setHint("لطفا نام محصول را وارد کنید");
+            edtProductNameFa.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         } else {
-            tilProductNameFa.setError(null);
             return true;
         }
     }
@@ -329,11 +332,10 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
     private boolean validatePrice() {
         String price = edtPrice.getText().toString().trim();
         if (price.isEmpty()) {
-            tilPrice.setError("لطفا قیمت محصول را وارد کنید");
-            tilPrice.requestFocus();
+            edtPrice.setHint("لطفا قیمت محصول را وارد کنید");
+            edtPrice.setHintTextColor(getResources().getColor(R.color.colorRed));
             return false;
         } else {
-            tilPrice.setError(null);
             return true;
         }
     }
