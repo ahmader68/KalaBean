@@ -28,7 +28,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.intek.kalabean.Definition_Store.DefinitionFragment.PERMISSION_UPLOAD_REQUEST_CODE;
-import static com.intek.kalabean.Edit_User0.EditUserFragment.PERMISSION_REQUEST;
+import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,12 +103,13 @@ public class MainActivity extends AppCompatActivity {
                 case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
                     CropImage.ActivityResult result = CropImage.getActivityResult(data);
                     if (resultCode == RESULT_OK) {
-//                        if (requestCodeCheck == 1) {
+//                       if (requestCodeCheck == 1) {
 //                            Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_storePic));
-                    }
-                    if (requestCodeCheck == 2) {
-                        Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
-                    } else if (requestCodeCheck == 3) {
+//                    }
+//                   else if (requestCodeCheck == 2) {
+//                      Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentEditUser_profile));
+//                   }
+                     if (requestCodeCheck == 3) {
                         Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentAddProduct_image));
                     } else if (requestCodeCheck == 4) {
                         Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentDefinition_srcInner));
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     }else if(requestCodeCheck == 6){
                         Picasso.get().load(result.getUri()).into((ImageView) findViewById(R.id.img_fragmentRequestProduct_srcProduct));
                     }
-                    //}
+                    }
                     else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
                     }

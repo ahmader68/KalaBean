@@ -48,4 +48,6 @@ public interface KalaBeanDataSource {
     Single<UserShop> getUserShop(int CreatorId);
     Single<AddProduct> insertProduct(AddProduct product);
     Single<Positions> getPositions();
+    Single<User> getUserInfo(int userId);
+    Single<User> editUser(int uid,String mobile,String email);
 }

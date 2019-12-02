@@ -3,30 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/item_drawer_login"
-        android:title="@string/enter"
-        android:icon="@drawable/login"/>
+
     <item
         android:id="@+id/item_drawer_register"
         android:title="@string/register"
         android:icon="@drawable/register"/>
-    <item
-        android:id="@+id/item_drawer_addProduct"
-        android:title="@string/addProduct"
-        android:icon="@drawable/add_product"/>
-    <item
-        android:id="@+id/item_drawer_definitionStore"
-        android:title="@string/definition_store"
-        android:icon="@drawable/add_store"/>
-    <item
-        android:id="@+id/item_drawer_ordinaryUser"
-        android:title="@string/ordinary_profile"
-        android:icon="@drawable/ordinary_user"/>
-    <item
-        android:id="@+id/item_drawer_vipUser"
-        android:title="@string/vip_profile"
-        android:icon="@drawable/vip_user"/>
+
     <item
         android:id="@+id/item_drawer_category"
        android:icon="@drawable/category"

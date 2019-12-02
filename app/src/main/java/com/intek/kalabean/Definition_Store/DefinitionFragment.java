@@ -2,6 +2,7 @@ package com.intek.kalabean.Definition_Store;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,12 +22,16 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Classes.GetProvinceAndCity;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ActivityKind;
@@ -133,7 +138,8 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
             shopCenterId,
             floorId,
             activityId,
-            cityId;
+            cityId,
+            userId;
 
 
     private String state,city;
@@ -153,10 +159,14 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     // private MaterialSpinner spActivityKind;
     private ArrayAdapter<String> storeKindArrayAdapter;
 
+    private SharedPreferences sharedPreferences;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
+        userId = sharedPreferences.getInt("userid",0);
         getProvinceAndCity = new GetProvinceAndCity();
         presenter = new DefinitionPresenter(new KalaBeanRepository());
         mkindsName = new ArrayList<>();
@@ -293,6 +303,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
             @Override
             public void onClick(View v) {
                 storeDif = new StoreDif();
+
                 storeDif.setJobcatid(activityId);
                 storeDif.setCityid(cityId);
                 storeDif.setFaddress(edtFragmentDefinitionAddressFa.getText().toString());
@@ -304,6 +315,8 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                 storeDif.setStoreFloor(floorId);
                 storeDif.setShopCenterKind(mallId);
                 storeDif.setWorkHour(edtFragmentDefinitionWorkHour.getText().toString());
+
+
                 presenter.storeDefinition(storeDif);
 
             }
@@ -422,6 +435,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                     phone = edtFragmentDefinitionPhone.getText().toString();
                     fAddress = edtFragmentDefinitionAddressFa.getText().toString();
                     jobCatid = activityId;
+                    storeDif.setUserid(userId);
                     storeDif.setShopCenterKind(storeKind);
                     storeDif.setShopCenterName(complexName);
                     storeDif.setStoreFloor(floor);
@@ -512,7 +526,15 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
     public void getStoreId(StoreDif storeDif) {
         int storeId = storeDif.getResult();
         if (storeId > 0) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("storeId",storeId);
+            editor.apply();
+            editor.commit();
             showMessage("فروشگاه با موفقیت ثبت شد");
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            Fragment fragment = new MainFragment();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+            transaction.commit();
         }
     }
 
