@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/con_drawerMenu_markets"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@drawable/holder"
+        android:layout_height="80dp"
+        android:background="@drawable/bazar"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="2dp"
         android:layout_marginStart="4dp"
@@ -38,8 +38,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/con_drawerMenu_Complex"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@drawable/holder"
+        android:layout_height="80dp"
+        android:background="@drawable/complex"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginStart="2dp"
@@ -66,8 +66,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/con_drawerMenu_chainStore"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@drawable/holder"
+        android:layout_height="80dp"
+        android:background="@drawable/complex"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:layout_marginStart="4dp"
@@ -95,8 +95,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/con_drawerMenu_best"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@drawable/holder"
+        android:layout_height="80dp"
+        android:background="@drawable/best"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:layout_marginStart="2dp"
