@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,25 +18,67 @@
         <TextView
 
             android:id="@+id/txt_fragmentShowShops_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20sp"
-            android:text="@string/shopsName"
+            tools:text="مجتمع تجاری اکسیر"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_fragmentShowShops_showShop"
             app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txt_fragmentShowShops_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_title"
+            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_title"
+            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_title"
+            tools:text="مشهد - قاسم آباد - چهارراه مخابرات"
+            android:textDirection="rtl"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"/>
+        <TextView
+            android:id="@+id/txt_fragmentShowShops_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_address"
+            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_address"
+            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_address"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="05132254785"/>
+        <TextView
+            android:id="@+id/txt_fragmentShowShops_web"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_phone"
+            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_phone"
+            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_phone"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            tools:text="www.google.com"
+            android:textDirection="rtl"/>
+        <TextView
+            android:id="@+id/txt_fragmentShowShops_vTour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_web"
+            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_web"
+            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_web"
+            android:text="@string/edt_fragmentDefinition_artificialTour"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_margin="16dp"
-            android:background="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_fragmentShowShops_showShop" />
+            android:layout_marginBottom="8dp"/>
+
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_fragmentShowShops_showShop"
