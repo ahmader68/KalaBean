@@ -57,10 +57,10 @@
     <string name="btn_fragmentSearch_search">جستجو</string>
     <string name="txt_fragmentSearch_number">0</string>
     <string name="txt_fragmentSearch_resultText">نتیجه برای جستجو شما...</string>
-    <string name="txt_fragmentHome_markets">بازارها</string>
+    <string name="txt_fragmentHome_markets">بازار</string>
     <string name="txt_fragmentHome_kalaBeanLook">کالابین در یک نگاه</string>
     <string name="txt_fragmentHome_malls">مجتمع های"\n"تجاری</string>
-    <string name="txt_fragmentHome_mallsOneLine">مجتمع های تجاری</string>
+    <string name="txt_fragmentHome_mallsOneLine">مجتمع تجاری</string>
     <string name="txt_fragmentHome_advanceSearch">جستجو پیشرفته</string>
     <string name="txt_fragmentHome_chainStore">فروشگاه"\n"زنجیره ای</string>
     <string name="txt_fragmentHome_chainStoreLine">فروشگاه زنجیره ای</string>
@@ -92,7 +92,7 @@
     <string name="edt_fragmentDefinition_addressEN">Store address</string>
     <string name="edt_fragmentDefinition_descriptionFA">توضیحات فارسی</string>
     <string name="edt_fragmentDefinition_descriptionEN">Description</string>
-    <string name="edt_fragmentDefinition_artificialTour">لینک تور مجازی</string>
+    <string name="edt_fragmentDefinition_artificialTour">تور مجازی</string>
     <string name="edt_fragmentDefinition_twitter">twitter</string>
     <string name="edt_fragmentDefinition_linkedIn">LinkedIn</string>
     <string name="edt_fragmentDefinition_google">Google</string>

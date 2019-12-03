@@ -152,7 +152,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     fragment = new RegisterFragment();
                 }else if(id == R.id.item_drawer_category){
                     drawer.closeDrawer(GravityCompat.START);
-                    fragment = new CatFragment();
+//                    fragment = new CatFragment();
+                     Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
                 }else if (id == R.id.item_drawer_cities) {
 
                     drawer.closeDrawer(GravityCompat.START);
@@ -217,7 +218,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                         fragment = new HomeFragment();
                         break;
                     case R.id.cat:
-                        fragment = new CatFragment();
+//                        fragment = new CatFragment();
+                        Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.cities:
                         Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();

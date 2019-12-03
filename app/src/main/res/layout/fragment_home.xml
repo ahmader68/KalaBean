@@ -30,6 +30,7 @@
                     android:id="@+id/rv_fragmentHome_orders"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -77,91 +78,92 @@
 
                     <ImageView
                         android:id="@+id/img_fragmentHome_complex"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_mall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/img_fragmentHome_malls"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_malls"
+                        android:src="@drawable/complex"/>
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/txt_fragmentHome_complex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/img_fragmentHome_complex"
+                        app:layout_constraintEnd_toEndOf="@id/img_fragmentHome_complex"
+                        app:layout_constraintTop_toBottomOf="@id/img_fragmentHome_complex"
+                        android:text="@string/txt_fragmentHome_mallsOneLine"
                         android:textColor="@color/black"
-                        android:text="@string/txt_fragmentHome_malls"
-                        android:textAlignment="center"
-                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_complex"
-                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_complex"
-                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_complex"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:layout_marginTop="8dp"/>
+
+
 
                     <ImageView
                         android:id="@+id/img_fragmentHome_malls"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_bazar"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/img_fragmentHome_complex"
-                        app:layout_constraintEnd_toStartOf="@+id/img_fragmentHome_chainStore"/>
-
+                       android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/img_fragmentHome_complex"
+                        app:layout_constraintBottom_toBottomOf="@id/img_fragmentHome_complex"
+                        app:layout_constraintStart_toEndOf="@id/img_fragmentHome_complex"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/bazar"/>
                     <TextView
-                        android:id="@+id/txt_fragmentHome_bazaar"
+                        android:id="@+id/txt_fragmentHome_malls"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/img_fragmentHome_malls"
+                        app:layout_constraintEnd_toEndOf="@id/img_fragmentHome_malls"
+                        app:layout_constraintTop_toBottomOf="@id/img_fragmentHome_malls"
                         android:text="@string/txt_fragmentHome_markets"
-                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_malls"
-                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_malls"
-                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_malls"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    <ImageView
-                        android:id="@+id/img_fragmentHome_chainStore"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_chain_store"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/img_fragmentHome_malls"
-                        app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_best"/>
-
-                    <TextView
-                        android:id="@+id/txt_fragmentHome_chainStore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="@string/txt_fragmentHome_chainStore"
-                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_chainStore"
-                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_chainStore"
-                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_chainStore"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
+                        android:layout_marginTop="8dp"/>
 
                     <ImageView
                         android:id="@+id/img_fragmentHome_best"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_bests"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/img_fragmentHome_chainStore"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/txt_fragmentHome_complex"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_chainStore"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/best"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginStart="8dp" />
                     <TextView
-                        android:id="@+id/txt_fragmentHome_best"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/img_fragmentHome_best"
+                        app:layout_constraintStart_toStartOf="@id/img_fragmentHome_best"
+                        app:layout_constraintEnd_toEndOf="@id/img_fragmentHome_best"
                         android:textColor="@color/black"
                         android:text="@string/txt_fragmentHome_best"
-                        app:layout_constraintStart_toStartOf="@+id/img_fragmentHome_best"
-                        app:layout_constraintEnd_toEndOf="@+id/img_fragmentHome_best"
-                        app:layout_constraintTop_toBottomOf="@+id/img_fragmentHome_best"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:layout_marginTop="8dp"/>
 
 
+                    <ImageView
+                        android:id="@+id/img_fragmentHome_chainStore"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/img_fragmentHome_best"
+                        app:layout_constraintBottom_toBottomOf="@id/img_fragmentHome_best"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_fragmentHome_best"
+                        android:src="@drawable/complex"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/img_fragmentHome_chainStore"
+                        app:layout_constraintStart_toStartOf="@id/img_fragmentHome_chainStore"
+                        app:layout_constraintEnd_toEndOf="@id/img_fragmentHome_chainStore"
+                        android:text="@string/txt_fragmentHome_chainStoreLine"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="8dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -231,6 +233,7 @@
                     android:text="@string/reduct"
                     android:textColor="@color/lightDarkBlueText"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -241,6 +244,7 @@
                     android:text="@string/txt_fragmentHome_more"
                     android:textSize="18sp"
                     android:layout_margin="8dp"
+                    android:visibility="gone"
                     android:textColor="@color/moreColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -253,6 +257,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/txt_fragmentHome_reductProducts" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -266,6 +271,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/con_fragmentHome_reductProduct">
@@ -312,6 +318,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
