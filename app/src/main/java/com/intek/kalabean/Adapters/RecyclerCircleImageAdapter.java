@@ -133,17 +133,6 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
             imgProfile = itemView.findViewById(R.id.cimg_rvCircle_profile);
             txtStoreName = itemView.findViewById(R.id.txt_rvCircle_storeNameContent);
             txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_countStoreCount);
-            txtFloorCount = itemView.findViewById(R.id.txt_rvCircle_floorCountContent);
-            txtAddress = itemView.findViewById(R.id.txt_rvCircle_addressContent);
-            imgStair = itemView.findViewById(R.id.img_rvCircle_stair);
-            imgCafe = itemView.findViewById(R.id.img_rvCircle_cafe);
-            imgShop = itemView.findViewById(R.id.img_rvCircle_shop);
-            imgGift = itemView.findViewById(R.id.img_rvCircle_gift);
-            imgElevator = itemView.findViewById(R.id.img_rvCircle_elevator);
-            imgPlay = itemView.findViewById(R.id.img_rvCircle_play);
-            imgWC = itemView.findViewById(R.id.img_rvCircle_wc);
-            imgParking = itemView.findViewById(R.id.img_rvCircle_parking);
-            imgNet = itemView.findViewById(R.id.img_rvCircle_net);
 
         }
     }

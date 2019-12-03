@@ -26,7 +26,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     private TextView txtTitle;
-    private CircleImageView cimgShop;
     private RecyclerView rvShopList;
 
 
@@ -61,11 +60,9 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public void setupViews() {
 
         txtTitle = rootView.findViewById(R.id.txt_fragmentShowShops_title);
-        cimgShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
         rvShopList = rootView.findViewById(R.id.rv_fragmentShowShops_shopList);
         presenter.getShops(SellCenterID,0);
         txtTitle.setText(title);
-        Picasso.get().load(image).into(cimgShop);
 
     }
 
