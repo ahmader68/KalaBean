@@ -112,6 +112,16 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
+    public Single<User> getUserInfo(int userId) {
+        return serverDataSource.getUserInfo(userId);
+    }
+
+    @Override
+    public Single<User> editUser(int uid, String mobile, String email) {
+        return serverDataSource.editUser(uid, mobile, email);
+    }
+
+    @Override
     public Single<ShopCenterList> getShopCenterList(int idCenterCat) {
         return serverDataSource.getShopCenterList(idCenterCat);
     }

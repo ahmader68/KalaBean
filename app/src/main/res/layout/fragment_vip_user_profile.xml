@@ -331,7 +331,20 @@
                             android:text="@string/showStore"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_fragmentVIPUser_definitionStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/con_fragmentVIPUser_setting"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp"
+                android:text="@string/definition_store"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorRed"
+                android:textSize="22sp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

@@ -3,6 +3,7 @@ package com.intek.kalabean.Adapters;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -43,24 +44,15 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         String imgUrl = store.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
+        final String storeCount ="تعداد فروشگاه  " + store.getShopCount();
+
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(store.getTitleFA());
-        holder.txtStoreCount.setText(store.getShopCount());
-        //holder.txtFloorCount.setText(store.getStoreCount());
-        holder.txtAddress.setText(store.getAddress());
+        holder.txtStoreCount.setText(storeCount);
 
-        List<StoreList.Store.SubSettings> settings = store.getSettings();
 
-        if (settings.get(3).getValue().equals("1")){
-            holder.imgCafe.setImageResource(R.drawable.ic_black_coffee);
-        }
-
-        if (settings.get(4).getValue().equals("1")){
-            holder.imgStair.setImageResource(R.drawable.ic_black_parking);
-        }
-
-        holder.cv_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
+        holder.con_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
@@ -112,27 +104,18 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
     }
 
     class StoreInfoHolder extends RecyclerView.ViewHolder{
-        CardView cv_rvCircle_layout;
-        CircleImageView imgProfile;
+        ConstraintLayout con_rvCircle_layout;
+        ImageView imgProfile;
         TextView txtStoreName;
         TextView txtStoreCount;
-        TextView txtFloorCount;
-        TextView txtAddress;
-        ImageView imgStair;
-        ImageView imgCafe;
-        ImageView imgShop;
-        ImageView imgGift;
-        ImageView imgElevator;
-        ImageView imgPlay;
-        ImageView imgWC;
-        ImageView imgParking;
-        ImageView imgNet;
         StoreInfoHolder(@NonNull View itemView) {
             super(itemView);
-            cv_rvCircle_layout = itemView.findViewById(R.id.cv_rvCircle_layout);
-            imgProfile = itemView.findViewById(R.id.cimg_rvCircle_profile);
+            con_rvCircle_layout = itemView.findViewById(R.id.con_rvCirle_layout);
+            imgProfile = itemView.findViewById(R.id.img_rvCircle_profile);
             txtStoreName = itemView.findViewById(R.id.txt_rvCircle_storeNameContent);
-            txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_countStoreCount);
+            txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_coutnStore);
+            txtStoreCount.setAlpha(0.5f);
+            txtStoreName.setAlpha(0.5f);
 
         }
     }

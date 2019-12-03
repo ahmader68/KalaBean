@@ -1,18 +1,27 @@
 package com.intek.kalabean.VIP_User_Profile;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
+import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Definition_Store.DefinitionFragment;
+import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
@@ -20,26 +29,37 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 public class VUFragment extends BaseFragment implements VUContract.View {
     private VUContract.Presenter presenter;
 
-    CircularImageView cimgOuter;
+    private CircularImageView cimgOuter;
 
-    ConstraintLayout conImage;
-    ConstraintLayout conProfile;
-    ConstraintLayout conBasket;
-    ConstraintLayout conWallet;
-    ConstraintLayout conMessage;
+    private ConstraintLayout conImage;
 
-    TextView txtStoreName;
+    private ImageView
+            imgEditProfile,
+            imgBasket,
+            imgWallet,
+            imgMessage;
 
-    CardView cvAddProduct;
-    CardView cvManageProduct;
-    CardView cvEditStore;
-    CardView cvSetMap;
-    CardView cvShowStore;
+    private TextView txtStoreName;
+
+    private CardView
+            cvAddProduct,
+            cvManageProduct,
+            cvEditStore,
+            cvSetMap,
+            cvShowStore;
+    private Button btnDefinition;
+
+    private SharedPreferences sharedPreferences;
+
+    private int userId,storeId;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new VUPresenter(new KalaBeanRepository());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
+        userId = sharedPreferences.getInt("userid",0);
+        storeId = sharedPreferences.getInt("storeId",0);
     }
 
     @Override
@@ -52,10 +72,11 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         cimgOuter = rootView.findViewById(R.id.cimg_fragmentVIPUser_outerImage);
 
         conImage = rootView.findViewById(R.id.con_fragmentVIPUser_image);
-//        conProfile = rootView.findViewById(R.id.con_fragmentVIPUser_profile);
-//        conBasket = rootView.findViewById(R.id.con_fragmentVIPUser_basket);
-//        conMessage = rootView.findViewById(R.id.con_fragmentVIPUser_message);
-//        conWallet = rootView.findViewById(R.id.con_fragmentVIPUser_wallet);
+
+        imgEditProfile = rootView.findViewById(R.id.img_fragmentVIPUser_profile);
+        imgBasket = rootView.findViewById(R.id.img_fragmentVIPUser_basket);
+        imgMessage = rootView.findViewById(R.id.img_fragmentVIPUser_message);
+        imgWallet = rootView.findViewById(R.id.img_fragmentVIPUser_wallet);
 
         txtStoreName = rootView.findViewById(R.id.txt_fragmentVIPUser_name);
 
@@ -65,38 +86,43 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         cvSetMap = rootView.findViewById(R.id.cv_fragmentVIPUser_map);
         cvShowStore = rootView.findViewById(R.id.cv_fragmentVIPUser_showStore);
 
-//        conProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getViewContext(), "Profile", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        conBasket.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getViewContext(), "Basket", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        conMessage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getViewContext(), "Message", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        conWallet.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getViewContext(), "Wallet", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        btnDefinition = rootView.findViewById(R.id.btn_fragmentVIPUser_definitionStore);
+
+        if(storeId > 0){
+            btnDefinition.setVisibility(View.GONE);
+        }
+
+        btnDefinition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new DefinitionFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                transaction.commit();
+            }
+        });
+
+        imgEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                bundle.putInt("userId",userId);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Fragment editFragment = new EditUserFragment();
+//                editFragment.setArguments(bundle);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout,editFragment);
+                transaction.commit();
+
+            }
+        });
 
         cvAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Add Product", Toast.LENGTH_SHORT).show();
+                Fragment fragment = new AddProductFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                transaction.commit();
             }
         });
 

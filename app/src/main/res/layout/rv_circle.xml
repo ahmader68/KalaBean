@@ -3,129 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layoutDirection="rtl">
+    android:layout_height="200sp"
+    android:layoutDirection="rtl"
+    android:id="@+id/con_rvCirle_layout">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_rvCircle_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/cimg_rvCircle_profile"
+                android:id="@+id/img_rvCircle_profile"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="8dp"
-                android:src="@drawable/ic_launcher_background"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/con_containerRVmarket_one"
-                android:layout_width="0dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_launcher_background"/>
+            <TextView
+                android:id="@+id/txt_rvCircle_storeNameContent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/spinner_shape"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="بازار سجاد" />
+            <TextView
+                android:id="@+id/txt_rvCircle_coutnStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/txt_rvCircle_countStoreTitle"
+                android:textSize="16sp"
+                android:background="@drawable/spinner_shape"
+                android:textColor="@color/black"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingBottom="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_rvCircle_storeNameContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_container_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/background_rounded"
-                    app:layout_constraintBottom_toTopOf="@+id/con_container_two"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                    <TextView
-                        android:id="@+id/txt_rvCircle_storeNameTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:textSize="16sp"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/txt_rvCircle_storeNameContent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:text="@string/txt_rvCircle_storeName" />
-
-                    <TextView
-                        android:id="@+id/txt_rvCircle_storeNameContent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"
-                        android:maxLines="2"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/txt_rvCircle_storeNameTitle"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/txt_rvCircle_storeNameTitle"
-                        app:layout_constraintTop_toTopOf="@+id/txt_rvCircle_storeNameTitle"
-                        tools:text="بازار سجاد" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_container_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/background_rounded"
-                    app:layout_constraintTop_toBottomOf="@+id/con_container_one"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    >
-
-                    <TextView
-                        android:id="@+id/txt_rvCircle_coutnStoreTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:text="@string/txt_rvCircle_countStoreTitle"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/txt_rvCircle_countStoreCount"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txt_rvCircle_countStoreCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@+id/txt_rvCircle_coutnStoreTitle"
-                        app:layout_constraintStart_toEndOf="@id/txt_rvCircle_coutnStoreTitle"
-                        app:layout_constraintTop_toTopOf="@+id/txt_rvCircle_coutnStoreTitle"
-                        tools:text="50" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

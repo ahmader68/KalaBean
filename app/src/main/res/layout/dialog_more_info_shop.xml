@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    app:layout_constraintCircleRadius="10dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/pattern_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_fragmentShop_addressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/edt_fragmentRegister_address"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_fragmentShop_address"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:lines="3"
+            android:maxLines="3"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.8"
+            app:layout_constraintStart_toEndOf="@id/txt_fragmentShop_addressTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ّبلوار وکیل آباد - بین وکیل آباد 17 و  - پلاک 22 بیسنالسیتالب25" />
+
+        <TextView
+            android:id="@+id/txt_fragmentShop_countViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/txt_count_view"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShop_address" />
+
+        <TextView
+            android:id="@+id/txt_fragmentShop_countView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_fragmentShop_countViewTitle"
+            app:layout_constraintStart_toEndOf="@id/txt_fragmentShop_countViewTitle"
+            app:layout_constraintTop_toTopOf="@+id/txt_fragmentShop_countViewTitle"
+            tools:text="22" />
+
+        <TextView
+            android:id="@+id/txt_fragmentShop_hourWorkTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/edt_fragmentDefinition_workHour"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShop_countViewTitle" />
+
+        <TextView
+            android:id="@+id/txt_fragmentShop_hourWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_fragmentShop_hourWorkTitle"
+            app:layout_constraintStart_toEndOf="@id/txt_fragmentShop_hourWorkTitle"
+            app:layout_constraintTop_toTopOf="@+id/txt_fragmentShop_hourWorkTitle"
+            tools:text="22-22:30" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

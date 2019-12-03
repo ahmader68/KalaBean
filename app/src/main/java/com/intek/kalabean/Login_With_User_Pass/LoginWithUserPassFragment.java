@@ -91,12 +91,14 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
         int shop = loggedinUser.getItems().get(0).getShopId();
         String name = loggedinUser.getItems().get(0).getFirstName();
         String family = loggedinUser.getItems().get(0).getLastName();
+        int storeId = loggedinUser.getItems().get(0).getShopId();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("userid",userId);
         editor.putString("name",name);
         editor.putString("family",family);
         editor.putString("username",username);
         editor.putInt("ShopId",shop);
+        editor.putInt("storeId",storeId);
 
         editor.apply();
         editor.commit();

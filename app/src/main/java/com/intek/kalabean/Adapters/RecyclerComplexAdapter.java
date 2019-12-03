@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -48,16 +49,15 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
         String imgUrl = complex.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
+        final String storeCount ="تعداد فروشگاه  " + complex.getShopCount();
 
-        Picasso.get().load(url).fit().into(holder.imgProfile);
+
+        Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(complex.getTitleFA());
-        holder.txtStoreCount.setText(complex.getShopCount());
-        //holder.txtFloorCount.setText(store.getStoreCount());
-        holder.txtAddress.setText(complex.getAddress());
+        holder.txtStoreCount.setText(storeCount);
 
-        List<ComplexList.Complex.SubSettings> settings = complex.getSettings();
 
-        holder.cv_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
+        holder.con_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
@@ -82,18 +82,18 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
     }
 
     class ComplexViewHolder extends RecyclerView.ViewHolder {
-        CardView cv_rvCircle_layout;
+        ConstraintLayout con_rvCircle_layout;
         ImageView imgProfile;
         TextView txtStoreName;
         TextView txtStoreCount;
-        TextView txtFloorCount;
-        TextView txtAddress;
         ComplexViewHolder(@NonNull View itemView) {
             super(itemView);
-            cv_rvCircle_layout = itemView.findViewById(R.id.cv_rvCircle_layout);
-            imgProfile = itemView.findViewById(R.id.cimg_rvCircle_profile);
+            con_rvCircle_layout = itemView.findViewById(R.id.con_rvCirle_layout);
+            imgProfile = itemView.findViewById(R.id.img_rvCircle_profile);
             txtStoreName = itemView.findViewById(R.id.txt_rvCircle_storeNameContent);
-            txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_countStoreCount);
+            txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_coutnStore);
+            txtStoreCount.setAlpha(0.5f);
+            txtStoreName.setAlpha(0.5f);
         }
     }
 }

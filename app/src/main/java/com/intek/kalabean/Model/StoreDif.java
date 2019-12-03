@@ -2,6 +2,7 @@ package com.intek.kalabean.Model;
 
 public class StoreDif {
     private int Id;
+    private int userid;
     private int shopCenterKind;
     private int shopCenterName;
     private int storeFloor;
@@ -28,6 +29,14 @@ public class StoreDif {
     private String fax;
     private String email;
     private int result;
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
 
     public String getEaddress() {
         return eaddress;

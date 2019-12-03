@@ -48,7 +48,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.Objects;
 
-import static com.intek.kalabean.Edit_User0.EditUserFragment.PERMISSION_REQUEST;
+import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
 
 public class MainFragment extends BaseFragment implements MainContract.View {
     private DrawerLayout drawer;
@@ -59,6 +59,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private ImageView kalabeanIcon;
     private NavigationView navigationView;
     private FloatingActionButton fbtnPlus;
+    private int storeId = 0,userId;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,8 +82,20 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         String check = sharedPreferences.getString("username", null);
         String email = sharedPreferences.getString("email", null);
+         userId = sharedPreferences.getInt("userid",0);
+         storeId = sharedPreferences.getInt("storeId",0);
+
+         if(userId > 0){
+             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
+         }else{
+             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
+
+         }
+
+
         if(check != null){
             hideItems(2);
+
         }else {
             hideItems(1);
         }
@@ -134,25 +147,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                    drawer.closeDrawer(GravityCompat.START);
 //                    fragment = new LoginFragment();
 //                }
-                if (id == R.id.item_drawer_login){
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new LoginWithUserPassFragment();
-                }else if(id == R.id.item_drawer_register){
+                 if(id == R.id.item_drawer_register){
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new RegisterFragment();
-                }else if(id == R.id.item_drawer_addProduct){
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new AddProductFragment();
-                }else if(id == R.id.item_drawer_definitionStore){
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new DefinitionFragment();
-                }else if(id == R.id.item_drawer_ordinaryUser){
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new OUFragment();
-
-                }else if(id == R.id.item_drawer_vipUser){
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new VUFragment();
                 }else if(id == R.id.item_drawer_category){
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new CatFragment();
@@ -217,22 +214,25 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Fragment fragmentHome = new HomeFragment();
-                        if (fragment == fragmentHome) {
-
-                        }
+                        fragment = new HomeFragment();
                         break;
                     case R.id.cat:
-                        //fragment = new EditUserFragment();
+                        fragment = new CatFragment();
                         break;
                     case R.id.cities:
-                        //fragment = new EditUserFragment();
+                        Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.enter:
-                        //fragment = new EditUserFragment();
+                        if(userId <= 0) {
+                            fragment = new LoginWithUserPassFragment();
+                        }else{
+                            fragment = new VUFragment();
+                        }
                         break;
                 }
-
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                transaction.commit();
                 return true;
             }
         });
@@ -240,27 +240,24 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         fbtnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popupMenuPlus = new PopupMenu(getViewContext(),fbtnPlus);
-                popupMenuPlus.getMenuInflater().inflate(R.menu.plus_button_menu,popupMenuPlus.getMenu());
-                popupMenuPlus.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        int id = item.getItemId();
-                        switch (id){
-                            case R.id.menu_plus_product_add:
-                                fragment = new AddProductFragment();
-                                break;
-                            case R.id.menu_plus_product_request:
-                                fragment = new RequestFragment();
-                                break;
-                        }
+                if(userId > 0) {
+                    if(storeId > 0) {
+                        fragment = new AddProductFragment();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                        transaction.commit();
+                    }else{
+                        fragment = new DefinitionFragment();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
                         transaction.commit();
-                        return true;
                     }
-                });
-                popupMenuPlus.show();
+                }else{
+                    fragment = new LoginWithUserPassFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                    transaction.commit();
+                }
             }
         });
     }
@@ -328,21 +325,14 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         switch (id){
             case 1:
                 navMenu.findItem(R.id.item_drawer_register).setVisible(true);
-                navMenu.findItem(R.id.item_drawer_vipUser).setVisible(false);
-                navMenu.findItem(R.id.item_drawer_ordinaryUser).setVisible(false);
-                navMenu.findItem(R.id.item_drawer_definitionStore).setVisible(false);
-                navMenu.findItem(R.id.item_drawer_addProduct).setVisible(false);
                 navMenu.findItem(R.id.item_drawer_category).setVisible(false);
-                navMenu.findItem(R.id.item_drawer_login).setVisible(true);
                 break;
             case 2:
                 navMenu.findItem(R.id.item_drawer_register).setVisible(false);
-                navMenu.findItem(R.id.item_drawer_vipUser).setVisible(true);
-                navMenu.findItem(R.id.item_drawer_ordinaryUser).setVisible(true);
-                navMenu.findItem(R.id.item_drawer_definitionStore).setVisible(true);
-                navMenu.findItem(R.id.item_drawer_addProduct).setVisible(true);
+
                 navMenu.findItem(R.id.item_drawer_category).setVisible(true);
-                navMenu.findItem(R.id.item_drawer_login).setVisible(false);
+                break;
+
         }
     }
 }

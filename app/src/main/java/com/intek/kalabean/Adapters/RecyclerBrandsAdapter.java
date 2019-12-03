@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,10 +19,6 @@ import com.intek.kalabean.Model.BrandList;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Shops.ShopsFragment;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAdapter.BrandsViewHolder> {
 
@@ -48,24 +44,14 @@ public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAd
         String imgUrl = brand.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
+        final String storeCount ="تعداد فروشگاه  " + brand.getShopCount();
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(brand.getTitleFA());
-        holder.txtStoreCount.setText(brand.getShopCount());
-        //holder.txtFloorCount.setText(store.getStoreCount());
-        holder.txtAddress.setText(brand.getAddress());
+        holder.txtStoreCount.setText(storeCount);
 
-        List<BrandList.Brands.SubSettings> settings = brand.getSettings();
 
-        if (settings.get(3).getValue().equals("1")){
-            holder.imgCafe.setImageResource(R.drawable.ic_black_coffee);
-        }
-
-        if (settings.get(4).getValue().equals("1")){
-            holder.imgStair.setImageResource(R.drawable.ic_black_parking);
-        }
-
-        holder.cv_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
+        holder.con_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
@@ -89,27 +75,20 @@ public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAd
     }
 
     class BrandsViewHolder extends RecyclerView.ViewHolder{
-        CardView cv_rvCircle_layout;
-        CircleImageView imgProfile;
+        ConstraintLayout con_rvCircle_layout;
+        ImageView imgProfile;
         TextView txtStoreName;
         TextView txtStoreCount;
-        TextView txtFloorCount;
-        TextView txtAddress;
-        ImageView imgStair;
-        ImageView imgCafe;
-        ImageView imgShop;
-        ImageView imgGift;
-        ImageView imgElevator;
-        ImageView imgPlay;
-        ImageView imgWC;
-        ImageView imgParking;
-        ImageView imgNet;
+
         public BrandsViewHolder(@NonNull View itemView) {
             super(itemView);
-            cv_rvCircle_layout = itemView.findViewById(R.id.cv_rvCircle_layout);
-            imgProfile = itemView.findViewById(R.id.cimg_rvCircle_profile);
+            con_rvCircle_layout = itemView.findViewById(R.id.con_rvCirle_layout);
+            imgProfile = itemView.findViewById(R.id.img_rvCircle_profile);
             txtStoreName = itemView.findViewById(R.id.txt_rvCircle_storeNameContent);
-            txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_countStoreCount);
+            txtStoreCount = itemView.findViewById(R.id.txt_rvCircle_coutnStore);
+            txtStoreCount.setAlpha(0.5f);
+            txtStoreName.setAlpha(0.5f);
+
         }
     }
 }
