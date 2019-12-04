@@ -33,6 +33,9 @@ import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShowShopFragment extends BaseFragment implements ShowShopContract.View {
@@ -48,7 +51,9 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             imgInstagram,
             imgTelegram,
             imgEmail,
-            imgWeb;
+            imgWeb,
+            img_fragmentShowShops_leftArrow,
+            img_fragmentShowShops_rightArrow;
 
     private Button
             btnInfo,
@@ -74,7 +79,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     private RecyclerProductAdapter adapter;
     private boolean heartCheck = false;
     private final int REQUEST_CALL_PHONE = 210;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

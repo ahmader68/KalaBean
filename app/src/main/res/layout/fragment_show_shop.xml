@@ -10,7 +10,7 @@
         android:id="@+id/con_containerRvShowShops"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/rv_fragmentShowShops_shopList"
+        app:layout_constraintBottom_toTopOf="@+id/con_fragmentShowShops_floorContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -92,6 +92,27 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con_fragmentShowShops_floorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/rv_fragmentShowShops_shopList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/con_containerRvShowShops" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fragmentShowShops_floorList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_fragmentShowShops_shopList"
         android:layout_width="match_parent"
@@ -100,7 +121,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/con_containerRvShowShops">
+        app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_floorContainer">
 
     </androidx.recyclerview.widget.RecyclerView>
 

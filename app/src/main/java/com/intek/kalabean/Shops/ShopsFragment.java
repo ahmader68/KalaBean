@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,32 +14,40 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.intek.kalabean.Adapters.FloorAdapter;
 import com.intek.kalabean.Adapters.RecyclerShopsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Model.FloorList;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     private TextView txtTitle;
-    private RecyclerView rvShopList;
+    private RecyclerView rvShopList ,
+            rv_fragmentShowShops_floorList;
+    private ImageView img_fragmentShowShops_leftArrow ,
+            img_fragmentShowShops_rightArrow;
 
 
     private ShopsContract.Presenter presenter;
     private RecyclerShopsAdapter adapter;
+    private FloorAdapter adapterFloor;
     private Bundle extras;
     public int SellCenterID;
     public String image;
     public String title;
     public int ShopId;
-
-
-
+    private int position;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +58,8 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         image = extras.getString("image" , "");
         title = extras.getString("title" , "");
         ShopId = extras.getInt("ShopId", 0);
+
+        presenter.floorList(SellCenterID);
     }
 
     @Override
@@ -64,6 +75,8 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         presenter.getShops(SellCenterID,0);
         txtTitle.setText(title);
 
+        rv_fragmentShowShops_floorList = rootView.findViewById(R.id.rv_fragmentShowShops_floorList);
+
     }
 
     @Override
@@ -76,7 +89,14 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         adapter = new RecyclerShopsAdapter(getViewContext(),shops);
         rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(),2,RecyclerView.VERTICAL,false));
         rvShopList.setAdapter(adapter);
+    }
 
+    @Override
+    public void getFloorList(FloorList floorList) {
+
+        adapterFloor = new FloorAdapter(getViewContext() , floorList , SellCenterID);
+        rv_fragmentShowShops_floorList.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
+        rv_fragmentShowShops_floorList.setAdapter(adapterFloor);
     }
 
     @Override
