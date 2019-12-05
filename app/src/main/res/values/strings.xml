@@ -231,4 +231,6 @@
     <string name="first_name">نام</string>
     <string name="last_name">نام خانوادگی</string>
     <string name="profile">پروفایل</string>
+    <string name="txt_fragmentShowShop_product">محصولات</string>
+    <string name="txt_fragmentShowShop_shops">فروشگاه ها</string>
 </resources>

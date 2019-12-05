@@ -36,7 +36,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cimg_fragmentVIPUser_outerImage"
-                    tools:text="گلفروشی بابام اینا" />
+                    android:text="کفاشی کفشدوزک" />
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/cimg_fragmentVIPUser_outerImage"
