@@ -5,7 +5,7 @@ import java.util.List;
 public class ShopCenter {
     private int id;
     private String TitleFA;
-    private String DescriptionFA;
+    private String Description;
     private String AddressFA;
     private int Cityid;
     private int SellCenterCatID;
@@ -22,6 +22,89 @@ public class ShopCenter {
     private String AddressAR;
     private String toor;
     private long Center_LastUpdateDate;
+    private String data_lat;
+    private String data_lng;
+    private String url;
+    private String description;
+    private String icon;
+    private String Address;
+    private int SellCenterID;
+    private int FloorId;
+   private int JobCatid;
+   private String Tel;
+
+    public String getData_lat() {
+        return data_lat;
+    }
+
+    public void setData_lat(String data_lat) {
+        this.data_lat = data_lat;
+    }
+
+    public String getData_lng() {
+        return data_lng;
+    }
+
+    public void setData_lng(String data_lng) {
+        this.data_lng = data_lng;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public int getSellCenterID() {
+        return SellCenterID;
+    }
+
+    public void setSellCenterID(int sellCenterID) {
+        SellCenterID = sellCenterID;
+    }
+
+    public int getFloorId() {
+        return FloorId;
+    }
+
+    public void setFloorId(int floorId) {
+        FloorId = floorId;
+    }
+
+    public int getJobCatid() {
+        return JobCatid;
+    }
+
+    public void setJobCatid(int jobCatid) {
+        JobCatid = jobCatid;
+    }
+
+    public String getTel() {
+        return Tel;
+    }
+
+    public void setTel(String tel) {
+        Tel = tel;
+    }
+
     private List<SubSettings> settings;
 
     public String getTitleFA() {
@@ -40,12 +123,12 @@ public class ShopCenter {
         this.id = id;
     }
 
-    public String getDescriptionFA() {
-        return DescriptionFA;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDescriptionFA(String descriptionFA) {
-        DescriptionFA = descriptionFA;
+    public void setDescription(String descriptionFA) {
+        Description = descriptionFA;
     }
 
     public String getAddressFA() {

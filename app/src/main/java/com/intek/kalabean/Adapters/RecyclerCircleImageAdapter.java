@@ -44,7 +44,7 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         String imgUrl = store.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
-        final String storeCount ="تعداد فروشگاه  " + store.getShopCount();
+        final String storeCount ="فروشگاه ها  " + store.getShopCount();
 
 
         Picasso.get().load(url).into(holder.imgProfile);

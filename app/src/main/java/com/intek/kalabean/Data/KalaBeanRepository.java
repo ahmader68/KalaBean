@@ -122,6 +122,11 @@ public class KalaBeanRepository implements KalaBeanDataSource {
     }
 
     @Override
+    public Single<ShopCenterList> getShopInfo(int shopId, int usrid) {
+        return serverDataSource.getShopInfo(shopId, usrid);
+    }
+
+    @Override
     public Single<ShopCenterList> getShopCenterList(int idCenterCat) {
         return serverDataSource.getShopCenterList(idCenterCat);
     }
