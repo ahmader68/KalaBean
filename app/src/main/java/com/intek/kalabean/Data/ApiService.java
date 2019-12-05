@@ -144,4 +144,9 @@ public interface ApiService {
     @POST("default.aspx?Action=GetInfoUser")
     Single<User> getUserInfo(@Field("usrid") int usrid);
 
+    @FormUrlEncoded
+    @POST("default.aspx?Action=GetInfoShop")
+    Single<ShopCenterList> getShopInfo(@Field("shopId") int shopId,
+                                       @Field("usrid") int usrid);
+
 }

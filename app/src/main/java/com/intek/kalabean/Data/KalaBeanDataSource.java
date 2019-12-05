@@ -50,4 +50,5 @@ public interface KalaBeanDataSource {
     Single<Positions> getPositions();
     Single<User> getUserInfo(int userId);
     Single<User> editUser(int uid,String mobile,String email);
+    Single<ShopCenterList> getShopInfo(int shopId,int usrid);
 }

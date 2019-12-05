@@ -49,7 +49,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
         String imgUrl = complex.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
-        final String storeCount ="تعداد فروشگاه  " + complex.getShopCount();
+        final String storeCount ="فروشگاه ها  " + complex.getShopCount();
 
 
         Picasso.get().load(url).into(holder.imgProfile);

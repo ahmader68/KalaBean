@@ -324,8 +324,8 @@
                     android:id="@+id/edt_fragmentDefinition_storeName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_shape"
-                    android:padding="10dp"
+                    android:background="@drawable/shape_radius"
+                    android:padding="5dp"
                     android:alpha="0.5"
                     android:layout_margin="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -347,8 +347,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
-                    android:padding="10dp"
+                    android:background="@drawable/shape_radius"
+                    android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_floor"
                     app:layout_constraintHorizontal_weight="0.7"
                     app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_floor"
@@ -369,9 +369,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_address"
                     app:layout_constraintHorizontal_weight="0.7"
                     app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_address"
@@ -387,9 +387,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="32dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     android:hint="@string/http"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_phone"
                     app:layout_constraintHorizontal_weight="0.7"
@@ -408,9 +408,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_site"
                     app:layout_constraintHorizontal_weight="0.7"
                     app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_site"
@@ -429,9 +429,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_instagram"
                     app:layout_constraintHorizontal_weight="0.7"
                     app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_instagram"
@@ -449,13 +449,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_telegram"
                     app:layout_constraintHorizontal_weight="0.7"
                     app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_telegram"
                     app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_telegram"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
@@ -465,9 +465,9 @@
                     android:id="@+id/edt_fragmentDefinition_branches"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     android:layout_marginTop="32dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentDefinition_workHour"
                     app:layout_constraintHorizontal_weight="0.7"
@@ -479,12 +479,13 @@
                     android:textColorHint="@color/black" />
 
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_province"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:layout_marginTop="32dp"
+                android:padding="5dp"
                 android:alpha="0.5"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -493,13 +494,14 @@
                 app:layout_constraintStart_toStartOf="@+id/edt_fragmentDefinition_storeName"
                 app:layout_constraintTop_toBottomOf="@+id/edt_fragmentDefinition_storeName" />
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_city"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:textColor="@color/black"
                 android:alpha="0.5"
+                android:padding="5dp"
                 android:textColorHint="@color/black"
                 android:textDirection="rtl"
                 android:layout_marginTop="32dp"
@@ -523,13 +525,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/sp_fragmentDefinition_activityKind"/>
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_activityKind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_weight="0.7"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:alpha="0.5"
+                android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_city"
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_city"
                 app:layout_constraintEnd_toEndOf="@id/sp_fragmentDefinition_city"
@@ -537,13 +540,14 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"/>
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_storeKind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/black"
+                android:padding="5dp"
                 android:alpha="0.5"
                 android:textColorHint="@color/black"
                 android:layout_marginTop="32dp"
@@ -552,12 +556,13 @@
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_activityKind"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_activityKind" />
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_storeName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:layout_marginTop="32dp"
+                android:padding="5dp"
                 android:alpha="0.5"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -566,12 +571,13 @@
                 app:layout_constraintStart_toStartOf="@id/sp_fragmentDefinition_storeKind"
                 app:layout_constraintTop_toBottomOf="@id/sp_fragmentDefinition_storeKind" />
 
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentDefinition_floor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:layout_marginTop="32dp"
+                android:padding="5dp"
                 android:alpha="0.5"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
