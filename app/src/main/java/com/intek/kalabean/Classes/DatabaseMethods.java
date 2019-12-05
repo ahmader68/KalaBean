@@ -359,6 +359,9 @@ public class DatabaseMethods {
                             case 1:
                                 definitionPresenter.onSuccessFloorList(floorList);
                                 break;
+                            case 11:
+                                shopsPresenter.onSuccessGetFloor(floorList);
+                                break;
                         }
                     }
 
@@ -367,6 +370,9 @@ public class DatabaseMethods {
                         switch (flag) {
                             case 1:
                                 definitionPresenter.onError(e.toString());
+                                break;
+                            case 11:
+                                shopsPresenter.onError(e.toString());
                                 break;
                         }
                     }

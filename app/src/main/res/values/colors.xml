@@ -38,4 +38,5 @@
     <color name="acceptButton">#FF5D9E</color>
     <color name="cardviewBeauty">#ebd7bc</color>
     <color name="spinner_baclground">#f0f0f0</color>
+    <color name="background">#9AF0F0F0</color>
 </resources>

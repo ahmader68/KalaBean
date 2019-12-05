@@ -6,10 +6,58 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con_containerChain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rv_fragmentChainStore_list" >
+
+        <TextView
+            android:id="@+id/txt_fragmentChainStore_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/subject"
+            app:layout_constraintEnd_toStartOf="@+id/til_fragmentBrands_chainStore"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_fragmentBrands_chainStore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:hintEnabled="true"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_fragmentChainStore_subject"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <jrizani.jrspinner.JRSpinner
+                android:id="@+id/sp_fragmentChainStore_chainStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/spinner_shape"
+                android:hint="انتخاب"
+                android:textColor="@color/colorPrimary"
+                app:jrs_icon_tint="@color/colorPrimary"
+                app:jrs_multiple="true"
+                app:jrs_title="Choose" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_fragmentChainStore_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -17,5 +65,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/con_containerChain" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

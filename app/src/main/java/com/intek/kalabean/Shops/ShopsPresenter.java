@@ -2,7 +2,10 @@ package com.intek.kalabean.Shops;
 
 import com.intek.kalabean.Classes.DatabaseMethods;
 import com.intek.kalabean.Data.KalaBeanDataSource;
+import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ShopsList;
+
+import java.sql.DataTruncation;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -32,8 +35,18 @@ public class ShopsPresenter implements ShopsContract.Presenter {
     }
 
     @Override
+    public void onSuccessGetFloor(FloorList floorList) {
+        ShopsPresenter.view.getFloorList(floorList);
+    }
+
+    @Override
     public void onError(String message) {
         ShopsPresenter.view.showMessage(message);
+    }
+
+    @Override
+    public void floorList(int idCenter) {
+        DatabaseMethods.getFloorList(databaseFlag , idCenter);
     }
 
     @Override

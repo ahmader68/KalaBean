@@ -1,6 +1,7 @@
 package com.intek.kalabean.ShowShop;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -30,6 +32,9 @@ import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,7 +51,9 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             imgInstagram,
             imgTelegram,
             imgEmail,
-            imgWeb;
+            imgWeb,
+            img_fragmentShowShops_leftArrow,
+            img_fragmentShowShops_rightArrow;
 
     private Button
             btnInfo,
@@ -60,7 +67,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
     private RecyclerView rvProductList;
 
-
+    private Dialog dialog;
 
     private Bundle extras;
     public int SellCenterID;
@@ -72,7 +79,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     private RecyclerProductAdapter adapter;
     private boolean heartCheck = false;
     private final int REQUEST_CALL_PHONE = 210;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,10 +117,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
         btnInfo = rootView.findViewById(R.id.btn_fragmentShop_info);
         btnContact = rootView.findViewById(R.id.btn_fragmentShop_contact);
-
-        txtAddress = rootView.findViewById(R.id.txt_fragmentShop_address);
-        txtCountView = rootView.findViewById(R.id.txt_fragmentShop_countView);
-        txtWorkHour = rootView.findViewById(R.id.txt_fragmentShop_hourWork);
         txtNull = rootView.findViewById(R.id.txt_fragmentShop_null);
 
         rvProductList = rootView.findViewById(R.id.rv_fragmentShop_list);
@@ -122,8 +124,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         String shopInfo = "اطلاعات فروشگاه " + title;
         btnInfo.setText(shopInfo);
         Picasso.get().load(image).into(imgShop);
-        txtAddress.setText(address);
-        txtCountView.setText(String.valueOf(visitCount));
 
         presenter.getProduct(ShopId);
 
@@ -230,6 +230,22 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
                 }
             }
         });
+
+        dialog = new Dialog(getViewContext());
+        dialog.setContentView(R.layout.dialog_more_info_shop);
+        dialog.setCanceledOnTouchOutside(true);
+
+        txtAddress = dialog.findViewById(R.id.txt_fragmentShop_address);
+        txtCountView = dialog.findViewById(R.id.txt_fragmentShop_countView);
+        txtAddress.setText(address);
+        txtCountView.setText(String.valueOf(visitCount));
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -266,7 +282,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             txtNull.setVisibility(View.GONE);
             rvProductList.setVisibility(View.VISIBLE);
             adapter = new RecyclerProductAdapter(getViewContext(), productLists);
-            rvProductList.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
+            rvProductList.setLayoutManager(new GridLayoutManager(getViewContext() , 3 , RecyclerView.VERTICAL , false));
             rvProductList.setAdapter(adapter);
         }
     }

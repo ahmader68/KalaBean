@@ -6,9 +6,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,33 +25,57 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.intek.kalabean.Adapters.FloorAdapter;
 import com.intek.kalabean.Adapters.RecyclerShopsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Model.FloorList;
+import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.ShopsList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
+
     private TextView txtTitle,txtPhone;
     private CircleImageView cimgShop;
     private RecyclerView rvShopList;
 
+    private TextView txtTitle
+            ,txt_fragmentShowShops_address ,
+            txt_fragmentShowShops_phone ,
+            txt_fragmentShowShops_web ,
+            txt_fragmentShowShops_vTour;
+    private RecyclerView rvShopList ,
+            rv_fragmentShowShops_floorList;
+    private ImageView img_fragmentShowShops_showShop;
+
+
 
     private ShopsContract.Presenter presenter;
     private RecyclerShopsAdapter adapter;
+    private FloorAdapter adapterFloor;
     private Bundle extras;
     public int SellCenterID;
     public String image;
     public String title;
+
     public int ShopId,REQUEST_CODE_CALL = 500;
 
+    public String address;
+    public int ShopId;
 
 
+    private RadioGroup rgSwitch;
+    private RadioButton rbProduct;
+    private RadioButton rbShops;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +85,10 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         SellCenterID = extras.getInt("SellCenterID" , 1);
         image = extras.getString("image" , "");
         title = extras.getString("title" , "");
+        address = extras.getString("address" , "");
         ShopId = extras.getInt("ShopId", 0);
+
+        presenter.floorList(SellCenterID);
     }
 
     @Override
@@ -67,12 +100,42 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public void setupViews() {
 
         txtTitle = rootView.findViewById(R.id.txt_fragmentShowShops_title);
+
         txtPhone = rootView.findViewById(R.id.txt_fragmentShowShops_phone);
         cimgShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
+
         rvShopList = rootView.findViewById(R.id.rv_fragmentShowShops_shopList);
         presenter.getShops(SellCenterID,0);
         txtTitle.setText(title);
-        Picasso.get().load(image).into(cimgShop);
+
+        img_fragmentShowShops_showShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
+        txt_fragmentShowShops_address = rootView.findViewById(R.id.txt_fragmentShowShops_address);
+        txt_fragmentShowShops_phone = rootView.findViewById(R.id.txt_fragmentShowShops_phone);
+        txt_fragmentShowShops_web = rootView.findViewById(R.id.txt_fragmentShowShops_web);
+        txt_fragmentShowShops_vTour = rootView.findViewById(R.id.txt_fragmentShowShops_vTour);
+
+        rgSwitch = rootView.findViewById(R.id.rg_fragmentShowShop_switch);
+        rbProduct = rootView.findViewById(R.id.rb_fragmentShowShop_product);
+        rbShops = rootView.findViewById(R.id.rb_fragmentShowShop_shops);
+
+        Picasso.get().load(image).into(img_fragmentShowShops_showShop);
+        txt_fragmentShowShops_address.setText(address);
+
+        rv_fragmentShowShops_floorList = rootView.findViewById(R.id.rv_fragmentShowShops_floorList);
+
+        rgSwitch.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int id) {
+                switch (id) {
+                    case R.id.rb_fragmentShowShop_product :
+                        presenter.getShops(SellCenterID , -1);
+                        break;
+                    case R.id.rb_fragmentShowShop_shops :
+
+                        break;
+                }
+            }
+        });
 
         txtPhone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +161,16 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     @Override
     public void getShopsList(ShopsList shops) {
         adapter = new RecyclerShopsAdapter(getViewContext(),shops);
-        rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(),3,RecyclerView.VERTICAL,false));
+        rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(),2,RecyclerView.VERTICAL,false));
         rvShopList.setAdapter(adapter);
+    }
 
+    @Override
+    public void getFloorList(FloorList floorList) {
+
+        adapterFloor = new FloorAdapter(getViewContext() , floorList , SellCenterID);
+        rv_fragmentShowShops_floorList.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
+        rv_fragmentShowShops_floorList.setAdapter(adapterFloor);
     }
 
     @Override

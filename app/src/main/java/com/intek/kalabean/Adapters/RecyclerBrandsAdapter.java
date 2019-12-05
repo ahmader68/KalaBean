@@ -58,6 +58,7 @@ public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAd
                 bundle.putInt("SellCenterID" , brand.getSellCenterID());
                 bundle.putString("image" , url);
                 bundle.putString("title" , brand.getTitleFA());
+                bundle.putString("address" , brand.getAddress());
                 bundle.putInt("flag",brand.getSellCenterCatID());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
