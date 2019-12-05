@@ -65,6 +65,7 @@ public class RecyclerChainStoreAdapter extends RecyclerView.Adapter<RecyclerChai
                 bundle.putInt("SellCenterID" , chainStore.getSellCenterID());
                 bundle.putString("image" , url);
                 bundle.putString("title" , chainStore.getTitleFA());
+                bundle.putString("address" , chainStore.getAddress());
                 bundle.putInt("flag",chainStore.getSellCenterCatID());
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();

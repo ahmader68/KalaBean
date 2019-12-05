@@ -54,4 +54,8 @@ dependencies {
     //testImplementation 'androidx.test.runner.AndroidJUnitRunner:1.1.0'
     implementation 'com.nineoldandroids:library:2.4.0'
 
+
+    implementation 'com.github.jrizani:JRSpinner:$version'
+    //use it if you want use library that used androidx artifact
+    implementation 'com.github.jrizani:JRSpinner:androidx-SNAPSHOT'
 }

@@ -24,17 +24,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.tiper.MaterialSpinner
-            android:id="@+id/sp_fragmentBrands_brands"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_fragmentBrands_brands"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:hintEnabled="true"
             android:layout_margin="8dp"
-            android:background="@drawable/spinner_shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txt_fragmentComplex_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:spinnerMode="bottomsheet" />
+            app:layout_constraintStart_toEndOf="@+id/txt_fragmentBrands_title"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <jrizani.jrspinner.JRSpinner
+                android:id="@+id/sp_fragmentBrands_brands"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/spinner_shape"
+                android:hint="انتخاب"
+                android:textColor="@color/colorPrimary"
+                app:jrs_icon_tint="@color/colorPrimary"
+                app:jrs_multiple="true"
+                app:jrs_title="Choose" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

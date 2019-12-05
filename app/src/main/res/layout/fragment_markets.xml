@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/con_fragmentMarkets_mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
-    android:id="@+id/con_fragmentMarkets_mainLayout">
+    android:layoutDirection="rtl">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/con_fragmentMarkets_header"
@@ -21,22 +21,35 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/txt_fragmentHome_mallsOneLine"
-            app:layout_constraintEnd_toStartOf="@+id/sp_fragmentMarkets_markets"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/til_fragmentMarkets_markets"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.tiper.MaterialSpinner
-            android:id="@+id/sp_fragmentMarkets_markets"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_fragmentMarkets_markets"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:hintEnabled="true"
             android:layout_margin="8dp"
-            android:background="@drawable/spinner_shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txt_fragmentMarkets_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:spinnerMode="bottomsheet" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <jrizani.jrspinner.JRSpinner
+                android:id="@+id/sp_fragmentMarkets_markets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/spinner_shape"
+                android:hint="انتخاب"
+                android:textColor="@color/colorPrimary"
+                app:jrs_icon_tint="@color/colorPrimary"
+                app:jrs_multiple="true"
+                app:jrs_title="Choose" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

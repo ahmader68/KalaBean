@@ -2,10 +2,15 @@ package com.intek.kalabean.Shops;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,11 +37,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
-    private TextView txtTitle;
+    private TextView txtTitle
+            ,txt_fragmentShowShops_address ,
+            txt_fragmentShowShops_phone ,
+            txt_fragmentShowShops_web ,
+            txt_fragmentShowShops_vTour;
     private RecyclerView rvShopList ,
             rv_fragmentShowShops_floorList;
-    private ImageView img_fragmentShowShops_leftArrow ,
-            img_fragmentShowShops_rightArrow;
+    private ImageView img_fragmentShowShops_showShop;
 
 
     private ShopsContract.Presenter presenter;
@@ -46,8 +54,12 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public int SellCenterID;
     public String image;
     public String title;
+    public String address;
     public int ShopId;
-    private int position;
+
+    private RadioGroup rgSwitch;
+    private RadioButton rbProduct;
+    private RadioButton rbShops;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +69,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         SellCenterID = extras.getInt("SellCenterID" , 1);
         image = extras.getString("image" , "");
         title = extras.getString("title" , "");
+        address = extras.getString("address" , "");
         ShopId = extras.getInt("ShopId", 0);
 
         presenter.floorList(SellCenterID);
@@ -75,7 +88,34 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         presenter.getShops(SellCenterID,0);
         txtTitle.setText(title);
 
+        img_fragmentShowShops_showShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
+        txt_fragmentShowShops_address = rootView.findViewById(R.id.txt_fragmentShowShops_address);
+        txt_fragmentShowShops_phone = rootView.findViewById(R.id.txt_fragmentShowShops_phone);
+        txt_fragmentShowShops_web = rootView.findViewById(R.id.txt_fragmentShowShops_web);
+        txt_fragmentShowShops_vTour = rootView.findViewById(R.id.txt_fragmentShowShops_vTour);
+
+        rgSwitch = rootView.findViewById(R.id.rg_fragmentShowShop_switch);
+        rbProduct = rootView.findViewById(R.id.rb_fragmentShowShop_product);
+        rbShops = rootView.findViewById(R.id.rb_fragmentShowShop_shops);
+
+        Picasso.get().load(image).into(img_fragmentShowShops_showShop);
+        txt_fragmentShowShops_address.setText(address);
+
         rv_fragmentShowShops_floorList = rootView.findViewById(R.id.rv_fragmentShowShops_floorList);
+
+        rgSwitch.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int id) {
+                switch (id) {
+                    case R.id.rb_fragmentShowShop_product :
+                        presenter.getShops(SellCenterID , -1);
+                        break;
+                    case R.id.rb_fragmentShowShop_shops :
+
+                        break;
+                }
+            }
+        });
 
     }
 
