@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -36,6 +38,7 @@ import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Category.CatFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
+import com.intek.kalabean.Fragment.ShowWebFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
 import com.intek.kalabean.Oridinary_User_Profile0.OUFragment;
@@ -47,6 +50,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.Objects;
+import java.util.zip.Inflater;
 
 import static com.intek.kalabean.Edit_User.EditUserFragment.PERMISSION_REQUEST;
 
@@ -60,6 +64,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private NavigationView navigationView;
     private FloatingActionButton fbtnPlus;
     private int storeId = 0,userId;
+    private ImageView imgTelegram,imgInstagram,imgWeb;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +79,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void setupViews() {
 
+
         bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
         fbtnPlus = rootView.findViewById(R.id.floatingActionButton);
         navigationView = rootView.findViewById(R.id.navigation);
@@ -84,6 +90,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         String email = sharedPreferences.getString("email", null);
          userId = sharedPreferences.getInt("userid",0);
          storeId = sharedPreferences.getInt("storeId",0);
+
+
 
          if(userId > 0){
              bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
@@ -125,11 +133,45 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         });
 
         navigationView.setItemIconTintList(null);
-        if (check != null || email != null) {
+
             Menu menu = navigationView.getMenu();
+            View view = menu.findItem(R.id.social_items).getActionView();
+            imgInstagram = view.findViewById(R.id.img_drawerMenu_instagram);
+            imgTelegram = view.findViewById(R.id.img_drawerMenu_telegram);
+            imgWeb = view.findViewById(R.id.img_drawerMenu_website);
+            imgInstagram.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent instagram = new Intent(Intent.ACTION_VIEW);
+                    instagram.setData(Uri.parse("https://www.instagram.com/kalabean.co"));
+                    startActivity(instagram);
+
+                }
+            });
+
+            imgTelegram.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String account = "kalabean";
+                    Intent telegram = new Intent(Intent.ACTION_VIEW);
+                    telegram.setData(Uri.parse("http://telegram.me/" + account));
+                    startActivity(telegram);
+                }
+            });
+
+            imgWeb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment webFragment = new ShowWebFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frm_MainActivity_mainLayout,webFragment);
+                    transaction.commit();
+                }
+            });
+
             //menu.findItem(R.id.login).setVisible(false);
             //menu.findItem(R.id.sabtenam).setVisible(false);
-        }
+
         hamburgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

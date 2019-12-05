@@ -247,22 +247,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_fragmentHome_newProductAdded"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_margin="8dp"
                     android:textColor="@color/lightDarkBlueText"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                <TextView
-                    android:id="@+id/txt_fragmentHome_moreProducts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_fragmentHome_more"
-                    android:textSize="18sp"
-                    android:layout_margin="8dp"
-                    android:textColor="@color/moreColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_fragmentHome_newProduct"

@@ -44,15 +44,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
 
-    private TextView txtTitle,txtPhone;
     private CircleImageView cimgShop;
-    private RecyclerView rvShopList;
 
-    private TextView txtTitle
-            ,txt_fragmentShowShops_address ,
+
+    private TextView
+            txtTitle,
+            txt_fragmentShowShops_address ,
             txt_fragmentShowShops_phone ,
             txt_fragmentShowShops_web ,
-            txt_fragmentShowShops_vTour;
+            txt_fragmentShowShops_vTour,
+            txtPhone;
     private RecyclerView rvShopList ,
             rv_fragmentShowShops_floorList;
     private ImageView img_fragmentShowShops_showShop;
@@ -70,7 +71,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public int ShopId,REQUEST_CODE_CALL = 500;
 
     public String address;
-    public int ShopId;
+
 
 
     private RadioGroup rgSwitch;
