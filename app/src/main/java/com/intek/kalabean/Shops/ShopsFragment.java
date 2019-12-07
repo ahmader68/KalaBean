@@ -103,15 +103,17 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
         rv_fragmentShowShops_floorList = rootView.findViewById(R.id.rv_fragmentShowShops_floorList);
 
+        rbShops.setChecked(true);
         rgSwitch.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
                 switch (id) {
                     case R.id.rb_fragmentShowShop_product :
-                        presenter.getShops(SellCenterID , -1);
+                        Toast.makeText(getViewContext(), "به زودی" +
+                                "", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.rb_fragmentShowShop_shops :
-
+                        presenter.getShops(SellCenterID , -1);
                         break;
                 }
             }

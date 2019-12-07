@@ -1,193 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/con_containerRvShowShops"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/con_fragmentShowShops_floorContainer"
+        android:background="@color/colorWhite"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-
-            android:id="@+id/txt_fragmentShowShops_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            tools:text="مجتمع تجاری اکسیر"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_fragmentShowShops_showShop"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txt_fragmentShowShops_address"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textColor="@color/black"
-            android:textDirection="rtl"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_title"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_title"
-            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_title"
-            tools:text="مشهد - قاسم آباد - چهارراه مخابرات" />
-
-        <TextView
-            android:id="@+id/txt_fragmentShowShops_phone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_address"
-            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_address"
-            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_address"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:text="05132254785"/>
-        <TextView
-            android:id="@+id/txt_fragmentShowShops_web"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_phone"
-            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_phone"
-            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_phone"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            tools:text="www.google.com"
-            android:textDirection="rtl"/>
-        <TextView
-            android:id="@+id/txt_fragmentShowShops_vTour"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_web"
-            app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_web"
-            app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_web"
-            android:text="@string/edt_fragmentDefinition_artificialTour"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:layout_marginTop="8dp"
-
-            android:layout_marginBottom="8dp"/>
-
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_fragmentShowShops_showShop"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/con_fragmentShowShops_floorContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/con_fragmentShowShops_group"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/con_containerRvShowShops" >
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_fragmentShowShops_floorList"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/con_fragmentShowShops_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_floorContainer"
-        app:layout_constraintBottom_toTopOf="@+id/rv_fragmentShowShops_shopList"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <RadioGroup
-            android:id="@+id/rg_fragmentShowShop_switch"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <RadioButton
-                android:id="@+id/rb_fragmentShowShop_product"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:background="@drawable/radio_flat_selector"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:paddingEnd="4dp"
-                android:paddingStart="4dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:checked="true"
-                android:text="@string/txt_fragmentShowShop_product"
-                android:textAlignment="center"
-                android:layout_margin="4dp"/>
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleTextAppearance="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_containerRvShowShops"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+
+                        android:id="@+id/txt_fragmentShowShops_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20sp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_fragmentShowShops_showShop"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="مجتمع تجاری اکسیر" />
+
+                    <TextView
+                        android:id="@+id/txt_fragmentShowShops_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_title"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_title"
+                        app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_title"
+                        tools:text="مشهد - قاسم آباد - چهارراه مخابرات" />
+
+                    <TextView
+                        android:id="@+id/txt_fragmentShowShops_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_address"
+                        app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_address"
+                        app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_address"
+                        tools:text="05132254785" />
+
+                    <TextView
+                        android:id="@+id/txt_fragmentShowShops_web"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_phone"
+                        app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_phone"
+                        app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_phone"
+                        tools:text="www.google.com" />
+
+                    <TextView
+                        android:id="@+id/txt_fragmentShowShops_vTour"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/edt_fragmentDefinition_artificialTour"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/txt_fragmentShowShops_web"
+                        app:layout_constraintStart_toStartOf="@id/txt_fragmentShowShops_web"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_fragmentShowShops_web" />
 
 
-            <RadioButton
-                android:id="@+id/rb_fragmentShowShop_shops"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="@drawable/radio_flat_selector"
-                android:button="@android:color/transparent"
-                android:layout_gravity="center"
-                android:paddingEnd="4dp"
-                android:paddingStart="4dp"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:textAlignment="center"
-                android:layout_margin="4dp"
-                android:text="@string/txt_fragmentShowShop_shops"/>
-        </RadioGroup>
-        <TextView
-            android:id="@+id/txt_fragmentOrdinaryUser_info"
-            android:layout_width="wrap_content"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_fragmentShowShops_showShop"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_fragmentShowShops_floorContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/con_containerRvShowShops">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_fragmentShowShops_floorList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBarShowShop"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rg_fragmentShowShop_switch"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="bottom"
+            app:layout_collapseMode="pin"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/black"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_floorContainer">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_fragmentShowShops_shopList"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/con_fragmentShowShops_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/ns_fragmentShowShop_nested"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_floorContainer">
+
+                <RadioGroup
+                    android:id="@+id/rg_fragmentShowShop_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/rb_fragmentShowShop_product"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingStart="4dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/txt_fragmentShowShop_product"
+                        android:textAlignment="center" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_fragmentShowShop_shops"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="4dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:paddingStart="4dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/txt_fragmentShowShop_shops"
+                        android:textAlignment="center" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/txt_fragmentOrdinaryUser_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rg_fragmentShowShop_switch" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/ns_fragmentShowShop_nested"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="2dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_group">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fragmentShowShops_shopList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

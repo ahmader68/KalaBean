@@ -76,16 +76,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/con_fragmentHome_slideShow">
 
 
-                    <ImageView
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/img_fragmentHome_complex"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:background="@drawable/complex"
+                        android:layout_height="100dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_malls"
-                        android:src="@drawable/complex"/>
+                        app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_malls" />
+
                     <TextView
                         android:id="@+id/txt_fragmentHome_complex"
                         android:layout_width="wrap_content"
@@ -99,17 +100,17 @@
 
 
 
-                    <ImageView
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/img_fragmentHome_malls"
                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="100dp"
                         app:layout_constraintTop_toTopOf="@id/img_fragmentHome_complex"
                         app:layout_constraintBottom_toBottomOf="@id/img_fragmentHome_complex"
                         app:layout_constraintStart_toEndOf="@id/img_fragmentHome_complex"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="4dp"
-                        android:src="@drawable/bazar"/>
+                        android:background="@drawable/bazar"/>
                     <TextView
                         android:id="@+id/txt_fragmentHome_malls"
                         android:layout_width="wrap_content"
@@ -121,15 +122,15 @@
                         android:textColor="@color/black"
                         android:layout_marginTop="8dp"/>
 
-                    <ImageView
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/img_fragmentHome_best"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="100dp"
                         app:layout_constraintTop_toBottomOf="@id/txt_fragmentHome_complex"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/img_fragmentHome_chainStore"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/best"
+                        android:background="@drawable/best"
                         android:layout_marginEnd="4dp"
                         android:layout_marginStart="8dp" />
                     <TextView
@@ -143,15 +144,15 @@
                         android:layout_marginTop="8dp"/>
 
 
-                    <ImageView
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/img_fragmentHome_chainStore"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="100dp"
                         app:layout_constraintTop_toTopOf="@id/img_fragmentHome_best"
                         app:layout_constraintBottom_toBottomOf="@id/img_fragmentHome_best"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/img_fragmentHome_best"
-                        android:src="@drawable/complex"
+                        android:background="@drawable/complex"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="8dp" />
 
@@ -182,21 +183,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_fragmentHome_newProductAdded"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_margin="8dp"
                     android:textColor="@color/lightDarkBlueText"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:id="@+id/txt_fragmentHome_moreProducts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_fragmentHome_more"
-                    android:textSize="18sp"
-                    android:layout_margin="8dp"
-                    android:textColor="@color/moreColor"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.recyclerview.widget.RecyclerView

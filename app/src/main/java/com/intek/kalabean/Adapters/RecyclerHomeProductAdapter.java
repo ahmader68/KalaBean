@@ -14,10 +14,10 @@ import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
 import com.squareup.picasso.Picasso;
 
-public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProductAdapter.ProductHolder> {
+public class RecyclerHomeProductAdapter extends RecyclerView.Adapter<RecyclerHomeProductAdapter.ProductHolder> {
     private Context context;
     private ProductList productLists;
-    public RecyclerProductAdapter(Context context,ProductList productLists) {
+    public RecyclerHomeProductAdapter(Context context, ProductList productLists) {
         this.context = context;
         this.productLists = productLists;
     }
@@ -25,7 +25,7 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
     @NonNull
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_product,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_selected_product,parent,false);
         return new ProductHolder(v);
     }
 
@@ -35,6 +35,7 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
         if (!(product.getCoverimage().isEmpty())) {
             Picasso.get().load(product.getCoverimage()).fit().into(holder.imgProduct);
         }
+        holder.txtSelectedProduct.setText(product.getTitle());
     }
 
     @Override
@@ -47,7 +48,7 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
         TextView txtSelectedProduct;
         ProductHolder(@NonNull View itemView) {
             super(itemView);
-            imgProduct = itemView.findViewById(R.id.imgProduct);
+            imgProduct = itemView.findViewById(R.id.img_rvSelectedProduct_image);
             txtSelectedProduct = itemView.findViewById(R.id.txt_rvSelectedProduct);
         }
     }

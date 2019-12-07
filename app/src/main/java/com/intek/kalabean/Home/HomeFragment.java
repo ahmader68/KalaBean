@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.DefaultSliderView;
+import com.intek.kalabean.Adapters.RecyclerHomeProductAdapter;
 import com.intek.kalabean.Adapters.RecyclerNewJobAdapter;
 import com.intek.kalabean.Adapters.RecyclerOrderAdapter;
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
@@ -47,10 +48,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     private RecyclerView rv_fragmentHome_reductedProduct;
     private RecyclerView rv_fragmentHome_newJob;
     private RecyclerOrderAdapter adapter;
-    private ImageView img_fragmentHome_complex;
-    private ImageView img_fragmentHome_malls;
-    private ImageView img_fragmentHome_chainStore;
-    private ImageView img_fragmentHome_best;
+    private ConstraintLayout img_fragmentHome_complex;
+    private ConstraintLayout img_fragmentHome_malls;
+    private ConstraintLayout img_fragmentHome_chainStore;
+    private ConstraintLayout img_fragmentHome_best;
     private Fragment fragment;
 
     private SliderLayout slider;
@@ -223,7 +224,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
 
     @Override
     public void showProductList(ProductList productList) {
-        RecyclerProductAdapter adapter = new RecyclerProductAdapter(getViewContext() , productList);
+        RecyclerHomeProductAdapter adapter = new RecyclerHomeProductAdapter(getViewContext() , productList);
         rv_fragmentHome_newProduct.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
         rv_fragmentHome_newProduct.setAdapter(adapter);
     }
