@@ -25,7 +25,9 @@
         android:hardwareAccelerated="true"
         android:largeHeap="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.intek.kalabean.MainActivity">
+        <activity android:name="com.intek.kalabean.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

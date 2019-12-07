@@ -63,8 +63,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private ImageView kalabeanIcon;
     private NavigationView navigationView;
     private FloatingActionButton fbtnPlus;
-    private int storeId = 0,userId;
-    private ImageView imgTelegram,imgInstagram,imgWeb;
+    private int storeId = 0, userId;
+    private ImageView imgTelegram, imgInstagram, imgWeb;
+    private String check, email;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,26 +86,25 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         navigationView = rootView.findViewById(R.id.navigation);
         drawer = rootView.findViewById(R.id.drawer);
         ImageView hamburgMenu = rootView.findViewById(R.id.hamburgMenu);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
-        String check = sharedPreferences.getString("username", null);
-        String email = sharedPreferences.getString("email", null);
-         userId = sharedPreferences.getInt("userid",0);
-         storeId = sharedPreferences.getInt("storeId",0);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
+        check = sharedPreferences.getString("username", null);
+        email = sharedPreferences.getString("email", null);
+        userId = sharedPreferences.getInt("userid", 0);
+        storeId = sharedPreferences.getInt("storeId", 0);
 
 
+        if (userId > 0) {
+            bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
+        } else {
+            bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
 
-         if(userId > 0){
-             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
-         }else{
-             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
-
-         }
+        }
 
 
-        if(check != null){
+        if (check != null) {
             hideItems(2);
 
-        }else {
+        } else {
             hideItems(1);
         }
         ConstraintLayout searchToolbar = rootView.findViewById(R.id.search_toolbar);
@@ -134,43 +134,43 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
         navigationView.setItemIconTintList(null);
 
-            Menu menu = navigationView.getMenu();
-            View view = menu.findItem(R.id.social_items).getActionView();
-            imgInstagram = view.findViewById(R.id.img_drawerMenu_instagram);
-            imgTelegram = view.findViewById(R.id.img_drawerMenu_telegram);
-            imgWeb = view.findViewById(R.id.img_drawerMenu_website);
-            imgInstagram.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent instagram = new Intent(Intent.ACTION_VIEW);
-                    instagram.setData(Uri.parse("https://www.instagram.com/kalabean.co"));
-                    startActivity(instagram);
+        Menu menu = navigationView.getMenu();
+        View view = menu.findItem(R.id.social_items).getActionView();
+        imgInstagram = view.findViewById(R.id.img_drawerMenu_instagram);
+        imgTelegram = view.findViewById(R.id.img_drawerMenu_telegram);
+        imgWeb = view.findViewById(R.id.img_drawerMenu_website);
+        imgInstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent instagram = new Intent(Intent.ACTION_VIEW);
+                instagram.setData(Uri.parse("https://www.instagram.com/kalabean.co"));
+                startActivity(instagram);
 
-                }
-            });
+            }
+        });
 
-            imgTelegram.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String account = "kalabean";
-                    Intent telegram = new Intent(Intent.ACTION_VIEW);
-                    telegram.setData(Uri.parse("http://telegram.me/" + account));
-                    startActivity(telegram);
-                }
-            });
+        imgTelegram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String account = "kalabean";
+                Intent telegram = new Intent(Intent.ACTION_VIEW);
+                telegram.setData(Uri.parse("http://telegram.me/" + account));
+                startActivity(telegram);
+            }
+        });
 
-            imgWeb.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Fragment webFragment = new ShowWebFragment();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frm_MainActivity_mainLayout,webFragment);
-                    transaction.commit();
-                }
-            });
+        imgWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment webFragment = new ShowWebFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frm_MainActivity_mainLayout, webFragment);
+                transaction.commit();
+            }
+        });
 
-            //menu.findItem(R.id.login).setVisible(false);
-            //menu.findItem(R.id.sabtenam).setVisible(false);
+        //menu.findItem(R.id.login).setVisible(false);
+        //menu.findItem(R.id.sabtenam).setVisible(false);
 
         hamburgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,19 +189,19 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 //                    drawer.closeDrawer(GravityCompat.START);
 //                    fragment = new LoginFragment();
 //                }
-                 if(id == R.id.item_drawer_register){
+                if (id == R.id.item_drawer_register) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new RegisterFragment();
-                }else if(id == R.id.item_drawer_category){
+                } else if (id == R.id.item_drawer_category) {
                     drawer.closeDrawer(GravityCompat.START);
                     fragment = new CatFragment();
 //                     Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
-                }else if (id == R.id.item_drawer_cities) {
+                } else if (id == R.id.item_drawer_cities) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
 
-                }else if(id == R.id.item_drawer_language){
+                } else if (id == R.id.item_drawer_language) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
@@ -216,25 +216,30 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     drawer.closeDrawer(GravityCompat.START);
 
 
-                }else if(id == R.id.item_drawer_search){
+                } else if (id == R.id.item_drawer_search) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
 
-                }else if(id == R.id.item_drawer_guide){
+                } else if (id == R.id.item_drawer_guide) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
 
-                }else if(id == R.id.item_drawer_support){
+                } else if (id == R.id.item_drawer_support) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
-                }else if(id == R.id.item_drawer_exit){
-
+                } else if (id == R.id.item_drawer_exit) {
+                    sharedPreferences.edit().clear().apply();
+                    bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
+                    hideItems(1);
+                    userId = 0;
+                    check =null;
+                    storeId = 0;
+                    email = null;
+                    showMessage(getResources().getString(R.string.toast_logout));
                     drawer.closeDrawer(GravityCompat.START);
-
-
                 }
                 FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -260,22 +265,26 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                         fragment = new HomeFragment();
                         break;
                     case R.id.cat:
-//                        fragment = new CatFragment();
-                        Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
+                        if (userId > 0) {
+                            fragment = new CatFragment();
+                        } else {
+                            showMessage(getResources().getString(R.string.toast_first_login));
+                            fragment = new LoginWithUserPassFragment();
+                        }
                         break;
                     case R.id.cities:
-                        Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
+                        showMessage(getResources().getString(R.string.toast_coming_soon));
                         break;
                     case R.id.enter:
-                        if(userId <= 0) {
+                        if (userId <= 0) {
                             fragment = new LoginWithUserPassFragment();
-                        }else{
+                        } else {
                             fragment = new VUFragment();
                         }
                         break;
                 }
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                 transaction.commit();
                 return true;
             }
@@ -284,22 +293,22 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         fbtnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(userId > 0) {
-                    if(storeId > 0) {
+                if (userId > 0) {
+                    if (storeId > 0) {
                         fragment = new AddProductFragment();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                         transaction.commit();
-                    }else{
+                    } else {
                         fragment = new DefinitionFragment();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                        transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                         transaction.commit();
                     }
-                }else{
+                } else {
                     fragment = new LoginWithUserPassFragment();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+                    transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                     transaction.commit();
                 }
             }
@@ -319,7 +328,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .start(Objects.requireNonNull(getActivity()));
             } else {
-                Toast.makeText(getViewContext(), "اجازه دسترسی داده نشد.", Toast.LENGTH_SHORT).show();
+                showMessage(getResources().getString(R.string.toast_not_allowed));
             }
         }
     }
@@ -347,7 +356,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                             Objects.requireNonNull(getActivity()).finish();
                             System.exit(0);
                         } else if (!checkExit) {
-                            Toast.makeText(getViewContext(), "برای خروج دکمه بازگشت را مجدد کلیک کنید", Toast.LENGTH_SHORT).show();
+                            showMessage(getResources().getString(R.string.toast_press_back_again));
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -364,19 +373,25 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     }
 
-    private void hideItems(int id){
+    private void hideItems(int id) {
         Menu navMenu = navigationView.getMenu();
-        switch (id){
+        switch (id) {
             case 1:
                 navMenu.findItem(R.id.item_drawer_register).setVisible(true);
                 navMenu.findItem(R.id.item_drawer_category).setVisible(false);
+                navMenu.findItem(R.id.item_drawer_exit).setVisible(false);
                 break;
             case 2:
                 navMenu.findItem(R.id.item_drawer_register).setVisible(false);
-
                 navMenu.findItem(R.id.item_drawer_category).setVisible(true);
+                navMenu.findItem(R.id.item_drawer_exit).setVisible(true);
                 break;
 
         }
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }
