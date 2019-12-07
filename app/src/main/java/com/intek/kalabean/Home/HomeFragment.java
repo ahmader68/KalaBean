@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -48,10 +49,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     private RecyclerView rv_fragmentHome_reductedProduct;
     private RecyclerView rv_fragmentHome_newJob;
     private RecyclerOrderAdapter adapter;
-    private ConstraintLayout img_fragmentHome_complex;
-    private ConstraintLayout img_fragmentHome_malls;
-    private ConstraintLayout img_fragmentHome_chainStore;
-    private ConstraintLayout img_fragmentHome_best;
+    private CardView cv_fragmentHome_complex;
+    private CardView cv_fragmentHome_malls;
+    private CardView cv_fragmentHome_chainStore;
+    private CardView cv_fragmentHome_best;
     private Fragment fragment;
 
     private SliderLayout slider;
@@ -80,10 +81,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         rv_fragmentHome_newProduct = rootView.findViewById(R.id.rv_fragmentHome_newProduct);
         rv_fragmentHome_reductedProduct = rootView.findViewById(R.id.rv_fragmentHome_reductedProduct);
         rv_fragmentHome_newJob = rootView.findViewById(R.id.rv_fragmentHome_newJob);
-        img_fragmentHome_complex = rootView.findViewById(R.id.img_fragmentHome_complex);
-        img_fragmentHome_malls = rootView.findViewById(R.id.img_fragmentHome_malls);
-        img_fragmentHome_chainStore = rootView.findViewById(R.id.img_fragmentHome_chainStore);
-        img_fragmentHome_best = rootView.findViewById(R.id.img_fragmentHome_best);
+        cv_fragmentHome_complex = rootView.findViewById(R.id.cv_fragmentHome_complex);
+        cv_fragmentHome_malls = rootView.findViewById(R.id.cv_fragmentHome_malls);
+        cv_fragmentHome_chainStore = rootView.findViewById(R.id.cv_fragmentHome_chainStore);
+        cv_fragmentHome_best = rootView.findViewById(R.id.cv_fragmentHome_best);
         slider = rootView.findViewById(R.id.slider);
 
         List<String> linkList;
@@ -159,7 +160,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
 
         //////////////////////////////////////////////////////////////////
 
-        img_fragmentHome_complex.setOnClickListener(new View.OnClickListener() {
+        cv_fragmentHome_complex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragment = new ComplexFragment();
@@ -170,7 +171,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
             }
         });
 
-        img_fragmentHome_malls.setOnClickListener(new View.OnClickListener() {
+        cv_fragmentHome_malls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragment = new MarketsFragment();
@@ -181,7 +182,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
             }
         });
 
-        img_fragmentHome_chainStore.setOnClickListener(new View.OnClickListener() {
+        cv_fragmentHome_chainStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragment = new ChainFragment();
@@ -192,7 +193,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
             }
         });
 
-        img_fragmentHome_best.setOnClickListener(new View.OnClickListener() {
+        cv_fragmentHome_best.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragment = new BrandsFragment();
