@@ -26,7 +26,7 @@ public class ShowWebFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bundle = getArguments();
-        webAddress = bundle.getString("web","");
+        webAddress = "http://www.kalabean.com";
 
     }
 

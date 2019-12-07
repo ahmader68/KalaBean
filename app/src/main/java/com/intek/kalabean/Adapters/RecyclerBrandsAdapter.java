@@ -44,7 +44,7 @@ public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAd
         String imgUrl = brand.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
-        final String storeCount ="تعداد فروشگاه  " + brand.getShopCount();
+        final String storeCount ="فروشگاه ها  " + brand.getShopCount();
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(brand.getTitleFA());

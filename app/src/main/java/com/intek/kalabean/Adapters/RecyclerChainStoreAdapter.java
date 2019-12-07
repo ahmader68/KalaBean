@@ -51,7 +51,7 @@ public class RecyclerChainStoreAdapter extends RecyclerView.Adapter<RecyclerChai
         String imgUrl = chainStore.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
-        final String storeCount ="تعداد فروشگاه  " + chainStore.getShopCount();
+        final String storeCount ="فروشگاه ها  " + chainStore.getShopCount();
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(chainStore.getTitleFA());
         holder.txtStoreCount.setText(storeCount);

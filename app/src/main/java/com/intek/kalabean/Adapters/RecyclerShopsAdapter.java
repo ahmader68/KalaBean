@@ -59,6 +59,7 @@ public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdap
 
 
 
+
                 FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 ShowShopFragment shopShopFragment = new ShowShopFragment();
