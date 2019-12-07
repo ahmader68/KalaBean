@@ -154,137 +154,137 @@ public class CatFragment extends BaseFragment implements CatContract.View {
         items.add("لباس زیر");
 
 
-        conFurniture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowFurniture.setVisibility(View.VISIBLE);
-                setVisiblity(conFurniture.getId());
-                imgArrowCloth.setVisibility(View.INVISIBLE);
-                view1.setVisibility(View.VISIBLE);
-                rvClothFurniture.setVisibility(View.VISIBLE);
-                runAnimation(rvClothFurniture, 1);
-            }
-        });
-
-        conCloth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowCloth.setVisibility(View.VISIBLE);
-                setVisiblity(conCloth.getId());
-                view1.setVisibility(View.VISIBLE);
-                imgArrowFurniture.setVisibility(View.INVISIBLE);
-                rvClothFurniture.setVisibility(View.VISIBLE);
-                runAnimation(rvClothFurniture, 0);
-            }
-        });
-
-        conJewellery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowJewellery.setVisibility(View.VISIBLE);
-                setVisiblity(conJewellery.getId());
-                view2.setVisibility(View.VISIBLE);
-                imgArrowBeauty.setVisibility(View.INVISIBLE);
-                rvJewelleryBeauty.setVisibility(View.VISIBLE);
-                runAnimation(rvJewelleryBeauty,1);
-            }
-        });
-
-        conBeauty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowBeauty.setVisibility(View.VISIBLE);
-                setVisiblity(conBeauty.getId());
-                view2.setVisibility(View.VISIBLE);
-                imgArrowJewellery.setVisibility(View.INVISIBLE);
-                rvJewelleryBeauty.setVisibility(View.VISIBLE);
-                runAnimation(rvJewelleryBeauty,0);
-            }
-        });
-
-        conIndustry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowIndustry.setVisibility(View.VISIBLE);
-                setVisiblity(conIndustry.getId());
-                view3.setVisibility(View.VISIBLE);
-                imgArrowFood.setVisibility(View.INVISIBLE);
-                rvIndustryFood.setVisibility(View.VISIBLE);
-                runAnimation(rvIndustryFood,1);
-            }
-        });
-
-        conFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowFood.setVisibility(View.VISIBLE);
-                setVisiblity(conFood.getId());
-                view3.setVisibility(View.VISIBLE);
-                imgArrowIndustry.setVisibility(View.INVISIBLE);
-                rvIndustryFood.setVisibility(View.VISIBLE);
-                runAnimation(rvIndustryFood,0);
-            }
-        });
-
-        conDigital.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowDigital.setVisibility(View.VISIBLE);
-                setVisiblity(conDigital.getId());
-                view4.setVisibility(View.VISIBLE);
-                imgArrowSport.setVisibility(View.INVISIBLE);
-                rvDigitalSport.setVisibility(View.VISIBLE);
-                runAnimation(rvDigitalSport,1);
-            }
-        });
-
-        conSport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowSport.setVisibility(View.VISIBLE);
-                setVisiblity(conSport.getId());
-                view4.setVisibility(View.VISIBLE);
-                imgArrowDigital.setVisibility(View.INVISIBLE);
-                rvDigitalSport.setVisibility(View.VISIBLE);
-                runAnimation(rvDigitalSport,0);
-            }
-        });
-
-        conArt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowArt.setVisibility(View.VISIBLE);
-                setVisiblity(conArt.getId());
-                view5.setVisibility(View.VISIBLE);
-                imgArrowKid.setVisibility(View.INVISIBLE);
-                rvArtKid.setVisibility(View.VISIBLE);
-                runAnimation(rvArtKid,1);
-            }
-        });
-
-        conKid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowKid.setVisibility(View.VISIBLE);
-                setVisiblity(conKid.getId());
-                view5.setVisibility(View.VISIBLE);
-                imgArrowArt.setVisibility(View.INVISIBLE);
-                rvArtKid.setVisibility(View.VISIBLE);
-                runAnimation(rvArtKid,0);
-            }
-        });
-
-        conWedding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgArrowWedding.setVisibility(View.VISIBLE);
-                setVisiblity(conWedding.getId());
-                view6.setVisibility(View.VISIBLE);
-                rvArtKid.setVisibility(View.GONE);
-                rvWedding.setVisibility(View.VISIBLE);
-                runAnimation(rvWedding,0);
-            }
-        });
+//        conFurniture.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowFurniture.setVisibility(View.VISIBLE);
+//                setVisiblity(conFurniture.getId());
+//                imgArrowCloth.setVisibility(View.INVISIBLE);
+//                view1.setVisibility(View.VISIBLE);
+//                rvClothFurniture.setVisibility(View.VISIBLE);
+//                runAnimation(rvClothFurniture, 1);
+//            }
+//        });
+//
+//        conCloth.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowCloth.setVisibility(View.VISIBLE);
+//                setVisiblity(conCloth.getId());
+//                view1.setVisibility(View.VISIBLE);
+//                imgArrowFurniture.setVisibility(View.INVISIBLE);
+//                rvClothFurniture.setVisibility(View.VISIBLE);
+//                runAnimation(rvClothFurniture, 0);
+//            }
+//        });
+//
+//        conJewellery.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowJewellery.setVisibility(View.VISIBLE);
+//                setVisiblity(conJewellery.getId());
+//                view2.setVisibility(View.VISIBLE);
+//                imgArrowBeauty.setVisibility(View.INVISIBLE);
+//                rvJewelleryBeauty.setVisibility(View.VISIBLE);
+//                runAnimation(rvJewelleryBeauty,1);
+//            }
+//        });
+//
+//        conBeauty.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowBeauty.setVisibility(View.VISIBLE);
+//                setVisiblity(conBeauty.getId());
+//                view2.setVisibility(View.VISIBLE);
+//                imgArrowJewellery.setVisibility(View.INVISIBLE);
+//                rvJewelleryBeauty.setVisibility(View.VISIBLE);
+//                runAnimation(rvJewelleryBeauty,0);
+//            }
+//        });
+//
+//        conIndustry.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowIndustry.setVisibility(View.VISIBLE);
+//                setVisiblity(conIndustry.getId());
+//                view3.setVisibility(View.VISIBLE);
+//                imgArrowFood.setVisibility(View.INVISIBLE);
+//                rvIndustryFood.setVisibility(View.VISIBLE);
+//                runAnimation(rvIndustryFood,1);
+//            }
+//        });
+//
+//        conFood.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowFood.setVisibility(View.VISIBLE);
+//                setVisiblity(conFood.getId());
+//                view3.setVisibility(View.VISIBLE);
+//                imgArrowIndustry.setVisibility(View.INVISIBLE);
+//                rvIndustryFood.setVisibility(View.VISIBLE);
+//                runAnimation(rvIndustryFood,0);
+//            }
+//        });
+//
+//        conDigital.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowDigital.setVisibility(View.VISIBLE);
+//                setVisiblity(conDigital.getId());
+//                view4.setVisibility(View.VISIBLE);
+//                imgArrowSport.setVisibility(View.INVISIBLE);
+//                rvDigitalSport.setVisibility(View.VISIBLE);
+//                runAnimation(rvDigitalSport,1);
+//            }
+//        });
+//
+//        conSport.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowSport.setVisibility(View.VISIBLE);
+//                setVisiblity(conSport.getId());
+//                view4.setVisibility(View.VISIBLE);
+//                imgArrowDigital.setVisibility(View.INVISIBLE);
+//                rvDigitalSport.setVisibility(View.VISIBLE);
+//                runAnimation(rvDigitalSport,0);
+//            }
+//        });
+//
+//        conArt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowArt.setVisibility(View.VISIBLE);
+//                setVisiblity(conArt.getId());
+//                view5.setVisibility(View.VISIBLE);
+//                imgArrowKid.setVisibility(View.INVISIBLE);
+//                rvArtKid.setVisibility(View.VISIBLE);
+//                runAnimation(rvArtKid,1);
+//            }
+//        });
+//
+//        conKid.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowKid.setVisibility(View.VISIBLE);
+//                setVisiblity(conKid.getId());
+//                view5.setVisibility(View.VISIBLE);
+//                imgArrowArt.setVisibility(View.INVISIBLE);
+//                rvArtKid.setVisibility(View.VISIBLE);
+//                runAnimation(rvArtKid,0);
+//            }
+//        });
+//
+//        conWedding.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                imgArrowWedding.setVisibility(View.VISIBLE);
+//                setVisiblity(conWedding.getId());
+//                view6.setVisibility(View.VISIBLE);
+//                rvArtKid.setVisibility(View.GONE);
+//                rvWedding.setVisibility(View.VISIBLE);
+//                runAnimation(rvWedding,0);
+//            }
+//        });
 
 
     }

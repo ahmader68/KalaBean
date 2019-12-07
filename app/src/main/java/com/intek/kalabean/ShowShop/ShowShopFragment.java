@@ -212,7 +212,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             public void onClick(View v) {
                 if(userId > 0) {
                     if (web.isEmpty()) {
-                        showMessage("هیچ وب سایتی برای این فروشگاه ثبت نشده است");
+                        showMessage(getResources().getString(R.string.toast_this_store_has_no_website));
                     } else {
                         Bundle bundle = new Bundle();
                         bundle.putString("web", web);
