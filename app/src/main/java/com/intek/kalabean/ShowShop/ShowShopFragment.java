@@ -143,10 +143,10 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             public void onClick(View view) {
                 if(heartCheck){
                     heartCheck = false;
-                    imgHeart.setImageResource(R.drawable.white_heart);
+                    imgHeart.setImageResource(R.drawable.empty_heart);
                 }else{
                     heartCheck = true;
-                    imgHeart.setImageResource(R.drawable.red_heart);
+                    imgHeart.setImageResource(R.drawable.full_heart);
                 }
             }
         });

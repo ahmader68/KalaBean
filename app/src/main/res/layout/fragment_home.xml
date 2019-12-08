@@ -93,7 +93,6 @@
                         />
                 </androidx.cardview.widget.CardView>
 
-
                 <TextView
                     android:id="@+id/txt_fragmentHome_complex"
                     android:layout_width="wrap_content"
