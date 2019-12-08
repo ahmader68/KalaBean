@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -70,9 +71,9 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             txtWorkHour,
             txtNull;
 
-    private RecyclerView rvProductList;
+    private ConstraintLayout conFragmentShopInfo;
 
-    private Dialog dialog;
+    private RecyclerView rvProductList;
 
     private Bundle extras;
     public int SellCenterID;
@@ -126,31 +127,22 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
         rvProductList = rootView.findViewById(R.id.rv_fragmentShop_list);
 
+        conFragmentShopInfo = rootView.findViewById(R.id.con_fragmentShop_info);
+
         String shopInfo = "اطلاعات فروشگاه " + title;
         btnInfo.setText(shopInfo);
         Picasso.get().load(image).into(imgShop);
 
         presenter.getProduct(ShopId);
 
-        dialog = new Dialog(getViewContext());
-        dialog.setContentView(R.layout.dialog_more_info_shop);
-        dialog.setCanceledOnTouchOutside(true);
-
-        txtAddress = dialog.findViewById(R.id.txt_fragmentShop_address);
-        txtCountView = dialog.findViewById(R.id.txt_fragmentShop_countView);
-        imgInstagram = dialog.findViewById(R.id.img_fragmentShop_instagram);
-        imgTelegram = dialog.findViewById(R.id.img_fragmentShop_telegram);
-        imgEmail = dialog.findViewById(R.id.img_fragmentShop_email);
-        imgWeb = dialog.findViewById(R.id.img_fragmentShop_domain);
+        txtAddress = rootView.findViewById(R.id.txt_fragmentShop_address);
+        txtCountView = rootView.findViewById(R.id.txt_fragmentShop_countView);
+        imgInstagram = rootView.findViewById(R.id.img_fragmentShop_instagram);
+        imgTelegram = rootView.findViewById(R.id.img_fragmentShop_telegram);
+        imgEmail = rootView.findViewById(R.id.img_fragmentShop_email);
+        imgWeb = rootView.findViewById(R.id.img_fragmentShop_domain);
         txtAddress.setText(address);
         txtCountView.setText(String.valueOf(visitCount));
-
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
 
         imgHeart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -269,24 +261,18 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
                 }
             }
         });
-
-        dialog = new Dialog(getViewContext());
-        dialog.setContentView(R.layout.dialog_more_info_shop);
-        dialog.setCanceledOnTouchOutside(true);
-
-        txtAddress = dialog.findViewById(R.id.txt_fragmentShop_address);
-        txtCountView = dialog.findViewById(R.id.txt_fragmentShop_countView);
         txtAddress.setText(address);
         txtCountView.setText(String.valueOf(visitCount));
 
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(userId > 0) {
-                    dialog.show();
-                }else{
-                    firstLogin();
+        btnInfo.setOnClickListener(v -> {
+            if(userId > 0) {
+                if (conFragmentShopInfo.getVisibility() == View.GONE) {
+                    conFragmentShopInfo.setVisibility(View.VISIBLE);
+                } else if (conFragmentShopInfo.getVisibility() == View.VISIBLE){
+                    conFragmentShopInfo.setVisibility(View.GONE);
                 }
+            }else{
+                firstLogin();
             }
         });
     }

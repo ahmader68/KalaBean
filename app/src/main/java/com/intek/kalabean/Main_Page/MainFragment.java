@@ -92,6 +92,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         userId = sharedPreferences.getInt("userid", 0);
         storeId = sharedPreferences.getInt("storeId", 0);
 
+        char m = email.charAt(0);
+
 
         if (userId > 0) {
             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
@@ -111,24 +113,20 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         edt_toolbar_search = rootView.findViewById(R.id.edt_toolbar_search);
         kalabeanIcon = rootView.findViewById(R.id.kalabeanIcon);
 
-        searchToolbar.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                if (edt_toolbar_search.getVisibility() == View.INVISIBLE) {
-                    edt_toolbar_search.setVisibility(View.VISIBLE);
+        searchToolbar.setOnClickListener(v -> {
+            if (edt_toolbar_search.getVisibility() == View.INVISIBLE) {
+                edt_toolbar_search.setVisibility(View.VISIBLE);
 
-                    edt_toolbar_search.requestFocus();
-                    InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(edt_toolbar_search, InputMethodManager.SHOW_IMPLICIT);
+                edt_toolbar_search.requestFocus();
+                InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(edt_toolbar_search, InputMethodManager.SHOW_IMPLICIT);
 
-                    kalabeanIcon.setVisibility(View.INVISIBLE);
-                } else if (edt_toolbar_search.getVisibility() == View.VISIBLE) {
-                    edt_toolbar_search.setVisibility(View.INVISIBLE);
-                    InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(edt_toolbar_search.getWindowToken(), 0);
-                    kalabeanIcon.setVisibility(View.VISIBLE);
-                }
+                kalabeanIcon.setVisibility(View.INVISIBLE);
+            } else if (edt_toolbar_search.getVisibility() == View.VISIBLE) {
+                edt_toolbar_search.setVisibility(View.INVISIBLE);
+                InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(edt_toolbar_search.getWindowToken(), 0);
+                kalabeanIcon.setVisibility(View.VISIBLE);
             }
         });
 
