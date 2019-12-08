@@ -235,6 +235,7 @@
     <string name="txt_fragmentShowShop_shops">فروشگاه ها</string>
 
     <string name="txt_dialogProduct_toolbar">نام محصول</string>
+    <string name="txt_dialogProduct_link">لینک</string>
 
     <string name="toast_logout">با موفقیت از حساب کاربری خود خارج شدید</string>
     <string name="toast_first_login">ابتدا باید وارد برنامه شوید</string>

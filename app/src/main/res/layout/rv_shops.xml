@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/img_rvShops_shopImage"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:contentDescription="@string/ShopName"
                 android:scaleType="centerCrop"

@@ -1,7 +1,9 @@
 package com.intek.kalabean.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +26,9 @@ import com.squareup.picasso.Picasso;
 public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdapter.ShopViewHolder> {
 
     private ShopsList shopsList;
-    private Context context;
+    private Activity context;
 
-    public RecyclerShopsAdapter(Context context , ShopsList shopsList){
+    public RecyclerShopsAdapter(Activity context , ShopsList shopsList){
         this.context = context;
         this.shopsList = shopsList;
     }
@@ -41,32 +43,38 @@ public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdap
     @Override
     public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
         final ShopsList.Shops shop = shopsList.getItems().get(position);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        context.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        int w = (width/2) - 40;
+
+        holder.imgShop.setMinimumHeight(w);
+        holder.imgShop.setMinimumWidth(w);
+
         Picasso.get().load(shop.getImage()).into(holder.imgShop);
         holder.txtTitle.setText(shop.getTitleFA());
 
-        holder.cv_shops.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID" , shop.getSellCenterID());
-                bundle.putString("image" , shop.getImage());
-                bundle.putString("title" , shop.getTitleFA());
-                bundle.putInt("ShopId" , shop.getShopid());
-                bundle.putInt("visitCount",shop.getVisiteCount());
-                bundle.putString("address",shop.getAddressFA());
-                bundle.putString("tel",shop.getTel());
-                bundle.putString("web",shop.getLinksite());
+        holder.cv_shops.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("SellCenterID" , shop.getSellCenterID());
+            bundle.putString("image" , shop.getImage());
+            bundle.putString("title" , shop.getTitleFA());
+            bundle.putInt("ShopId" , shop.getShopid());
+            bundle.putInt("visitCount",shop.getVisiteCount());
+            bundle.putString("address",shop.getAddressFA());
+            bundle.putString("tel",shop.getTel());
+            bundle.putString("web",shop.getLinksite());
 
 
 
-
-                FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                ShowShopFragment shopShopFragment = new ShowShopFragment();
-                shopShopFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopShopFragment);
-                transaction.commit();
-            }
+            FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            ShowShopFragment shopShopFragment = new ShowShopFragment();
+            shopShopFragment.setArguments(bundle);
+            transaction.replace(R.id.frm_fragmentMain_mainLayout , shopShopFragment);
+            transaction.commit();
         });
     }
 

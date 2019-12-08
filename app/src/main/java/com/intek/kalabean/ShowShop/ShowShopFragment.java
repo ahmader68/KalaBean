@@ -116,10 +116,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
         imgShop = rootView.findViewById(R.id.img_fragmentShop_shop);
         imgHeart = rootView.findViewById(R.id.img_fragmentShop_heart);
-        imgInstagram = rootView.findViewById(R.id.img_fragmentShop_instagram);
-        imgTelegram = rootView.findViewById(R.id.img_fragmentShop_telegram);
-        imgEmail = rootView.findViewById(R.id.img_fragmentShop_email);
-        imgWeb = rootView.findViewById(R.id.img_fragmentShop_domain);
         imgShare = rootView.findViewById(R.id.img_fragmentShop_share);
         imgHambur = rootView.findViewById(R.id.img_fragmentShop_hambur);
         imgMap = rootView.findViewById(R.id.img_fragmentShop_map);
@@ -136,7 +132,25 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
         presenter.getProduct(ShopId);
 
+        dialog = new Dialog(getViewContext());
+        dialog.setContentView(R.layout.dialog_more_info_shop);
+        dialog.setCanceledOnTouchOutside(true);
 
+        txtAddress = dialog.findViewById(R.id.txt_fragmentShop_address);
+        txtCountView = dialog.findViewById(R.id.txt_fragmentShop_countView);
+        imgInstagram = dialog.findViewById(R.id.img_fragmentShop_instagram);
+        imgTelegram = dialog.findViewById(R.id.img_fragmentShop_telegram);
+        imgEmail = dialog.findViewById(R.id.img_fragmentShop_email);
+        imgWeb = dialog.findViewById(R.id.img_fragmentShop_domain);
+        txtAddress.setText(address);
+        txtCountView.setText(String.valueOf(visitCount));
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
 
         imgHeart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,7 +324,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         } else {
             txtNull.setVisibility(View.GONE);
             rvProductList.setVisibility(View.VISIBLE);
-            adapter = new RecyclerProductAdapter(getViewContext(), productLists);
+            adapter = new RecyclerProductAdapter(getActivity(), productLists);
             rvProductList.setLayoutManager(new GridLayoutManager(getViewContext() , 3 , RecyclerView.VERTICAL , false));
             rvProductList.setAdapter(adapter);
         }

@@ -104,7 +104,7 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
         if (productList.getItems() == null){
             txt_fragmentShops_Null.setVisibility(View.VISIBLE);
         } else {
-            adapter = new RecyclerProductAdapter(getViewContext(), productList);
+            adapter = new RecyclerProductAdapter(getActivity(), productList);
             rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
             rv_fragmentShops_list.setAdapter(adapter);
         }
