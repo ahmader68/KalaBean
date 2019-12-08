@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +60,7 @@
                 android:layout_height="56dp"
                 android:layout_margin="8dp"
                 android:padding="10dp"
-                android:src="@drawable/share_black"
+                android:src="@drawable/ic_black_share"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -79,14 +79,122 @@
         app:layout_constraintTop_toBottomOf="@+id/con_dialogProduct_toolbar">
 
         <com.glide.slider.library.SliderLayout
-            android:id="@+id/slider"
+            android:id="@+id/slider_dialogProduct_slider"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txt_dialogProduct_brief"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/Description"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/con_dialogProduct_slideShow" />
+
+    <ImageView
+        android:id="@+id/img_dialogProduct_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_coin"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dialogProduct_brief"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_dialogProduct_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:textSize="18sp"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_dialogProduct_price"
+        app:layout_constraintTop_toTopOf="@+id/img_dialogProduct_price"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dialogProduct_price" />
+
+    <TextView
+        android:id="@+id/txt_dialogProduct_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Rial"
+        android:textSize="18sp"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/txt_dialogProduct_price"
+        app:layout_constraintTop_toTopOf="@+id/img_dialogProduct_price"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dialogProduct_price" />
+
+    <TextView
+        android:id="@+id/txt_dialogProduct_priceReduced"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/txt_dialogProduct_currency"
+        app:layout_constraintTop_toTopOf="@+id/img_dialogProduct_price"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dialogProduct_price" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Rial"
+        android:textSize="18sp"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/txt_dialogProduct_priceReduced"
+        app:layout_constraintTop_toTopOf="@+id/img_dialogProduct_price"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dialogProduct_price" />
+
+    <ImageView
+    android:id="@+id/img_dialogProduct_calender"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_calendar"
+    android:layout_margin="8dp"
+    app:layout_constraintTop_toBottomOf="@+id/img_dialogProduct_price"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_dialogProduct_calender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_rvTicket_dateHolder"
+        android:textSize="18sp"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_dialogProduct_calender"
+        app:layout_constraintTop_toTopOf="@+id/img_dialogProduct_calender"
+        app:layout_constraintBottom_toBottomOf="@+id/img_dialogProduct_calender" />
+
+    <ImageView
+        android:id="@+id/img_dialogProduct_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_link"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/img_dialogProduct_calender"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_dialogProduct_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_dialogProduct_link"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_dialogProduct_link"
+        app:layout_constraintTop_toTopOf="@+id/img_dialogProduct_link"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

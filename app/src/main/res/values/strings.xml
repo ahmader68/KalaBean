@@ -234,4 +234,5 @@
     <string name="txt_fragmentShowShop_product">محصولات</string>
     <string name="txt_fragmentShowShop_shops">فروشگاه ها</string>
     <string name="txt_dialogProduct_toolbar">نام محصول</string>
+    <string name="txt_dialogProduct_link">لینک</string>
 </resources>

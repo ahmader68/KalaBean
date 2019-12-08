@@ -148,29 +148,21 @@
             android:id="@+id/toolBarShowShop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             app:layout_collapseMode="pin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_floorContainer">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/con_fragmentShowShops_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/ns_fragmentShowShop_nested"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/con_fragmentShowShops_floorContainer">
 
                 <RadioGroup
                     android:id="@+id/rg_fragmentShowShop_switch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -218,7 +210,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rg_fragmentShowShop_switch" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
 

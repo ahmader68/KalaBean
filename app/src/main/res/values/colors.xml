@@ -34,6 +34,7 @@
     <color name="startDefGradient">#869cd6</color>
     <color name="endDefGradient">#edf0f7</color>
     <color name="pestasioGreen">#94fc13</color>
+    <color name="pestasioGreenDark">#79A240</color>
     <color name="cardviewTitleBackground">#82acff</color>
     <color name="acceptButton">#FF5D9E</color>
     <color name="cardviewBeauty">#ebd7bc</color>

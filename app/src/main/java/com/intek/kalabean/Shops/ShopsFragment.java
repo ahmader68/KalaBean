@@ -128,7 +128,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void getShopsList(ShopsList shops) {
-        adapter = new RecyclerShopsAdapter(getViewContext(),shops);
+        adapter = new RecyclerShopsAdapter(getActivity(),shops);
         rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(),2,RecyclerView.VERTICAL,false));
         rvShopList.setAdapter(adapter);
     }

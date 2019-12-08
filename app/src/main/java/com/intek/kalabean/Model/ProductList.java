@@ -30,7 +30,8 @@ public class ProductList {
         private String CreateDate;
         private String Coverimage;
         private List<Album> AlbumImages;
-
+        private String Price;
+        private String DiscountIsPercent;
 
         public int getId() {
             return id;
@@ -150,6 +151,22 @@ public class ProductList {
 
         public void setAlbumImages(List<Album> albumImages) {
             AlbumImages = albumImages;
+        }
+
+        public String getPrice() {
+            return Price;
+        }
+
+        public void setPrice(String price) {
+            Price = price;
+        }
+
+        public String getDiscountIsPercent() {
+            return DiscountIsPercent;
+        }
+
+        public void setDiscountIsPercent(String discountIsPercent) {
+            DiscountIsPercent = discountIsPercent;
         }
 
         class Album {
