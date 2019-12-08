@@ -51,6 +51,8 @@ import com.intek.kalabean.ShowUserShop.UserShopContract;
 import com.intek.kalabean.ShowUserShop.UserShopPresenter;
 import com.intek.kalabean.Ticket.TicketContract;
 import com.intek.kalabean.Ticket.TicketPresenter;
+import com.intek.kalabean.VIP_User_Profile.VUContract;
+import com.intek.kalabean.VIP_User_Profile.VUPresenter;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -78,6 +80,7 @@ public class DatabaseMethods {
     private static TicketContract.Presenter ticketPresenter = new TicketPresenter(new KalaBeanRepository());
     private static LoginWithUserPassContract.Presenter loginWithUserPassPresenter = new LoginWithUserPassPresenter(new KalaBeanRepository());
     private static EditUserContract.Presenter editUserPresenter = new EditUserPresenter(new KalaBeanRepository());
+    private static VUContract.Presenter vuPresenter = new VUPresenter(new KalaBeanRepository());
     private static int flag = 0;
 
 
@@ -189,7 +192,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getBrands(int id,int sellCenterCatId){
+    public static void getBrands(int id, int sellCenterCatId) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getBrands(sellCenterCatId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -201,7 +204,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(BrandList brandList) {
-                        switch (flag){
+                        switch (flag) {
                             case 4:
                                 brandsPresenter.onSuccessGetBrand(brandList);
                                 break;
@@ -210,7 +213,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 4:
                                 brandsPresenter.onError(e.toString());
                                 break;
@@ -219,9 +222,9 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getChainStore(int id,int sellCenterCatId,int cityId){
+    public static void getChainStore(int id, int sellCenterCatId, int cityId) {
         flag = id;
-        DatabaseMethods.kalaBeanDataSource.getChainStore(sellCenterCatId,cityId).subscribeOn(Schedulers.newThread())
+        DatabaseMethods.kalaBeanDataSource.getChainStore(sellCenterCatId, cityId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<ChainStoreList>() {
                     @Override
@@ -231,7 +234,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(ChainStoreList chainStoreList) {
-                        switch (flag){
+                        switch (flag) {
                             case 5:
                                 chainPresenter.onSuccessGetChainStore(chainStoreList);
                                 break;
@@ -240,7 +243,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 5:
                                 chainPresenter.onError(e.toString());
                                 break;
@@ -249,9 +252,9 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getComplex(int id,int sellCenterId,int cityId){
+    public static void getComplex(int id, int sellCenterId, int cityId) {
         flag = id;
-        DatabaseMethods.kalaBeanDataSource.getComplex(sellCenterId,cityId).subscribeOn(Schedulers.newThread())
+        DatabaseMethods.kalaBeanDataSource.getComplex(sellCenterId, cityId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<ComplexList>() {
                     @Override
@@ -261,7 +264,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(ComplexList complexList) {
-                        switch (flag){
+                        switch (flag) {
                             case 6:
                                 complexPresenter.onSuccessGetComplex(complexList);
                                 break;
@@ -271,7 +274,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 6:
                                 complexPresenter.onError(e.toString());
                                 break;
@@ -280,7 +283,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getStoreKind(int id){
+    public static void getStoreKind(int id) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getStoreKind().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -292,7 +295,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(MallKindList mallKindList) {
-                        switch (flag){
+                        switch (flag) {
                             case 1:
                                 definitionPresenter.onSuccessStoreKind(mallKindList);
                                 break;
@@ -301,7 +304,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 1:
                                 definitionPresenter.onError(e.toString());
                                 break;
@@ -310,7 +313,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getShopCenterList(int id,int idCenterCat){
+    public static void getShopCenterList(int id, int idCenterCat) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getShopCenterList(idCenterCat).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -322,7 +325,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(ShopCenterList shopCenterList) {
-                        switch (flag){
+                        switch (flag) {
                             case 1:
                                 definitionPresenter.onSuccessShopCenterList(shopCenterList);
                                 break;
@@ -331,7 +334,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 1:
                                 definitionPresenter.onError(e.toString());
                                 break;
@@ -340,7 +343,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getFloorList(int id,int idCenter){
+    public static void getFloorList(int id, int idCenter) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getFloorList(idCenter).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -352,7 +355,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(FloorList floorList) {
-                        switch (flag){
+                        switch (flag) {
                             case 1:
                                 definitionPresenter.onSuccessFloorList(floorList);
                                 break;
@@ -364,7 +367,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 1:
                                 definitionPresenter.onError(e.toString());
                                 break;
@@ -376,7 +379,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void storeDefinition(int id, StoreDif storeDif){
+    public static void storeDefinition(int id, StoreDif storeDif) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.storeDefinition(storeDif).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -399,7 +402,7 @@ public class DatabaseMethods {
 
     }
 
-    public static void getProductList(int id,int shopId){
+    public static void getProductList(int id, int shopId) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getProduct(shopId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -411,7 +414,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(ProductList productList) {
-                        switch (flag){
+                        switch (flag) {
                             case 7:
                                 homePresenter.onSuccessGetProductList(productList);
                                 break;
@@ -426,7 +429,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 7:
                                 homePresenter.onError(e.toString());
                                 break;
@@ -441,7 +444,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getUserShop(int id,int creatorId){
+    public static void getUserShop(int id, int creatorId) {
 
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getUserShop(creatorId).subscribeOn(Schedulers.newThread())
@@ -454,7 +457,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(UserShop userShop) {
-                        switch (flag){
+                        switch (flag) {
                             case 13:
                                 userShopPresenter.onSuccessUserShop(userShop);
                                 break;
@@ -463,7 +466,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 13:
                                 userShopPresenter.onError(e.toString());
                                 break;
@@ -473,7 +476,7 @@ public class DatabaseMethods {
 
     }
 
-    public static void sendTicket(int id,Ticket ticket){
+    public static void sendTicket(int id, Ticket ticket) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.sendTicket(ticket).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -485,7 +488,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(Ticket ticket) {
-                        switch (flag){
+                        switch (flag) {
                             case 14:
                                 ticketPresenter.onSuccessSendTicket(ticket);
                                 break;
@@ -495,7 +498,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 14:
                                 ticketPresenter.onError(e.toString());
                                 break;
@@ -504,7 +507,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getReductedProductList(int id,int shopId){
+    public static void getReductedProductList(int id, int shopId) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.getProduct(shopId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -516,7 +519,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(ProductList productList) {
-                        switch (flag){
+                        switch (flag) {
                             case 7:
                                 homePresenter.onSuccessGetReductedProductList(productList);
                                 break;
@@ -525,7 +528,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 7:
                                 homePresenter.onError(e.toString());
                                 break;
@@ -534,9 +537,9 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getShopList(int id,int sellCenterId,int floorId){
+    public static void getShopList(int id, int sellCenterId, int floorId) {
         flag = id;
-        DatabaseMethods.kalaBeanDataSource.getShops(sellCenterId,floorId).subscribeOn(Schedulers.newThread())
+        DatabaseMethods.kalaBeanDataSource.getShops(sellCenterId, floorId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<ShopsList>() {
                     @Override
@@ -546,7 +549,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(ShopsList shopsList) {
-                        switch (flag){
+                        switch (flag) {
                             case 7:
                                 homePresenter.onSuccessGetShopList(shopsList);
                                 break;
@@ -558,7 +561,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 7:
                                 homePresenter.onError(e.toString());
                                 break;
@@ -569,7 +572,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void login(int id,User user){
+    public static void login(int id, User user) {
         flag = id;
         DatabaseMethods.kalaBeanDataSource.login(user).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -581,7 +584,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(LoggedinUser loggedinUser) {
-                        switch (flag){
+                        switch (flag) {
                             case 9:
                                 loginWithUserPassPresenter.onSuccessLogin(loggedinUser);
                                 break;
@@ -594,7 +597,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 9:
                                 loginWithUserPassPresenter.onError(e.toString());
                                 break;
@@ -607,9 +610,9 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getMarkets(int id,int sellCenterCatId,int cityCenterId){
+    public static void getMarkets(int id, int sellCenterCatId, int cityCenterId) {
         flag = id;
-        DatabaseMethods.kalaBeanDataSource.getMarkets(sellCenterCatId,cityCenterId).subscribeOn(Schedulers.newThread())
+        DatabaseMethods.kalaBeanDataSource.getMarkets(sellCenterCatId, cityCenterId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<StoreList>() {
                     @Override
@@ -619,7 +622,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onSuccess(StoreList storeList) {
-                        switch (flag){
+                        switch (flag) {
                             case 8:
                                 marketsPresenter.onSuccessGetMarket(storeList);
                                 break;
@@ -628,7 +631,7 @@ public class DatabaseMethods {
 
                     @Override
                     public void onError(Throwable e) {
-                        switch (flag){
+                        switch (flag) {
                             case 8:
                                 marketsPresenter.onError(e.toString());
                                 break;
@@ -637,7 +640,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void register(User user){
+    public static void register(User user) {
         DatabaseMethods.kalaBeanDataSource.register(user).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<User>() {
@@ -658,7 +661,7 @@ public class DatabaseMethods {
                 });
     }
 
-    public static void getUserInfo(int userId){
+    public static void getUserInfo(int userId) {
         DatabaseMethods.kalaBeanDataSource.getUserInfo(userId).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<User>() {
@@ -678,7 +681,8 @@ public class DatabaseMethods {
                     }
                 });
     }
-    public static void editUser(int uid,String mobile,String email){
+
+    public static void editUser(int uid, String mobile, String email) {
         DatabaseMethods.kalaBeanDataSource.editUser(uid, mobile, email).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<User>() {
@@ -695,6 +699,38 @@ public class DatabaseMethods {
                     @Override
                     public void onError(Throwable e) {
                         editUserPresenter.onError(e.toString());
+                    }
+                });
+    }
+
+    public static void getShopInfo(int id, int shopId, int usrid) {
+        flag = id;
+        DatabaseMethods.kalaBeanDataSource.getShopInfo(shopId, usrid).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<ShopCenterList>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(ShopCenterList shopCenterList) {
+                        switch (flag) {
+                            case 16:
+                                vuPresenter.onSuccessGetShopInfo(shopCenterList);
+                                break;
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        switch (flag){
+                            case 16:
+                                vuPresenter.onError(e.toString());
+                                break;
+                        }
+
                     }
                 });
     }

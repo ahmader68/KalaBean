@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,7 +20,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentTransitionImpl;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -28,6 +32,7 @@ import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Fragment.ShowWebFragment;
+import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
@@ -79,10 +84,14 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     private RecyclerProductAdapter adapter;
     private boolean heartCheck = false;
     private final int REQUEST_CALL_PHONE = 210;
+    private int userId;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
+        userId = sharedPreferences.getInt("userid",0);
         presenter = new ShowShopPresenter(new KalaBeanRepository());
         extras = getArguments();
         SellCenterID = extras.getInt("SellCenterID" , 1);
@@ -185,38 +194,50 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         imgTelegram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idPack = "@hooman_hooshyar";
-                String[] seperated = idPack.split("@");
-                String id = seperated[1];
+                if (userId > 0) {
+                    String idPack = "@hooman_hooshyar";
+                    String[] seperated = idPack.split("@");
+                    String id = seperated[1];
 
-                Intent telegram = new Intent(Intent.ACTION_VIEW);
-                telegram.setData(Uri.parse("http://telegram.me/"+id));
-                startActivity(telegram);
+                    Intent telegram = new Intent(Intent.ACTION_VIEW);
+                    telegram.setData(Uri.parse("http://telegram.me/" + id));
+                    startActivity(telegram);
+                }else{
+                    firstLogin();
+                }
             }
         });
 
         imgInstagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent instagram = new Intent(Intent.ACTION_VIEW);
-                instagram.setData(Uri.parse("https://www.instagram.com/hooman_hooshiar"));
-                startActivity(instagram);
+                if (userId > 0) {
+                    Intent instagram = new Intent(Intent.ACTION_VIEW);
+                    instagram.setData(Uri.parse("https://www.instagram.com/hooman_hooshiar"));
+                    startActivity(instagram);
+                }else{
+                    firstLogin();
+                }
             }
         });
 
         imgWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(web.isEmpty()){
-                    showMessage("هیچ وب سایتی برای این فروشگاه ثبت نشده است");
+                if(userId > 0) {
+                    if (web.isEmpty()) {
+                        showMessage(getResources().getString(R.string.toast_this_store_has_no_website));
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("web", web);
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        ShowWebFragment webFragment = new ShowWebFragment();
+                        webFragment.setArguments(bundle);
+                        transaction.replace(R.id.frm_MainActivity_mainLayout, webFragment);
+                        transaction.commit();
+                    }
                 }else{
-                    Bundle bundle = new Bundle();
-                    bundle.putString("web",web);
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    ShowWebFragment webFragment = new ShowWebFragment();
-                    webFragment.setArguments(bundle);
-                    transaction.replace(R.id.frm_MainActivity_mainLayout,webFragment);
-                    transaction.commit();
+                    firstLogin();
                 }
             }
         });
@@ -231,16 +252,40 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tel.isEmpty()){
-                    showMessage("هیچ شماره ای برای این فروشگاه ثبت نشده است");
-                }else {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + tel));
-                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                if(userId > 0) {
+                    if (tel.isEmpty()) {
+                        showMessage("هیچ شماره ای برای این فروشگاه ثبت نشده است");
                     } else {
-                        startActivity(intent);
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + tel));
+                        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                        } else {
+                            startActivity(intent);
+                        }
                     }
+                }else{
+                    firstLogin();
+                }
+            }
+        });
+
+        dialog = new Dialog(getViewContext());
+        dialog.setContentView(R.layout.dialog_more_info_shop);
+        dialog.setCanceledOnTouchOutside(true);
+
+        txtAddress = dialog.findViewById(R.id.txt_fragmentShop_address);
+        txtCountView = dialog.findViewById(R.id.txt_fragmentShop_countView);
+        txtAddress.setText(address);
+        txtCountView.setText(String.valueOf(visitCount));
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userId > 0) {
+                    dialog.show();
+                }else{
+                    firstLogin();
                 }
             }
         });
@@ -301,5 +346,13 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     public void onStart() {
         super.onStart();
         presenter.attachView(this);
+    }
+
+    private void firstLogin(){
+        showMessage("ابتدا باید وارد برنامه شوید");
+        Fragment fragment = new LoginWithUserPassFragment();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+        transaction.commit();
     }
 }

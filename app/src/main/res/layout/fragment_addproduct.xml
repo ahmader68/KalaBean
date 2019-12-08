@@ -138,9 +138,10 @@
                 android:text="@string/cat_product"
                 android:layout_marginStart="16dp"
                 android:textSize="16sp"/>
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentAddProduct_productCat"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:alpha="0.5"
                 android:layout_height="wrap_content"
@@ -163,10 +164,11 @@
                 android:text="@string/sp_fragmentAddProduct_subCat"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
-            <com.tiper.MaterialSpinner
+            <Spinner
                 android:id="@+id/sp_fragmentAddProduct_subCatProduct"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/spinner_stroke"
                 android:layout_width="0dp"
+                android:padding="5dp"
                 android:alpha="0.5"
                 android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_weight="0.7"
@@ -179,9 +181,9 @@
                     android:id="@+id/edt_fragmentAddProduct_productFaName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     app:layout_constraintHorizontal_weight="0.7"
                     app:layout_constraintTop_toBottomOf="@id/sp_fragmentAddProduct_subCatProduct"
                     app:layout_constraintStart_toStartOf="@id/sp_fragmentAddProduct_productCat"
@@ -208,9 +210,9 @@
                     android:id="@+id/edt_fragmentAddProduct_productEnglishName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:alpha="0.5"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     app:layout_constraintTop_toBottomOf="@id/edt_fragmentAddProduct_productFaName"
                     app:layout_constraintStart_toStartOf="@id/edt_fragmentAddProduct_productFaName"
                     app:layout_constraintEnd_toEndOf="@id/edt_fragmentAddProduct_productFaName"
@@ -223,7 +225,7 @@
 
                 <EditText
                     android:id="@+id/edt_fragmentAddProduct_productArabicName"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.5"
@@ -231,7 +233,7 @@
                     app:layout_constraintStart_toStartOf="@+id/edt_fragmentAddProduct_productEnglishName"
                     app:layout_constraintEnd_toEndOf="@+id/edt_fragmentAddProduct_productEnglishName"
                     android:layout_marginTop="16dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textAlignment="center"
@@ -265,7 +267,7 @@
 
                 <EditText
                     android:id="@+id/edt_fragmentAddProduct_price"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:alpha="0.5"
@@ -277,7 +279,7 @@
                     android:layout_marginEnd="8dp"
                     android:inputType="number"
                     android:textColor="@color/black"
-                    android:padding="10dp"/>
+                    android:padding="5dp"/>
 
             <TextView
                 android:id="@+id/txt_fragmentAddProduct_percentSales"
@@ -295,7 +297,7 @@
                     android:id="@+id/edt_fragmentAddProduct_percentSales"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_shape"
+                    android:background="@drawable/shape_radius"
                     android:alpha="0.5"
                     app:layout_constraintTop_toTopOf="@id/txt_fragmentAddProduct_percentSales"
                     app:layout_constraintBottom_toBottomOf="@id/txt_fragmentAddProduct_percentSales"
@@ -304,7 +306,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="8dp"
                     android:inputType="number"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/txt_fragmentAddProduct_description"
@@ -322,10 +324,10 @@
                 android:id="@+id/edt_fragmentAddProduct_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/shape_radius"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:alpha="0.5"
                 app:layout_constraintTop_toTopOf="@id/txt_fragmentAddProduct_description"
                 app:layout_constraintBottom_toBottomOf="@id/txt_fragmentAddProduct_description"

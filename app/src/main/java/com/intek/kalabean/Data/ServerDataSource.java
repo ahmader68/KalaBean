@@ -143,6 +143,11 @@ public class ServerDataSource implements KalaBeanDataSource {
         return apiService.editUser(uid, mobile, email);
     }
 
+    @Override
+    public Single<ShopCenterList> getShopInfo(int shopId, int usrid) {
+        return apiService.getShopInfo(shopId, usrid);
+    }
+
 
     @Override
     public Single<ShopCenterList> getShopCenterList(int idCenterCat) {

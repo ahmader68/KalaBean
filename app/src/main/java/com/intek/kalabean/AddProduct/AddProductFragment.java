@@ -53,7 +53,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     private ConstraintLayout conImage, conVideo;
 
-    private MaterialSpinner spProductCat,spProductSubCat;
+    private Spinner spProductCat,spProductSubCat;
 
 
     private EditText
@@ -236,30 +236,30 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
             }
         });
 
-        spProductCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spProductCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
-                activityId = spActivityKind.getItems().get(i).getId();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                activityId = spActivityKind.getItems().get(position).getId();
                 Toast.makeText(getViewContext(), activityId + "", Toast.LENGTH_SHORT).show();
                 spProductSubCat.setSelection(-1);
                 presenter.subCatid();
             }
 
             @Override
-            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
-        spProductSubCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spProductSubCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
-                subCatId = cutPostions.getSubCategory().get(i).getIdSubCategory();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                subCatId = cutPostions.getSubCategory().get(position).getIdSubCategory();
                 Toast.makeText(getViewContext(), subCatId + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });

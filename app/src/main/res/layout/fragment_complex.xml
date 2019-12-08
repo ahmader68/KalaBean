@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:background="@drawable/spinner_shape"
+                android:background="@drawable/shape_radius"
                 android:hint="انتخاب"
                 android:textColor="@color/colorPrimary"
                 app:jrs_icon_tint="@color/colorPrimary"

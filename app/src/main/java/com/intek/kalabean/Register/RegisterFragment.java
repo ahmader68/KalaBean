@@ -14,11 +14,13 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +57,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
             edtFragmentRegisterLastname;
 
 
-    private MaterialSpinner spFragmentRegisterProvince, spFragmentRegisterCity;
+    private Spinner spFragmentRegisterProvince, spFragmentRegisterCity;
 
 
     private Button btnFragmentRegisterAccept;
@@ -119,30 +121,30 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         provinceArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentRegisterProvince.setAdapter(provinceArrayAdapter);
 
-        spFragmentRegisterProvince.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spFragmentRegisterProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 state = spFragmentRegisterProvince.getSelectedItem().toString();
                 cities = getProvinceAndCity.getCity(state);
                 cityArrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, cities);
                 cityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spFragmentRegisterCity.setAdapter(cityArrayAdapter);
 
-                spFragmentRegisterCity.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+                spFragmentRegisterCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @org.jetbrains.annotations.Nullable View view, int i, long l) {
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         city = spFragmentRegisterCity.getSelectedItem().toString();
                     }
 
                     @Override
-                    public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+                    public void onNothingSelected(AdapterView<?> parent) {
 
                     }
                 });
             }
 
             @Override
-            public void onNothingSelected(@NotNull MaterialSpinner materialSpinner) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });

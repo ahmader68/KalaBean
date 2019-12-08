@@ -80,7 +80,7 @@
                     android:layout_marginEnd="6dp"
                     app:elevation="0dp"
                     app:itemBackground="@color/colorWhite"
-                    app:itemIconSize="25dp"
+                    app:itemIconSize="30dp"
                     app:itemIconTint="@color/colorBlueIcon"
                     app:itemRippleColor="@color/colorBlue"
                     app:itemTextAppearanceActive="@color/colorBlueIcon"
@@ -91,7 +91,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:menu="@menu/bottom_nav_items" />
+                    app:menu="@menu/bottom_nav_items"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

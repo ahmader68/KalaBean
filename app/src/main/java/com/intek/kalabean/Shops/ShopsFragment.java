@@ -1,6 +1,10 @@
 package com.intek.kalabean.Shops;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -15,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,14 +43,21 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
-    private TextView txtTitle
-            ,txt_fragmentShowShops_address ,
+
+    private CircleImageView cimgShop;
+
+
+    private TextView
+            txtTitle,
+            txt_fragmentShowShops_address ,
             txt_fragmentShowShops_phone ,
             txt_fragmentShowShops_web ,
-            txt_fragmentShowShops_vTour;
+            txt_fragmentShowShops_vTour,
+            txtPhone;
     private RecyclerView rvShopList ,
             rv_fragmentShowShops_floorList;
     private ImageView img_fragmentShowShops_showShop;
+
 
 
     private ShopsContract.Presenter presenter;
@@ -54,8 +67,12 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public int SellCenterID;
     public String image;
     public String title;
+
+    public int ShopId,REQUEST_CODE_CALL = 500;
+
     public String address;
-    public int ShopId;
+
+
 
     private RadioGroup rgSwitch;
     private RadioButton rbProduct;
@@ -84,6 +101,10 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public void setupViews() {
 
         txtTitle = rootView.findViewById(R.id.txt_fragmentShowShops_title);
+
+        txtPhone = rootView.findViewById(R.id.txt_fragmentShowShops_phone);
+        cimgShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
+
         rvShopList = rootView.findViewById(R.id.rv_fragmentShowShops_shopList);
         presenter.getShops(SellCenterID,0);
         txtTitle.setText(title);
@@ -115,6 +136,20 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
                     case R.id.rb_fragmentShowShop_shops :
                         presenter.getShops(SellCenterID , -1);
                         break;
+                }
+            }
+        });
+
+        txtPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel = txtPhone.getText().toString().trim();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + tel));
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CALL_PHONE},REQUEST_CODE_CALL);
+                }else {
+                    startActivity(intent);
                 }
             }
         });

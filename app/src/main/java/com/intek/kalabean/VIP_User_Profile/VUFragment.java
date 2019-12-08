@@ -23,8 +23,11 @@ import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Model.ShopCenter;
+import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.R;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 public class VUFragment extends BaseFragment implements VUContract.View {
     private VUContract.Presenter presenter;
@@ -87,7 +90,7 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         cvShowStore = rootView.findViewById(R.id.cv_fragmentVIPUser_showStore);
 
         btnDefinition = rootView.findViewById(R.id.btn_fragmentVIPUser_definitionStore);
-
+        presenter.getShopInfo(storeId,userId);
         if(storeId > 0){
             btnDefinition.setVisibility(View.GONE);
         }
@@ -158,6 +161,13 @@ public class VUFragment extends BaseFragment implements VUContract.View {
     @Override
     public void showMessage(String msg) {
         Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void getShopInfo(ShopCenterList shopCenter) {
+        Picasso.get().load(shopCenter.getItems().get(0).getIcon()).into(cimgOuter);
+        txtStoreName.setText(shopCenter.getItems().get(0).getTitleFA());
+
     }
 
     @Override

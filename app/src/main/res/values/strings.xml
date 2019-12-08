@@ -233,6 +233,15 @@
     <string name="profile">پروفایل</string>
     <string name="txt_fragmentShowShop_product">محصولات</string>
     <string name="txt_fragmentShowShop_shops">فروشگاه ها</string>
+
     <string name="txt_dialogProduct_toolbar">نام محصول</string>
     <string name="txt_dialogProduct_link">لینک</string>
+
+    <string name="toast_logout">با موفقیت از حساب کاربری خود خارج شدید</string>
+    <string name="toast_first_login">ابتدا باید وارد برنامه شوید</string>
+    <string name="toast_coming_soon">به زودی</string>
+    <string name="toast_not_allowed">اجازه دسترسی داده نشد</string>
+    <string name="toast_press_back_again">برای خروج دکمه بازگشت را مجدد کلیک کنید</string>
+    <string name="toast_this_store_has_no_website">هیچ وب سایتی برای این فروشگاه ثبت نشده است</string>
+
 </resources>
