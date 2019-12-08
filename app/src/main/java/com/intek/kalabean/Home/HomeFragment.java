@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,10 +21,8 @@ import com.glide.slider.library.SliderTypes.DefaultSliderView;
 import com.intek.kalabean.Adapters.RecyclerHomeProductAdapter;
 import com.intek.kalabean.Adapters.RecyclerNewJobAdapter;
 import com.intek.kalabean.Adapters.RecyclerOrderAdapter;
-import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Adapters.RecyclerReductedProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
-import com.intek.kalabean.Best.BestFragment;
 import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
 import com.intek.kalabean.Complex.ComplexFragment;
@@ -54,6 +53,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
     private CardView cv_fragmentHome_chainStore;
     private CardView cv_fragmentHome_best;
     private Fragment fragment;
+    private TextView txt_fragmentHome_complex;
 
     private SliderLayout slider;
 
@@ -86,6 +86,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         cv_fragmentHome_chainStore = rootView.findViewById(R.id.cv_fragmentHome_chainStore);
         cv_fragmentHome_best = rootView.findViewById(R.id.cv_fragmentHome_best);
         slider = rootView.findViewById(R.id.slider);
+        txt_fragmentHome_complex = rootView.findViewById(R.id.txt_fragmentHome_complex);
 
         List<String> linkList;
 

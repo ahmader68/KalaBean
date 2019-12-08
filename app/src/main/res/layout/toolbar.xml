@@ -70,6 +70,8 @@
                         android:textSize="12sp"
                         android:visibility="invisible"
                         android:textDirection="rtl"
+                        android:lines="1"
+                        android:maxLines="1"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/search_toolbar"
                         app:layout_constraintStart_toEndOf="@+id/hamburgMenu"
