@@ -145,147 +145,151 @@ public class CatFragment extends BaseFragment implements CatContract.View {
         viewId = setViewId();
 
 
-        items.add("پوشاک مردانه");
-        items.add("پوشاک زنانه");
-        items.add("پوشاک کودک");
-        items.add("پوشاک چرم");
-        items.add("پوشاک ورزشی");
-        items.add("روسری");
-        items.add("لباس زیر");
 
 
-//        conFurniture.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowFurniture.setVisibility(View.VISIBLE);
-//                setVisiblity(conFurniture.getId());
-//                imgArrowCloth.setVisibility(View.INVISIBLE);
-//                view1.setVisibility(View.VISIBLE);
-//                rvClothFurniture.setVisibility(View.VISIBLE);
-//                runAnimation(rvClothFurniture, 1);
-//            }
-//        });
-//
-//        conCloth.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowCloth.setVisibility(View.VISIBLE);
-//                setVisiblity(conCloth.getId());
-//                view1.setVisibility(View.VISIBLE);
-//                imgArrowFurniture.setVisibility(View.INVISIBLE);
-//                rvClothFurniture.setVisibility(View.VISIBLE);
-//                runAnimation(rvClothFurniture, 0);
-//            }
-//        });
-//
-//        conJewellery.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowJewellery.setVisibility(View.VISIBLE);
-//                setVisiblity(conJewellery.getId());
-//                view2.setVisibility(View.VISIBLE);
-//                imgArrowBeauty.setVisibility(View.INVISIBLE);
-//                rvJewelleryBeauty.setVisibility(View.VISIBLE);
-//                runAnimation(rvJewelleryBeauty,1);
-//            }
-//        });
-//
-//        conBeauty.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowBeauty.setVisibility(View.VISIBLE);
-//                setVisiblity(conBeauty.getId());
-//                view2.setVisibility(View.VISIBLE);
-//                imgArrowJewellery.setVisibility(View.INVISIBLE);
-//                rvJewelleryBeauty.setVisibility(View.VISIBLE);
-//                runAnimation(rvJewelleryBeauty,0);
-//            }
-//        });
-//
-//        conIndustry.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowIndustry.setVisibility(View.VISIBLE);
-//                setVisiblity(conIndustry.getId());
-//                view3.setVisibility(View.VISIBLE);
-//                imgArrowFood.setVisibility(View.INVISIBLE);
-//                rvIndustryFood.setVisibility(View.VISIBLE);
-//                runAnimation(rvIndustryFood,1);
-//            }
-//        });
-//
-//        conFood.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowFood.setVisibility(View.VISIBLE);
-//                setVisiblity(conFood.getId());
-//                view3.setVisibility(View.VISIBLE);
-//                imgArrowIndustry.setVisibility(View.INVISIBLE);
-//                rvIndustryFood.setVisibility(View.VISIBLE);
-//                runAnimation(rvIndustryFood,0);
-//            }
-//        });
-//
-//        conDigital.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowDigital.setVisibility(View.VISIBLE);
-//                setVisiblity(conDigital.getId());
-//                view4.setVisibility(View.VISIBLE);
-//                imgArrowSport.setVisibility(View.INVISIBLE);
-//                rvDigitalSport.setVisibility(View.VISIBLE);
-//                runAnimation(rvDigitalSport,1);
-//            }
-//        });
-//
-//        conSport.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowSport.setVisibility(View.VISIBLE);
-//                setVisiblity(conSport.getId());
-//                view4.setVisibility(View.VISIBLE);
-//                imgArrowDigital.setVisibility(View.INVISIBLE);
-//                rvDigitalSport.setVisibility(View.VISIBLE);
-//                runAnimation(rvDigitalSport,0);
-//            }
-//        });
-//
-//        conArt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowArt.setVisibility(View.VISIBLE);
-//                setVisiblity(conArt.getId());
-//                view5.setVisibility(View.VISIBLE);
-//                imgArrowKid.setVisibility(View.INVISIBLE);
-//                rvArtKid.setVisibility(View.VISIBLE);
-//                runAnimation(rvArtKid,1);
-//            }
-//        });
-//
-//        conKid.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowKid.setVisibility(View.VISIBLE);
-//                setVisiblity(conKid.getId());
-//                view5.setVisibility(View.VISIBLE);
-//                imgArrowArt.setVisibility(View.INVISIBLE);
-//                rvArtKid.setVisibility(View.VISIBLE);
-//                runAnimation(rvArtKid,0);
-//            }
-//        });
-//
-//        conWedding.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgArrowWedding.setVisibility(View.VISIBLE);
-//                setVisiblity(conWedding.getId());
-//                view6.setVisibility(View.VISIBLE);
-//                rvArtKid.setVisibility(View.GONE);
-//                rvWedding.setVisibility(View.VISIBLE);
-//                runAnimation(rvWedding,0);
-//            }
-//        });
 
+        conFurniture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(2);
+                imgArrowFurniture.setVisibility(View.VISIBLE);
+                setVisiblity(conFurniture.getId());
+                imgArrowCloth.setVisibility(View.INVISIBLE);
+                view1.setVisibility(View.VISIBLE);
+                rvClothFurniture.setVisibility(View.VISIBLE);
+                runAnimation(rvClothFurniture, 1);
+            }
+        });
+
+        conCloth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(1);
+                imgArrowCloth.setVisibility(View.VISIBLE);
+                setVisiblity(conCloth.getId());
+                view1.setVisibility(View.VISIBLE);
+                imgArrowFurniture.setVisibility(View.INVISIBLE);
+                rvClothFurniture.setVisibility(View.VISIBLE);
+                runAnimation(rvClothFurniture, 0);
+            }
+        });
+
+        conJewellery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(4);
+                imgArrowJewellery.setVisibility(View.VISIBLE);
+                setVisiblity(conJewellery.getId());
+                view2.setVisibility(View.VISIBLE);
+                imgArrowBeauty.setVisibility(View.INVISIBLE);
+                rvJewelleryBeauty.setVisibility(View.VISIBLE);
+                runAnimation(rvJewelleryBeauty,1);
+            }
+        });
+
+        conBeauty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(3);
+                imgArrowBeauty.setVisibility(View.VISIBLE);
+                setVisiblity(conBeauty.getId());
+                view2.setVisibility(View.VISIBLE);
+                imgArrowJewellery.setVisibility(View.INVISIBLE);
+                rvJewelleryBeauty.setVisibility(View.VISIBLE);
+                runAnimation(rvJewelleryBeauty,0);
+            }
+        });
+
+        conIndustry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(7);
+                imgArrowIndustry.setVisibility(View.VISIBLE);
+                setVisiblity(conIndustry.getId());
+                view3.setVisibility(View.VISIBLE);
+                imgArrowFood.setVisibility(View.INVISIBLE);
+                rvIndustryFood.setVisibility(View.VISIBLE);
+                runAnimation(rvIndustryFood,1);
+            }
+        });
+
+        conFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(6);
+                imgArrowFood.setVisibility(View.VISIBLE);
+                setVisiblity(conFood.getId());
+                view3.setVisibility(View.VISIBLE);
+                imgArrowIndustry.setVisibility(View.INVISIBLE);
+                rvIndustryFood.setVisibility(View.VISIBLE);
+                runAnimation(rvIndustryFood,0);
+            }
+        });
+
+        conDigital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(10);
+                imgArrowDigital.setVisibility(View.VISIBLE);
+                setVisiblity(conDigital.getId());
+                view4.setVisibility(View.VISIBLE);
+                imgArrowSport.setVisibility(View.INVISIBLE);
+                rvDigitalSport.setVisibility(View.VISIBLE);
+                runAnimation(rvDigitalSport,1);
+            }
+        });
+
+        conSport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(11);
+                imgArrowSport.setVisibility(View.VISIBLE);
+                setVisiblity(conSport.getId());
+                view4.setVisibility(View.VISIBLE);
+                imgArrowDigital.setVisibility(View.INVISIBLE);
+                rvDigitalSport.setVisibility(View.VISIBLE);
+                runAnimation(rvDigitalSport,0);
+            }
+        });
+
+        conArt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(8);
+                imgArrowArt.setVisibility(View.VISIBLE);
+                setVisiblity(conArt.getId());
+                view5.setVisibility(View.VISIBLE);
+                imgArrowKid.setVisibility(View.INVISIBLE);
+                rvArtKid.setVisibility(View.VISIBLE);
+                runAnimation(rvArtKid,1);
+            }
+        });
+
+        conKid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(5);
+                imgArrowKid.setVisibility(View.VISIBLE);
+                setVisiblity(conKid.getId());
+                view5.setVisibility(View.VISIBLE);
+                imgArrowArt.setVisibility(View.INVISIBLE);
+                rvArtKid.setVisibility(View.VISIBLE);
+                runAnimation(rvArtKid,0);
+            }
+        });
+
+        conWedding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataEntryList(9);
+                imgArrowWedding.setVisibility(View.VISIBLE);
+                setVisiblity(conWedding.getId());
+                view6.setVisibility(View.VISIBLE);
+                rvArtKid.setVisibility(View.GONE);
+                rvWedding.setVisibility(View.VISIBLE);
+                runAnimation(rvWedding,0);
+            }
+        });
 
     }
 
@@ -386,5 +390,115 @@ public class CatFragment extends BaseFragment implements CatContract.View {
 
 
         return viewId;
+    }
+
+    private void dataEntryList(int id){
+        switch (id){
+            case 1:
+                items.clear();
+                items.add("پوشاک مردانه");
+                items.add("پوشاک زنانه");
+                items.add("پوشاک کودک");
+                items.add("پوشاک چرم");
+                items.add("پوشاک ورزشی");
+                items.add("شال و روسری");
+                items.add("لباس زیر");
+                items.add("پوشاک حجاب");
+                items.add("کیف و کفش");
+                break;
+            case 2:
+                items.clear();
+                items.add("فرش و پارچه و پرده");
+                items.add("کاغذ دیوازی");
+                items.add("لوازم تزئینی منزل");
+                items.add("تجهیزات آشپزخانه");
+                items.add("کادویی لوکس");
+                items.add("شوینده و بهداشتی");
+                items.add("گل");
+                items.add("کالای خواب");
+                items.add("سرویس چوب");
+                items.add("مبلمان");
+                items.add("لوازم تولد");
+                items.add("لوازم برقی");
+                items.add("صنایع دستی");
+                break;
+            case 3:
+                items.clear();
+                items.add("سالن زیبایی");
+                items.add("محصولات مراقبتی پوست");
+                items.add("لوازم آرایشی");
+                items.add("لوازم ورزشی");
+                items.add("باشگاه ورزشی");
+                items.add("مکمل ورزشی");
+                break;
+            case 4:
+                items.clear();
+                items.add("ساعت");
+                items.add("عینک");
+                items.add("طلا و جواهر");
+                items.add("نقره و زیورآلات");
+                items.add("عطر");
+                break;
+            case 5:
+                items.clear();
+                items.add("پوشاک کودک");
+                items.add("سیسمونی");
+                items.add("اسباب بازی");
+                items.add("کلوپ ورزشی");
+                items.add("شهربازی");
+                break;
+            case 6:
+                items.clear();
+                items.add("کافی شاپ و رستوران");
+                items.add("کیک و شیرینی");
+                items.add("سالن و تالار پذیرایی");
+                items.add("آجیل");
+                items.add("چاشنی های خوراکی");
+                items.add("لوازم قنادی");
+                items.add("مکمل ورزشی");
+                items.add("غرفه غذایی فروشگاه های زنجیره ای");
+                break;
+            case 7:
+                items.clear();
+                items.add("لوازم خودرو");
+                items.add("لوازم ساختمان");
+                items.add("موتور و دوچرخه");
+                items.add("تاسیسات");
+                items.add("ابزارآلات");
+                items.add("ادوات کشاورزی");
+                items.add("شیرآلات و تصفیه آب");
+                items.add("الکتریکی و روشنایی");
+                break;
+            case 8:
+                items.clear();
+                items.add("کتاب");
+                items.add("لوازم تحریر");
+                items.add("آتلیه عکاسی");
+                items.add("موسیقی و سازها");
+                break;
+            case 9:
+                items.clear();
+                items.add("پوشاک عروس");
+                items.add("سالن زیبایی");
+                items.add("آتلیه عکاسی");
+                items.add("گل");
+                break;
+            case 10:
+                items.clear();
+                items.add("موبایل");
+                items.add("کامپیوتر");
+                items.add("خدمات چاپ");
+                break;
+            case 11:
+                items.clear();
+                items.add("کلوپ بازی");
+                items.add("باشگاه ورزشی");
+                items.add("سینما");
+                items.add("لوازم ورزشی");
+                items.add("شهربازی");
+                items.add("دامپزشکی");
+                break;
+
+        }
     }
 }
