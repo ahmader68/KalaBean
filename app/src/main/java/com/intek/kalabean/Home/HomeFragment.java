@@ -172,37 +172,28 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
             }
         });
 
-        cv_fragmentHome_malls.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragment = new MarketsFragment();
-                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-                FragmentTransaction transactions = managers.beginTransaction();
-                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transactions.commit();
-            }
+        cv_fragmentHome_malls.setOnClickListener(view -> {
+            fragment = new MarketsFragment();
+            FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+            FragmentTransaction transactions = managers.beginTransaction();
+            transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transactions.commit();
         });
 
-        cv_fragmentHome_chainStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragment = new ChainFragment();
-                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-                FragmentTransaction transactions = managers.beginTransaction();
-                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transactions.commit();
-            }
+        cv_fragmentHome_chainStore.setOnClickListener(view -> {
+            fragment = new ChainFragment();
+            FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+            FragmentTransaction transactions = managers.beginTransaction();
+            transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transactions.commit();
         });
 
-        cv_fragmentHome_best.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragment = new BrandsFragment();
-                FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-                FragmentTransaction transactions = managers.beginTransaction();
-                transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transactions.commit();
-            }
+        cv_fragmentHome_best.setOnClickListener(view -> {
+            fragment = new BrandsFragment();
+            FragmentManager managers = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+            FragmentTransaction transactions = managers.beginTransaction();
+            transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transactions.commit();
         });
 
     }

@@ -2,6 +2,7 @@ package com.intek.kalabean.Category;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.intek.kalabean.Adapters.RecyclerCategoryAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -148,147 +150,114 @@ public class CatFragment extends BaseFragment implements CatContract.View {
 
 
 
-        conFurniture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(2);
-                imgArrowFurniture.setVisibility(View.VISIBLE);
-                setVisiblity(conFurniture.getId());
-                imgArrowCloth.setVisibility(View.INVISIBLE);
-                view1.setVisibility(View.VISIBLE);
-                rvClothFurniture.setVisibility(View.VISIBLE);
-                runAnimation(rvClothFurniture, 1);
-            }
+        conFurniture.setOnClickListener(v -> {
+            dataEntryList(2);
+            imgArrowFurniture.setVisibility(View.VISIBLE);
+            setVisiblity(conFurniture.getId());
+            imgArrowCloth.setVisibility(View.INVISIBLE);
+            view1.setVisibility(View.VISIBLE);
+            rvClothFurniture.setVisibility(View.VISIBLE);
+            runAnimation(rvClothFurniture, 1);
         });
 
-        conCloth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(1);
-                imgArrowCloth.setVisibility(View.VISIBLE);
-                setVisiblity(conCloth.getId());
-                view1.setVisibility(View.VISIBLE);
-                imgArrowFurniture.setVisibility(View.INVISIBLE);
-                rvClothFurniture.setVisibility(View.VISIBLE);
-                runAnimation(rvClothFurniture, 0);
-            }
+        conCloth.setOnClickListener(v -> {
+            dataEntryList(1);
+            imgArrowCloth.setVisibility(View.VISIBLE);
+            setVisiblity(conCloth.getId());
+            view1.setVisibility(View.VISIBLE);
+            imgArrowFurniture.setVisibility(View.INVISIBLE);
+            rvClothFurniture.setVisibility(View.VISIBLE);
+            runAnimation(rvClothFurniture, 0);
         });
 
-        conJewellery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(4);
-                imgArrowJewellery.setVisibility(View.VISIBLE);
-                setVisiblity(conJewellery.getId());
-                view2.setVisibility(View.VISIBLE);
-                imgArrowBeauty.setVisibility(View.INVISIBLE);
-                rvJewelleryBeauty.setVisibility(View.VISIBLE);
-                runAnimation(rvJewelleryBeauty,1);
-            }
+        conJewellery.setOnClickListener(v -> {
+            dataEntryList(4);
+            imgArrowJewellery.setVisibility(View.VISIBLE);
+            setVisiblity(conJewellery.getId());
+            view2.setVisibility(View.VISIBLE);
+            imgArrowBeauty.setVisibility(View.INVISIBLE);
+            rvJewelleryBeauty.setVisibility(View.VISIBLE);
+            runAnimation(rvJewelleryBeauty,1);
         });
 
-        conBeauty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(3);
-                imgArrowBeauty.setVisibility(View.VISIBLE);
-                setVisiblity(conBeauty.getId());
-                view2.setVisibility(View.VISIBLE);
-                imgArrowJewellery.setVisibility(View.INVISIBLE);
-                rvJewelleryBeauty.setVisibility(View.VISIBLE);
-                runAnimation(rvJewelleryBeauty,0);
-            }
+        conBeauty.setOnClickListener(v -> {
+            dataEntryList(3);
+            imgArrowBeauty.setVisibility(View.VISIBLE);
+            setVisiblity(conBeauty.getId());
+            view2.setVisibility(View.VISIBLE);
+            imgArrowJewellery.setVisibility(View.INVISIBLE);
+            rvJewelleryBeauty.setVisibility(View.VISIBLE);
+            runAnimation(rvJewelleryBeauty,0);
         });
 
-        conIndustry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(7);
-                imgArrowIndustry.setVisibility(View.VISIBLE);
-                setVisiblity(conIndustry.getId());
-                view3.setVisibility(View.VISIBLE);
-                imgArrowFood.setVisibility(View.INVISIBLE);
-                rvIndustryFood.setVisibility(View.VISIBLE);
-                runAnimation(rvIndustryFood,1);
-            }
+        conIndustry.setOnClickListener(v -> {
+            dataEntryList(7);
+            imgArrowIndustry.setVisibility(View.VISIBLE);
+            setVisiblity(conIndustry.getId());
+            view3.setVisibility(View.VISIBLE);
+            imgArrowFood.setVisibility(View.INVISIBLE);
+            rvIndustryFood.setVisibility(View.VISIBLE);
+            runAnimation(rvIndustryFood,1);
         });
 
-        conFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(6);
-                imgArrowFood.setVisibility(View.VISIBLE);
-                setVisiblity(conFood.getId());
-                view3.setVisibility(View.VISIBLE);
-                imgArrowIndustry.setVisibility(View.INVISIBLE);
-                rvIndustryFood.setVisibility(View.VISIBLE);
-                runAnimation(rvIndustryFood,0);
-            }
+        conFood.setOnClickListener(v -> {
+            dataEntryList(6);
+            imgArrowFood.setVisibility(View.VISIBLE);
+            setVisiblity(conFood.getId());
+            view3.setVisibility(View.VISIBLE);
+            imgArrowIndustry.setVisibility(View.INVISIBLE);
+            rvIndustryFood.setVisibility(View.VISIBLE);
+            runAnimation(rvIndustryFood,0);
         });
 
-        conDigital.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(10);
-                imgArrowDigital.setVisibility(View.VISIBLE);
-                setVisiblity(conDigital.getId());
-                view4.setVisibility(View.VISIBLE);
-                imgArrowSport.setVisibility(View.INVISIBLE);
-                rvDigitalSport.setVisibility(View.VISIBLE);
-                runAnimation(rvDigitalSport,1);
-            }
+        conDigital.setOnClickListener(v -> {
+            dataEntryList(10);
+            imgArrowDigital.setVisibility(View.VISIBLE);
+            setVisiblity(conDigital.getId());
+            view4.setVisibility(View.VISIBLE);
+            imgArrowSport.setVisibility(View.INVISIBLE);
+            rvDigitalSport.setVisibility(View.VISIBLE);
+            runAnimation(rvDigitalSport,1);
         });
 
-        conSport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(11);
-                imgArrowSport.setVisibility(View.VISIBLE);
-                setVisiblity(conSport.getId());
-                view4.setVisibility(View.VISIBLE);
-                imgArrowDigital.setVisibility(View.INVISIBLE);
-                rvDigitalSport.setVisibility(View.VISIBLE);
-                runAnimation(rvDigitalSport,0);
-            }
+        conSport.setOnClickListener(v -> {
+            dataEntryList(11);
+            imgArrowSport.setVisibility(View.VISIBLE);
+            setVisiblity(conSport.getId());
+            view4.setVisibility(View.VISIBLE);
+            imgArrowDigital.setVisibility(View.INVISIBLE);
+            rvDigitalSport.setVisibility(View.VISIBLE);
+            runAnimation(rvDigitalSport,0);
         });
 
-        conArt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(8);
-                imgArrowArt.setVisibility(View.VISIBLE);
-                setVisiblity(conArt.getId());
-                view5.setVisibility(View.VISIBLE);
-                imgArrowKid.setVisibility(View.INVISIBLE);
-                rvArtKid.setVisibility(View.VISIBLE);
-                runAnimation(rvArtKid,1);
-            }
+        conArt.setOnClickListener(v -> {
+            dataEntryList(8);
+            imgArrowArt.setVisibility(View.VISIBLE);
+            setVisiblity(conArt.getId());
+            view5.setVisibility(View.VISIBLE);
+            imgArrowKid.setVisibility(View.INVISIBLE);
+            rvArtKid.setVisibility(View.VISIBLE);
+            runAnimation(rvArtKid,1);
         });
 
-        conKid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(5);
-                imgArrowKid.setVisibility(View.VISIBLE);
-                setVisiblity(conKid.getId());
-                view5.setVisibility(View.VISIBLE);
-                imgArrowArt.setVisibility(View.INVISIBLE);
-                rvArtKid.setVisibility(View.VISIBLE);
-                runAnimation(rvArtKid,0);
-            }
+        conKid.setOnClickListener(v -> {
+            dataEntryList(5);
+            imgArrowKid.setVisibility(View.VISIBLE);
+            setVisiblity(conKid.getId());
+            view5.setVisibility(View.VISIBLE);
+            imgArrowArt.setVisibility(View.INVISIBLE);
+            rvArtKid.setVisibility(View.VISIBLE);
+            runAnimation(rvArtKid,0);
         });
 
-        conWedding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataEntryList(9);
-                imgArrowWedding.setVisibility(View.VISIBLE);
-                setVisiblity(conWedding.getId());
-                view6.setVisibility(View.VISIBLE);
-                rvArtKid.setVisibility(View.GONE);
-                rvWedding.setVisibility(View.VISIBLE);
-                runAnimation(rvWedding,0);
-            }
+        conWedding.setOnClickListener(v -> {
+            dataEntryList(9);
+            imgArrowWedding.setVisibility(View.VISIBLE);
+            setVisiblity(conWedding.getId());
+            view6.setVisibility(View.VISIBLE);
+            rvArtKid.setVisibility(View.GONE);
+            rvWedding.setVisibility(View.VISIBLE);
+            runAnimation(rvWedding,0);
         });
 
     }
@@ -500,5 +469,22 @@ public class CatFragment extends BaseFragment implements CatContract.View {
                 break;
 
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
+            }
+            return false;
+        });
     }
 }

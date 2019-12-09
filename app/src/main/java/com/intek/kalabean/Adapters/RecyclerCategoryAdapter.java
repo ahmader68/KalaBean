@@ -36,12 +36,7 @@ public class RecyclerCategoryAdapter extends RecyclerView.Adapter<RecyclerCatego
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final String item = items.get(position);
         holder.txtTitle.setText(item);
-        holder.txtTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, item, Toast.LENGTH_SHORT).show();
-            }
-        });
+        holder.txtTitle.setOnClickListener(v -> Toast.makeText(context, item, Toast.LENGTH_SHORT).show());
     }
 
     @Override

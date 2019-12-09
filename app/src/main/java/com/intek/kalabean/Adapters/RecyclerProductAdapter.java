@@ -57,27 +57,24 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
             Picasso.get().load(product.getCoverimage()).fit().into(holder.imgProduct);
         }
 
-        holder.imgProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                dialogProduct = new Dialog(context);
-                dialogProduct.setContentView(R.layout.dialog_product);
-                txtTitle = dialogProduct.findViewById(R.id.txt_dialogProduct_toolbar);
-                txtDesc = dialogProduct.findViewById(R.id.txt_dialogProduct_brief);
-                txtPrice = dialogProduct.findViewById(R.id.txt_dialogProduct_price);
-                txtPriceReduced = dialogProduct.findViewById(R.id.txt_dialogProduct_priceReduced);
-                txtCalender = dialogProduct.findViewById(R.id.txt_dialogProduct_calender);
-                txtLink = dialogProduct.findViewById(R.id.txt_dialogProduct_link);
-                slider = dialogProduct.findViewById(R.id.slider_dialogProduct_slider);
-                conClose = dialogProduct.findViewById(R.id.con_dialogProduct_close);
-                conShare = dialogProduct.findViewById(R.id.con_dialogProduct_share);
+        holder.imgProduct.setOnClickListener(v -> {
+            /*
+            dialogProduct = new Dialog(context);
+            dialogProduct.setContentView(R.layout.dialog_product);
+            txtTitle = dialogProduct.findViewById(R.id.txt_dialogProduct_toolbar);
+            txtDesc = dialogProduct.findViewById(R.id.txt_dialogProduct_brief);
+            txtPrice = dialogProduct.findViewById(R.id.txt_dialogProduct_price);
+            txtPriceReduced = dialogProduct.findViewById(R.id.txt_dialogProduct_priceReduced);
+            txtCalender = dialogProduct.findViewById(R.id.txt_dialogProduct_calender);
+            txtLink = dialogProduct.findViewById(R.id.txt_dialogProduct_link);
+            slider = dialogProduct.findViewById(R.id.slider_dialogProduct_slider);
+            conClose = dialogProduct.findViewById(R.id.con_dialogProduct_close);
+            conShare = dialogProduct.findViewById(R.id.con_dialogProduct_share);
 
-                txtTitle.setText(product.getTitle());
-                txtDesc.setText(product.getBrief());
+            txtTitle.setText(product.getTitle());
+            txtDesc.setText(product.getBrief());
 
-                 */
-            }
+             */
         });
     }
 

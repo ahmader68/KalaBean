@@ -58,22 +58,21 @@ public class RecyclerChainStoreAdapter extends RecyclerView.Adapter<RecyclerChai
         //holder.txtFloorCount.setText(store.getStoreCount());
 
 
-        holder.con_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID" , chainStore.getSellCenterID());
-                bundle.putString("image" , url);
-                bundle.putString("title" , chainStore.getTitleFA());
-                bundle.putString("address" , chainStore.getAddress());
-                bundle.putInt("flag",chainStore.getSellCenterCatID());
-                FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                ShopsFragment shopsFragment = new ShopsFragment();
-                shopsFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
-                transaction.commit();
-            }
+        holder.con_rvCircle_layout.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("SellCenterID" , chainStore.getSellCenterID());
+            bundle.putString("image" , url);
+            bundle.putString("title" , chainStore.getTitleFA());
+            bundle.putString("address" , chainStore.getAddress());
+            bundle.putInt("flag",chainStore.getSellCenterCatID());
+//                bundle.putInt("back",2);
+            ShopsFragment.flag = 2;
+            FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            ShopsFragment shopsFragment = new ShopsFragment();
+            shopsFragment.setArguments(bundle);
+            transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
+            transaction.commit();
         });
     }
 
