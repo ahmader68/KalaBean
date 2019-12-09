@@ -37,7 +37,6 @@ import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
-import com.intek.kalabean.Shops.ShopsFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -104,7 +103,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         tel = extras.getString("tel","");
         web = extras.getString("web","");
         visitCount = extras.getInt("visitCount",0);
-
 
 
     }
@@ -287,19 +285,15 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener((v, keyCode, event) -> {
-            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID",SellCenterID);
-                bundle.putString("address",address);
-                bundle.putString("image",image);
-                bundle.putString("title",title);
-                Fragment fragment = new ShopsFragment();
-                fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_fragmentMain_mainLayout,fragment).commit();
-                return true;
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                    return true;
+                }
+                return false;
             }
-            return false;
         });
     }
 

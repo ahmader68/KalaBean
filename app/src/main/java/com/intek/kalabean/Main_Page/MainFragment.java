@@ -89,8 +89,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @Override
     public void setupViews() {
-
-
         bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
         fbtnPlus = rootView.findViewById(R.id.floatingActionButton);
         navigationView = rootView.findViewById(R.id.navigation);

@@ -74,8 +74,6 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
                     shopsFragment.setArguments(bundle);
                     transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment).commit();
                 });
-
-
     }
 
     @Override
