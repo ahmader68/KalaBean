@@ -36,12 +36,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Category.CatFragment;
+import com.intek.kalabean.Chain_Store.ChainFragment;
 import com.intek.kalabean.City.CityFragment;
+import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Fragment.ShowWebFragment;
 import com.intek.kalabean.Home.HomeFragment;
 import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
+import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.Oridinary_User_Profile0.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
@@ -68,6 +72,11 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private ImageView imgTelegram, imgInstagram, imgWeb;
     private String check, email;
 
+    private ConstraintLayout con_drawerMenu_markets ,
+            con_drawerMenu_Complex ,
+            con_drawerMenu_chainStore ,
+            con_drawerMenu_best;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +102,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         userId = sharedPreferences.getInt("userid", 0);
         storeId = sharedPreferences.getInt("storeId", 0);
 
-        char m = email.charAt(0);
+
 
 
         if (userId > 0) {
@@ -291,6 +300,44 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                 transaction.commit();
             }
+        });
+
+        View header = navigationView.getHeaderView(0);
+        con_drawerMenu_markets = header.findViewById(R.id.con_drawerMenu_markets);
+        con_drawerMenu_Complex = header.findViewById(R.id.con_drawerMenu_Complex);
+        con_drawerMenu_chainStore = header.findViewById(R.id.con_drawerMenu_chainStore);
+        con_drawerMenu_best = header.findViewById(R.id.con_drawerMenu_best);
+
+        con_drawerMenu_markets.setOnClickListener(v -> {
+            fragment = new MarketsFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transaction.commit();
+            drawer.closeDrawer(GravityCompat.START);
+        });
+
+        con_drawerMenu_Complex.setOnClickListener(v -> {
+            fragment = new ComplexFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transaction.commit();
+            drawer.closeDrawer(GravityCompat.START);
+        });
+
+        con_drawerMenu_chainStore.setOnClickListener(v -> {
+            fragment = new ChainFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transaction.commit();
+            drawer.closeDrawer(GravityCompat.START);
+        });
+
+        con_drawerMenu_best.setOnClickListener(v -> {
+            fragment = new BrandsFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transaction.commit();
+            drawer.closeDrawer(GravityCompat.START);
         });
     }
 

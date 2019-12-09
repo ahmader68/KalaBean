@@ -146,17 +146,6 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         txtAddress.setText(address);
         txtCountView.setText(String.valueOf(visitCount));
 
-
-        btnInfo.setOnClickListener(v -> dialog.show());
-
-        imgHeart.setOnClickListener(view -> {
-            if(heartCheck){
-                heartCheck = false;
-                imgHeart.setImageResource(R.drawable.empty_heart);
-            }else{
-                heartCheck = true;
-                imgHeart.setImageResource(R.drawable.full_heart);
-
         imgHeart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,91 +156,111 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
                     heartCheck = true;
                     imgHeart.setImageResource(R.drawable.full_heart);
                 }
-
             }
         });
 
-        imgHambur.setOnClickListener(view -> {
-            PopupMenu popupMenu = new PopupMenu(getViewContext(),imgHambur);
-            popupMenu.getMenuInflater().inflate(R.menu.shop_menu,popupMenu.getMenu());
-            popupMenu.setOnMenuItemClickListener(menuItem -> {
-                int id = menuItem.getItemId();
-                switch (id){
-                    case R.id.menu_store_catProduct:
-                        Toast.makeText(getViewContext(), "1", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.menu_store_description:
-                        Toast.makeText(getViewContext(), "2", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.menu_store_branchs:
-                        Toast.makeText(getViewContext(), "3", Toast.LENGTH_SHORT).show();
-                }
-                return true;
-            });
-            popupMenu.show();
-        });
-
-        imgTelegram.setOnClickListener(v -> {
-            if (userId > 0) {
-                String idPack = "@hooman_hooshyar";
-                String[] seperated = idPack.split("@");
-                String id = seperated[1];
-
-                Intent telegram = new Intent(Intent.ACTION_VIEW);
-                telegram.setData(Uri.parse("http://telegram.me/" + id));
-                startActivity(telegram);
-            }else{
-                firstLogin();
-            }
-        });
-
-        imgInstagram.setOnClickListener(v -> {
-            if (userId > 0) {
-                Intent instagram = new Intent(Intent.ACTION_VIEW);
-                instagram.setData(Uri.parse("https://www.instagram.com/hooman_hooshiar"));
-                startActivity(instagram);
-            }else{
-                firstLogin();
-            }
-        });
-
-        imgWeb.setOnClickListener(v -> {
-            if(userId > 0) {
-                if (web.isEmpty()) {
-                    showMessage(getResources().getString(R.string.toast_this_store_has_no_website));
-                } else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("web", web);
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    ShowWebFragment webFragment = new ShowWebFragment();
-                    webFragment.setArguments(bundle);
-                    transaction.replace(R.id.frm_MainActivity_mainLayout, webFragment);
-                    transaction.commit();
-                }
-            }else{
-                firstLogin();
-            }
-        });
-
-        imgEmail.setOnClickListener(v -> {
-
-        });
-
-        btnContact.setOnClickListener(v -> {
-            if(userId > 0) {
-                if (tel.isEmpty()) {
-                    showMessage("هیچ شماره ای برای این فروشگاه ثبت نشده است");
-                } else {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + tel));
-                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
-                    } else {
-                        startActivity(intent);
+        imgHambur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(getViewContext(),imgHambur);
+                popupMenu.getMenuInflater().inflate(R.menu.shop_menu,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        int id = menuItem.getItemId();
+                        switch (id){
+                            case R.id.menu_store_catProduct:
+                                Toast.makeText(getViewContext(), "1", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.menu_store_description:
+                                Toast.makeText(getViewContext(), "2", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.menu_store_branchs:
+                                Toast.makeText(getViewContext(), "3", Toast.LENGTH_SHORT).show();
+                        }
+                        return true;
                     }
+                });
+                popupMenu.show();
+            }
+        });
+
+        imgTelegram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (userId > 0) {
+                    String idPack = "@hooman_hooshyar";
+                    String[] seperated = idPack.split("@");
+                    String id = seperated[1];
+
+                    Intent telegram = new Intent(Intent.ACTION_VIEW);
+                    telegram.setData(Uri.parse("http://telegram.me/" + id));
+                    startActivity(telegram);
+                }else{
+                    firstLogin();
                 }
-            }else{
-                firstLogin();
+            }
+        });
+
+        imgInstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (userId > 0) {
+                    Intent instagram = new Intent(Intent.ACTION_VIEW);
+                    instagram.setData(Uri.parse("https://www.instagram.com/hooman_hooshiar"));
+                    startActivity(instagram);
+                }else{
+                    firstLogin();
+                }
+            }
+        });
+
+        imgWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userId > 0) {
+                    if (web.isEmpty()) {
+                        showMessage(getResources().getString(R.string.toast_this_store_has_no_website));
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("web", web);
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        ShowWebFragment webFragment = new ShowWebFragment();
+                        webFragment.setArguments(bundle);
+                        transaction.replace(R.id.frm_MainActivity_mainLayout, webFragment);
+                        transaction.commit();
+                    }
+                }else{
+                    firstLogin();
+                }
+            }
+        });
+
+        imgEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userId > 0) {
+                    if (tel.isEmpty()) {
+                        showMessage("هیچ شماره ای برای این فروشگاه ثبت نشده است");
+                    } else {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + tel));
+                        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE);
+                        } else {
+                            startActivity(intent);
+                        }
+                    }
+                }else{
+                    firstLogin();
+                }
             }
         });
         txtAddress.setText(address);
@@ -259,15 +268,11 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
         btnInfo.setOnClickListener(v -> {
             if(userId > 0) {
-
-                dialog.show();
-
                 if (conFragmentShopInfo.getVisibility() == View.GONE) {
                     conFragmentShopInfo.setVisibility(View.VISIBLE);
                 } else if (conFragmentShopInfo.getVisibility() == View.VISIBLE){
                     conFragmentShopInfo.setVisibility(View.GONE);
                 }
-
             }else{
                 firstLogin();
             }
