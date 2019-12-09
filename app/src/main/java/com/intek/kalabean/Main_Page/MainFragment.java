@@ -38,11 +38,9 @@ import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Category.CatFragment;
-
 import com.intek.kalabean.Chain_Store.ChainFragment;
-import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.City.CityFragment;
-
+import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Fragment.ShowWebFragment;
 import com.intek.kalabean.Home.HomeFragment;
@@ -101,6 +99,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         email = sharedPreferences.getString("email", null);
         userId = sharedPreferences.getInt("userid", 0);
         storeId = sharedPreferences.getInt("storeId", 0);
+
+
+
 
         if (userId > 0) {
             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);

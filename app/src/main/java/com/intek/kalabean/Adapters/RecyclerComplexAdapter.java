@@ -72,26 +72,8 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
                     FragmentTransaction transaction = manager.beginTransaction();
                     ShopsFragment shopsFragment = new ShopsFragment();
                     shopsFragment.setArguments(bundle);
-                    transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
+                    transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment).commit();
                 });
-            holder.con_rvCircle_layout.setOnClickListener(view -> {
-                Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID", complex.getSellCenterID());
-                bundle.putString("image", url);
-                bundle.putString("title", complex.getTitleFA());
-                bundle.putString("address", complex.getAddress());
-                bundle.putInt("flag", complex.getSellCenterCatID());
-
-                FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                ShopsFragment shopsFragment = new ShopsFragment();
-                shopsFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
-
-                transaction.commit();
-            });
-
-
     }
 
     @Override
