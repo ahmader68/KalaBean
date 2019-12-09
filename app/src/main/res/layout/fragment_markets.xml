@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/txt_fragmentHome_mallsOneLine"
+            android:text="@string/txt_fragmentHome_markets"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/til_fragmentMarkets_markets"
             app:layout_constraintStart_toStartOf="parent"

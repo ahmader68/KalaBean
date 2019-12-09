@@ -42,8 +42,6 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new ComplexPresenter(new KalaBeanRepository());
-
-
     }
 
     @Override

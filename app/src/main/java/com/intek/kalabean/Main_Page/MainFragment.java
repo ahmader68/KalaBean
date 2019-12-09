@@ -93,6 +93,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         userId = sharedPreferences.getInt("userid", 0);
         storeId = sharedPreferences.getInt("storeId", 0);
 
+        char m = email.charAt(0);
+
 
         if (userId > 0) {
             bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
