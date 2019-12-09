@@ -59,37 +59,39 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
 
 
         holder.con_rvCircle_layout.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putInt("SellCenterID", complex.getSellCenterID());
-            bundle.putString("image", url);
-            bundle.putString("title", complex.getTitleFA());
-            bundle.putString("address", complex.getAddress());
-            bundle.putInt("flag", complex.getSellCenterCatID());
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("SellCenterID", complex.getSellCenterID());
+                    bundle.putString("image", url);
+                    bundle.putString("title", complex.getTitleFA());
+                    bundle.putString("address", complex.getAddress());
+                    bundle.putInt("flag", complex.getSellCenterCatID());
 //            bundle.putInt("back", 3);
-            ShopsFragment.flag = 3;
+                    ShopsFragment.flag = 3;
 
-            FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            ShopsFragment shopsFragment = new ShopsFragment();
-            shopsFragment.setArguments(bundle);
-            transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
+                    FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    ShopsFragment shopsFragment = new ShopsFragment();
+                    shopsFragment.setArguments(bundle);
+                    transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
+                });
+            holder.con_rvCircle_layout.setOnClickListener(view -> {
+                Bundle bundle = new Bundle();
+                bundle.putInt("SellCenterID", complex.getSellCenterID());
+                bundle.putString("image", url);
+                bundle.putString("title", complex.getTitleFA());
+                bundle.putString("address", complex.getAddress());
+                bundle.putInt("flag", complex.getSellCenterCatID());
 
-        holder.con_rvCircle_layout.setOnClickListener(view -> {
-            Bundle bundle = new Bundle();
-            bundle.putInt("SellCenterID" , complex.getSellCenterID());
-            bundle.putString("image" , url);
-            bundle.putString("title" , complex.getTitleFA());
-            bundle.putString("address" , complex.getAddress());
-            bundle.putInt("flag",complex.getSellCenterCatID());
+                FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                ShopsFragment shopsFragment = new ShopsFragment();
+                shopsFragment.setArguments(bundle);
+                transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
 
-            FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            ShopsFragment shopsFragment = new ShopsFragment();
-            shopsFragment.setArguments(bundle);
-            transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
+                transaction.commit();
+            });
 
-            transaction.commit();
-        });
+
     }
 
     @Override
