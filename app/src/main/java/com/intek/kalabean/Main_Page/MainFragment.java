@@ -37,6 +37,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Category.CatFragment;
+import com.intek.kalabean.City.CityFragment;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Fragment.ShowWebFragment;
 import com.intek.kalabean.Home.HomeFragment;
@@ -147,106 +148,92 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             }
         });
 
-        imgTelegram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String account = "kalabean";
-                Intent telegram = new Intent(Intent.ACTION_VIEW);
-                telegram.setData(Uri.parse("http://telegram.me/" + account));
-                startActivity(telegram);
-            }
+        imgTelegram.setOnClickListener(v -> {
+            String account = "kalabean";
+            Intent telegram = new Intent(Intent.ACTION_VIEW);
+            telegram.setData(Uri.parse("http://telegram.me/" + account));
+            startActivity(telegram);
         });
 
-        imgWeb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment webFragment = new ShowWebFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frm_MainActivity_mainLayout, webFragment);
-                transaction.commit();
-            }
+        imgWeb.setOnClickListener(v -> {
+            Fragment webFragment = new ShowWebFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_MainActivity_mainLayout, webFragment);
+            transaction.commit();
         });
 
         //menu.findItem(R.id.login).setVisible(false);
         //menu.findItem(R.id.sabtenam).setVisible(false);
 
-        hamburgMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer.openDrawer(GravityCompat.START);
-            }
-        });
+        hamburgMenu.setOnClickListener(view1 -> drawer.openDrawer(GravityCompat.START));
 
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            int id = menuItem.getItemId();
 
 //                if (id == R.id.login) {
 //                    drawer.closeDrawer(GravityCompat.START);
 //                    fragment = new LoginFragment();
 //                }
-                if (id == R.id.item_drawer_register) {
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new RegisterFragment();
-                } else if (id == R.id.item_drawer_category) {
-                    drawer.closeDrawer(GravityCompat.START);
-                    fragment = new CatFragment();
+            if (id == R.id.item_drawer_register) {
+                drawer.closeDrawer(GravityCompat.START);
+                fragment = new RegisterFragment();
+            } else if (id == R.id.item_drawer_category) {
+                drawer.closeDrawer(GravityCompat.START);
+                fragment = new CatFragment();
 //                     Toast.makeText(getViewContext(), "به زودی", Toast.LENGTH_SHORT).show();
-                } else if (id == R.id.item_drawer_cities) {
+            } else if (id == R.id.item_drawer_cities) {
 
-                    drawer.closeDrawer(GravityCompat.START);
-
-
-                } else if (id == R.id.item_drawer_language) {
-
-                    drawer.closeDrawer(GravityCompat.START);
+                drawer.closeDrawer(GravityCompat.START);
 
 
-                } else if (id == R.id.item_drawer_about) {
+            } else if (id == R.id.item_drawer_language) {
 
-                    drawer.closeDrawer(GravityCompat.START);
-
-
-                } else if (id == R.id.item_drawer_article) {
-
-                    drawer.closeDrawer(GravityCompat.START);
+                drawer.closeDrawer(GravityCompat.START);
 
 
-                } else if (id == R.id.item_drawer_search) {
+            } else if (id == R.id.item_drawer_about) {
 
-                    drawer.closeDrawer(GravityCompat.START);
-
-
-                } else if (id == R.id.item_drawer_guide) {
-
-                    drawer.closeDrawer(GravityCompat.START);
+                drawer.closeDrawer(GravityCompat.START);
 
 
-                } else if (id == R.id.item_drawer_support) {
+            } else if (id == R.id.item_drawer_article) {
 
-                    drawer.closeDrawer(GravityCompat.START);
-
-                } else if (id == R.id.item_drawer_exit) {
-                    sharedPreferences.edit().clear().apply();
-                    bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
-                    hideItems(1);
-                    userId = 0;
-                    check =null;
-                    storeId = 0;
-                    email = null;
-                    showMessage(getResources().getString(R.string.toast_logout));
-                    drawer.closeDrawer(GravityCompat.START);
-                }
-                FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transaction.commit();
+                drawer.closeDrawer(GravityCompat.START);
 
 
-                return true;
+            } else if (id == R.id.item_drawer_search) {
+
+                drawer.closeDrawer(GravityCompat.START);
+
+
+            } else if (id == R.id.item_drawer_guide) {
+
+                drawer.closeDrawer(GravityCompat.START);
+
+
+            } else if (id == R.id.item_drawer_support) {
+
+                drawer.closeDrawer(GravityCompat.START);
+
+            } else if (id == R.id.item_drawer_exit) {
+                sharedPreferences.edit().clear().apply();
+                bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
+                hideItems(1);
+                userId = 0;
+                check =null;
+                storeId = 0;
+                email = null;
+                showMessage(getResources().getString(R.string.toast_logout));
+                drawer.closeDrawer(GravityCompat.START);
             }
+            FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transaction.commit();
+
+
+            return true;
         });
 
         fragment = new HomeFragment();
@@ -255,60 +242,54 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
         transactions.commit();
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-                        fragment = new HomeFragment();
-                        break;
-                    case R.id.cat:
-                        if (userId > 0) {
-                            fragment = new CatFragment();
-                        } else {
-                            showMessage(getResources().getString(R.string.toast_first_login));
-                            fragment = new LoginWithUserPassFragment();
-                        }
-                        break;
-                    case R.id.cities:
-                        showMessage(getResources().getString(R.string.toast_coming_soon));
-                        break;
-                    case R.id.enter:
-                        if (userId <= 0) {
-                            fragment = new LoginWithUserPassFragment();
-                        } else {
-                            fragment = new VUFragment();
-                        }
-                        break;
-                }
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                transaction.commit();
-                return true;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    fragment = new HomeFragment();
+                    break;
+                case R.id.cat:
+                    if (userId > 0) {
+                        fragment = new CatFragment();
+                    } else {
+                        showMessage(getResources().getString(R.string.toast_first_login));
+                        fragment = new LoginWithUserPassFragment();
+                    }
+                    break;
+                case R.id.cities:
+                    fragment = new CityFragment();
+                    break;
+                case R.id.enter:
+                    if (userId <= 0) {
+                        fragment = new LoginWithUserPassFragment();
+                    } else {
+                        fragment = new VUFragment();
+                    }
+                    break;
             }
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+            transaction.commit();
+            return true;
         });
 
-        fbtnPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (userId > 0) {
-                    if (storeId > 0) {
-                        fragment = new AddProductFragment();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                        transaction.commit();
-                    } else {
-                        fragment = new DefinitionFragment();
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-                        transaction.commit();
-                    }
+        fbtnPlus.setOnClickListener(v -> {
+            if (userId > 0) {
+                if (storeId > 0) {
+                    fragment = new AddProductFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                    transaction.commit();
                 } else {
-                    fragment = new LoginWithUserPassFragment();
+                    fragment = new DefinitionFragment();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
                     transaction.commit();
                 }
+            } else {
+                fragment = new LoginWithUserPassFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+                transaction.commit();
             }
         });
     }
@@ -339,34 +320,26 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                    if (drawer.isDrawerOpen(GravityCompat.START)) {
-                        drawer.closeDrawer(GravityCompat.START);
-                    } else {
-                        if (checkExit) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            Objects.requireNonNull(getActivity()).finish();
-                            System.exit(0);
-                        } else if (!checkExit) {
-                            showMessage(getResources().getString(R.string.toast_press_back_again));
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    checkExit = false;
-                                }
-                            }, 2000);
-                            checkExit = true;
-                        }
+        getView().setOnKeyListener((view, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                } else {
+                    if (checkExit) {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        Objects.requireNonNull(getActivity()).finish();
+                        System.exit(0);
+                    } else if (!checkExit) {
+                        showMessage(getResources().getString(R.string.toast_press_back_again));
+                        new Handler().postDelayed(() -> checkExit = false, 2000);
+                        checkExit = true;
                     }
                 }
-                return false;
             }
+            return false;
         });
 
     }

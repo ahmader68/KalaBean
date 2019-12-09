@@ -2,6 +2,9 @@ package com.intek.kalabean.Factories;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
 
@@ -59,5 +63,22 @@ public class FactoriesFragment extends BaseFragment implements FactoriesContract
     public void onStop() {
         super.onStop();
         presenter.detachView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
+            }
+            return false;
+        });
     }
 }

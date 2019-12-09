@@ -149,44 +149,33 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
             }
         });
 
-        rgFragmentRegisterUserKind.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.rb_fragmentRegister_regular) {
-                    userLevel = "0";
-                } else {
-                    userLevel = "1";
-                }
+        rgFragmentRegisterUserKind.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rb_fragmentRegister_regular) {
+                userLevel = "0";
+            } else {
+                userLevel = "1";
             }
         });
 
-        btnFragmentRegisterAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!validateName() || !validateFamily() || !validateUsername() || !validatePassword() ||  !validateConpass()  ||   !validateProvince() ||  !validateCity()   || !validateEmail()){
-                    return;
-                }else {
-                    user.setFirstName(edtFragmentRegisterFirstname.getText().toString());
-                    user.setLastName(edtFragmentRegisterLastname.getText().toString());
-                    user.setEmail(edtFragmentRegisterEmail.getText().toString());
-                    user.setCity(city);
-                    user.setProvince(state);
-                    user.setPassword(edtFragmentRegisterPassword.getText().toString());
-                    user.setMobile(edtFragmentRegisterUsername.getText().toString());
-                    user.setUsr(edtFragmentRegisterUsername.getText().toString());
-                    //user.setUserLevel(userLevel);
-                    presenter.register(user);
-                }
-
+        btnFragmentRegisterAccept.setOnClickListener(v -> {
+            if(!validateName() || !validateFamily() || !validateUsername() || !validatePassword() ||  !validateConpass()  ||   !validateProvince() ||  !validateCity()   || !validateEmail()){
+                return;
+            }else {
+                user.setFirstName(edtFragmentRegisterFirstname.getText().toString());
+                user.setLastName(edtFragmentRegisterLastname.getText().toString());
+                user.setEmail(edtFragmentRegisterEmail.getText().toString());
+                user.setCity(city);
+                user.setProvince(state);
+                user.setPassword(edtFragmentRegisterPassword.getText().toString());
+                user.setMobile(edtFragmentRegisterUsername.getText().toString());
+                user.setUsr(edtFragmentRegisterUsername.getText().toString());
+                //user.setUserLevel(userLevel);
+                presenter.register(user);
             }
+
         });
 
-        txtFragmentRegisterClickHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getViewContext(), "Click", Toast.LENGTH_SHORT).show();
-            }
-        });
+        txtFragmentRegisterClickHere.setOnClickListener(v -> Toast.makeText(getViewContext(), "Click", Toast.LENGTH_SHORT).show());
     }
 
     @Override
@@ -330,15 +319,12 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout, new MainFragment()).commit();
-                    return true;
-                }
-                return false;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout, new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 

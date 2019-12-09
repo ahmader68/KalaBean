@@ -30,7 +30,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
     private Context context;
     private ComplexList complexList;
 
-    public RecyclerComplexAdapter(Context context , ComplexList complexList){
+    public RecyclerComplexAdapter(Context context, ComplexList complexList) {
         this.context = context;
         this.complexList = complexList;
     }
@@ -38,7 +38,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
     @NonNull
     @Override
     public ComplexViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.rv_circle , parent , false);
+        View view = LayoutInflater.from(context).inflate(R.layout.rv_circle, parent, false);
         return new ComplexViewHolder(view);
     }
 
@@ -49,13 +49,30 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
         String imgUrl = complex.getImage();
         final String[] separated = imgUrl.split("'");
         final String url = separated[0];
-        final String storeCount ="فروشگاه ها  " + complex.getShopCount();
+        final String storeCount = "فروشگاه ها  " + complex.getShopCount();
 
 
         Picasso.get().load(url).into(holder.imgProfile);
         holder.txtStoreName.setText(complex.getTitleFA());
         holder.txtStoreCount.setText(storeCount);
 
+
+
+        holder.con_rvCircle_layout.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("SellCenterID", complex.getSellCenterID());
+            bundle.putString("image", url);
+            bundle.putString("title", complex.getTitleFA());
+            bundle.putString("address", complex.getAddress());
+            bundle.putInt("flag", complex.getSellCenterCatID());
+//            bundle.putInt("back", 3);
+            ShopsFragment.flag = 3;
+
+            FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            ShopsFragment shopsFragment = new ShopsFragment();
+            shopsFragment.setArguments(bundle);
+            transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
 
         holder.con_rvCircle_layout.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
@@ -70,6 +87,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
             ShopsFragment shopsFragment = new ShopsFragment();
             shopsFragment.setArguments(bundle);
             transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
+
             transaction.commit();
         });
     }
@@ -84,6 +102,7 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
         ImageView imgProfile;
         TextView txtStoreName;
         TextView txtStoreCount;
+
         ComplexViewHolder(@NonNull View itemView) {
             super(itemView);
             con_rvCircle_layout = itemView.findViewById(R.id.con_rvCirle_layout);
@@ -95,3 +114,4 @@ public class RecyclerComplexAdapter extends RecyclerView.Adapter<RecyclerComplex
         }
     }
 }
+
