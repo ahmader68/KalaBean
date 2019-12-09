@@ -28,8 +28,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.intek.kalabean.Adapters.FloorAdapter;
 import com.intek.kalabean.Adapters.RecyclerShopsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Brands.BrandsFragment;
+import com.intek.kalabean.Chain_Store.ChainFragment;
+import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
+import com.intek.kalabean.Markets.MarketsFragment;
 import com.intek.kalabean.Model.FloorList;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.ShopsList;
@@ -49,15 +53,14 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     private TextView
             txtTitle,
-            txt_fragmentShowShops_address ,
-            txt_fragmentShowShops_phone ,
-            txt_fragmentShowShops_web ,
+            txt_fragmentShowShops_address,
+            txt_fragmentShowShops_phone,
+            txt_fragmentShowShops_web,
             txt_fragmentShowShops_vTour,
             txtPhone;
-    private RecyclerView rvShopList ,
+    private RecyclerView rvShopList,
             rv_fragmentShowShops_floorList;
     private ImageView img_fragmentShowShops_showShop;
-
 
 
     private ShopsContract.Presenter presenter;
@@ -68,10 +71,11 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public String image;
     public String title;
 
-    public int ShopId,REQUEST_CODE_CALL = 500;
+    public int REQUEST_CODE_CALL = 500;
+
+    public static int flag = 0;
 
     public String address;
-
 
 
     private RadioGroup rgSwitch;
@@ -83,11 +87,11 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         super.onCreate(savedInstanceState);
         presenter = new ShopsPresenter(new KalaBeanRepository());
         extras = getArguments();
-        SellCenterID = extras.getInt("SellCenterID" , 1);
-        image = extras.getString("image" , "");
-        title = extras.getString("title" , "");
-        address = extras.getString("address" , "");
-        ShopId = extras.getInt("ShopId", 0);
+        SellCenterID = extras.getInt("SellCenterID", 1);
+        image = extras.getString("image", "");
+        title = extras.getString("title", "");
+        address = extras.getString("address", "");
+
 
         presenter.floorList(SellCenterID);
     }
@@ -106,7 +110,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         cimgShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
 
         rvShopList = rootView.findViewById(R.id.rv_fragmentShowShops_shopList);
-        presenter.getShops(SellCenterID,0);
+        presenter.getShops(SellCenterID, 0);
         txtTitle.setText(title);
 
         img_fragmentShowShops_showShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
@@ -125,32 +129,26 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         rv_fragmentShowShops_floorList = rootView.findViewById(R.id.rv_fragmentShowShops_floorList);
 
         rbShops.setChecked(true);
-        rgSwitch.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int id) {
-                switch (id) {
-                    case R.id.rb_fragmentShowShop_product :
-                        Toast.makeText(getViewContext(), "به زودی" +
-                                "", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.rb_fragmentShowShop_shops :
-                        presenter.getShops(SellCenterID , -1);
-                        break;
-                }
+        rgSwitch.setOnCheckedChangeListener((radioGroup, id) -> {
+            switch (id) {
+                case R.id.rb_fragmentShowShop_product:
+                    Toast.makeText(getViewContext(), "به زودی" +
+                            "", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.rb_fragmentShowShop_shops:
+                    presenter.getShops(SellCenterID, -1);
+                    break;
             }
         });
 
-        txtPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String tel = txtPhone.getText().toString().trim();
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + tel));
-                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CALL_PHONE},REQUEST_CODE_CALL);
-                }else {
-                    startActivity(intent);
-                }
+        txtPhone.setOnClickListener(v -> {
+            String tel = txtPhone.getText().toString().trim();
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + tel));
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CODE_CALL);
+            } else {
+                startActivity(intent);
             }
         });
 
@@ -163,16 +161,16 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void getShopsList(ShopsList shops) {
-        adapter = new RecyclerShopsAdapter(getActivity(),shops);
-        rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(),2,RecyclerView.VERTICAL,false));
+        adapter = new RecyclerShopsAdapter(getActivity(), shops, address, image, title);
+        rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(), 2, RecyclerView.VERTICAL, false));
         rvShopList.setAdapter(adapter);
     }
 
     @Override
     public void getFloorList(FloorList floorList) {
 
-        adapterFloor = new FloorAdapter(getViewContext() , floorList , SellCenterID);
-        rv_fragmentShowShops_floorList.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
+        adapterFloor = new FloorAdapter(getViewContext(), floorList, SellCenterID);
+        rv_fragmentShowShops_floorList.setLayoutManager(new LinearLayoutManager(getViewContext(), RecyclerView.HORIZONTAL, false));
         rv_fragmentShowShops_floorList.setAdapter(adapterFloor);
     }
 
@@ -196,20 +194,30 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        if(getView() == null){
+        if (getView() == null) {
             return;
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
-                    return true;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                switch (ShopsFragment.flag) {
+                    case 1:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_fragmentMain_mainLayout, new BrandsFragment()).commit();
+                        break;
+                    case 2:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_fragmentMain_mainLayout, new ChainFragment()).commit();
+                        break;
+                    case 3:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_fragmentMain_mainLayout, new ComplexFragment()).commit();
+                        break;
+                    case 4:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_fragmentMain_mainLayout, new MarketsFragment()).commit();
+                        break;
                 }
-                return false;
+                return true;
             }
+            return false;
         });
     }
 }

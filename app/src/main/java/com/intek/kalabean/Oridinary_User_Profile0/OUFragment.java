@@ -87,48 +87,25 @@ public class OUFragment extends BaseFragment implements OUContract.View {
 //            shops.getItems().add(shop);
 //        }
 
-        conProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Profile", Toast.LENGTH_SHORT).show();
-            }
-        });
-        conMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Message", Toast.LENGTH_SHORT).show();
-            }
-        });
-        conWallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Wallet", Toast.LENGTH_SHORT).show();
-            }
-        });
-        conBasket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Basket", Toast.LENGTH_SHORT).show();
-            }
-        });
-        sgFavourite.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.rb_fragmentOrdinaryUser_favProd) {
-                    txtInfo.setText(R.string.favourite_product);
+        conProfile.setOnClickListener(view -> Toast.makeText(getViewContext(), "Profile", Toast.LENGTH_SHORT).show());
+        conMessage.setOnClickListener(view -> Toast.makeText(getViewContext(), "Message", Toast.LENGTH_SHORT).show());
+        conWallet.setOnClickListener(view -> Toast.makeText(getViewContext(), "Wallet", Toast.LENGTH_SHORT).show());
+        conBasket.setOnClickListener(view -> Toast.makeText(getViewContext(), "Basket", Toast.LENGTH_SHORT).show());
+        sgFavourite.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i == R.id.rb_fragmentOrdinaryUser_favProd) {
+                txtInfo.setText(R.string.favourite_product);
 
-                } else if (i == R.id.rb_fragmentOrdinaryUser_favStore) {
+            } else if (i == R.id.rb_fragmentOrdinaryUser_favStore) {
 
-                    SpannableStringBuilder builder = new SpannableStringBuilder(getResources().getString(R.string.favourite_store));
-                    builder.setSpan(new ImageSpan(drawableHeart), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    txtInfo.setText(builder, TextView.BufferType.SPANNABLE);
+                SpannableStringBuilder builder1 = new SpannableStringBuilder(getResources().getString(R.string.favourite_store));
+                builder1.setSpan(new ImageSpan(drawableHeart), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                txtInfo.setText(builder1, TextView.BufferType.SPANNABLE);
 
-                } else if (i == R.id.rb_fragmentOrdinaryUser_selectedProd) {
+            } else if (i == R.id.rb_fragmentOrdinaryUser_selectedProd) {
 
-                    SpannableStringBuilder builder = new SpannableStringBuilder(getResources().getString(R.string.selected_product_description));
-                    builder.setSpan(new ImageSpan(drawablePin), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    txtInfo.setText(builder, TextView.BufferType.SPANNABLE);
-                }
+                SpannableStringBuilder builder1 = new SpannableStringBuilder(getResources().getString(R.string.selected_product_description));
+                builder1.setSpan(new ImageSpan(drawablePin), 6, 7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                txtInfo.setText(builder1, TextView.BufferType.SPANNABLE);
             }
         });
     }
@@ -173,15 +150,12 @@ public class OUFragment extends BaseFragment implements OUContract.View {
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
-                    return true;
-                }
-                return false;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 }

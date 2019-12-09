@@ -152,12 +152,9 @@ public class RequestFragment extends BaseFragment implements RequestContract.Vie
             }
         });
 
-        linearFragmentRequestProductImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkMyPermission(6);
-                imgFragmentRequestProductSrc.setVisibility(View.VISIBLE);
-            }
+        linearFragmentRequestProductImage.setOnClickListener(v -> {
+            checkMyPermission(6);
+            imgFragmentRequestProductSrc.setVisibility(View.VISIBLE);
         });
 
     }
@@ -221,15 +218,12 @@ public class RequestFragment extends BaseFragment implements RequestContract.Vie
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
-                    return true;
-                }
-                return false;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 }

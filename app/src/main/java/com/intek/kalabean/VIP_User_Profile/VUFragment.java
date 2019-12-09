@@ -95,67 +95,38 @@ public class VUFragment extends BaseFragment implements VUContract.View {
             btnDefinition.setVisibility(View.GONE);
         }
 
-        btnDefinition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new DefinitionFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
-                transaction.commit();
-            }
+        btnDefinition.setOnClickListener(v -> {
+            Fragment fragment = new DefinitionFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+            transaction.commit();
         });
 
-        imgEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        imgEditProfile.setOnClickListener(v -> {
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("userId",userId);
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment editFragment = new EditUserFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            Fragment editFragment = new EditUserFragment();
 //                editFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_fragmentMain_mainLayout,editFragment);
-                transaction.commit();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout,editFragment);
+            transaction.commit();
 
-            }
         });
 
-        cvAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new AddProductFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
-                transaction.commit();
-            }
+        cvAddProduct.setOnClickListener(view -> {
+            Fragment fragment = new AddProductFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
+            transaction.commit();
         });
 
-        cvEditStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Edit Store", Toast.LENGTH_SHORT).show();
-            }
-        });
+        cvEditStore.setOnClickListener(view -> Toast.makeText(getViewContext(), "Edit Store", Toast.LENGTH_SHORT).show());
 
-        cvManageProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Product Management", Toast.LENGTH_SHORT).show();
-            }
-        });
+        cvManageProduct.setOnClickListener(view -> Toast.makeText(getViewContext(), "Product Management", Toast.LENGTH_SHORT).show());
 
-        cvSetMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Set on Map", Toast.LENGTH_SHORT).show();
-            }
-        });
+        cvSetMap.setOnClickListener(view -> Toast.makeText(getViewContext(), "Set on Map", Toast.LENGTH_SHORT).show());
 
-        cvShowStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getViewContext(), "Show Store", Toast.LENGTH_SHORT).show();
-            }
-        });
+        cvShowStore.setOnClickListener(view -> Toast.makeText(getViewContext(), "Show Store", Toast.LENGTH_SHORT).show());
     }
 
     @Override
@@ -195,15 +166,12 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
-                    return true;
-                }
-                return false;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 }

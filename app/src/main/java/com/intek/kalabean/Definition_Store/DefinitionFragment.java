@@ -276,50 +276,41 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         });
 
 
-        imgFragmentDefinitionInnerImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkMyPermission(4);
-                imgFragmentDefinitionsrcInner.setVisibility(View.VISIBLE);
-                if(!imgFragmentDefinitionsrcOuter.isShown()){
-                    imgFragmentDefinitionsrcOuter.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-
-
-        imgFragmentDefinitionOuterImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkMyPermission(5);
+        imgFragmentDefinitionInnerImage.setOnClickListener(v -> {
+            checkMyPermission(4);
+            imgFragmentDefinitionsrcInner.setVisibility(View.VISIBLE);
+            if(!imgFragmentDefinitionsrcOuter.isShown()){
                 imgFragmentDefinitionsrcOuter.setVisibility(View.VISIBLE);
-
             }
         });
 
 
-        btnFragmentDefinitionAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                storeDif = new StoreDif();
 
-                storeDif.setJobcatid(activityId);
-                storeDif.setCityid(cityId);
-                storeDif.setFaddress(edtFragmentDefinitionAddressFa.getText().toString());
-                storeDif.setEmail("");
-                storeDif.setFax("");
-                storeDif.setPhone(edtFragmentDefinitionPhone.getText().toString());
-                storeDif.setFstoreName(edtFragmentDefinitionStoreName.getText().toString());
-                storeDif.setShopCenterName(shopCenterId);
-                storeDif.setStoreFloor(floorId);
-                storeDif.setShopCenterKind(mallId);
-                storeDif.setWorkHour(edtFragmentDefinitionWorkHour.getText().toString());
+        imgFragmentDefinitionOuterImage.setOnClickListener(v -> {
+            checkMyPermission(5);
+            imgFragmentDefinitionsrcOuter.setVisibility(View.VISIBLE);
+
+        });
 
 
-                presenter.storeDefinition(storeDif);
+        btnFragmentDefinitionAccept.setOnClickListener(v -> {
+            storeDif = new StoreDif();
 
-            }
+            storeDif.setJobcatid(activityId);
+            storeDif.setCityid(cityId);
+            storeDif.setFaddress(edtFragmentDefinitionAddressFa.getText().toString());
+            storeDif.setEmail("");
+            storeDif.setFax("");
+            storeDif.setPhone(edtFragmentDefinitionPhone.getText().toString());
+            storeDif.setFstoreName(edtFragmentDefinitionStoreName.getText().toString());
+            storeDif.setShopCenterName(shopCenterId);
+            storeDif.setStoreFloor(floorId);
+            storeDif.setShopCenterKind(mallId);
+            storeDif.setWorkHour(edtFragmentDefinitionWorkHour.getText().toString());
+
+
+            presenter.storeDefinition(storeDif);
+
         });
 
 
@@ -411,40 +402,37 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         });
 
 
-        btnFragmentDefinitionAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StoreDif storeDif = new StoreDif();
-                if (!validateStoreKind() || !validateComplexName() || !validateFloor() || !validateStoreName() || !validatePhone() || !validAddress()) {
-                    return;
-                } else {
-                    int storeKind;
-                    int complexName;
-                    int floor;
-                    String fName;
-                    String phone;
-                    String fAddress;
-                    int jobCatid;
+        btnFragmentDefinitionAccept.setOnClickListener(v -> {
+            StoreDif storeDif = new StoreDif();
+            if (!validateStoreKind() || !validateComplexName() || !validateFloor() || !validateStoreName() || !validatePhone() || !validAddress()) {
+                return;
+            } else {
+                int storeKind;
+                int complexName;
+                int floor;
+                String fName;
+                String phone;
+                String fAddress;
+                int jobCatid;
 
 
-                    storeKind = mallId;
-                    complexName = shopCenterId;
-                    floor = floorId;
-                    fName = edtFragmentDefinitionStoreName.getText().toString();
-                    phone = edtFragmentDefinitionPhone.getText().toString();
-                    fAddress = edtFragmentDefinitionAddressFa.getText().toString();
-                    jobCatid = activityId;
-                    storeDif.setUserid(userId);
-                    storeDif.setShopCenterKind(storeKind);
-                    storeDif.setShopCenterName(complexName);
-                    storeDif.setStoreFloor(floor);
-                    storeDif.setFstoreName(fName);
-                    storeDif.setPhone(phone);
-                    storeDif.setFaddress(fAddress);
-                    storeDif.setCityid(cityId);
-                    storeDif.setJobcatid(jobCatid);
-                    presenter.storeDefinition(storeDif);
-                }
+                storeKind = mallId;
+                complexName = shopCenterId;
+                floor = floorId;
+                fName = edtFragmentDefinitionStoreName.getText().toString();
+                phone = edtFragmentDefinitionPhone.getText().toString();
+                fAddress = edtFragmentDefinitionAddressFa.getText().toString();
+                jobCatid = activityId;
+                storeDif.setUserid(userId);
+                storeDif.setShopCenterKind(storeKind);
+                storeDif.setShopCenterName(complexName);
+                storeDif.setStoreFloor(floor);
+                storeDif.setFstoreName(fName);
+                storeDif.setPhone(phone);
+                storeDif.setFaddress(fAddress);
+                storeDif.setCityid(cityId);
+                storeDif.setJobcatid(jobCatid);
+                presenter.storeDefinition(storeDif);
             }
         });
 
@@ -563,15 +551,12 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
-                    return true;
-                }
-                return false;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 

@@ -3,6 +3,7 @@ package com.intek.kalabean.Login_With_User_Pass;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,19 +57,16 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
 
         btnLogin = rootView.findViewById(R.id.btn_fragmentLoginWithUserPass_login);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User user = new User();
-                String username = edtUsername.getText().toString();
-                String password = edtPassword.getText().toString();
-                if(!validateUsername() || !validatePassword()){
-                    return;
-                }else{
-                    user.setUsr(username);
-                    user.setPassword(password);
-                    presenter.login(user);
-                }
+        btnLogin.setOnClickListener(v -> {
+            User user = new User();
+            String username = edtUsername.getText().toString();
+            String password = edtPassword.getText().toString();
+            if(!validateUsername() || !validatePassword()){
+                return;
+            }else{
+                user.setUsr(username);
+                user.setPassword(password);
+                presenter.login(user);
             }
         });
 
@@ -140,5 +138,22 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
         }else{
             return true;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
+            }
+            return false;
+        });
     }
 }

@@ -58,14 +58,11 @@ public class TicketFragment extends BaseFragment implements TicketContract.View 
         con_fragmentTicket_form = rootView.findViewById(R.id.con_fragmentTicket_form);
 
 
-        btn_fragmentTicket_makeTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (con_fragmentTicket_form.getVisibility() == View.GONE) {
-                    con_fragmentTicket_form.setVisibility(View.VISIBLE);
-                } else if (con_fragmentTicket_form.getVisibility() == View.VISIBLE){
-                    con_fragmentTicket_form.setVisibility(View.GONE);
-                }
+        btn_fragmentTicket_makeTicket.setOnClickListener(view -> {
+            if (con_fragmentTicket_form.getVisibility() == View.GONE) {
+                con_fragmentTicket_form.setVisibility(View.VISIBLE);
+            } else if (con_fragmentTicket_form.getVisibility() == View.VISIBLE){
+                con_fragmentTicket_form.setVisibility(View.GONE);
             }
         });
     }
