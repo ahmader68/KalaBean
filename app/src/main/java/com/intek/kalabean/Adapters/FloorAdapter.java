@@ -52,45 +52,42 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.FloorHolder>
         final Floor floor = floors.getFloorList().get(position);
 
         holder.txt_rvFloor_title.setText(floor.getTitleFA());
-        holder.cv_rvFloor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /* get position
-                int pos = holder.getAdapterPosition();//position;//getAdapterPosition();
-                holder.cv_rvFloor.setCardBackgroundColor(Color.GRAY);
-                // check if item still exists
-                if(pos != RecyclerView.NO_POSITION){
-                    Floor clickedDataItem = floors.getFloorList().get(pos);
-                    // here call your callback's method, or notify using other way
-                    notifyItemChanged(pos);
-                    pos = holder.getLayoutPosition();
-                    notifyItemChanged(pos);
-                }
-
-                 */
-
-                //notifyItemChanged(selectedPos);
-                //selectedPos = holder.getLayoutPosition();
-                //notifyItemChanged(selectedPos);
-                //holder.cv_rvFloor.setCardBackgroundColor(Color.GRAY);
-                /*
-                for (int i = 0; i < floorHolders.size(); i++) {
-                    if (holder != floorHolders.get(i)){
-                        floorHolders.get(i).cv_rvFloor.setCardBackgroundColor(Color.WHITE);
-                        floorHolders.clear();
-                    }
-                }
-                floorHolders.add(holder);
-
-                 */
-                if (floorHolders != null && holder != floorHolders){
-                    floorHolders.cv_rvFloor.setCardBackgroundColor(Color.WHITE);
-                }
-                floorHolders = holder;
-
-                holder.cv_rvFloor.setCardBackgroundColor(Color.GRAY);
-                presenter.getShops(sellCenterId, floor.getId());
+        holder.cv_rvFloor.setOnClickListener(v -> {
+            /* get position
+            int pos = holder.getAdapterPosition();//position;//getAdapterPosition();
+            holder.cv_rvFloor.setCardBackgroundColor(Color.GRAY);
+            // check if item still exists
+            if(pos != RecyclerView.NO_POSITION){
+                Floor clickedDataItem = floors.getFloorList().get(pos);
+                // here call your callback's method, or notify using other way
+                notifyItemChanged(pos);
+                pos = holder.getLayoutPosition();
+                notifyItemChanged(pos);
             }
+
+             */
+
+            //notifyItemChanged(selectedPos);
+            //selectedPos = holder.getLayoutPosition();
+            //notifyItemChanged(selectedPos);
+            //holder.cv_rvFloor.setCardBackgroundColor(Color.GRAY);
+            /*
+            for (int i = 0; i < floorHolders.size(); i++) {
+                if (holder != floorHolders.get(i)){
+                    floorHolders.get(i).cv_rvFloor.setCardBackgroundColor(Color.WHITE);
+                    floorHolders.clear();
+                }
+            }
+            floorHolders.add(holder);
+
+             */
+            if (floorHolders != null && holder != floorHolders){
+                floorHolders.cv_rvFloor.setCardBackgroundColor(Color.WHITE);
+            }
+            floorHolders = holder;
+
+            holder.cv_rvFloor.setCardBackgroundColor(Color.GRAY);
+            presenter.getShops(sellCenterId, floor.getId());
         });
     }
 

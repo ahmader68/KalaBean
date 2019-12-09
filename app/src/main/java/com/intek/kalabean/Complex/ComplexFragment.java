@@ -1,13 +1,17 @@
 package com.intek.kalabean.Complex;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.intek.kalabean.Adapters.RecyclerComplexAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
+import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ChainStoreList;
 import com.intek.kalabean.Model.ComplexList;
 import com.intek.kalabean.R;
@@ -31,6 +36,8 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
     private JRSpinner spinner;
     private String[] spinnerItems;
 
+    private int cityId;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +51,22 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
 
     @Override
     public void setupViews() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         ConstraintLayout conComplex = rootView.findViewById(R.id.con_fragmentComplex_mainLayout);
         rvComplex = rootView.findViewById(R.id.rv_fragmentComplex_list);
 
         spinner = rootView.findViewById(R.id.sp_fragmentComplex_complex);
 
-        presenter.getComplex(1207 , 1202);
+        cityId = sharedPreferences.getInt("cityId", 0);
+        if (cityId == 1204 || cityId == 1205 || cityId == 1248) {
+            Toast.makeText(getViewContext(), "مجاز به انتخاب این شهر نمی باشید", Toast.LENGTH_SHORT).show();
+        } else if (cityId == 0) {
+            cityId = 1202;
+        } else {
+            presenter.getComplex(1207, cityId);
+        }
+
+
         //complexAdapter = new RecyclerCircleImageAdapter(getViewContext(),stores);
         //rvComplex.setLayoutManager(new LinearLayoutManager(getViewContext(),RecyclerView.VERTICAL,false));
         //rvComplex.setAdapter(complexAdapter);
@@ -79,22 +96,24 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
 
     @Override
     public void getComplexList(final ComplexList complexList) {
-        RecyclerComplexAdapter complexAdapter = new RecyclerComplexAdapter(getViewContext(), complexList);
-        rvComplex.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.VERTICAL ,false));
-        rvComplex.setAdapter(complexAdapter);
+        if(complexList.getStoreList() == null){
+            showMessage("هیچ فروشگاهی سافت نشد");
+        }else {
+            RecyclerComplexAdapter complexAdapter = new RecyclerComplexAdapter(getViewContext(), complexList);
+            rvComplex.setLayoutManager(new LinearLayoutManager(getViewContext(), RecyclerView.VERTICAL, false));
+            rvComplex.setAdapter(complexAdapter);
 
-        spinnerItems = new String[complexList.getStoreList().size()];
-        for (int i = 0; i < complexList.getStoreList().size(); i++) {
-            spinnerItems[i] = complexList.getStoreList().get(i).getTitleFA();
-        }
-        spinner.setItems(spinnerItems); //this is important, you must set it to set the item list
-        spinner.setTitle("انتخاب"); //change title of spinner-dialog programmatically
-        spinner.setExpandTint(R.color.colorAccent); //change expand icon tint programmatically
+            spinnerItems = new String[complexList.getStoreList().size()];
+            for (int i = 0; i < complexList.getStoreList().size(); i++) {
+                spinnerItems[i] = complexList.getStoreList().get(i).getTitleFA();
+            }
+            spinner.setItems(spinnerItems); //this is important, you must set it to set the item list
+            spinner.setTitle("انتخاب"); //change title of spinner-dialog programmatically
+            spinner.setExpandTint(R.color.colorAccent); //change expand icon tint programmatically
 
-        spinner.setMultiple(false);
-        spinner.setOnItemClickListener(new JRSpinner.OnItemClickListener() { //set it if you want the callback
-            @Override
-            public void onItemClick(int position) {
+            spinner.setMultiple(false);
+            //set it if you want the callback
+            spinner.setOnItemClickListener(position -> {
                 //do what you want to the selected position
                 ComplexList.Complex store = complexList.getStoreList().get(position);
                 Bundle bundle = new Bundle();
@@ -111,7 +130,24 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
                 transaction.replace(R.id.frm_fragmentMain_mainLayout, shopsFragment);
                 transaction.commit();
                 Toast.makeText(getViewContext(), "ok", Toast.LENGTH_SHORT).show();
+            });
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() == null) {
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout, new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 }

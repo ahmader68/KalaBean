@@ -200,39 +200,33 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         spProductSubCat = rootView.findViewById(R.id.sp_fragmentAddProduct_subCatProduct);
 
 
-        conImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-                StrictMode.setVmPolicy(builder.build());
-                if (Build.VERSION.SDK_INT >= 23) {
-                    checkPermissions();
-                    imgProductImage.setVisibility(View.VISIBLE);
+        conImage.setOnClickListener(view -> {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+            if (Build.VERSION.SDK_INT >= 23) {
+                checkPermissions();
+                imgProductImage.setVisibility(View.VISIBLE);
 
-                } else {
-                    takePicture();
-                    imgProductImage.setVisibility(View.VISIBLE);
-                }
+            } else {
+                takePicture();
+                imgProductImage.setVisibility(View.VISIBLE);
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!validatePrice() || !validateProductName()) {
-                    return;
-                } else {
+        btnSave.setOnClickListener(view -> {
+            if (!validatePrice() || !validateProductName()) {
+                return;
+            } else {
 
-                    int price = Integer.parseInt(edtPrice.getText().toString());
-                    product.setTitleFA(edtProductNameFa.getText().toString());
-                    product.setCategoryId(activityId);
-                    product.setPrice(price);
-                    product.setSubCategoryId(subCatId);
-                    product.setProducer(shopidentify);
-                    product.setUsrid(userId);
-                    product.setAutolang("fa");
-                    presenter.insertProduct(product);
-                }
+                int price = Integer.parseInt(edtPrice.getText().toString());
+                product.setTitleFA(edtProductNameFa.getText().toString());
+                product.setCategoryId(activityId);
+                product.setPrice(price);
+                product.setSubCategoryId(subCatId);
+                product.setProducer(shopidentify);
+                product.setUsrid(userId);
+                product.setAutolang("fa");
+                presenter.insertProduct(product);
             }
         });
 
@@ -291,15 +285,12 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         }
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
-                    return true;
-                }
-                return false;
+        getView().setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout,new MainFragment()).commit();
+                return true;
             }
+            return false;
         });
     }
 

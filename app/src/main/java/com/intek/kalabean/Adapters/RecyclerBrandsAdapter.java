@@ -51,22 +51,21 @@ public class RecyclerBrandsAdapter extends RecyclerView.Adapter<RecyclerBrandsAd
         holder.txtStoreCount.setText(storeCount);
 
 
-        holder.con_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID" , brand.getSellCenterID());
-                bundle.putString("image" , url);
-                bundle.putString("title" , brand.getTitleFA());
-                bundle.putString("address" , brand.getAddress());
-                bundle.putInt("flag",brand.getSellCenterCatID());
-                FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                ShopsFragment shopsFragment = new ShopsFragment();
-                shopsFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
-                transaction.commit();
-            }
+        holder.con_rvCircle_layout.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("SellCenterID" , brand.getSellCenterID());
+            bundle.putString("image" , url);
+            bundle.putString("title" , brand.getTitleFA());
+            bundle.putString("address" , brand.getAddress());
+            bundle.putInt("flag",brand.getSellCenterCatID());
+            //bundle.putInt("back",1);
+            ShopsFragment.flag = 1;
+            FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            ShopsFragment shopsFragment = new ShopsFragment();
+            shopsFragment.setArguments(bundle);
+            transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
+            transaction.commit();
         });
     }
 

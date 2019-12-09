@@ -52,21 +52,20 @@ public class RecyclerCircleImageAdapter extends RecyclerView.Adapter<RecyclerCir
         holder.txtStoreCount.setText(storeCount);
 
 
-        holder.con_rvCircle_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("SellCenterID" , store.getSellCenterID());
-                bundle.putString("image" , url);
-                bundle.putString("title" , store.getTitleFA());
-                bundle.putInt("flag",store.getSellCenterCatID());
-                FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                ShopsFragment shopsFragment = new ShopsFragment();
-                shopsFragment.setArguments(bundle);
-                transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
-                transaction.commit();
-            }
+        holder.con_rvCircle_layout.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("SellCenterID" , store.getSellCenterID());
+            bundle.putString("image" , url);
+            bundle.putString("title" , store.getTitleFA());
+            bundle.putInt("flag",store.getSellCenterCatID());
+//                bundle.putInt("back",4);
+            ShopsFragment.flag = 4;
+            FragmentManager manager = ((FragmentActivity)context).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            ShopsFragment shopsFragment = new ShopsFragment();
+            shopsFragment.setArguments(bundle);
+            transaction.replace(R.id.frm_fragmentMain_mainLayout , shopsFragment);
+            transaction.commit();
         });
 /*
         if(store.isStair()){
