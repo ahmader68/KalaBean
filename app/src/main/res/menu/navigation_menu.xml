@@ -7,12 +7,12 @@
     <item
         android:id="@+id/item_drawer_register"
         android:title="@string/register"
-        android:icon="@drawable/register"/>
+        android:icon="@drawable/register" />
 
     <item
         android:id="@+id/item_drawer_category"
        android:icon="@drawable/category"
-        android:title="@string/category"/>
+        android:title="@string/category" />
     <item
         android:id="@+id/item_drawer_cities"
         android:icon="@drawable/ic_cities"

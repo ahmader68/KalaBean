@@ -80,7 +80,7 @@
                     android:layout_marginEnd="6dp"
                     app:elevation="0dp"
                     app:itemBackground="@color/colorWhite"
-                    app:itemIconSize="30dp"
+
                     app:itemIconTint="@color/colorBlueIcon"
                     app:itemRippleColor="@color/colorBlue"
                     app:itemTextAppearanceActive="@color/colorBlueIcon"
@@ -129,6 +129,7 @@
             app:itemIconSize="30dp"
             app:headerLayout="@layout/navigation_header"
             app:itemTextColor="@color/lightDarkBlueText"
+            app:itemTextAppearance="@style/menu_text_style"
             app:menu="@menu/navigation_menu">
 
         </com.google.android.material.navigation.NavigationView>

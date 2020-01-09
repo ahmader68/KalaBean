@@ -50,7 +50,7 @@ public class RecyclerProductAdapter extends RecyclerView.Adapter<RecyclerProduct
         context.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
-        int w = (width/3) - 20;
+        int w = (width/3) - 5;
         holder.imgProduct.setMinimumWidth(w);
         holder.imgProduct.setMinimumHeight(w);
         if (!(product.getCoverimage().isEmpty())) {

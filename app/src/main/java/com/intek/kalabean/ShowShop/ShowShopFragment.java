@@ -37,6 +37,7 @@ import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.R;
+import com.intek.kalabean.Register.RegisterFragment;
 import com.intek.kalabean.Shops.ShopsFragment;
 import com.squareup.picasso.Picasso;
 
@@ -341,7 +342,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
 
     private void firstLogin(){
         showMessage("ابتدا باید وارد برنامه شوید");
-        Fragment fragment = new LoginWithUserPassFragment();
+        Fragment fragment = new RegisterFragment();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
         transaction.commit();
