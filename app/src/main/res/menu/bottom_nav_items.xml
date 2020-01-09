@@ -4,6 +4,7 @@
                 android:id="@+id/home"
                 android:icon="@drawable/ic_home"
                 android:title="@string/home"
+
                 />
             <item
                 android:id="@+id/cat"
@@ -16,7 +17,8 @@
             <item
                 android:id="@+id/cities"
                 android:icon="@drawable/ic_cities"
-                android:title="@string/Cities" />
+                android:title="@string/Cities"
+                />
 
             <item
                 android:id="@+id/enter"

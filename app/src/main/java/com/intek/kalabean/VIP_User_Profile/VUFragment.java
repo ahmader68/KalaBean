@@ -34,7 +34,7 @@ public class VUFragment extends BaseFragment implements VUContract.View {
 
     private CircularImageView cimgOuter;
 
-    private ConstraintLayout conImage;
+    private ConstraintLayout conImage,conPBWM,conSetting;
 
     private ImageView
             imgEditProfile,
@@ -50,6 +50,9 @@ public class VUFragment extends BaseFragment implements VUContract.View {
             cvEditStore,
             cvSetMap,
             cvShowStore;
+
+
+
     private Button btnDefinition;
 
     private SharedPreferences sharedPreferences;
@@ -76,6 +79,9 @@ public class VUFragment extends BaseFragment implements VUContract.View {
 
         conImage = rootView.findViewById(R.id.con_fragmentVIPUser_image);
 
+        conPBWM = rootView.findViewById(R.id.con_fragmentVIPUser_pbwm);
+        conSetting = rootView.findViewById(R.id.con_fragmentVIPUser_setting);
+
         imgEditProfile = rootView.findViewById(R.id.img_fragmentVIPUser_profile);
         imgBasket = rootView.findViewById(R.id.img_fragmentVIPUser_basket);
         imgMessage = rootView.findViewById(R.id.img_fragmentVIPUser_message);
@@ -90,9 +96,15 @@ public class VUFragment extends BaseFragment implements VUContract.View {
         cvShowStore = rootView.findViewById(R.id.cv_fragmentVIPUser_showStore);
 
         btnDefinition = rootView.findViewById(R.id.btn_fragmentVIPUser_definitionStore);
-        presenter.getShopInfo(storeId,userId);
+
+        conPBWM.setBackgroundResource(0);
+        conSetting.setBackgroundResource(0);
+
         if(storeId > 0){
             btnDefinition.setVisibility(View.GONE);
+            presenter.getShopInfo(storeId,userId);
+        }else{
+            txtStoreName.setText("نام فروشگاه شما");
         }
 
         btnDefinition.setOnClickListener(v -> {

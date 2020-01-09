@@ -232,6 +232,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 storeId = 0;
                 email = null;
                 showMessage(getResources().getString(R.string.toast_logout));
+                fragment = new MainFragment();
                 drawer.closeDrawer(GravityCompat.START);
             }
             FragmentManager manager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();

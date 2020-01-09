@@ -22,6 +22,7 @@ import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.LoggedinUser;
 import com.intek.kalabean.Model.User;
 import com.intek.kalabean.R;
+import com.intek.kalabean.VIP_User_Profile.VUFragment;
 
 public class LoginWithUserPassFragment extends BaseFragment implements LoginWithUserPassContract.View {
 
@@ -102,7 +103,7 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
         editor.commit();
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frm_MainActivity_mainLayout,new MainFragment());
+        transaction.replace(R.id.frm_MainActivity_mainLayout,new VUFragment());
         transaction.commit();
     }
 

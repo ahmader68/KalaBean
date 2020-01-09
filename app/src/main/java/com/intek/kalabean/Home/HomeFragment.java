@@ -247,4 +247,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         super.onStop();
         presenter.detachView();
     }
+
+
 }
