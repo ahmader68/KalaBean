@@ -14,6 +14,9 @@ import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
+import com.intek.kalabean.Model.SearchedProduct;
+import com.intek.kalabean.Model.SearchedStore;
+import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.ShopsList;
@@ -51,4 +54,6 @@ public interface KalaBeanDataSource {
     Single<User> getUserInfo(int userId);
     Single<User> editUser(int uid,String mobile,String email);
     Single<ShopCenterList> getShopInfo(int shopId,int usrid);
+    Single<SearchedStore> searchStore(int SellCenterCatID,int SellCenterID,int FloorId,int JobCatid,String Title);
+    Single<SearchedProduct> searchProduct(int SellCenterCatID,int SellCenterID,int FloorId,int JobCatid,String ProductName);
 }

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerFavouriteAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ShopsList;
@@ -44,6 +45,7 @@ public class OUFragment extends BaseFragment implements OUContract.View {
     ShopsList.Shops shop;
     private Drawable drawableHeart;
     private Drawable drawablePin;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -82,8 +82,23 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-
-
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_fragmentShop_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@color/showStore"
+                android:text="@string/btn_store_info"
+                android:textSize="18sp"
+                android:layout_margin="8dp"
+                android:textColor="@color/colorWhite"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -114,10 +129,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/pattern_background">
                 <TextView
+                    android:id="@+id/txt_fragmentShop_nameTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/ShopName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp" />
+                <TextView
+                    android:id="@+id/txt_fragmentShop_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/txt_fragmentShop_nameTitle"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_fragmentShop_nameTitle"
+                    app:layout_constraintStart_toEndOf="@id/txt_fragmentShop_nameTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="فروشگاه لوازم خانگی اصغ و شرکا"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"/>
+                <TextView
                     android:id="@+id/txt_fragmentShop_addressTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:text="@string/edt_fragmentRegister_address"
@@ -128,7 +169,7 @@
                     app:layout_constraintEnd_toStartOf="@id/txt_fragmentShop_address"
                     app:layout_constraintHorizontal_weight="0.2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_fragmentShop_nameTitle" />
 
                 <TextView
                     android:id="@+id/txt_fragmentShop_address"
@@ -145,7 +186,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="0.8"
                     app:layout_constraintStart_toEndOf="@id/txt_fragmentShop_addressTitle"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/txt_fragmentShop_addressTitle"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_fragmentShop_addressTitle"
                     tools:text="ّبلوار وکیل آباد - بین وکیل آباد 17 و  - پلاک 22 بیسنالسیتالب25" />
 
                 <TextView
@@ -267,26 +309,13 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background"
                 android:visibility="gone"/>
-            <Button
-                android:id="@+id/btn_fragmentShop_info"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/img_fragmentShop_map"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="@color/showStore"
-                android:text="@string/btn_store_info"
-                android:textSize="18sp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorWhite"/>
+
             <Button
                 android:id="@+id/btn_fragmentShop_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/colorGreen"
-                app:layout_constraintTop_toBottomOf="@id/btn_fragmentShop_info"
+                app:layout_constraintTop_toBottomOf="@id/img_fragmentShop_map"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8sp"

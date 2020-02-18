@@ -6,224 +6,188 @@
     android:layoutDirection="rtl"
     android:textDirection="rtl">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search_one"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txt_fragmentSearch_searchTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/txt_fragmentSearch_searchTitle"
-                android:textColor="@color/colorWhite"
-                android:textDirection="rtl"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_search_one">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RadioGroup
-                android:id="@+id/rg_fragmentSearch_searchRadioGroup"
+            android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_fragmentSearch_layoutTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:textDirection="rtl"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardBackgroundColor="@color/cardviewTitleBackground"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <RadioButton
-                    android:id="@+id/rb_fragmentSearch_searchProduct"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rb_fragmentSearch_searchProduct" />
-
-                <RadioButton
-                    android:id="@+id/rb_fragmentSearch_searchShop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rb_fragmentSearch_searchShop" />
-
-            </RadioGroup>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search_three"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_search_two">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.tiper.MaterialSpinner
-                android:id="@+id/sp_fragmentSearch_cityName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/sp_fragmentSearch_cityName"
-                android:layoutDirection="rtl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.tiper.MaterialSpinner
-                android:id="@+id/sp_fragmentSearch_shopKind"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/sp_fragmentSearch_shopKind"
-                android:layoutDirection="rtl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sp_fragmentSearch_cityName" />
-
-            <com.tiper.MaterialSpinner
-                android:id="@+id/sp_fragmentSearch_shopName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/sp_fragmentSearch_shopName"
-                android:layoutDirection="rtl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sp_fragmentSearch_shopKind" />
-
-            <com.tiper.MaterialSpinner
-                android:id="@+id/sp_fragmentSearch_floor"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/sp_fragmentSearch_floor"
-                android:layoutDirection="rtl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sp_fragmentSearch_shopName" />
-
-            <com.tiper.MaterialSpinner
-                android:id="@+id/sp_fragmentSearch_activity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/sp_fragmentSearch_activity"
-                android:layoutDirection="rtl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sp_fragmentSearch_floor" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_fragmentSearch_productName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:textColorHint="@color/colorPrimaryDark"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sp_fragmentSearch_activity">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edt_fragmentSearch_productName"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edt_fragmentSearch_productName"
-                    android:textColor="@color/colorPrimaryDark"
-                    app:backgroundTint="@color/colorAccent" />
+                    android:layout_margin="8dp"
+                    android:background="@color/cardviewTitleBackground">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="4dp"
+                        android:text="@string/advanced_search"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/img_fragmentSearch_question"/>
+                    <ImageView
+                        android:id="@+id/img_fragmentSearch_question"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/question_mark"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
+            <Button
+                android:id="@+id/btn_fragmentSearch_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cv_fragmentSearch_layoutTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_fragmentSearch_product"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/store1"/>
+            <Button
+                android:id="@+id/btn_fragmentSearch_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/btn_fragmentSearch_store"
+                app:layout_constraintBottom_toBottomOf="@id/btn_fragmentSearch_store"
+                app:layout_constraintStart_toEndOf="@id/btn_fragmentSearch_store"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/star1"/>
+            <Spinner
+                android:id="@+id/sp_fragmentSearch_province"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_spinner_register"
+                app:layout_constraintTop_toBottomOf="@id/btn_fragmentSearch_product"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:padding="5dp"
+                android:alpha="0.5"
+                android:hint="@string/sp_fragmentEditUser_state"
+                android:textColor="@color/black"/>
+            <Spinner
+                android:id="@+id/sp_fragmentSearch_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_spinner_register"
+                app:layout_constraintTop_toBottomOf="@id/sp_fragmentSearch_province"
+                app:layout_constraintStart_toStartOf="@id/sp_fragmentSearch_province"
+                app:layout_constraintEnd_toEndOf="@id/sp_fragmentSearch_province"
+                android:layout_marginTop="32dp"
+                android:padding="5dp"
+                android:alpha="0.5"
+                android:hint="@string/sp_fragmentEditUser_city"
+                android:textColor="@color/black"/>
+            <Spinner
+                android:id="@+id/sp_fragmentSearch_storeKind"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sp_fragmentSearch_city"
+                app:layout_constraintStart_toStartOf="@id/sp_fragmentSearch_city"
+                app:layout_constraintEnd_toEndOf="@id/sp_fragmentSearch_city"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/shape_spinner_register"
+                android:padding="5dp"
+                android:alpha="0.5"
+                android:textColor="@color/black"
+                android:hint="@string/sp_fragmentDefinition_storeKind"/>
+            <Spinner
+                android:id="@+id/sp_fragmentSearch_storeName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sp_fragmentSearch_storeKind"
+                app:layout_constraintStart_toStartOf="@id/sp_fragmentSearch_storeKind"
+                app:layout_constraintEnd_toEndOf="@id/sp_fragmentSearch_storeKind"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/shape_spinner_register"
+                android:padding="5dp"
+                android:alpha="0.5"
+                android:textColor="@color/black"
+                android:hint="@string/storeName"/>
+            <Spinner
+                android:id="@+id/sp_fragmentSearch_floor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sp_fragmentSearch_storeName"
+                app:layout_constraintStart_toStartOf="@id/sp_fragmentSearch_storeName"
+                app:layout_constraintEnd_toEndOf="@id/sp_fragmentSearch_storeName"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/shape_spinner_register"
+                android:padding="5dp"
+                android:alpha="0.5"
+                android:textColor="@color/black"
+                android:hint="@string/sp_fragmentDefinition_floor"/>
+            <Spinner
+                android:id="@+id/sp_fragmentSearch_activityKind"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sp_fragmentSearch_floor"
+                app:layout_constraintStart_toStartOf="@id/sp_fragmentSearch_floor"
+                app:layout_constraintEnd_toEndOf="@id/sp_fragmentSearch_floor"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/shape_spinner_register"
+                android:padding="5dp"
+                android:alpha="0.5"
+                android:textColor="@color/black"
+                android:hint="@string/sp_fragmentDefinition_activityKind"/>
+            <EditText
+                android:id="@+id/edt_fragmentSearch_prodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_register"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0.5"
+                app:layout_constraintTop_toBottomOf="@id/sp_fragmentSearch_activityKind"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:hint="@string/productName"/>
             <Button
                 android:id="@+id/btn_fragmentSearch_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_fragmentSearch_search"
+                app:layout_constraintTop_toBottomOf="@id/edt_fragmentSearch_prodName"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_fragmentSearch_productName" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search_four"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_search_three">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/txt_fragmentSearch_resultNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/txt_fragmentSearch_number"
-                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/txt_fragmentSearch_resultText"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txt_fragmentSearch_resultNumber"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="32dp"
+                android:background="@color/acceptButton"
+                android:textColor="@color/colorWhite"
+                android:text="@string/find"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

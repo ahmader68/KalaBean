@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Main_Page.MainFragment;
@@ -53,6 +54,8 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
 
     ConstraintLayout conEditUser;
 
+    private Alert_Dialog dialog;
+
 //    MaterialSpinner spFragmentEditUserState,spFragmentEditUserCity;
 
 
@@ -76,6 +79,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         userId = sharedPreferences.getInt("userid",0);
         presenter = new EditUserPresenter(new KalaBeanRepository());
@@ -103,6 +107,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         btnFragmentEditUserSupport = rootView.findViewById(R.id.btn_fragmentEditUser_support);
         btnFragmentEditUserSave = rootView.findViewById(R.id.btn_fragmentEditUser_save);
 
+        dialog.showAlert();
         presenter.userInfo(userId);
 
         btnFragmentEditUserSave.setOnClickListener(view -> {
@@ -123,6 +128,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
                 int uid = userId;
                 String mobile = edtFragmentEditUserMobile.getText().toString();
                 String email = edtFragmentEditUserEmail.getText().toString();
+                dialog.showAlert();
                 presenter.editUser(uid,mobile,email);
 
             }
@@ -210,6 +216,7 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         edtFragmentEditUserName.setEnabled(false);
         edtFragmentEditUserFamily.setEnabled(false);
         edtFragmentEditUserEmail.setText(user.getEmail());
+        dialog.dismiss();
     }
 
     @Override
@@ -224,6 +231,8 @@ public class EditUserFragment extends BaseFragment implements EditUserContract.V
         }else {
             showMessage("اشکالی در ویرایش اطلاعات رخ داده است، لطفا مجدد تلاش کنید");
         }
+
+        dialog.showAlert();
     }
 
     @Override

@@ -43,6 +43,8 @@ import com.intek.kalabean.Register.RegisterContract;
 import com.intek.kalabean.Register.RegisterPresentr;
 import com.intek.kalabean.Request_Product0.RequestContract;
 import com.intek.kalabean.Request_Product0.RequestPresenter;
+import com.intek.kalabean.Search.SearchContract;
+import com.intek.kalabean.Search.SearchPresenter;
 import com.intek.kalabean.Shops.ShopsContract;
 import com.intek.kalabean.Shops.ShopsPresenter;
 import com.intek.kalabean.ShowShop.ShowShopContract;
@@ -81,6 +83,7 @@ public class DatabaseMethods {
     private static LoginWithUserPassContract.Presenter loginWithUserPassPresenter = new LoginWithUserPassPresenter(new KalaBeanRepository());
     private static EditUserContract.Presenter editUserPresenter = new EditUserPresenter(new KalaBeanRepository());
     private static VUContract.Presenter vuPresenter = new VUPresenter(new KalaBeanRepository());
+    private static SearchContract.Presenter searchPresenter = new SearchPresenter(new KalaBeanRepository());
     private static int flag = 0;
 
 
@@ -108,6 +111,9 @@ public class DatabaseMethods {
                                 break;
                             case 3:
                                 addProductPresenter.onSuccessActivityKind(activityKindList);
+                                break;
+                            case 17:
+                                searchPresenter.onSuccessActivityKind(activityKindList);
                                 break;
                         }
 
@@ -299,6 +305,9 @@ public class DatabaseMethods {
                             case 1:
                                 definitionPresenter.onSuccessStoreKind(mallKindList);
                                 break;
+                            case 17:
+                                searchPresenter.onSuccessStoreKind(mallKindList);
+                                break;
                         }
                     }
 
@@ -328,6 +337,9 @@ public class DatabaseMethods {
                         switch (flag) {
                             case 1:
                                 definitionPresenter.onSuccessShopCenterList(shopCenterList);
+                                break;
+                            case 17:
+                                searchPresenter.onSuccessShopCenterList(shopCenterList);
                                 break;
                         }
                     }
@@ -362,6 +374,8 @@ public class DatabaseMethods {
                             case 11:
                                 shopsPresenter.onSuccessGetFloor(floorList);
                                 break;
+                            case 17:
+                                searchPresenter.onSuccessFloorList(floorList);
                         }
                     }
 

@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,7 @@ import com.intek.kalabean.Oridinary_User_Profile0.OUFragment;
 import com.intek.kalabean.R;
 import com.intek.kalabean.Register.RegisterFragment;
 import com.intek.kalabean.Request_Product0.RequestFragment;
+import com.intek.kalabean.Search.SearchFragment;
 import com.intek.kalabean.VIP_User_Profile.VUFragment;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -63,7 +65,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private DrawerLayout drawer;
     private Fragment fragment;
     private boolean checkExit = false;
-    private BottomNavigationView bottomNavigationView;
     private EditText edt_toolbar_search;
     private ImageView kalabeanIcon;
     private NavigationView navigationView;
@@ -72,10 +73,18 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private ImageView imgTelegram, imgInstagram, imgWeb;
     private String check, email;
 
-    private ConstraintLayout con_drawerMenu_markets ,
+    private ConstraintLayout
+            con_drawerMenu_markets ,
             con_drawerMenu_Complex ,
             con_drawerMenu_chainStore ,
-            con_drawerMenu_best;
+            con_drawerMenu_best,
+            con_bottom_home,
+            con_bottom_category,
+            con_bottom_cities,
+            con_bottom_login,
+            searchToolbar;
+
+    private TextView txtLogin;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,7 +98,11 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @Override
     public void setupViews() {
-        bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
+        con_bottom_home = rootView.findViewById(R.id.con_bottom_home);
+        con_bottom_category = rootView.findViewById(R.id.con_bottom_category);
+        con_bottom_cities = rootView.findViewById(R.id.con_bottom_city);
+        con_bottom_login = rootView.findViewById(R.id.con_bottom_login);
+        txtLogin = rootView.findViewById(R.id.txt_bottom_login);
         fbtnPlus = rootView.findViewById(R.id.floatingActionButton);
         navigationView = rootView.findViewById(R.id.navigation);
         drawer = rootView.findViewById(R.id.drawer);
@@ -104,9 +117,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
 
         if (userId > 0) {
-            bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.profile);
+            txtLogin.setText(R.string.profile);
         } else {
-            bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
+            txtLogin.setText(R.string.enter);
 
         }
 
@@ -117,7 +130,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         } else {
             hideItems(1);
         }
-        ConstraintLayout searchToolbar = rootView.findViewById(R.id.search_toolbar);
+        searchToolbar = rootView.findViewById(R.id.search_toolbar);
         edt_toolbar_search = rootView.findViewById(R.id.edt_toolbar_search);
         kalabeanIcon = rootView.findViewById(R.id.kalabeanIcon);
 
@@ -209,12 +222,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 drawer.closeDrawer(GravityCompat.START);
 
 
-            } else if (id == R.id.item_drawer_search) {
-
-                drawer.closeDrawer(GravityCompat.START);
-
-
-            } else if (id == R.id.item_drawer_guide) {
+            }  else if (id == R.id.item_drawer_guide) {
 
                 drawer.closeDrawer(GravityCompat.START);
 
@@ -223,9 +231,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
                 drawer.closeDrawer(GravityCompat.START);
 
+            }else if(id == R.id.item_drawer_search){
+                drawer.closeDrawer(GravityCompat.START);
+                fragment = new SearchFragment();
+
             } else if (id == R.id.item_drawer_exit) {
                 sharedPreferences.edit().clear().apply();
-                bottomNavigationView.getMenu().findItem(R.id.enter).setTitle(R.string.enter);
+                txtLogin.setText(R.string.enter);
                 hideItems(1);
                 userId = 0;
                 check =null;
@@ -250,35 +262,36 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         transactions.replace(R.id.frm_fragmentMain_mainLayout, fragment);
         transactions.commit();
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    fragment = new HomeFragment();
-                    break;
-                case R.id.cat:
-                    if (userId > 0) {
-                        fragment = new CatFragment();
-                    } else {
-                        showMessage(getResources().getString(R.string.toast_first_login));
-                        fragment = new LoginWithUserPassFragment();
-                    }
-                    break;
-                case R.id.cities:
-                    fragment = new CityFragment();
-                    break;
-                case R.id.enter:
-                    if (userId <= 0) {
-                        fragment = new LoginWithUserPassFragment();
-                    } else {
-                        fragment = new VUFragment();
-                    }
-                    break;
-            }
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
-            transaction.commit();
-            return true;
+        con_bottom_home.setOnClickListener(v -> {
+            fragment = new HomeFragment();
+            changePage(fragment);
         });
+
+        con_bottom_category.setOnClickListener(v ->{
+            if (userId > 0) {
+                fragment = new CatFragment();
+            } else {
+                showMessage(getResources().getString(R.string.toast_first_login));
+                fragment = new LoginWithUserPassFragment();
+            }
+            changePage(fragment);
+        });
+
+        con_bottom_cities.setOnClickListener(v ->{
+            fragment = new CityFragment();
+            changePage(fragment);
+        });
+
+        con_bottom_login.setOnClickListener(v ->{
+            if (userId <= 0) {
+                fragment = new LoginWithUserPassFragment();
+            } else {
+                fragment = new VUFragment();
+            }
+
+            changePage(fragment);
+        });
+
 
         fbtnPlus.setOnClickListener(v -> {
             if (userId > 0) {
@@ -410,5 +423,11 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void showMessage(String msg) {
         Toast.makeText(getViewContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void changePage(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frm_fragmentMain_mainLayout, fragment);
+        transaction.commit();
     }
 }

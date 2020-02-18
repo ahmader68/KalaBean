@@ -17,6 +17,9 @@ import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
+import com.intek.kalabean.Model.SearchedProduct;
+import com.intek.kalabean.Model.SearchedStore;
+import com.intek.kalabean.Model.ShopCenter;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.ShopsList;
@@ -146,6 +149,17 @@ public class ServerDataSource implements KalaBeanDataSource {
     @Override
     public Single<ShopCenterList> getShopInfo(int shopId, int usrid) {
         return apiService.getShopInfo(shopId, usrid);
+    }
+
+    @Override
+    public Single<SearchedStore> searchStore(int SellCenterCatID, int SellCenterID, int FloorId, int JobCatid, String Title) {
+        return apiService.searchStore(SellCenterCatID, SellCenterID, FloorId, JobCatid, Title);
+    }
+
+
+    @Override
+    public Single<SearchedProduct> searchProduct(int SellCenterCatID, int SellCenterID, int FloorId, int JobCatid, String ProductName) {
+        return apiService.searchProduct(SellCenterCatID, SellCenterID, FloorId, JobCatid, ProductName);
     }
 
 

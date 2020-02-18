@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerCircleImageAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.StoreList;
 import com.intek.kalabean.R;
@@ -25,6 +26,7 @@ public class FactoriesFragment extends BaseFragment implements FactoriesContract
     private RecyclerView rvFactories;
     private List<StoreList.Store> stores;
     private ConstraintLayout conFactories;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

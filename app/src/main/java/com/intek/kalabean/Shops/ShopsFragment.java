@@ -30,6 +30,7 @@ import com.intek.kalabean.Adapters.RecyclerShopsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
@@ -70,6 +71,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     public int SellCenterID;
     public String image;
     public String title;
+    private String complexName;
 
     public int REQUEST_CODE_CALL = 500;
 
@@ -82,17 +84,22 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
     private RadioButton rbProduct;
     private RadioButton rbShops;
 
+    private Alert_Dialog dialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new ShopsPresenter(new KalaBeanRepository());
         extras = getArguments();
         SellCenterID = extras.getInt("SellCenterID", 1);
         image = extras.getString("image", "");
         title = extras.getString("title", "");
         address = extras.getString("address", "");
+        complexName = extras.getString("complexName","");
 
 
+        dialog.showAlert();
         presenter.floorList(SellCenterID);
     }
 
@@ -110,8 +117,13 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         cimgShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
 
         rvShopList = rootView.findViewById(R.id.rv_fragmentShowShops_shopList);
+        dialog.showAlert();
         presenter.getShops(SellCenterID, 0);
-        txtTitle.setText(title);
+        if(complexName.equals("")) {
+            txtTitle.setText(title);
+        }else{
+            txtTitle.setText(complexName);
+        }
 
         img_fragmentShowShops_showShop = rootView.findViewById(R.id.img_fragmentShowShops_showShop);
         txt_fragmentShowShops_address = rootView.findViewById(R.id.txt_fragmentShowShops_address);
@@ -136,6 +148,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
                             "", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.rb_fragmentShowShop_shops:
+                    dialog.showAlert();
                     presenter.getShops(SellCenterID, -1);
                     break;
             }
@@ -161,9 +174,10 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
 
     @Override
     public void getShopsList(ShopsList shops) {
-        adapter = new RecyclerShopsAdapter(getActivity(), shops);
+        adapter = new RecyclerShopsAdapter(getActivity(), shops,title);
         rvShopList.setLayoutManager(new GridLayoutManager(getViewContext(), 2, RecyclerView.VERTICAL, false));
         rvShopList.setAdapter(adapter);
+        dialog.dismiss();
     }
 
     @Override
@@ -172,6 +186,7 @@ public class ShopsFragment extends BaseFragment implements ShopsContract.View {
         adapterFloor = new FloorAdapter(getViewContext(), floorList, SellCenterID);
         rv_fragmentShowShops_floorList.setLayoutManager(new LinearLayoutManager(getViewContext(), RecyclerView.HORIZONTAL, false));
         rv_fragmentShowShops_floorList.setAdapter(adapterFloor);
+        dialog.dismiss();
     }
 
     @Override

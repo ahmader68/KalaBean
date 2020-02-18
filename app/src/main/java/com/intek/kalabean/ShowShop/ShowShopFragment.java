@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Fragment.ShowWebFragment;
 import com.intek.kalabean.Login_With_User_Pass.LoginWithUserPassFragment;
@@ -71,6 +72,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             txtAddress,
             txtCountView,
             txtWorkHour,
+            txtName,
             txtNull;
 
     private ConstraintLayout conFragmentShopInfo;
@@ -81,7 +83,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     public int SellCenterID;
     public String image;
     public String title;
-    private String address,tel,web;
+    private String address,tel,web,complexName;
     public int ShopId;
     private int visitCount;
     private RecyclerProductAdapter adapter;
@@ -89,10 +91,13 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
     private final int REQUEST_CALL_PHONE = 210;
     private int userId;
 
+    private Alert_Dialog dialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         userId = sharedPreferences.getInt("userid",0);
         presenter = new ShowShopPresenter(new KalaBeanRepository());
@@ -105,6 +110,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         tel = extras.getString("tel","");
         web = extras.getString("web","");
         visitCount = extras.getInt("visitCount",0);
+        complexName = extras.getString("complexName");
 
 
     }
@@ -135,16 +141,21 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
         btnInfo.setText(shopInfo);
         Picasso.get().load(image).into(imgShop);
 
+        dialog.showAlert();
         presenter.getProduct(ShopId);
 
+        txtName = rootView.findViewById(R.id.txt_fragmentShop_name);
         txtAddress = rootView.findViewById(R.id.txt_fragmentShop_address);
         txtCountView = rootView.findViewById(R.id.txt_fragmentShop_countView);
         imgInstagram = rootView.findViewById(R.id.img_fragmentShop_instagram);
         imgTelegram = rootView.findViewById(R.id.img_fragmentShop_telegram);
         imgEmail = rootView.findViewById(R.id.img_fragmentShop_email);
         imgWeb = rootView.findViewById(R.id.img_fragmentShop_domain);
+
         txtAddress.setText(address);
         txtCountView.setText(String.valueOf(visitCount));
+        txtName.setText(title);
+
 
         imgHeart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -294,6 +305,7 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
                 bundle.putString("address",address);
                 bundle.putString("image",image);
                 bundle.putString("title",title);
+                bundle.putString("complexName",complexName);
                 Fragment fragment = new ShopsFragment();
                 fragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_fragmentMain_mainLayout,fragment).commit();
@@ -320,6 +332,8 @@ public class ShowShopFragment extends BaseFragment implements ShowShopContract.V
             rvProductList.setLayoutManager(new GridLayoutManager(getViewContext() , 3 , RecyclerView.VERTICAL , false));
             rvProductList.setAdapter(adapter);
         }
+
+        dialog.dismiss();
     }
 
 
