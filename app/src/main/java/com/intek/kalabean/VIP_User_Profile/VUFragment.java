@@ -19,6 +19,7 @@ import androidx.preference.PreferenceManager;
 
 import com.intek.kalabean.AddProduct.AddProductFragment;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Definition_Store.DefinitionFragment;
 import com.intek.kalabean.Edit_User.EditUserFragment;
@@ -59,9 +60,12 @@ public class VUFragment extends BaseFragment implements VUContract.View {
 
     private int userId,storeId;
 
+    private Alert_Dialog dialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new VUPresenter(new KalaBeanRepository());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         userId = sharedPreferences.getInt("userid",0);
@@ -102,6 +106,7 @@ public class VUFragment extends BaseFragment implements VUContract.View {
 
         if(storeId > 0){
             btnDefinition.setVisibility(View.GONE);
+            dialog.showAlert();
             presenter.getShopInfo(storeId,userId);
         }else{
             txtStoreName.setText("نام فروشگاه شما");
@@ -150,6 +155,7 @@ public class VUFragment extends BaseFragment implements VUContract.View {
     public void getShopInfo(ShopCenterList shopCenter) {
         Picasso.get().load(shopCenter.getItems().get(0).getIcon()).into(cimgOuter);
         txtStoreName.setText(shopCenter.getItems().get(0).getTitleFA());
+        dialog.dismiss();
 
     }
 

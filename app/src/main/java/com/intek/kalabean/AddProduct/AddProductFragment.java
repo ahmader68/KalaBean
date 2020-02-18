@@ -27,6 +27,7 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.MainActivity;
 import com.intek.kalabean.Main_Page.MainFragment;
@@ -99,9 +100,12 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
 
     private final int PERMISSION_REQUEST_CODE_ADDPRODUCT = 203;
 
+    private Alert_Dialog dialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         this.presenter = new AddProductPresenter(new KalaBeanRepository());
         product = new AddProduct();
         //preference = GetSharedPrefrences.getInstance(getViewContext());
@@ -128,6 +132,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
             spProductSubCat.setSelection(-1);
 
         }
+        dialog.dismiss();
     }
 
     @Override
@@ -140,6 +145,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         activityAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, activityName);
         activityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spProductCat.setAdapter(activityAdapter);
+        dialog.dismiss();
     }
 
     @Override
@@ -156,6 +162,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
         positionAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, positionsName);
         positionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spProductSubCat.setAdapter(positionAdapter);
+        dialog.dismiss();
 
     }
 
@@ -168,6 +175,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
     public void setupViews() {
         userId = sharedPreferences.getInt("userid", 0);
         shopidentify = sharedPreferences.getInt("storeId", 0);
+        dialog.showAlert();
         presenter.activityKind();
 
         conMainLayout = rootView.findViewById(R.id.con_fragmentAddProduct_mainLayout);
@@ -226,6 +234,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
                 product.setProducer(shopidentify);
                 product.setUsrid(userId);
                 product.setAutolang("fa");
+                dialog.showAlert();
                 presenter.insertProduct(product);
             }
         });
@@ -236,6 +245,7 @@ public class AddProductFragment extends BaseFragment implements AddProductContra
                 activityId = spActivityKind.getItems().get(position).getId();
                 Toast.makeText(getViewContext(), activityId + "", Toast.LENGTH_SHORT).show();
                 spProductSubCat.setSelection(-1);
+                dialog.showAlert();
                 presenter.subCatid();
             }
 

@@ -32,6 +32,42 @@ public class ProductList {
         private List<Album> AlbumImages;
         private String Price;
         private String DiscountIsPercent;
+        private int SellCenterCatID;
+        private int SellCenterID;
+        private int FloorId;
+        private int JobCatid;
+
+        public int getSellCenterCatID() {
+            return SellCenterCatID;
+        }
+
+        public void setSellCenterCatID(int sellCenterCatID) {
+            SellCenterCatID = sellCenterCatID;
+        }
+
+        public int getSellCenterID() {
+            return SellCenterID;
+        }
+
+        public void setSellCenterID(int sellCenterID) {
+            SellCenterID = sellCenterID;
+        }
+
+        public int getFloorId() {
+            return FloorId;
+        }
+
+        public void setFloorId(int floorId) {
+            FloorId = floorId;
+        }
+
+        public int getJobCatid() {
+            return JobCatid;
+        }
+
+        public void setJobCatid(int jobCatid) {
+            JobCatid = jobCatid;
+        }
 
         public int getId() {
             return id;

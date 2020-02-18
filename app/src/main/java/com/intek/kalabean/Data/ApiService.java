@@ -14,6 +14,8 @@ import com.intek.kalabean.Model.MallKindList;
 import com.intek.kalabean.Model.Positions;
 import com.intek.kalabean.Model.ProductList;
 
+import com.intek.kalabean.Model.SearchedProduct;
+import com.intek.kalabean.Model.SearchedStore;
 import com.intek.kalabean.Model.ShopCenterList;
 import com.intek.kalabean.Model.StoreDif;
 import com.intek.kalabean.Model.ShopsList;
@@ -148,5 +150,21 @@ public interface ApiService {
     @POST("default.aspx?Action=GetInfoShop")
     Single<ShopCenterList> getShopInfo(@Field("shopId") int shopId,
                                        @Field("usrid") int usrid);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=AdvancedSearch&SearchType=store")
+    Single<SearchedStore> searchStore(@Field("SellCenterCatID") int sellCenterCatId,
+                                      @Field("SellCenterID") int sellCenterId,
+                                      @Field("FloorId") int floorId,
+                                      @Field("JobCatid") int jobCatId,
+                                      @Field("Title") String title);
+
+    @FormUrlEncoded
+    @POST("default.aspx?Action=AdvancedSearch&SearchType=prod")
+    Single<SearchedProduct> searchProduct(@Field("SellCenterCatID") int sellCenterCatId,
+                                          @Field("SellCenterID") int sellCenterId,
+                                          @Field("FloorId") int floorId,
+                                          @Field("JobCatid") int jobCatId,
+                                          @Field("ProductName") String productName);
 
 }

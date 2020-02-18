@@ -243,5 +243,8 @@
     <string name="toast_not_allowed">اجازه دسترسی داده نشد</string>
     <string name="toast_press_back_again">برای خروج دکمه بازگشت را مجدد کلیک کنید</string>
     <string name="toast_this_store_has_no_website">هیچ وب سایتی برای این فروشگاه ثبت نشده است</string>
+    <string name="please_wait">لطفا صبر کنید</string>
+    <string name="advanced_search">جستجوی پیشرفته</string>
+    <string name="find">بگرد</string>
 
 </resources>

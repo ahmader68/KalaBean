@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerChainStoreAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ChainStoreList;
@@ -38,9 +39,11 @@ public class ChainFragment extends BaseFragment implements ChainContract.View {
 
     private int cityId;
 
+    private Alert_Dialog dialog;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new ChainPresenter(new KalaBeanRepository());
     }
 
@@ -60,6 +63,7 @@ public class ChainFragment extends BaseFragment implements ChainContract.View {
         } else if (cityId == 0) {
             cityId = 1202;
         } else {
+            dialog.showAlert();
             presenter.getChainStore(1208 , cityId);
         }
 
@@ -129,6 +133,7 @@ public class ChainFragment extends BaseFragment implements ChainContract.View {
                 Toast.makeText(getViewContext(), "ok", Toast.LENGTH_SHORT).show();
             });
         }
+        dialog.dismiss();
     }
 
     @Override

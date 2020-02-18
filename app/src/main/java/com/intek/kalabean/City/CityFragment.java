@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.CityAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.R;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class CityFragment extends BaseFragment implements CityContract.View {
     private RecyclerView rvCity;
     private CityAdapter cityAdapter;
     private List<String> cities;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

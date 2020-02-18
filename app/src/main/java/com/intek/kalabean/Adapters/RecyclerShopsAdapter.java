@@ -27,10 +27,12 @@ public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdap
 
     private ShopsList shopsList;
     private Activity context;
+    private String complexName;
 
-    public RecyclerShopsAdapter(Activity context , ShopsList shopsList){
+    public RecyclerShopsAdapter(Activity context , ShopsList shopsList,String complexName){
         this.context = context;
         this.shopsList = shopsList;
+        this.complexName = complexName;
     }
 
     @NonNull
@@ -66,6 +68,7 @@ public class RecyclerShopsAdapter extends RecyclerView.Adapter<RecyclerShopsAdap
             bundle.putString("address",shop.getAddressFA());
             bundle.putString("tel",shop.getTel());
             bundle.putString("web",shop.getLinksite());
+            bundle.putString("complexName",complexName);
 
 
 

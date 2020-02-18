@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.intek.kalabean.Adapters.RecyclerProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Model.ProductList;
 import com.intek.kalabean.Model.UserShop;
@@ -35,10 +36,13 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
     private TextView txt_fragmentShops_title;
     private TextView txt_fragmentShops_Null;
 
+    private Alert_Dialog dialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new UserShopPresenter(new KalaBeanRepository());
     }
 
@@ -54,7 +58,7 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
         Picasso.get().load(image).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(title);
 
-
+        dialog.showAlert();
         presenter.getUserShop(5599);
         presenter.getUserShop(5599);
     }
@@ -97,6 +101,7 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
 
         Picasso.get().load(url).into(img_fragmentShops_Market);
         txt_fragmentShops_title.setText(userShop.getItems().get(0).getTitle());
+        dialog.dismiss();
     }
 
     @Override
@@ -108,5 +113,6 @@ public class UserShopFragment extends BaseFragment implements UserShopContract.V
             rv_fragmentShops_list.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL));
             rv_fragmentShops_list.setAdapter(adapter);
         }
+        dialog.dismiss();
     }
 }

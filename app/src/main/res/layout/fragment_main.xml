@@ -72,27 +72,136 @@
                 app:layout_constraintTop_toBottomOf="@+id/frm_fragmentMain_mainLayout"
                 app:layout_constraintVertical_weight="0.1">
 
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottomNavigationView"
-                    android:layout_width="match_parent"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_bottom_home"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="6dp"
-                    app:elevation="0dp"
-                    app:itemBackground="@color/colorWhite"
-
-                    app:itemIconTint="@color/colorBlueIcon"
-                    app:itemRippleColor="@color/colorBlue"
-                    app:itemTextAppearanceActive="@color/colorBlueIcon"
-                    app:itemTextAppearanceInactive="@color/colorBlack"
-                    app:itemTextColor="@color/colorBlueText"
-                    app:labelVisibilityMode="labeled"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:menu="@menu/bottom_nav_items"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/con_bottom_category"
+                    android:layout_marginBottom="8dp">
+                    <ImageView
+                        android:id="@+id/img_bottom_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_home"
+                        android:layout_marginBottom="8dp"/>
+                    <TextView
+                        android:id="@+id/txt_bottom_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/img_bottom_home"
+                        app:layout_constraintEnd_toEndOf="@id/img_bottom_home"
+                        android:text="@string/home"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_bottom_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/con_bottom_home"
+                    app:layout_constraintBottom_toBottomOf="@id/con_bottom_home"
+                    app:layout_constraintStart_toEndOf="@id/con_bottom_home"
+                    app:layout_constraintEnd_toStartOf="@id/con_bottom_empty">
+
+                    <ImageView
+                        android:id="@+id/img_bottom_cat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_cat"/>
+                    <TextView
+                        android:id="@+id/txt_bottom_cat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/img_bottom_cat"
+                        app:layout_constraintEnd_toEndOf="@id/img_bottom_cat"
+                        android:text="@string/category"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_bottom_empty"
+                    android:layout_width="10dp"
+                    android:layout_height="12sp"
+                    app:layout_constraintStart_toEndOf="@id/con_bottom_category"
+                    app:layout_constraintEnd_toStartOf="@id/con_bottom_city"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="8dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_bottom_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/con_bottom_city"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:id="@+id/img_bottom_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_enter"
+                        android:layout_marginBottom="8dp"/>
+                    <TextView
+                        android:id="@+id/txt_bottom_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/img_bottom_login"
+                        app:layout_constraintEnd_toEndOf="@id/img_bottom_login"
+                        android:text="@string/enter"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_bottom_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/con_bottom_login"
+                    app:layout_constraintBottom_toBottomOf="@id/con_bottom_login"
+                    app:layout_constraintEnd_toStartOf="@id/con_bottom_login"
+                    app:layout_constraintStart_toEndOf="@id/con_bottom_empty">
+                    <ImageView
+                        android:id="@+id/img_bottom_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_cities"
+                        android:layout_marginBottom="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/img_bottom_city"
+                        app:layout_constraintEnd_toEndOf="@id/img_bottom_city"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="@string/Cities"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -101,7 +210,7 @@
                 android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/ic_plus"

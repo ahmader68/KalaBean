@@ -17,6 +17,7 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.LoggedinUser;
@@ -35,11 +36,14 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
 
     private SharedPreferences sharedPreferences;
 
+    private Alert_Dialog dialog;
+
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new LoginWithUserPassPresenter(new KalaBeanRepository());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
     }
@@ -67,6 +71,7 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
             }else{
                 user.setUsr(username);
                 user.setPassword(password);
+                dialog.showAlert();
                 presenter.login(user);
             }
         });
@@ -101,6 +106,7 @@ public class LoginWithUserPassFragment extends BaseFragment implements LoginWith
 
         editor.apply();
         editor.commit();
+        dialog.dismiss();
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.frm_MainActivity_mainLayout,new VUFragment());

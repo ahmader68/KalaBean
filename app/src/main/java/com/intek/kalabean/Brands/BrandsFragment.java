@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerBrandsAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.BrandList;
@@ -35,11 +36,14 @@ public class BrandsFragment extends BaseFragment implements BrandsContract.View 
     private JRSpinner spinner;
     private String[] spinnerItems;
 
+    private Alert_Dialog dialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new BrandsPresenter(new KalaBeanRepository());
         presenter.getBrands(1319);
     }
@@ -95,6 +99,8 @@ public class BrandsFragment extends BaseFragment implements BrandsContract.View 
             transaction.commit();
             Toast.makeText(getViewContext(), "ok", Toast.LENGTH_SHORT).show();
         });
+
+        dialog.dismiss();
     }
 
         @Override

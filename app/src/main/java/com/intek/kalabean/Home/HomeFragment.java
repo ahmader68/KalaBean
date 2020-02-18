@@ -25,6 +25,7 @@ import com.intek.kalabean.Adapters.RecyclerReductedProductAdapter;
 import com.intek.kalabean.Base.BaseFragment;
 import com.intek.kalabean.Brands.BrandsFragment;
 import com.intek.kalabean.Chain_Store.ChainFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Complex.ComplexFragment;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Markets.MarketsFragment;
@@ -57,11 +58,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
 
     private SliderLayout slider;
 
+    private Alert_Dialog dialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new HomePresenter(new KalaBeanRepository());
-
+        dialog.showAlert();
         presenter.getProductList(5599);
         presenter.getReductedProductList(5599);
         presenter.getShopList(1074 , -1);
@@ -227,6 +231,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View  {
         RecyclerReductedProductAdapter adapter = new RecyclerReductedProductAdapter(getViewContext() , productList);
         rv_fragmentHome_reductedProduct.setLayoutManager(new LinearLayoutManager(getViewContext() , RecyclerView.HORIZONTAL , false));
         rv_fragmentHome_reductedProduct.setAdapter(adapter);
+        dialog.dismiss();
     }
 
     @Override

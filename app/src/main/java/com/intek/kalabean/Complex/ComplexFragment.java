@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.intek.kalabean.Adapters.RecyclerComplexAdapter;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
 import com.intek.kalabean.Model.ChainStoreList;
@@ -38,9 +39,12 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
 
     private int cityId;
 
+    private Alert_Dialog dialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new ComplexPresenter(new KalaBeanRepository());
     }
 
@@ -63,6 +67,7 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
         } else if (cityId == 0) {
             cityId = 1202;
         } else {
+            dialog.showAlert();
             presenter.getComplex(1207, cityId);
         }
 
@@ -132,6 +137,7 @@ public class ComplexFragment extends BaseFragment implements ComplexContract.Vie
                 Toast.makeText(getViewContext(), "ok", Toast.LENGTH_SHORT).show();
             });
         }
+        dialog.dismiss();
     }
 
     @Override

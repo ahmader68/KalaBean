@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Classes.GetProvinceAndCity;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Main_Page.MainFragment;
@@ -80,10 +81,12 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
 
     private SharedPreferences sharedPreferences;
 
+    private Alert_Dialog dialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         presenter = new RegisterPresentr(new KalaBeanRepository());
         user = new User();
         getProvinceAndCity = new GetProvinceAndCity();
@@ -170,6 +173,7 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                 user.setMobile(edtFragmentRegisterUsername.getText().toString());
                 user.setUsr(edtFragmentRegisterUsername.getText().toString());
                 //user.setUserLevel(userLevel);
+                dialog.showAlert();
                 presenter.register(user);
             }
 
@@ -287,6 +291,8 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
             Toast.makeText(getViewContext(), "ثبت نام با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frm_MainActivity_mainLayout, new MainFragment()).commit();
         }
+
+        dialog.dismiss();
     }
 
     @Override

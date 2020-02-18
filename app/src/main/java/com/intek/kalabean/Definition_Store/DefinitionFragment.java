@@ -29,6 +29,7 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.intek.kalabean.Base.BaseFragment;
+import com.intek.kalabean.Classes.Alert_Dialog;
 import com.intek.kalabean.Classes.GetProvinceAndCity;
 import com.intek.kalabean.Data.KalaBeanRepository;
 import com.intek.kalabean.Home.HomeFragment;
@@ -161,17 +162,22 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
 
     private SharedPreferences sharedPreferences;
 
+    private Alert_Dialog dialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new Alert_Dialog(getViewContext());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getViewContext());
         userId = sharedPreferences.getInt("userid",0);
         getProvinceAndCity = new GetProvinceAndCity();
         presenter = new DefinitionPresenter(new KalaBeanRepository());
         mkindsName = new ArrayList<>();
         akindName = new ArrayList<>();
+        dialog.showAlert();
         presenter.storeKind();
+        dialog.showAlert();
         presenter.activityKind();
     }
 
@@ -308,7 +314,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
             storeDif.setShopCenterKind(mallId);
             storeDif.setWorkHour(edtFragmentDefinitionWorkHour.getText().toString());
 
-
+            dialog.showAlert();
             presenter.storeDefinition(storeDif);
 
         });
@@ -432,6 +438,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
                 storeDif.setFaddress(fAddress);
                 storeDif.setCityid(cityId);
                 storeDif.setJobcatid(jobCatid);
+                dialog.showAlert();
                 presenter.storeDefinition(storeDif);
             }
         });
@@ -469,6 +476,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         malKindArrayAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, malkind);
         malKindArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentDefinitionStoreKind.setAdapter(malKindArrayAdapter);
+        dialog.dismiss();
     }
 
     @Override
@@ -481,6 +489,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         activityKindAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, activityName);
         activityKindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentDefinitionActivityKind.setAdapter(activityKindAdapter);
+        dialog.dismiss();
 
     }
 
@@ -495,6 +504,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         shopCenterListAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, shopCenterNames);
         shopCenterListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentDefinitionComplexName.setAdapter(shopCenterListAdapter);
+        dialog.dismiss();
     }
 
     @Override
@@ -507,6 +517,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
         floorListAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, floorNames);
         floorListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFragmentDefinitionFloor.setAdapter(floorListAdapter);
+        dialog.dismiss();
     }
 
     @Override
@@ -523,6 +534,7 @@ public class DefinitionFragment extends BaseFragment implements DefinitionContra
             transaction.replace(R.id.frm_fragmentMain_mainLayout,fragment);
             transaction.commit();
         }
+        dialog.dismiss();
     }
 
 
