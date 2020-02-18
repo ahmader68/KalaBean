@@ -81,6 +81,8 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
             floorId,
             shopCenterId;
 
+    private boolean searchCheck = false;
+
     private String province,city;
 
     private GetProvinceAndCity getProvinceAndCity;
@@ -94,9 +96,8 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
         getProvinceAndCity = new GetProvinceAndCity();
         provinces = new ArrayList<>();
         cities = new ArrayList<>();
-
-
-
+        presenter.storeKind();
+        presenter.activityKind();
     }
 
     @Override
@@ -120,6 +121,24 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
         edtName = rootView.findViewById(R.id.edt_fragmentSearch_prodName);
 
+        if(searchCheck){
+            btnStore.setBackground(getResources().getDrawable(R.drawable.store2));
+            btnProduct.setBackground(getResources().getDrawable(R.drawable.star1));
+        }
+
+        btnStore.setOnClickListener(v -> {
+            searchCheck = true;
+            btnStore.setBackground(getResources().getDrawable(R.drawable.store1));
+            btnProduct.setBackground(getResources().getDrawable(R.drawable.star2));
+            edtName.setHint(R.string.shopsName);
+        });
+        btnProduct.setOnClickListener(v -> {
+            searchCheck = false;
+            btnStore.setBackground(getResources().getDrawable(R.drawable.store2));
+            btnProduct.setBackground(getResources().getDrawable(R.drawable.star1));
+            edtName.setHint(R.string.productName);
+        });
+
         spActivityKind.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -136,6 +155,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 storeKindId = mallKindList.getItems().get(position).getId();
+                presenter.shopCenterList(storeKindId);
             }
 
             @Override
@@ -148,6 +168,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 shopCenterId = shopCenterList.getItems().get(position).getId();
+                presenter.floorList(shopCenterId);
 
             }
 
