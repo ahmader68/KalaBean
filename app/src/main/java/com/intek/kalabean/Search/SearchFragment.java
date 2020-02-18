@@ -83,7 +83,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
     private boolean searchCheck = false;
 
-    private String province,city;
+    private String province, city;
 
     private GetProvinceAndCity getProvinceAndCity;
 
@@ -121,21 +121,20 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
         edtName = rootView.findViewById(R.id.edt_fragmentSearch_prodName);
 
-        if(searchCheck){
-            btnStore.setBackground(getResources().getDrawable(R.drawable.store2));
-            btnProduct.setBackground(getResources().getDrawable(R.drawable.star1));
-        }
+        btnStore.setBackground(getResources().getDrawable(R.drawable.store2));
+        btnProduct.setBackground(getResources().getDrawable(R.drawable.star1));
+        edtName.setHint(R.string.shopsName);
 
         btnStore.setOnClickListener(v -> {
             searchCheck = true;
-            btnStore.setBackground(getResources().getDrawable(R.drawable.store1));
-            btnProduct.setBackground(getResources().getDrawable(R.drawable.star2));
+            btnStore.setBackground(getResources().getDrawable(R.drawable.store2));
+            btnProduct.setBackground(getResources().getDrawable(R.drawable.star1));
             edtName.setHint(R.string.shopsName);
         });
         btnProduct.setOnClickListener(v -> {
             searchCheck = false;
-            btnStore.setBackground(getResources().getDrawable(R.drawable.store2));
-            btnProduct.setBackground(getResources().getDrawable(R.drawable.star1));
+            btnStore.setBackground(getResources().getDrawable(R.drawable.store1));
+            btnProduct.setBackground(getResources().getDrawable(R.drawable.star2));
             edtName.setHint(R.string.productName);
         });
 
@@ -191,7 +190,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
         });
 
         provinces = getProvinceAndCity.getProvince();
-        provinceAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,provinces);
+        provinceAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, provinces);
         provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spProvince.setAdapter(provinceAdapter);
 
@@ -200,7 +199,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 province = spProvince.getSelectedItem().toString();
                 cities = getProvinceAndCity.getCity(province);
-                cityAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,cities);
+                cityAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, cities);
                 cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spCity.setAdapter(cityAdapter);
 
@@ -250,11 +249,11 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     public void getStoreKind(MallKindList mallKindList) {
         storeKinds = new ArrayList<>();
         this.mallKindList = mallKindList;
-        for(MallKindList.MallKind kind : mallKindList.getItems()){
+        for (MallKindList.MallKind kind : mallKindList.getItems()) {
             storeKinds.add(kind.getName());
         }
 
-        storeKindAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,storeKinds);
+        storeKindAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, storeKinds);
         storeKindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStoreKind.setAdapter(storeKindAdapter);
     }
@@ -263,10 +262,10 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     public void getActivityKind(ActivityKindList activityKindList) {
         activityKinds = new ArrayList<>();
         this.activityKindList = activityKindList;
-        for(ActivityKind activityKind : activityKindList.getItems()){
+        for (ActivityKind activityKind : activityKindList.getItems()) {
             activityKinds.add(activityKind.getName());
         }
-        activityKindAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,activityKinds);
+        activityKindAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, activityKinds);
         activityKindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spActivityKind.setAdapter(activityKindAdapter);
     }
@@ -275,10 +274,10 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     public void getShopCenterList(ShopCenterList shopCenterList) {
         storeNames = new ArrayList<>();
         this.shopCenterList = shopCenterList;
-        for(ShopCenter shopCenter : shopCenterList.getItems()){
+        for (ShopCenter shopCenter : shopCenterList.getItems()) {
             storeNames.add(shopCenter.getTitleFA());
         }
-        storeNameAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,storeNames);
+        storeNameAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, storeNames);
         storeNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStoreName.setAdapter(storeNameAdapter);
     }
@@ -287,11 +286,11 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     public void getFloorList(FloorList floorList) {
         floors = new ArrayList<>();
         this.floorList = floorList;
-        for(Floor floor : floorList.getFloorList()){
+        for (Floor floor : floorList.getFloorList()) {
             floors.add(floor.getTitleFA());
         }
 
-        floorAdapter = new ArrayAdapter<>(getViewContext(),android.R.layout.simple_spinner_item,floors);
+        floorAdapter = new ArrayAdapter<>(getViewContext(), android.R.layout.simple_spinner_item, floors);
         floorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spFloor.setAdapter(floorAdapter);
     }
